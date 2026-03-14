@@ -1,0 +1,78 @@
+reddit:
+  client_id: "${REDDIT_CLIENT_ID}"
+  client_secret: "${REDDIT_CLIENT_SECRET}"
+  user_agent: "${REDDIT_USER_AGENT}"
+  subreddits:
+    - depression
+    - anxiety
+  date_range:
+    start: "2024-01-01"
+    end: "2026-03-01"
+
+collection:
+  pushshift_base_url: "https://api.pullpush.io"
+  batch_size: 500
+  rate_limit_rps: 1
+  privacy_salt: "${PRIVACY_SALT}"
+
+processing:
+  min_post_length_chars: 20
+  excluded_selftext:
+    - "[deleted]"
+    - "[removed]"
+
+features:
+  sentiment:
+    analyzer: "vader"
+    bins:
+      very_negative: -0.5
+      negative: -0.05
+      positive: 0.05
+  topics:
+    model_name: "all-MiniLM-L6-v2"
+    n_topics: 15
+    min_topic_size: 10
+    max_posts_per_week: 200
+  temporal:
+    rolling_windows:
+      - 2
+      - 4
+
+labeling:
+  distress_weights:
+    neg_sentiment: 0.4
+    hopelessness: 0.35
+    help_seeking: 0.25
+  crisis_threshold_std: 1.5
+
+modeling:
+  xgboost:
+    scale_pos_weight: "auto"
+    param_grid:
+      max_depth: [3, 5, 7]
+      learning_rate: [0.01, 0.05, 0.1, 0.2]
+      n_estimators: [100, 200, 300]
+      min_child_weight: [1, 3, 5]
+      subsample: [0.6, 0.8, 1.0]
+    n_search_iter: 30
+  walk_forward:
+    min_train_weeks: 26
+    gap_weeks: 1
+
+evaluation:
+  primary_metric: "recall"
+  probability_threshold: 0.5
+
+synthetic:
+  n_weeks: 104
+  posts_per_week_range: [80, 200]
+  crisis_frequency: 0.12
+
+random_seed: 42
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  features: "data/features"
+  models: "data/models"
+  reports: "data/reports"

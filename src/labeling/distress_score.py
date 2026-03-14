@@ -1,0 +1,35 @@
+import numpy as np
+import pandas as pd
+
+
+def compute_distress_score(
+    feature_df: pd.DataFrame,
+    weights: dict[str, float] = None,
+) -> pd.Series:
+    if weights is None:
+        weights = {"neg_sentiment": 0.4, "hopelessness": 0.35, "help_seeking": 0.25}
+
+    # Map weight keys to feature columns
+    col_map = {
+        "neg_sentiment": "avg_negative",
+        "hopelessness": "hopelessness_density",
+        "help_seeking": "help_seeking_density",
+    }
+
+    components = {}
+    for key, col in col_map.items():
+        if col in feature_df.columns:
+            values = feature_df[col].values.astype(float)
+            mean = np.mean(values)
+            std = np.std(values)
+            if std > 0:
+                components[key] = (values - mean) / std
+            else:
+                components[key] = np.zeros_like(values)
+
+    score = np.zeros(len(feature_df))
+    for key, weight in weights.items():
+        if key in components:
+            score += weight * components[key]
+
+    return pd.Series(score, index=feature_df.index, name="distress_score")
