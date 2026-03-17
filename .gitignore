@@ -2,6 +2,7 @@ data/raw/
 data/processed/
 data/features/
 data/models/
+data/reports/
 __pycache__/
 *.pyc
 .env

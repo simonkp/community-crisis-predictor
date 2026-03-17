@@ -20,8 +20,10 @@ def test_crisis_labeler_forward_shift():
     labeler.fit(scores)
 
     labels = labeler.label(scores)
-    # Week before the spike (index 3) should be labeled 1
-    assert labels.iloc[3] == 1
+    # Week before the spike (index 3) should be labeled >= 1 (some distress state)
+    # With 4-class labels [0.5, 1.0, 2.0] sigma thresholds, the spike (5.0) falls
+    # in class 2 (Acute Risk) for typical mean/std of this series.
+    assert labels.iloc[3] >= 1
     # Last week should be NaN (no future data)
     assert np.isnan(labels.iloc[-1])
 

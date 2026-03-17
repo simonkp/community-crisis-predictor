@@ -1,4 +1,5 @@
 import warnings
+from collections import deque
 from pathlib import Path
 
 import numpy as np
@@ -55,6 +56,7 @@ class TopicFeatureExtractor:
                 "dominant_topic": [0] * len(weekly_df),
                 "topic_entropy": [0.0] * len(weekly_df),
                 "topic_shift_jsd": [0.0] * len(weekly_df),
+                "topic_shift_jsd_4w": [0.0] * len(weekly_df),
             }, index=weekly_df.index)
 
         model = self._get_model()
@@ -73,6 +75,7 @@ class TopicFeatureExtractor:
 
         rows = []
         prev_dist = None
+        dist_history: deque = deque(maxlen=4)
 
         for idx in weekly_df.index:
             dist = week_topic_dists.get(idx, np.zeros(max(n_topics, 1)))
@@ -94,11 +97,21 @@ class TopicFeatureExtractor:
             else:
                 jsd = 0.0
 
+            if len(dist_history) == 4 and total > 0 and dist_history[0].sum() > 0:
+                jsd_4w = float(jensenshannon(dist_history[0], dist_norm))
+                if np.isnan(jsd_4w):
+                    jsd_4w = 0.0
+            else:
+                jsd_4w = 0.0
+
             rows.append({
                 "dominant_topic": dominant,
                 "topic_entropy": ent,
                 "topic_shift_jsd": jsd,
+                "topic_shift_jsd_4w": jsd_4w,
             })
             prev_dist = dist_norm if total > 0 else prev_dist
+            if total > 0:
+                dist_history.append(dist_norm)
 
         return pd.DataFrame(rows, index=weekly_df.index)
