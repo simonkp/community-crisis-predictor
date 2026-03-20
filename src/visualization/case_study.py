@@ -42,7 +42,7 @@ class CaseStudyGenerator:
             f"**Distress score:** {self.distress_scores.iloc[crisis_week_idx]:.3f}",
             "",
             CASE_STUDY_COPY["what_happened_header"],
-            f"The community distress score spiked to {self.distress_scores.iloc[crisis_week_idx]:.3f}, "
+            f"The community distress score spiked to {self.distress_scores.iloc[crisis_week_idx]:.3f}, ",
             CASE_STUDY_COPY["threshold_sentence_suffix"],
             "",
             "## Early Warning Signals",
