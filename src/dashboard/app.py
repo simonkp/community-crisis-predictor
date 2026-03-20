@@ -7,13 +7,14 @@ Run with:
 
 import json
 import sqlite3
+from html import escape
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from src.core.ui_config import BADGE_BG, DASHBOARD_COPY, STATE_COLORS, STATE_NAMES
+from src.core.ui_config import DASHBOARD_COPY, STATE_COLORS, STATE_NAMES
 
 # ── Page config ───────────────────────────────────────────────────────
 st.set_page_config(
@@ -162,31 +163,66 @@ st.markdown(DASHBOARD_COPY["current_state_header"])
 current_pred = predictions_all[week_idx]
 current_prob = probabilities_all[week_idx]
 current_distress = float(distress_scores.iloc[week_idx])
+theme_base = st.get_option("theme.base") or "light"
+is_dark = theme_base == "dark"
+
+def _format_week_label(value) -> str:
+    try:
+        dt = pd.to_datetime(value)
+        if pd.notna(dt):
+            return dt.strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    return str(value)[:10]
+
+week_label = _format_week_label(weeks[week_idx]) if week_idx < len(weeks) else "-"
 
 if not np.isnan(current_pred):
     state = int(current_pred)
     state_name = STATE_NAMES.get(state, "Unknown")
-    badge_color = STATE_COLORS.get(state, "#95a5a6")
-    bg_color = BADGE_BG.get(state, "#ecf0f1")
+    if is_dark:
+        dark_badge_style = {
+            0: {"bg": "#153528", "border": "#4ade80", "label": "#d9ffe9", "value": "#86efac"},
+            1: {"bg": "#3a2f14", "border": "#facc15", "label": "#fff6d5", "value": "#fde68a"},
+            2: {"bg": "#4a2a11", "border": "#fb923c", "label": "#ffedd8", "value": "#fdba74"},
+            3: {"bg": "#4a1d22", "border": "#f87171", "label": "#ffe3e6", "value": "#fca5a5"},
+        }
+        badge_style = dark_badge_style.get(
+            state, {"bg": "#1f2937", "border": "#9ca3af", "label": "#e5e7eb", "value": "#f3f4f6"}
+        )
+    else:
+        light_badge_style = {
+            0: {"bg": "#e6f7ee", "border": "#22c55e", "label": "#14532d", "value": "#15803d"},
+            1: {"bg": "#fff8db", "border": "#eab308", "label": "#713f12", "value": "#a16207"},
+            2: {"bg": "#ffecd8", "border": "#f97316", "label": "#7c2d12", "value": "#c2410c"},
+            3: {"bg": "#ffe5e5", "border": "#ef4444", "label": "#7f1d1d", "value": "#b91c1c"},
+        }
+        badge_style = light_badge_style.get(
+            state, {"bg": "#f3f4f6", "border": "#9ca3af", "label": "#374151", "value": "#111827"}
+        )
 else:
     state_name = "No prediction yet"
-    badge_color = "#bdc3c7"
-    bg_color = "#f2f3f4"
+    badge_style = {
+        "bg": "#1f2937" if is_dark else "#f3f4f6",
+        "border": "#9ca3af",
+        "label": "#e5e7eb" if is_dark else "#374151",
+        "value": "#f3f4f6" if is_dark else "#111827",
+    }
 
 col1, col2, col3, col4 = st.columns(4)
 col1.markdown(
     f"""
-    <div style="background:{bg_color};border-left:6px solid {badge_color};
+    <div style="background:{badge_style['bg']};border-left:6px solid {badge_style['border']};
     padding:12px 16px;border-radius:6px;">
-    <b style="font-size:1.1em">{DASHBOARD_COPY["state_badge_label"]}</b><br>
-    <span style="font-size:1.6em;color:{badge_color};font-weight:bold">{state_name}</span>
+    <b style="font-size:1.1em;color:{badge_style['label']};">{DASHBOARD_COPY["state_badge_label"]}</b><br>
+    <span style="font-size:1.6em;color:{badge_style['value']};font-weight:bold">{state_name}</span>
     </div>
     """,
     unsafe_allow_html=True,
 )
 col2.metric(DASHBOARD_COPY["probability_metric_label"], f"{current_prob:.1%}" if not np.isnan(current_prob) else "—")
 col3.metric("Distress Score", f"{current_distress:.3f}")
-col4.metric("Week", str(weeks[week_idx]) if week_idx < len(weeks) else "—")
+col4.metric("Week", week_label)
 
 st.markdown("---")
 
@@ -265,21 +301,76 @@ if drift_df is not None and not drift_df.empty:
     drift_up = drift_df.iloc[: week_idx + 1].copy()
     alert_cols = [c for c in drift_df.columns if not c.startswith("z_")]
     display_drift = drift_up[alert_cols].copy()
-    # Highlight non-normal rows
-    def _color_level(row):
-        lvl = row.get("aggregate_level", 0)
-        colors = {0: "", 1: "background-color: #fef9e7", 2: "background-color: #fdebd0",
-                  3: "background-color: #fadbd8"}
-        return [colors.get(lvl, "")] * len(row)
 
-    try:
-        st.dataframe(
-            display_drift.style.apply(_color_level, axis=1),
-            use_container_width=True,
-            height=200,
+    theme_base = st.get_option("theme.base") or "light"
+    is_dark = theme_base == "dark"
+
+    # Use explicit text and background colors to preserve contrast in both themes.
+    if is_dark:
+        frame_color = "#273244"
+        header_bg = "#121826"
+        header_text = "#e6edf7"
+        row_styles = {
+            0: ("#0b1220", "#dbe7ff"),
+            1: ("#33481f", "#f8ffe8"),
+            2: ("#5b3713", "#fff7e6"),
+            3: ("#5c1f27", "#fff1f3"),
+        }
+    else:
+        frame_color = "#d8deea"
+        header_bg = "#f2f5fb"
+        header_text = "#1f2937"
+        row_styles = {
+            0: ("#ffffff", "#111827"),
+            1: ("#fff8db", "#3d2f00"),
+            2: ("#ffe9cc", "#4a2b00"),
+            3: ("#ffd9d6", "#5a1516"),
+        }
+
+    def _format_cell(col: str, value):
+        if pd.isna(value):
+            return "-"
+        if col == "week_start":
+            try:
+                numeric = float(value)
+                if numeric > 1e12:
+                    return pd.to_datetime(int(numeric), unit="ms").strftime("%Y-%m-%d")
+                if numeric > 1e9:
+                    return pd.to_datetime(int(numeric), unit="s").strftime("%Y-%m-%d")
+            except Exception:
+                pass
+        if isinstance(value, float):
+            return f"{value:.3f}"
+        return str(value)
+
+    table_rows = []
+    for _, row in display_drift.iterrows():
+        level = int(row.get("aggregate_level", 0)) if not pd.isna(row.get("aggregate_level", 0)) else 0
+        bg, text = row_styles.get(level, row_styles[0])
+        row_cells = "".join(
+            f"<td style='padding:10px 12px;border-top:1px solid {frame_color};color:{text};'>{escape(_format_cell(col, row[col]))}</td>"
+            for col in display_drift.columns
         )
-    except Exception:
-        st.dataframe(display_drift, use_container_width=True, height=200)
+        table_rows.append(f"<tr style='background:{bg};'>{row_cells}</tr>")
+
+    header_cells = "".join(
+        f"<th style='text-align:left;padding:10px 12px;background:{header_bg};color:{header_text};border-bottom:1px solid {frame_color};'>{escape(str(col))}</th>"
+        for col in display_drift.columns
+    )
+
+    drift_table_html = f"""
+    <div style='border:1px solid {frame_color}; border-radius:10px; overflow:auto; max-height:240px;'>
+      <table style='border-collapse:separate; border-spacing:0; width:100%; font-size:0.95rem;'>
+        <thead>
+          <tr>{header_cells}</tr>
+        </thead>
+        <tbody>
+          {''.join(table_rows)}
+        </tbody>
+      </table>
+    </div>
+    """
+    st.markdown(drift_table_html, unsafe_allow_html=True)
 else:
     st.info("No drift data found. Run `make evaluate` to generate.")
 
