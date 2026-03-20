@@ -4,12 +4,13 @@ from pathlib import Path
 
 from src.config import load_config
 from src.collector.storage import load_processed
+from src.core.ui_config import PIPELINE_COPY
 from src.modeling.evaluate import evaluate_walk_forward, evaluate_walk_forward_lstm
 from src.labeling.target import STATE_NAMES
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Train and evaluate crisis prediction models")
+    parser = argparse.ArgumentParser(description=PIPELINE_COPY["run_train_description"])
     parser.add_argument("--config", default="config/default.yaml")
     parser.add_argument(
         "--skip-search", action="store_true", help="Skip XGBoost hyperparameter search"
@@ -37,7 +38,7 @@ def main():
         print("=" * 50)
 
         # --- XGBoost baseline ---
-        print("\n[XGBoost — binary crisis baseline]")
+        print(f"\n{PIPELINE_COPY['xgb_section_title']}")
         xgb_results = evaluate_walk_forward(
             sub_df, config, feature_columns, skip_search=args.skip_search
         )
@@ -84,7 +85,7 @@ def _print_comparison(sub: str, xgb: dict, lstm: dict) -> None:
     print(f"  {'-'*48}")
 
     metrics = ["recall", "precision", "f1", "pr_auc", "avg_detection_lead_time_weeks"]
-    labels = ["Recall (crisis)", "Precision", "F1", "PR-AUC", "Avg lead time (weeks)"]
+    labels = [PIPELINE_COPY["recall_metric_label"], "Precision", "F1", "PR-AUC", "Avg lead time (weeks)"]
     for key, label in zip(metrics, labels):
         xv = xgb.get(key, float("nan"))
         lv = lstm.get(key, float("nan"))

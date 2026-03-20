@@ -13,21 +13,17 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-
-# ── State label config ────────────────────────────────────────────────
-STATE_NAMES = {0: "Stable", 1: "Emerging Distress", 2: "Acute Risk", 3: "Critical Escalation"}
-STATE_COLORS = {0: "#2ecc71", 1: "#f1c40f", 2: "#e67e22", 3: "#c0392b"}
-BADGE_BG = {0: "#d5f5e3", 1: "#fef9e7", 2: "#fdebd0", 3: "#fadbd8"}
+from src.core.ui_config import BADGE_BG, DASHBOARD_COPY, STATE_COLORS, STATE_NAMES
 
 # ── Page config ───────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Community Crisis Predictor",
+    page_title=DASHBOARD_COPY["page_title"],
     page_icon="🧠",
     layout="wide",
 )
 
-st.title("Community Mental Health Crisis Predictor")
-st.caption("Live replay dashboard — use the sidebar controls to step through weeks.")
+st.title(DASHBOARD_COPY["title"])
+st.caption(DASHBOARD_COPY["caption"])
 
 
 # ── Data loading (cached) ─────────────────────────────────────────────
@@ -161,7 +157,7 @@ from src.labeling.distress_score import compute_distress_score  # noqa: E402
 distress_scores = compute_distress_score(sub_df)
 
 # ── Row 1: Current state badge ────────────────────────────────────────
-st.markdown("### Current Risk State")
+st.markdown(DASHBOARD_COPY["current_state_header"])
 
 current_pred = predictions_all[week_idx]
 current_prob = probabilities_all[week_idx]
@@ -182,20 +178,20 @@ col1.markdown(
     f"""
     <div style="background:{bg_color};border-left:6px solid {badge_color};
     padding:12px 16px;border-radius:6px;">
-    <b style="font-size:1.1em">Risk State</b><br>
+    <b style="font-size:1.1em">{DASHBOARD_COPY["state_badge_label"]}</b><br>
     <span style="font-size:1.6em;color:{badge_color};font-weight:bold">{state_name}</span>
     </div>
     """,
     unsafe_allow_html=True,
 )
-col2.metric("Crisis Probability", f"{current_prob:.1%}" if not np.isnan(current_prob) else "—")
+col2.metric(DASHBOARD_COPY["probability_metric_label"], f"{current_prob:.1%}" if not np.isnan(current_prob) else "—")
 col3.metric("Distress Score", f"{current_distress:.3f}")
 col4.metric("Week", str(weeks[week_idx]) if week_idx < len(weeks) else "—")
 
 st.markdown("---")
 
 # ── Row 2: Timeline ───────────────────────────────────────────────────
-st.markdown("### Distress Timeline")
+st.markdown(DASHBOARD_COPY["timeline_header"])
 
 is_multiclass = bool(np.nanmax(predictions_all) > 1) if (~np.isnan(predictions_all)).any() else False
 fig = go.Figure()
@@ -209,7 +205,7 @@ fig.add_trace(
         x=x_hist,
         y=y_hist,
         mode="lines",
-        name="Distress Score",
+        name=DASHBOARD_COPY["timeline_distress_label"],
         line=dict(color="steelblue", width=2),
     )
 )
@@ -228,7 +224,7 @@ fig.add_trace(
         x=x_hist,
         y=y_hist,
         mode="markers",
-        name="Predicted State",
+        name=DASHBOARD_COPY["timeline_predicted_state_label"],
         marker=dict(color=marker_colors_list, size=8),
         hovertemplate="%{x}<br>Distress: %{y:.3f}<extra></extra>",
     )
@@ -243,7 +239,7 @@ if valid_prob.any():
             x=x_hist[valid_prob],
             y=probs_up_to[valid_prob],
             mode="lines",
-            name="Crisis Probability",
+            name=DASHBOARD_COPY["timeline_probability_label"],
             line=dict(color="purple", width=1, dash="dot"),
             yaxis="y2",
             opacity=0.6,
@@ -253,7 +249,7 @@ if valid_prob.any():
 fig.update_layout(
     xaxis_title="Week",
     yaxis_title="Distress Score",
-    yaxis2=dict(title="Crisis Prob", overlaying="y", side="right", range=[0, 1]),
+    yaxis2=dict(title=DASHBOARD_COPY["timeline_probability_axis_label"], overlaying="y", side="right", range=[0, 1]),
     hovermode="x unified",
     template="plotly_white",
     height=380,
@@ -313,7 +309,7 @@ else:
     st.info("No SHAP data found. Run `make evaluate` to generate.")
 
 # ── Row 5: Recent state transitions ───────────────────────────────────
-st.markdown("### Recent State Escalations")
+st.markdown(DASHBOARD_COPY["recent_transitions_header"])
 
 transitions = load_transitions(n=20)
 if transitions:

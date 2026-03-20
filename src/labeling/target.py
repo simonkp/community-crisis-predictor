@@ -1,12 +1,6 @@
 import numpy as np
 import pandas as pd
-
-STATE_NAMES = {
-    0: "Stable",
-    1: "Emerging Distress",
-    2: "Acute Risk",
-    3: "Critical Escalation",
-}
+from src.core.domain_config import STATE_NAMES
 
 
 class CrisisLabeler:

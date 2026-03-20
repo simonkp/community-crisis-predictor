@@ -13,9 +13,9 @@ The pipeline takes a subreddit's post history and produces a week-by-week crisis
 | State | Meaning | Sigma threshold |
 |-------|---------|-----------------|
 | 0 — Stable | Community distress is within normal range | < 0.5σ above baseline |
-| 1 — Emerging Distress | Early warning signs present | 0.5σ – 1.0σ |
-| 2 — Acute Risk | Significant distress spike, intervention warranted | 1.0σ – 2.0σ |
-| 3 — Critical Escalation | Severe community-wide crisis | > 2.0σ |
+| 1 — Early Vulnerability Signal | Early warning signs present at a community level | 0.5σ – 1.0σ |
+| 2 — Elevated Distress | Significant distress increase requiring closer monitoring | 1.0σ – 2.0σ |
+| 3 — Severe Community Distress Signal | Sustained or extreme community-wide distress signal | > 2.0σ |
 
 The model never sees future data. Walk-forward time-series cross-validation ensures predictions are always made on unseen weeks.
 
@@ -29,8 +29,12 @@ The model never sees future data. Walk-forward time-series cross-validation ensu
 4. **Train** — Two models run in parallel:
    - **LSTM** (primary) — PyTorch sequence model; sees the last 8 weeks as context
    - **XGBoost** (baseline) — Binary crisis classifier; trained on the same walk-forward splits
-5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state escalations to SQLite
+5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state transitions to SQLite
 6. **Visualize** — Streamlit live dashboard with week-by-week replay, or static HTML reports
+
+State semantics and dashboard/report copy are centralized in code:
+- `src/core/domain_config.py` — canonical state names + threshold/semantics labels
+- `src/core/ui_config.py` — colors, badge styles, chart labels, and pipeline/dashboard/report copy strings
 
 ---
 
@@ -150,6 +154,9 @@ src/
 │   ├── topics.py              BERTopic distributions + JSD drift (1w and 4w)
 │   ├── behavioral.py          Post volume, engagement, new author rate
 │   └── temporal.py            Rolling averages (2w, 4w windows)
+├── core/             Shared constants and copy
+│   ├── domain_config.py       Canonical state semantics + threshold labels
+│   └── ui_config.py           Colors, badges, chart labels, and UI/report copy
 ├── labeling/         Distress scoring + 4-class target generation
 │   ├── distress_score.py      Weighted composite distress score
 │   └── target.py              CrisisLabeler — 4 states with community baseline
@@ -216,13 +223,13 @@ data/
 ├── raw/{subreddit}/posts.parquet          Raw collected posts
 ├── features/features.parquet             Weekly feature matrix
 ├── models/eval_results.json              XGB + LSTM walk-forward metrics
-├── alerts.db                             SQLite log of state escalations
+├── alerts.db                             SQLite log of state transitions
 └── reports/
     ├── {sub}_timeline.html               4-color interactive backtesting plot
     ├── {sub}_feature_importance.html     SHAP top-20 feature chart
     ├── {sub}_shap.csv                    SHAP values for dashboard
     ├── {sub}_drift_alerts.json           Rolling z-score drift alerts
-    ├── {sub}_case_study_*.md             Narrative crisis case studies
+    ├── {sub}_case_study_*.md             Narrative high-distress case studies
     └── {sub}_dashboard.html             Combined HTML report
 ```
 

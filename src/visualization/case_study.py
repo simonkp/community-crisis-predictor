@@ -2,6 +2,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from src.core.ui_config import CASE_STUDY_COPY
 
 
 class CaseStudyGenerator:
@@ -36,13 +37,13 @@ class CaseStudyGenerator:
         top_features = self.shap_df.head(10)["feature"].tolist()
 
         lines = [
-            f"# Case Study: Crisis Week {week_label}",
+            f"# {CASE_STUDY_COPY['title_prefix']} {week_label}",
             f"**Week starting:** {week_start}",
             f"**Distress score:** {self.distress_scores.iloc[crisis_week_idx]:.3f}",
             "",
-            "## What Happened",
+            CASE_STUDY_COPY["what_happened_header"],
             f"The community distress score spiked to {self.distress_scores.iloc[crisis_week_idx]:.3f}, "
-            f"exceeding the crisis threshold.",
+            CASE_STUDY_COPY["threshold_sentence_suffix"],
             "",
             "## Early Warning Signals",
             "",
@@ -78,10 +79,10 @@ class CaseStudyGenerator:
 
         lines.extend([
             "",
-            "## Summary",
+            CASE_STUDY_COPY["summary_header"],
             "",
             f"The early warning system detected precursor signals "
-            f"{crisis_week_idx - lookback_start} weeks before this crisis event. "
+            f"{crisis_week_idx - lookback_start} weeks before this {CASE_STUDY_COPY['summary_event_noun']}. "
             f"Key indicators included changes in {', '.join(top_features[:3])}.",
         ])
 

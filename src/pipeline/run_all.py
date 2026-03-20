@@ -1,9 +1,11 @@
 import argparse
 import sys
 
+from src.core.ui_config import PIPELINE_COPY
+
 
 def main():
-    parser = argparse.ArgumentParser(description="Run full crisis prediction pipeline")
+    parser = argparse.ArgumentParser(description=PIPELINE_COPY["run_all_description"])
     parser.add_argument("--config", default="config/default.yaml")
     parser.add_argument("--synthetic", action="store_true",
                         help="Use synthetic data")
@@ -14,7 +16,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 60)
-    print("COMMUNITY MENTAL HEALTH CRISIS PREDICTION PIPELINE")
+    print(PIPELINE_COPY["run_all_banner"])
     print("=" * 60)
 
     # Step 1: Collect

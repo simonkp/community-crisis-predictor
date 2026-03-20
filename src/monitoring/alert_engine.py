@@ -4,6 +4,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from src.core.ui_config import ALERT_ENGINE_COPY
 
 
 class AlertEngine:
@@ -78,7 +79,7 @@ class AlertEngine:
             self.fire_alert(record)
 
     def fire_alert(self, record: dict) -> None:
-        from src.labeling.target import STATE_NAMES
+        from src.core.domain_config import STATE_NAMES
 
         from_name = STATE_NAMES.get(record["from_state"], str(record["from_state"]))
         to_name = STATE_NAMES.get(record["to_state"], str(record["to_state"]))
@@ -87,7 +88,7 @@ class AlertEngine:
         color = colors.get(record["to_state"], "\033[0m")
         reset = "\033[0m"
         print(
-            f"{color}ESCALATION ALERT: r/{record['subreddit']} "
+            f"{color}{ALERT_ENGINE_COPY['transition_prefix']}: r/{record['subreddit']} "
             f"week {record['week_start']}: {from_name} -> {to_name}{reset}"
         )
 

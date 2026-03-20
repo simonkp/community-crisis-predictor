@@ -3,27 +3,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-
-STATE_COLORS = {
-    0: "rgba(0,200,0,0.15)",    # Stable — light green
-    1: "rgba(255,200,0,0.20)",  # Emerging Distress — light yellow
-    2: "rgba(255,100,0,0.25)",  # Acute Risk — light orange
-    3: "rgba(220,0,0,0.30)",    # Critical Escalation — light red
-}
-
-STATE_MARKER_COLORS = {
-    0: "green",
-    1: "gold",
-    2: "orangered",
-    3: "darkred",
-}
-
-STATE_NAMES = {
-    0: "Stable",
-    1: "Emerging Distress",
-    2: "Acute Risk",
-    3: "Critical Escalation",
-}
+from src.core.domain_config import STATE_THRESHOLD_LABELS
+from src.core.ui_config import (
+    STATE_NAMES,
+    TIMELINE_COPY,
+    TIMELINE_STATE_BAND_COLORS,
+    TIMELINE_STATE_MARKER_COLORS,
+    TIMELINE_THRESHOLD_COLORS,
+)
 
 
 def plot_backtest_timeline(
@@ -51,7 +38,7 @@ def plot_backtest_timeline(
             if np.isnan(state):
                 continue
             state_int = int(state)
-            color = STATE_COLORS.get(state_int, "rgba(200,200,200,0.1)")
+            color = TIMELINE_STATE_BAND_COLORS.get(state_int, "rgba(200,200,200,0.1)")
             fig.add_vrect(
                 x0=w,
                 x1=weeks[min(i + 1, len(weeks) - 1)],
@@ -66,16 +53,14 @@ def plot_backtest_timeline(
             x=weeks,
             y=distress_scores.values,
             mode="lines",
-            name="Community Distress Score",
+            name=TIMELINE_COPY["distress_series_name"],
             line=dict(color="steelblue", width=2),
         )
     )
 
     # Threshold lines
     if thresholds is not None:
-        threshold_labels = ["Emerging (0.5σ)", "Acute (1.0σ)", "Critical (2.0σ)"]
-        threshold_colors = ["gold", "orangered", "darkred"]
-        for thr, label, color in zip(thresholds, threshold_labels, threshold_colors):
+        for thr, label, color in zip(thresholds, STATE_THRESHOLD_LABELS, TIMELINE_THRESHOLD_COLORS):
             fig.add_trace(
                 go.Scatter(
                     x=[weeks[0], weeks[-1]],
@@ -91,7 +76,7 @@ def plot_backtest_timeline(
                 x=[weeks[0], weeks[-1]],
                 y=[threshold, threshold],
                 mode="lines",
-                name=f"Crisis Threshold ({threshold:.2f})",
+                name=f"{TIMELINE_COPY['threshold_fallback']} ({threshold:.2f})",
                 line=dict(color="orange", width=1, dash="dash"),
             )
         )
@@ -113,9 +98,14 @@ def plot_backtest_timeline(
                         x=weeks[mask],
                         y=distress_scores.values[mask],
                         mode="markers",
-                        name=f"Predicted: {state_name}",
+                        name=f"{TIMELINE_COPY['predicted_prefix']}: {state_name}",
+                        hovertemplate=(
+                            "%{x}<br>"
+                            "State: " + state_name + "<br>"
+                            "Distress score: %{y:.3f}<extra></extra>"
+                        ),
                         marker=dict(
-                            color=STATE_MARKER_COLORS[state_int],
+                            color=TIMELINE_STATE_MARKER_COLORS[state_int],
                             size=10,
                             symbol="triangle-up",
                         ),
@@ -129,7 +119,7 @@ def plot_backtest_timeline(
                     x=weeks[pred_mask],
                     y=distress_scores.values[pred_mask],
                     mode="markers",
-                    name="Predicted Crisis",
+                    name=TIMELINE_COPY["predicted_binary"],
                     marker=dict(color="blue", size=10, symbol="triangle-up"),
                 )
             )
@@ -147,7 +137,7 @@ def plot_backtest_timeline(
                 x=weeks[actual_crisis_mask],
                 y=distress_scores.values[actual_crisis_mask],
                 mode="markers",
-                name="Actual Crisis Week",
+                name=TIMELINE_COPY["actual_binary"],
                 marker=dict(color="red", size=12, symbol="x"),
             )
         )
@@ -160,7 +150,7 @@ def plot_backtest_timeline(
                 x=weeks[valid_prob],
                 y=probabilities[valid_prob],
                 mode="lines",
-                name="Crisis Probability",
+                name=TIMELINE_COPY["yaxis2_title"],
                 line=dict(color="purple", width=1),
                 yaxis="y2",
                 opacity=0.5,
@@ -168,11 +158,11 @@ def plot_backtest_timeline(
         )
 
     fig.update_layout(
-        title="Community Mental Health Crisis Prediction — Backtesting Timeline",
-        xaxis_title="Week",
-        yaxis_title="Distress Score (z-scored)",
+        title=TIMELINE_COPY["title"],
+        xaxis_title=TIMELINE_COPY["xaxis_title"],
+        yaxis_title=TIMELINE_COPY["yaxis_title"],
         yaxis2=dict(
-            title="Crisis Probability",
+            title=TIMELINE_COPY["yaxis2_title"],
             overlaying="y",
             side="right",
             range=[0, 1],
