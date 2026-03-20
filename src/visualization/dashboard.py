@@ -14,17 +14,17 @@ def generate_html_report(
     # Read embedded HTML from Plotly charts
     timeline_html = ""
     if timeline_path and Path(timeline_path).exists():
-        timeline_html = Path(timeline_path).read_text()
+        timeline_html = Path(timeline_path).read_text(encoding="utf-8")
 
     importance_html = ""
     if importance_path and Path(importance_path).exists():
-        importance_html = Path(importance_path).read_text()
+        importance_html = Path(importance_path).read_text(encoding="utf-8")
 
     # Read case studies (markdown)
     case_studies_md = []
     for cs_path in (case_study_paths or []):
         if Path(cs_path).exists():
-            case_studies_md.append(Path(cs_path).read_text())
+            case_studies_md.append(Path(cs_path).read_text(encoding="utf-8"))
 
     # Build metrics table
     metrics_rows = ""
@@ -107,5 +107,5 @@ def generate_html_report(
 </body>
 </html>"""
 
-    output_path.write_text(html)
+    output_path.write_text(html, encoding="utf-8")
     return output_path
