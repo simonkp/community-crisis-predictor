@@ -19,6 +19,8 @@ The pipeline takes a subreddit's post history and produces a week-by-week crisis
 
 The model never sees future data. Walk-forward time-series cross-validation ensures predictions are always made on unseen weeks.
 
+**Decision usefulness (Recall@K).** Training/evaluation also records how well the model supports a **fixed weekly alert budget**: among all walk-forward weeks with valid labels, weeks are ranked by predicted high-distress probability; the top **K** are treated as alerts. **Recall@K** is the fraction of **true** elevated-distress weeks (binary: actual state ≥ 2, same target as PR-AUC) captured in those K slots. Reported next to **expected recall under random selection** of K weeks and a **persistence** baseline (rank weeks by whether the *previous* week was elevated-distress). Stored in `eval_results.json` under `decision_usefulness` and shown in the Streamlit **Model Metrics** expander and the static HTML report.
+
 ---
 
 ## How It Works
@@ -270,4 +272,4 @@ make test
 python -m pytest tests/ -v
 ```
 
-38 unit tests covering collectors, features, labeling, modeling splits, narration helpers, and text processing.
+42 unit tests covering collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, and text processing.
