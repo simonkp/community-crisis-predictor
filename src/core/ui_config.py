@@ -76,6 +76,36 @@ DECISION_USEFULNESS_COPY = {
     "table_header": "Metric comparison (same K)",
 }
 
+DEMO_MODE_COPY = {
+    "sidebar_header": "Live Demo Mode",
+    "section_label": "**STePS · Live demo**",
+    "section_caption": "Optional overlays for stakeholder walkthroughs — not production behavior.",
+    "about_expander_label": "What is live demo mode?",
+    "about_markdown": (
+        "**Live demo mode** is for **STePS-style** walkthroughs (stakeholders, classroom). "
+        "It is **not** a production deployment.\n\n"
+        "**When enabled**\n"
+        "- **What-if sandbox**: nudge a few signals for the **current replay week**; a **fresh in-memory XGBoost** "
+        "is fit on that subreddit’s history and you see **scenario vs baseline** probability (hypothetical, not causal).\n"
+        "- **Timeline markers**: optional vertical lines for calendar events from `config/default.yaml` → `demo_mode.events`.\n"
+        "- **Subreddit comparison**: sparklines for every subreddit in `features.parquet`, ordered by latest predicted state.\n\n"
+        "**What does *not* change**: stored model artifacts, `eval_results.json`, or the main replay metrics — "
+        "only extra UI and in-session scenario math."
+    ),
+    "toggle_label": "Enable demo tools",
+    "toggle_help_short": (
+        "Turns on what-if sandbox, timeline event markers, and multi-subreddit comparison. "
+        "Does not modify saved models or evaluation files."
+    ),
+    "demo_active_subheader": "Scenario & overlays",
+    "scenario_header": "What-if sandbox",
+    "scenario_label": "Scenario mode - not a real prediction",
+    "scenario_probability_label": "Scenario high-distress probability",
+    "scenario_vs_baseline_header": "Scenario vs baseline",
+    "events_header": "Context events",
+    "comparison_header": "Subreddit live comparison",
+}
+
 # Keep exported for convenience where both semantics and UI are needed.
 __all__ = [
     "STATE_NAMES",
@@ -90,4 +120,5 @@ __all__ = [
     "ALERT_ENGINE_COPY",
     "PIPELINE_COPY",
     "DECISION_USEFULNESS_COPY",
+    "DEMO_MODE_COPY",
 ]
