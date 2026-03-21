@@ -32,7 +32,7 @@ The model never sees future data. Walk-forward time-series cross-validation ensu
    - **LSTM** (primary) — PyTorch sequence model; sees the last 8 weeks as context
    - **XGBoost** (baseline) — Binary crisis classifier; trained on the same walk-forward splits
 5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state transitions to SQLite
-6. **Visualize** — Streamlit live dashboard with week-by-week replay, or static HTML reports
+6. **Visualize** — Streamlit live dashboard with week-by-week replay, STePS demo mode, or static HTML reports
 7. **Weekly brief** — After evaluation, each week with a prediction can get a short text brief: structured JSON is built from model outputs + global SHAP top features (with per-week deltas), augmented with retrieved text from `config/intervention_playbook.md`, then sent to **Claude** (`claude-sonnet-4-20250514`) if `ANTHROPIC_API_KEY` is set, else **GPT-4o** if `OPENAI_API_KEY` is set, else a **template** string. This is deterministic retrieval over fixed sources (no vector database). Optional: set `WEEKLY_NARRATIVE_MAX_WEEKS` to only generate the most recent N weeks (saves API calls).
 
 State semantics and dashboard/report copy are centralized in code:
@@ -135,7 +135,7 @@ For a convincing live demo:
 | `make train` | Train LSTM + XGBoost, save `eval_results.json` |
 | `make evaluate` | Generate structured per-subreddit reports (HTML, SHAP, drift, weekly briefs), populate alerts.db |
 | `make all-synthetic` | Run the full pipeline end-to-end with synthetic data |
-| `make test` | Run all 38 unit tests |
+| `make test` | Run all 46 unit tests |
 | `make clean` | Delete all generated data files |
 | `streamlit run src/dashboard/app.py` | Launch the live Streamlit dashboard |
 
@@ -188,7 +188,8 @@ src/
 │   ├── case_study.py          Narrative markdown case studies
 │   └── dashboard.py           Combined HTML report
 ├── dashboard/
-│   └── app.py                 Streamlit live replay dashboard
+│   ├── app.py                 Streamlit live replay + STePS demo mode
+│   └── demo_utils.py          Demo-mode helpers (scenario mapping, event parsing)
 └── pipeline/         CLI entry points
     ├── run_collect.py
     ├── run_features.py
@@ -230,7 +231,34 @@ modeling:
 synthetic:
   n_weeks: 104              # 2 years of synthetic data
   crisis_frequency: 0.12    # ~12% of weeks are crisis weeks
+
+demo_mode:
+  enabled: true             # enables STePS-oriented interactive panels in Streamlit
+  what_if:
+    hopelessness_density_pct: 30
+    post_volume_pct: 50
+    late_night_ratio_pct: 20
 ```
+
+---
+
+## STePS Demo Runbook
+
+For the live showcase, use demo mode in Streamlit:
+
+1. Keep `demo_mode.enabled: true` in `config/default.yaml` (default **on** for the **Enable demo tools** checkbox in the sidebar; users can still turn it off).
+2. In the sidebar, open **What is live demo mode?** (under **STePS · Live demo**) for scope and limitations before toggling.
+3. Run latest training/evaluation once:
+   - `python -m src.pipeline.run_train --config config/default.yaml`
+   - `python -m src.pipeline.run_evaluate --config config/default.yaml`
+4. Launch dashboard:
+   - `streamlit run src/dashboard/app.py`
+
+Demo features:
+- **What-if sandbox** in sidebar adjusts feature inputs (hopelessness density, post volume, late-night ratio) and re-scores XGBoost live.
+- **Scenario mode is exploratory only**; it is clearly labeled and should not be treated as an operational forecast.
+- **Context event markers** (exams/holidays/MH awareness month) appear on the timeline as dashed vertical lines.
+- **Subreddit live comparison** shows current state badge + 8-week sparkline per subreddit (auto-scales when more subreddits are added).
 
 ---
 
@@ -272,4 +300,4 @@ make test
 python -m pytest tests/ -v
 ```
 
-42 unit tests covering collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, and text processing.
+46 unit tests covering collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard demo helpers, and text processing.
