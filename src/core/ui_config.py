@@ -27,6 +27,8 @@ DASHBOARD_COPY = {
     "timeline_probability_label": "High-Distress Probability",
     "timeline_probability_axis_label": "High-Distress Probability",
     "recent_transitions_header": "### Recent State Transitions",
+    "weekly_brief_header": "Weekly Brief",
+    "weekly_brief_missing": "No brief for this week. Run `python -m src.pipeline.run_evaluate --config config/default.yaml` to generate weekly narratives.",
 }
 
 TIMELINE_COPY = {

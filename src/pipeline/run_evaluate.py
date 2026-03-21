@@ -17,6 +17,7 @@ from src.visualization.timeline import plot_backtest_timeline
 from src.visualization.feature_importance import plot_feature_importance
 from src.visualization.case_study import CaseStudyGenerator
 from src.visualization.dashboard import generate_html_report
+from src.narration.narrative_generator import generate_weekly_briefs_for_subreddit
 
 
 def main():
@@ -61,6 +62,8 @@ def main():
             continue
 
         print(f"\nGenerating visualizations for r/{sub}...")
+        sub_reports_path = reports_path / sub
+        sub_reports_path.mkdir(parents=True, exist_ok=True)
         sub_df = feature_df[feature_df["subreddit"] == sub].copy()
         sub_df = sub_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
 
@@ -71,7 +74,7 @@ def main():
 
         # --- Drift detection ---
         drift_df = drift_detector.detect(sub_df)
-        drift_path = reports_path / f"{sub}_drift_alerts.json"
+        drift_path = sub_reports_path / "drift_alerts.json"
         drift_df.to_json(drift_path, orient="records", indent=2)
         print(f"  Drift alerts: {drift_path}")
 
@@ -111,12 +114,24 @@ def main():
         shap_df = compute_shap_importance(xgb_model, X_full, feature_columns)
 
         # Save SHAP for dashboard
-        shap_csv = reports_path / f"{sub}_shap.csv"
+        shap_csv = sub_reports_path / "shap.csv"
         shap_df.to_csv(shap_csv, index=False)
         print(f"  SHAP: {shap_csv}")
 
+        # --- Weekly narratives (structured context + optional LLM) ---
+        preds_for_brief = np.array(per_week.get("predictions", []))
+        n_brief, _ = generate_weekly_briefs_for_subreddit(
+            sub,
+            sub_df,
+            distress_scores,
+            preds_for_brief,
+            shap_df,
+            reports_path,
+        )
+        print(f"  Weekly briefs: {n_brief} file(s) in {sub_reports_path / 'weekly_briefs'}")
+
         # --- Timeline ---
-        timeline_path = reports_path / f"{sub}_timeline.html"
+        timeline_path = sub_reports_path / "timeline.html"
         plot_backtest_timeline(
             sub_df,
             distress_scores,
@@ -128,7 +143,7 @@ def main():
         print(f"  Timeline: {timeline_path}")
 
         # --- Feature importance ---
-        importance_path = reports_path / f"{sub}_feature_importance.html"
+        importance_path = sub_reports_path / "feature_importance.html"
         plot_feature_importance(shap_df, top_n=20, output_path=importance_path)
         print(f"  Feature importance: {importance_path}")
 
@@ -147,15 +162,17 @@ def main():
         correct_crisis = np.where(pred_crisis & actual_crisis)[0]
 
         case_study_paths = []
+        case_studies_dir = sub_reports_path / "case_studies"
+        case_studies_dir.mkdir(parents=True, exist_ok=True)
         for i, crisis_idx in enumerate(correct_crisis[:3]):
-            cs_path = reports_path / f"{sub}_case_study_{i + 1}.md"
+            cs_path = case_studies_dir / f"case_study_{i + 1}.md"
             generator = CaseStudyGenerator(sub_df, distress_scores, results, shap_df)
             generator.generate(crisis_idx, cs_path)
             case_study_paths.append(cs_path)
             print(f"  Case study {i + 1}: {cs_path}")
 
         # --- Dashboard HTML ---
-        dashboard_path = reports_path / f"{sub}_dashboard.html"
+        dashboard_path = sub_reports_path / "dashboard.html"
         generate_html_report(
             timeline_path, importance_path, case_study_paths, results, dashboard_path
         )

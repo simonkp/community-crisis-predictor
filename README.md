@@ -31,6 +31,7 @@ The model never sees future data. Walk-forward time-series cross-validation ensu
    - **XGBoost** (baseline) — Binary crisis classifier; trained on the same walk-forward splits
 5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state transitions to SQLite
 6. **Visualize** — Streamlit live dashboard with week-by-week replay, or static HTML reports
+7. **Weekly brief** — After evaluation, each week with a prediction can get a short text brief: structured JSON is built from model outputs + global SHAP top features (with per-week deltas), augmented with retrieved text from `config/intervention_playbook.md`, then sent to **Claude** (`claude-sonnet-4-20250514`) if `ANTHROPIC_API_KEY` is set, else **GPT-4o** if `OPENAI_API_KEY` is set, else a **template** string. This is deterministic retrieval over fixed sources (no vector database). Optional: set `WEEKLY_NARRATIVE_MAX_WEEKS` to only generate the most recent N weeks (saves API calls).
 
 State semantics and dashboard/report copy are centralized in code:
 - `src/core/domain_config.py` — canonical state names + threshold/semantics labels
@@ -80,6 +81,16 @@ PRIVACY_SALT=any_random_string_here
 
 The `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` fields in `.env` are only used by the PRAW fallback, which activates automatically if PullPush.io is unreachable. You can leave them blank unless you specifically want to use PRAW.
 
+For LLM weekly briefs during `run_evaluate`, set optionally:
+
+```
+ANTHROPIC_API_KEY=...   # preferred
+OPENAI_API_KEY=...      # used if Anthropic is unavailable
+# WEEKLY_NARRATIVE_MAX_WEEKS=12
+```
+
+If both are unset, briefs are still written using the template fallback.
+
 ### Run the pipeline
 
 ```bash
@@ -120,9 +131,9 @@ For a convincing live demo:
 | `make collect` | Fetch real posts via PullPush.io |
 | `make features` | Build weekly feature matrix |
 | `make train` | Train LSTM + XGBoost, save `eval_results.json` |
-| `make evaluate` | Generate HTML reports, SHAP CSV, drift alerts, populate alerts.db |
+| `make evaluate` | Generate structured per-subreddit reports (HTML, SHAP, drift, weekly briefs), populate alerts.db |
 | `make all-synthetic` | Run the full pipeline end-to-end with synthetic data |
-| `make test` | Run all 33 unit tests |
+| `make test` | Run all 38 unit tests |
 | `make clean` | Delete all generated data files |
 | `streamlit run src/dashboard/app.py` | Launch the live Streamlit dashboard |
 
@@ -184,6 +195,13 @@ src/
     └── run_all.py
 ```
 
+Also at repo root:
+
+```
+config/
+└── intervention_playbook.md   Retrieved moderation copy for weekly narrative (with structured model outputs)
+```
+
 ---
 
 ## Configuration (`config/default.yaml`)
@@ -225,15 +243,22 @@ data/
 ├── models/eval_results.json              XGB + LSTM walk-forward metrics
 ├── alerts.db                             SQLite log of state transitions
 └── reports/
-    ├── {sub}_timeline.html               4-color interactive backtesting plot
-    ├── {sub}_feature_importance.html     SHAP top-20 feature chart
-    ├── {sub}_shap.csv                    SHAP values for dashboard
-    ├── {sub}_drift_alerts.json           Rolling z-score drift alerts
-    ├── {sub}_case_study_*.md             Narrative high-distress case studies
-    └── {sub}_dashboard.html             Combined HTML report
+    ├── {sub}/
+    │   ├── timeline.html                 4-color interactive backtesting plot
+    │   ├── feature_importance.html       SHAP top-20 feature chart
+    │   ├── shap.csv                      SHAP values for dashboard
+    │   ├── drift_alerts.json             Rolling z-score drift alerts
+    │   ├── dashboard.html                Combined HTML report
+    │   ├── case_studies/
+    │   │   └── case_study_*.md           Narrative high-distress case studies
+    │   ├── weekly_briefs/
+    │   │   └── YYYY-Www.txt              Weekly narrative brief per week
+    │   └── logs/
+    │       └── weekly_brief_calls.jsonl  LLM/template source + fallback notes
+    └── ...
 ```
 
-The Streamlit dashboard reads from `data/features/`, `data/models/eval_results.json`, `data/reports/{sub}_shap.csv`, `data/reports/{sub}_drift_alerts.json`, and `data/alerts.db`.
+  The Streamlit dashboard reads from `data/features/`, `data/models/eval_results.json`, `data/reports/{sub}/shap.csv`, `data/reports/{sub}/drift_alerts.json`, `data/reports/{sub}/weekly_briefs/`, and `data/alerts.db`.
 
 ---
 
@@ -245,4 +270,4 @@ make test
 python -m pytest tests/ -v
 ```
 
-33 unit tests covering collectors, features, labeling, modeling splits, and text processing.
+38 unit tests covering collectors, features, labeling, modeling splits, narration helpers, and text processing.
