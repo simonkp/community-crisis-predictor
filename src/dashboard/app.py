@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from src.core.ui_config import DASHBOARD_COPY, STATE_COLORS, STATE_NAMES
+from src.core.ui_config import DASHBOARD_COPY, DECISION_USEFULNESS_COPY, STATE_COLORS, STATE_NAMES
 from src.narration.narrative_generator import week_key_from_row
 
 # ── Page config ───────────────────────────────────────────────────────
@@ -394,7 +394,7 @@ fig.update_layout(
     height=380,
     legend=dict(orientation="h", yanchor="bottom", y=1.02),
 )
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width="stretch")
 
 # ── Row 3: Drift alert table ──────────────────────────────────────────
 st.markdown("### Drift Alerts (up to current week)")
@@ -498,7 +498,7 @@ if shap_df is not None:
         height=400,
         margin=dict(l=200),
     )
-    st.plotly_chart(fig_shap, use_container_width=True)
+    st.plotly_chart(fig_shap, width="stretch")
 else:
     st.info("No SHAP data found. Run `make evaluate` to generate.")
 
@@ -521,7 +521,7 @@ if transitions:
                 "Top Signal": t["dominant_signal"],
             }
         )
-    st.dataframe(pd.DataFrame(rows), use_container_width=True)
+    st.dataframe(pd.DataFrame(rows), width="stretch")
 else:
     st.info(
         "No escalations logged yet. Run the full pipeline to populate alerts.db."
@@ -550,3 +550,37 @@ with st.expander("Model Metrics", expanded=False):
         for cls in range(4):
             val = results.get(f"recall_class_{cls}", 0)
             st.write(f"- {STATE_NAMES[cls]}: {val:.3f}")
+
+    _du = results.get("decision_usefulness")
+    if _du and isinstance(_du, dict):
+        st.markdown(DECISION_USEFULNESS_COPY["title"])
+        st.markdown(DECISION_USEFULNESS_COPY["intro"])
+        kvals = _du.get("k_values") or []
+        model = _du.get("model") or {}
+        rnd = _du.get("random_expected_recall") or {}
+        pers = _du.get("persistence") or {}
+        rows_du = []
+        for k in kvals:
+            ks = str(k)
+            mk = model.get(ks) or model.get(k) or {}
+            pk = pers.get(ks) or pers.get(k) or {}
+            cap = mk.get("captured", 0)
+            tot = mk.get("total_positives", _du.get("n_elevated_distress_weeks", 0))
+            rec = mk.get("recall", 0.0)
+            r_rnd = rnd.get(str(k), rnd.get(k, 0.0))
+            p_cap = pk.get("captured", 0)
+            p_rec = pk.get("recall", 0.0)
+            rows_du.append(
+                {
+                    "K": k,
+                    "Captured (model)": f"{cap}/{tot}",
+                    "Recall@K (model)": f"{float(rec):.1%}",
+                    "Expected Recall@K (random)": f"{float(r_rnd):.1%}",
+                    "Persistence": f"{p_cap}/{tot} ({float(p_rec):.1%})",
+                }
+            )
+        st.caption(
+            f"Evaluation weeks n={_du.get('n_weeks', '—')}, "
+            f"elevated-distress weeks P={_du.get('n_elevated_distress_weeks', '—')}."
+        )
+        st.dataframe(pd.DataFrame(rows_du), width="stretch", hide_index=True)

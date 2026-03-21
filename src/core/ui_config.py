@@ -63,6 +63,19 @@ PIPELINE_COPY = {
     "recall_metric_label": "Recall (high-distress)",
 }
 
+DECISION_USEFULNESS_COPY = {
+    "title": "### Decision usefulness (top-K alert recall)",
+    "intro": (
+        "Assume the team can only **review K weeks** in the evaluation history. "
+        "Weeks are ranked by the model’s **predicted high-distress probability** (highest first); "
+        "the top K are treated as alerts. **Recall@K** is the fraction of **true elevated-distress weeks** "
+        "(same binary target as PR-AUC: actual state ≥ 2) that fall inside those K alerts. "
+        "**Random** = expected recall if K weeks were chosen uniformly at random. "
+        "**Persistence** = rank weeks by whether the **previous** week was elevated-distress (simple baseline)."
+    ),
+    "table_header": "Metric comparison (same K)",
+}
+
 # Keep exported for convenience where both semantics and UI are needed.
 __all__ = [
     "STATE_NAMES",
@@ -76,4 +89,5 @@ __all__ = [
     "CASE_STUDY_COPY",
     "ALERT_ENGINE_COPY",
     "PIPELINE_COPY",
+    "DECISION_USEFULNESS_COPY",
 ]

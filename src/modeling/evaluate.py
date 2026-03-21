@@ -14,6 +14,127 @@ from src.modeling.splits import WalkForwardSplitter
 from src.modeling.train_xgb import XGBCrisisModel
 
 
+def top_k_alert_recall(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    k_values: tuple[int, ...] | list[int] = (1, 2, 3, 5),
+) -> dict[str, dict[str, float | int]]:
+    """
+    Rank all evaluation weeks by predicted probability (descending), take the top-K
+    as \"alerts\", and measure what fraction of actual elevated-distress weeks are covered.
+
+    This answers: if an ops team can only investigate K weeks per history, how much of
+    the true elevated-distress load do we capture?
+
+    Parameters
+    ----------
+    y_true : binary array (1 = elevated-distress week to catch)
+    y_prob : same length, higher = model prioritizes that week for alerting
+
+    Returns
+    -------
+    dict mapping K -> {captured, total_positives, recall}
+    """
+    y_true = np.asarray(y_true).astype(int)
+    y_prob = np.asarray(y_prob).astype(float)
+    n = len(y_true)
+    if n == 0:
+        return {str(int(k)): {"captured": 0, "total_positives": 0, "recall": 0.0} for k in k_values}
+
+    total_positives = int(y_true.sum())
+    if total_positives == 0:
+        return {str(int(k)): {"captured": 0, "total_positives": 0, "recall": 0.0} for k in k_values}
+
+    order = np.argsort(-y_prob, kind="stable")
+    out: dict[str, dict[str, float | int]] = {}
+    for k in k_values:
+        kk = min(int(k), n)
+        top_idx = order[:kk]
+        captured = int(y_true[top_idx].sum())
+        # String keys so JSON round-trip via eval_results.json stays consistent
+        out[str(int(k))] = {
+            "captured": captured,
+            "total_positives": total_positives,
+            "recall": float(captured / total_positives),
+        }
+    return out
+
+
+def _random_baseline_top_k_recall(
+    n_weeks: int,
+    total_positives: int,
+    k_values: tuple[int, ...] | list[int],
+) -> dict[str, float]:
+    """
+    Expected recall if K distinct weeks were chosen uniformly at random (without replacement)
+    from the evaluation period: E[captured] = K * P / n, so E[recall] = (K * P / n) / P = K/n
+    (for P > 0), capped when K >= n at 1.0 for the capture count expectation / P.
+    """
+    if n_weeks <= 0 or total_positives <= 0:
+        return {str(int(k)): 0.0 for k in k_values}
+    out = {}
+    for k in k_values:
+        kk = min(int(k), n_weeks)
+        # Hypergeometric mean captures: kk * P / n
+        expected_captured = kk * total_positives / n_weeks
+        out[str(int(k))] = float(expected_captured / total_positives)
+    return out
+
+
+def _persistence_baseline_top_k_recall(
+    y_true: np.ndarray,
+    k_values: tuple[int, ...] | list[int],
+) -> dict[str, dict[str, float | int]]:
+    """
+    Baseline ranking: score week t by whether week t-1 was elevated distress (actual).
+    Higher score = alert here; ties keep chronological order (stable sort).
+    """
+    y_true = np.asarray(y_true).astype(int)
+    n = len(y_true)
+    total_positives = int(y_true.sum())
+    if n == 0 or total_positives == 0:
+        return {str(int(k)): {"captured": 0, "total_positives": 0, "recall": 0.0} for k in k_values}
+
+    scores = np.zeros(n, dtype=float)
+    for i in range(1, n):
+        scores[i] = float(y_true[i - 1])
+    order = np.argsort(-scores, kind="stable")
+    out: dict[str, dict[str, float | int]] = {}
+    for k in k_values:
+        kk = min(int(k), n)
+        top_idx = order[:kk]
+        captured = int(y_true[top_idx].sum())
+        out[str(int(k))] = {
+            "captured": captured,
+            "total_positives": total_positives,
+            "recall": float(captured / total_positives),
+        }
+    return out
+
+
+def compute_decision_usefulness(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    k_values: tuple[int, ...] | list[int] = (1, 2, 3, 5),
+) -> dict:
+    """Bundle model top-K recall with random and persistence baselines (same K, same labels)."""
+    y_true = np.asarray(y_true).astype(int)
+    y_prob = np.asarray(y_prob).astype(float)
+    n = len(y_true)
+    p = int(y_true.sum())
+    model = top_k_alert_recall(y_true, y_prob, k_values)
+    random_exp = _random_baseline_top_k_recall(n, p, k_values)
+    persistence = _persistence_baseline_top_k_recall(y_true, k_values)
+    return {
+        "k_values": [int(k) for k in k_values],
+        "n_weeks": n,
+        "n_elevated_distress_weeks": p,
+        "model": model,
+        "random_expected_recall": random_exp,
+        "persistence": persistence,
+    }
+
+
 def evaluate_walk_forward(
     feature_df: pd.DataFrame,
     config: dict,
@@ -103,6 +224,7 @@ def evaluate_walk_forward(
     metrics["avg_detection_lead_time_weeks"] = _compute_detection_lead_time(
         pd.Series(all_preds), pd.Series(all_actuals), crisis_min=1
     )
+    metrics["decision_usefulness"] = compute_decision_usefulness(y_true, y_prob)
     metrics["per_week"] = {
         "predictions": all_preds.tolist(),
         "probabilities": all_probs.tolist(),
@@ -217,6 +339,7 @@ def evaluate_walk_forward_lstm(
     metrics["avg_detection_lead_time_weeks"] = _compute_detection_lead_time(
         pd.Series(all_states), pd.Series((all_actuals_4class >= 2).astype(float)), crisis_min=2
     )
+    metrics["decision_usefulness"] = compute_decision_usefulness(y_true_bin, y_prob)
     metrics["per_week"] = {
         "predictions": all_states.tolist(),
         "probabilities": all_probs.tolist(),
