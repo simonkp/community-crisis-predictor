@@ -42,3 +42,6 @@ include = ["src*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+filterwarnings = [
+    'ignore:codecs\.open\(\) is deprecated\. Use open\(\) instead\.:DeprecationWarning:vaderSentiment\.vaderSentiment',
+]

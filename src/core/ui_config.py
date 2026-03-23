@@ -78,8 +78,8 @@ DECISION_USEFULNESS_COPY = {
 
 DEMO_MODE_COPY = {
     "sidebar_header": "Live Demo Mode",
-    "section_label": "**STePS · Live demo**",
-    "section_caption": "Optional overlays for stakeholder walkthroughs — not production behavior.",
+    "section_label": "**Scenario Preview (STePS)**",
+    "section_caption": "Interactive preview mode for stakeholder walkthroughs (not production behavior).",
     "about_expander_label": "What is live demo mode?",
     "about_markdown": (
         "**Live demo mode** is for **STePS-style** walkthroughs (stakeholders, classroom). "
@@ -92,11 +92,16 @@ DEMO_MODE_COPY = {
         "**What does *not* change**: stored model artifacts, `eval_results.json`, or the main replay metrics — "
         "only extra UI and in-session scenario math."
     ),
-    "toggle_label": "Enable demo tools",
+    "toggle_label": "Enable scenario preview (STePS)",
     "toggle_help_short": (
         "Turns on what-if sandbox, timeline event markers, and multi-subreddit comparison. "
         "Does not modify saved models or evaluation files."
     ),
+    "where_changes_label": (
+        "Where you will see changes: sidebar scenario metrics, main-panel scenario impact strip, "
+        "timeline scenario overlay, and subreddit comparison cards."
+    ),
+    "timeline_overlay_toggle_label": "Show scenario overlay on timeline",
     "demo_active_subheader": "Scenario & overlays",
     "scenario_header": "What-if sandbox",
     "scenario_label": "Scenario mode - not a real prediction",

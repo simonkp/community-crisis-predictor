@@ -246,16 +246,19 @@ demo_mode:
 
 For the live showcase, use demo mode in Streamlit:
 
-1. Keep `demo_mode.enabled: true` in `config/default.yaml` (default **on** for the **Enable demo tools** checkbox in the sidebar; users can still turn it off).
+1. Keep `demo_mode.enabled: true` in `config/default.yaml` (default **on** for the **Enable scenario preview (STePS)** checkbox in the sidebar; users can still turn it off).
 2. In the sidebar, open **What is live demo mode?** (under **STePS · Live demo**) for scope and limitations before toggling.
 3. Run latest training/evaluation once:
    - `python -m src.pipeline.run_train --config config/default.yaml`
    - `python -m src.pipeline.run_evaluate --config config/default.yaml`
 4. Launch dashboard:
    - `streamlit run src/dashboard/app.py`
+5. (Optional) Open dedicated page `STePS Demo` from Streamlit navigation for a focused walkthrough view.
 
 Demo features:
 - **What-if sandbox** in sidebar adjusts feature inputs (hopelessness density, post volume, late-night ratio) and re-scores XGBoost live.
+- **Main-panel scenario impact strip** now shows baseline vs scenario probabilities and state labels for the selected week.
+- **Timeline scenario overlay** adds a dashed scenario probability trace (toggleable in sidebar).
 - **Scenario mode is exploratory only**; it is clearly labeled and should not be treated as an operational forecast.
 - **Context event markers** (exams/holidays/MH awareness month) appear on the timeline as dashed vertical lines.
 - **Subreddit live comparison** shows current state badge + 8-week sparkline per subreddit (auto-scales when more subreddits are added).
