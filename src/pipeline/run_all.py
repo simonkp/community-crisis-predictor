@@ -4,6 +4,7 @@ import sys
 import time
 from pathlib import Path
 
+from src.config import load_config
 from src.core.ui_config import PIPELINE_COPY
 
 
@@ -73,7 +74,8 @@ def main():
 
 
 def _append_profile(config_path: str, entry: dict) -> None:
-    reports_root = Path(config_path.replace("config/default.yaml", "data/reports"))
+    cfg = load_config(config_path)
+    reports_root = Path(cfg["paths"]["reports"])
     reports_root.mkdir(parents=True, exist_ok=True)
     profile_path = reports_root / "pipeline_profile.json"
     payload = []
