@@ -162,6 +162,7 @@ def evaluate_walk_forward(
 
     n_folds = splitter.n_splits(n_samples)
     print(f"  Running {n_folds} walk-forward folds (XGBoost)...")
+    fold_diagnostics: list[dict[str, str | int]] = []
 
     for fold_i, (train_idx, test_idx) in enumerate(splitter.split(n_samples)):
         labeler = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
@@ -179,14 +180,26 @@ def evaluate_walk_forward(
         y_train = (y_train_4class >= 2).astype(int)
 
         if len(y_train) < 10 or y_train.sum() < 2:
+            fold_diagnostics.append(
+                {
+                    "fold": int(fold_i),
+                    "reason": "insufficient_training_examples_or_positives",
+                }
+            )
             continue
 
         model = XGBCrisisModel(config)
-        model.train(
-            pd.DataFrame(X_train, columns=feature_columns),
-            y_train,
-            do_search=not skip_search,
-        )
+        try:
+            model.train(
+                pd.DataFrame(X_train, columns=feature_columns),
+                y_train,
+                do_search=not skip_search,
+            )
+        except Exception as e:
+            fold_diagnostics.append(
+                {"fold": int(fold_i), "reason": f"xgb_train_failed: {type(e).__name__}"}
+            )
+            continue
 
         for ti in test_idx:
             X_test = feature_df.iloc[[ti]][feature_columns]
@@ -201,7 +214,11 @@ def evaluate_walk_forward(
 
     valid = ~(np.isnan(all_preds) | np.isnan(all_actuals))
     if valid.sum() < 5:
-        return {"error": "Too few valid predictions", "n_valid": int(valid.sum())}
+        return {
+            "error": "Too few valid predictions",
+            "n_valid": int(valid.sum()),
+            "fold_diagnostics": fold_diagnostics,
+        }
 
     y_true = all_actuals[valid].astype(int)
     y_pred = all_preds[valid].astype(int)
@@ -221,9 +238,12 @@ def evaluate_walk_forward(
         "confusion_matrix": confusion_matrix(y_true, y_pred, labels=[0, 1]).tolist(),
     }
 
-    metrics["avg_detection_lead_time_weeks"] = _compute_detection_lead_time(
+    lead_time = _compute_detection_lead_time(
         pd.Series(all_preds), pd.Series(all_actuals), crisis_min=1
     )
+    metrics["avg_detection_lead_time_weeks"] = float(lead_time["mean"])
+    metrics["detection_lead_time_distribution"] = lead_time
+    metrics["fold_diagnostics"] = fold_diagnostics
     metrics["decision_usefulness"] = compute_decision_usefulness(y_true, y_prob)
     metrics["per_week"] = {
         "predictions": all_preds.tolist(),
@@ -261,6 +281,7 @@ def evaluate_walk_forward_lstm(
 
     n_folds = splitter.n_splits(n_samples)
     print(f"  Running {n_folds} walk-forward folds (LSTM)...")
+    fold_diagnostics: list[dict[str, str | int]] = []
 
     for fold_i, (train_idx, test_idx) in enumerate(splitter.split(n_samples)):
         labeler = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
@@ -276,6 +297,9 @@ def evaluate_walk_forward_lstm(
         y_train = train_labels[valid_train].astype(int)  # 0/1/2/3
 
         if len(y_train) < sequence_length + 5 or y_train.nunique() < 2:
+            fold_diagnostics.append(
+                {"fold": int(fold_i), "reason": "insufficient_sequence_or_class_variety"}
+            )
             continue
 
         model = LSTMCrisisModel(config)
@@ -283,17 +307,26 @@ def evaluate_walk_forward_lstm(
             model.train(X_train, y_train, walk_forward=True)
         except Exception as e:
             print(f"  LSTM fold {fold_i} failed: {e}")
+            fold_diagnostics.append(
+                {"fold": int(fold_i), "reason": f"lstm_train_failed: {type(e).__name__}"}
+            )
             continue
 
         for ti in test_idx:
             seq_start = max(0, ti - sequence_length + 1)
             X_seq = feature_df.iloc[seq_start : ti + 1][feature_columns]
             if len(X_seq) < sequence_length:
+                fold_diagnostics.append(
+                    {"fold": int(fold_i), "reason": "sequence_too_short_for_prediction"}
+                )
                 continue
             try:
                 all_probs[ti] = model.predict_proba(X_seq)[-1]
                 all_states[ti] = model.predict_state(X_seq)[-1]
             except Exception:
+                fold_diagnostics.append(
+                    {"fold": int(fold_i), "reason": "lstm_predict_failed"}
+                )
                 continue
 
             if ti < n_samples - 1:
@@ -303,7 +336,11 @@ def evaluate_walk_forward_lstm(
 
     valid = ~(np.isnan(all_states) | np.isnan(all_actuals_4class))
     if valid.sum() < 5:
-        return {"error": "Too few valid predictions", "n_valid": int(valid.sum())}
+        return {
+            "error": "Too few valid predictions",
+            "n_valid": int(valid.sum()),
+            "fold_diagnostics": fold_diagnostics,
+        }
 
     y_true_4 = all_actuals_4class[valid].astype(int)
     y_pred_4 = all_states[valid].astype(int)
@@ -336,9 +373,12 @@ def evaluate_walk_forward_lstm(
             precision_score(y_cls_t, y_cls_p, zero_division=0)
         )
 
-    metrics["avg_detection_lead_time_weeks"] = _compute_detection_lead_time(
+    lead_time = _compute_detection_lead_time(
         pd.Series(all_states), pd.Series((all_actuals_4class >= 2).astype(float)), crisis_min=2
     )
+    metrics["avg_detection_lead_time_weeks"] = float(lead_time["mean"])
+    metrics["detection_lead_time_distribution"] = lead_time
+    metrics["fold_diagnostics"] = fold_diagnostics
     metrics["decision_usefulness"] = compute_decision_usefulness(y_true_bin, y_prob)
     metrics["per_week"] = {
         "predictions": all_states.tolist(),
@@ -352,20 +392,26 @@ def _compute_detection_lead_time(
     predictions: pd.Series,
     actuals: pd.Series,
     crisis_min: int = 1,
-) -> float:
+) -> dict:
     crisis_starts = []
     in_crisis = False
 
     for i in range(len(actuals)):
         val = actuals.iloc[i]
-        if not np.isnan(val) and val >= 1 and not in_crisis:
+        if not np.isnan(val) and val >= crisis_min and not in_crisis:
             crisis_starts.append(i)
             in_crisis = True
-        elif np.isnan(val) or val < 1:
+        elif np.isnan(val) or val < crisis_min:
             in_crisis = False
 
     if not crisis_starts:
-        return 0.0
+        return {
+            "mean": 0.0,
+            "distribution": [],
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+        }
 
     lead_times = []
     for start in crisis_starts:
@@ -378,4 +424,19 @@ def _compute_detection_lead_time(
                 break
         lead_times.append(lead)
 
-    return float(np.mean(lead_times)) if lead_times else 0.0
+    if not lead_times:
+        return {
+            "mean": 0.0,
+            "distribution": [],
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+        }
+    arr = np.asarray(lead_times, dtype=float)
+    return {
+        "mean": float(np.mean(arr)),
+        "distribution": [int(v) for v in lead_times],
+        "p50": float(np.percentile(arr, 50)),
+        "p75": float(np.percentile(arr, 75)),
+        "p90": float(np.percentile(arr, 90)),
+    }
