@@ -112,6 +112,33 @@ def load_drift(sub: str):
     return pd.read_json(path)
 
 
+@st.cache_data
+def load_data_quality_report(sub: str):
+    path = Path(f"data/reports/{sub}/data_quality_report.json")
+    if not path.exists():
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+@st.cache_data
+def load_weekly_completeness(sub: str):
+    path = Path(f"data/reports/{sub}/weekly_completeness.csv")
+    if not path.exists():
+        return None
+    return pd.read_csv(path)
+
+
+@st.cache_data
+def load_pipeline_profile():
+    path = Path("data/reports/pipeline_profile.json")
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        payload = json.load(f)
+    return payload if isinstance(payload, list) else [payload]
+
+
 def load_transitions(n: int = 30) -> list[dict]:
     db = Path("data/alerts.db")
     if not db.exists():
@@ -810,6 +837,89 @@ else:
     st.info(
         "No escalations logged yet. Run the full pipeline to populate alerts.db."
     )
+
+# ── Row 6: Data quality & reliability ──────────────────────────────────
+with st.expander("Data Quality & Reliability", expanded=False):
+    dq_report = load_data_quality_report(subreddit)
+    dq_weekly = load_weekly_completeness(subreddit)
+    pipeline_profile = load_pipeline_profile()
+
+    if dq_report:
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Missing Weeks", dq_report.get("missing_week_count", 0))
+        c2.metric("Gap Weeks (<50%)", dq_report.get("gap_weeks_below_50pct", 0))
+        c3.metric("Avg Completeness", f"{dq_report.get('avg_completeness_score', 0.0):.2f}")
+        if dq_report.get("missing_weeks"):
+            st.caption(f"Missing weeks sample: {', '.join(dq_report['missing_weeks'][:8])}")
+    else:
+        st.info("No data quality report found. Run `run_collect` first.")
+
+    if dq_weekly is not None and not dq_weekly.empty:
+        fig_c = go.Figure(
+            go.Bar(
+                x=dq_weekly["week_start"],
+                y=dq_weekly["completeness_score"],
+                marker_color=[
+                    "#e74c3c" if bool(v) else "#2ecc71" for v in dq_weekly["is_gap"].tolist()
+                ],
+                name="Completeness Score",
+            )
+        )
+        fig_c.update_layout(
+            title="Weekly Completeness Score (red = flagged gap)",
+            xaxis_title="Week",
+            yaxis_title="Completeness Score",
+            template="plotly_white",
+            height=280,
+        )
+        st.plotly_chart(fig_c, use_container_width=True)
+
+    if pipeline_profile:
+        st.markdown("**Pipeline Stage Timing**")
+        flat_rows = []
+        for entry in pipeline_profile:
+            if "steps" in entry and isinstance(entry["steps"], list):
+                for step in entry["steps"]:
+                    flat_rows.append(
+                        {
+                            "stage": step.get("stage", ""),
+                            "elapsed_seconds": step.get("elapsed_seconds", 0.0),
+                        }
+                    )
+            elif "subreddit_runs" in entry and isinstance(entry["subreddit_runs"], list):
+                for run in entry["subreddit_runs"]:
+                    flat_rows.append(
+                        {
+                            "stage": f"{run.get('stage', 'collect')}:{run.get('subreddit', '')}",
+                            "elapsed_seconds": run.get("elapsed_seconds", 0.0),
+                            "rows_processed": run.get("rows_processed", 0),
+                            "throughput_rows_per_sec": run.get("throughput_rows_per_sec", 0.0),
+                        }
+                    )
+            else:
+                flat_rows.append(entry)
+        st.dataframe(pd.DataFrame(flat_rows), use_container_width=True, height=220)
+
+    fold_diag = results.get("fold_diagnostics", [])
+    if fold_diag:
+        st.markdown("**Fold Diagnostics**")
+        st.dataframe(pd.DataFrame(fold_diag), use_container_width=True, height=180)
+
+    lead = results.get("detection_lead_time_distribution", {})
+    lead_dist = lead.get("distribution", []) if isinstance(lead, dict) else []
+    if lead_dist:
+        fig_l = go.Figure(go.Histogram(x=lead_dist, nbinsx=10, marker_color="#3498db"))
+        fig_l.update_layout(
+            title="Detection Lead Time Distribution (weeks)",
+            xaxis_title="Lead time (weeks)",
+            yaxis_title="Count",
+            template="plotly_white",
+            height=260,
+        )
+        st.plotly_chart(fig_l, use_container_width=True)
+        st.caption(
+            f"p50={lead.get('p50', 0):.2f}, p75={lead.get('p75', 0):.2f}, p90={lead.get('p90', 0):.2f}"
+        )
 
 # ── Metrics panel ─────────────────────────────────────────────────────
 with st.expander("Model Metrics", expanded=False):

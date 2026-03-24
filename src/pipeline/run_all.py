@@ -1,5 +1,8 @@
 import argparse
+import json
 import sys
+import time
+from pathlib import Path
 
 from src.core.ui_config import PIPELINE_COPY
 
@@ -18,45 +21,70 @@ def main():
     print("=" * 60)
     print(PIPELINE_COPY["run_all_banner"])
     print("=" * 60)
+    stage_profile: list[dict] = []
 
     # Step 1: Collect
     print("\n[1/4] DATA COLLECTION")
     print("-" * 40)
+    t0 = time.perf_counter()
     sys.argv = ["run_collect", "--config", args.config]
     if args.synthetic:
         sys.argv.append("--synthetic")
     from src.pipeline.run_collect import main as collect_main
     collect_main()
+    stage_profile.append({"stage": "collect", "elapsed_seconds": round(time.perf_counter() - t0, 3)})
 
     # Step 2: Features
     print("\n[2/4] FEATURE EXTRACTION")
     print("-" * 40)
+    t0 = time.perf_counter()
     sys.argv = ["run_features", "--config", args.config]
     if args.skip_topics:
         sys.argv.append("--skip-topics")
     from src.pipeline.run_features import main as features_main
     features_main()
+    stage_profile.append({"stage": "features", "elapsed_seconds": round(time.perf_counter() - t0, 3)})
 
     # Step 3: Train
     print("\n[3/4] MODEL TRAINING & EVALUATION")
     print("-" * 40)
+    t0 = time.perf_counter()
     sys.argv = ["run_train", "--config", args.config]
     if args.skip_search:
         sys.argv.append("--skip-search")
     from src.pipeline.run_train import main as train_main
     train_main()
+    stage_profile.append({"stage": "train", "elapsed_seconds": round(time.perf_counter() - t0, 3)})
 
     # Step 4: Visualize
     print("\n[4/4] VISUALIZATION & REPORTING")
     print("-" * 40)
+    t0 = time.perf_counter()
     sys.argv = ["run_evaluate", "--config", args.config]
     from src.pipeline.run_evaluate import main as evaluate_main
     evaluate_main()
+    stage_profile.append({"stage": "evaluate", "elapsed_seconds": round(time.perf_counter() - t0, 3)})
+    _append_profile(args.config, {"stage": "run_all", "steps": stage_profile})
 
     print("\n" + "=" * 60)
     print("PIPELINE COMPLETE")
     print("=" * 60)
     print(f"Reports saved to: {args.config.replace('config/default.yaml', 'data/reports/')}")
+
+
+def _append_profile(config_path: str, entry: dict) -> None:
+    reports_root = Path(config_path.replace("config/default.yaml", "data/reports"))
+    reports_root.mkdir(parents=True, exist_ok=True)
+    profile_path = reports_root / "pipeline_profile.json"
+    payload = []
+    if profile_path.exists():
+        with open(profile_path, encoding="utf-8") as f:
+            payload = json.load(f)
+            if not isinstance(payload, list):
+                payload = [payload]
+    payload.append(entry)
+    with open(profile_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
 
 
 if __name__ == "__main__":
