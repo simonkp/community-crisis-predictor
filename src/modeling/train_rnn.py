@@ -108,7 +108,13 @@ class LSTMCrisisModel:
         dataset = TensorDataset(torch.tensor(seqs), torch.tensor(labels))
         loader = DataLoader(dataset, batch_size=self.batch_size, shuffle=True)
         optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
-        criterion = nn.CrossEntropyLoss()
+        class_counts = np.bincount(labels, minlength=self.num_classes).astype(np.float32)
+        class_counts = np.maximum(class_counts, 1.0)
+        class_weights = len(labels) / (self.num_classes * class_counts)
+        class_weights = class_weights / class_weights.mean()
+        criterion = nn.CrossEntropyLoss(
+            weight=torch.tensor(class_weights, dtype=torch.float32, device=self.device)
+        )
 
         n_epochs = self.walk_forward_epochs if walk_forward else self.epochs
         self.model.train()

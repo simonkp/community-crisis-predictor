@@ -66,6 +66,7 @@ def main():
     evaluate_main()
     stage_profile.append({"stage": "evaluate", "elapsed_seconds": round(time.perf_counter() - t0, 3)})
     _append_profile(args.config, {"stage": "run_all", "steps": stage_profile})
+    _print_stage_table(stage_profile)
 
     print("\n" + "=" * 60)
     print("PIPELINE COMPLETE")
@@ -88,6 +89,18 @@ def _append_profile(config_path: str, entry: dict) -> None:
     payload.append(entry)
     with open(profile_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
+
+
+def _print_stage_table(stage_profile: list[dict]) -> None:
+    print("\nPipeline stage timing")
+    print("  stage        elapsed_seconds")
+    print("  -----------  ---------------")
+    total = 0.0
+    for row in stage_profile:
+        sec = float(row.get("elapsed_seconds", 0.0))
+        total += sec
+        print(f"  {row.get('stage', ''):<11}  {sec:>15.3f}")
+    print(f"  {'total':<11}  {total:>15.3f}")
 
 
 if __name__ == "__main__":

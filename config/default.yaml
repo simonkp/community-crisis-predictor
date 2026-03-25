@@ -94,6 +94,7 @@ modeling:
 evaluation:
   primary_metric: "recall"
   probability_threshold: 0.5
+  monitoring_min_crisis_weeks: 10
 
 demo_mode:
   enabled: true

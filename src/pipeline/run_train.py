@@ -60,6 +60,8 @@ def main():
 
         all_results[str(sub)] = {"xgb": xgb_results, "lstm": lstm_results}
 
+    _print_section3_summary(all_results)
+
     # Save results
     models_path = Path(config["paths"]["models"])
     models_path.mkdir(parents=True, exist_ok=True)
@@ -99,8 +101,59 @@ def _print_comparison(sub: str, xgb: dict, lstm: dict) -> None:
             val = lstm.get(f"recall_class_{cls}", float("nan"))
             val_str = f"{val:.3f}" if isinstance(val, float) and not (val != val) else "—"
             print(f"    Class {cls} ({STATE_NAMES[cls]:<22}): {val_str}")
+    _print_anomalies(xgb, lstm)
 
     print(f"{'-'*52}")
+
+
+def _print_anomalies(xgb: dict, lstm: dict) -> None:
+    anomalies: list[str] = []
+    for model_name, metrics in (("XGBoost", xgb), ("LSTM", lstm)):
+        if not metrics:
+            anomalies.append(f"{model_name}: missing metrics payload")
+            continue
+        n_crisis = metrics.get("n_crisis_actual")
+        if isinstance(n_crisis, (int, float)) and n_crisis < 10:
+            anomalies.append(f"{model_name}: low crisis support ({int(n_crisis)} weeks)")
+        recall = metrics.get("recall")
+        if isinstance(recall, (int, float)) and recall <= 0.0:
+            anomalies.append(f"{model_name}: recall is zero")
+        pr_auc = metrics.get("pr_auc")
+        if isinstance(pr_auc, (int, float)) and pr_auc < 0.12:
+            anomalies.append(f"{model_name}: PR-AUC very low ({pr_auc:.3f})")
+    if anomalies:
+        print("\n  Anomaly flags:")
+        for a in anomalies:
+            print(f"    - {a}")
+
+
+def _print_section3_summary(all_results: dict) -> None:
+    print("\n" + "=" * 72)
+    print("[3/4] Section Summary Table")
+    print("=" * 72)
+    hdr = (
+        f"  {'subreddit':<15} {'xgb_pr_auc':>10} {'xgb_recall':>10} "
+        f"{'lstm_pr_auc':>11} {'lstm_recall':>12} {'alerts':>8}"
+    )
+    print(hdr)
+    print("  " + "-" * (len(hdr) - 2))
+    for sub, payload in sorted(all_results.items(), key=lambda kv: kv[0]):
+        xgb = payload.get("xgb", {}) if isinstance(payload, dict) else {}
+        lstm = payload.get("lstm", {}) if isinstance(payload, dict) else {}
+        xa = xgb.get("pr_auc", float("nan"))
+        xr = xgb.get("recall", float("nan"))
+        la = lstm.get("pr_auc", float("nan"))
+        lr = lstm.get("recall", float("nan"))
+        alerts = 0
+        if isinstance(xgb.get("n_crisis_actual"), (int, float)) and xgb.get("n_crisis_actual", 0) < 10:
+            alerts += 1
+        if isinstance(lstm.get("n_crisis_actual"), (int, float)) and lstm.get("n_crisis_actual", 0) < 10:
+            alerts += 1
+        fmt = lambda v: f"{v:.3f}" if isinstance(v, float) and not (v != v) else "—"
+        print(
+            f"  {sub:<15} {fmt(xa):>10} {fmt(xr):>10} "
+            f"{fmt(la):>11} {fmt(lr):>12} {alerts:>8}"
+        )
 
 
 if __name__ == "__main__":

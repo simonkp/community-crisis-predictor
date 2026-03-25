@@ -150,7 +150,7 @@ If both are unset, briefs are still written using the template fallback.
 # This takes 20–40 minutes due to API rate limiting (~1 req/sec)
 python -m src.pipeline.run_collect --config config/default.yaml
 
-# Extract features
+# Extract features (see note below on caching)
 python -m src.pipeline.run_features --config config/default.yaml
 
 # Train LSTM + XGBoost, print comparison table
@@ -164,6 +164,17 @@ streamlit run src/dashboard/app.py
 ```
 
 **Expected data volume:** ~6,000–15,000 posts per subreddit. The 2-year date range gives ~104 weeks of training data per subreddit.
+
+**Feature extraction cache (`run_features` only):** By default, feature extraction skips when `data/features/feature_build_meta.json` matches:
+- raw parquet signatures (`size` + `mtime`) for configured subreddits
+- `--skip-topics` mode
+- relevant config content (`reddit.subreddits`, `processing`, `features`, `modeling.lstm.sequence_length`)
+
+This avoids unnecessary recompute after unrelated config edits. To **force** a full recompute (e.g. after changing feature code), run:
+
+```bash
+python -m src.pipeline.run_features --config config/default.yaml --force
+```
 
 ### Demo split (train vs live)
 
@@ -181,17 +192,18 @@ For a convincing live demo:
 |---------|--------------|
 | `make collect-synthetic` | Generate 2 years of synthetic Reddit data |
 | `make collect` | Collect from configured source in `collection.source` |
-| `make features` | Build weekly feature matrix |
+| `make features` | Build weekly feature matrix (skips if cache says inputs unchanged; use `--force` on the underlying command to rebuild) |
 | `make train` | Train LSTM + XGBoost, save `eval_results.json` |
 | `make evaluate` | Generate structured per-subreddit reports (HTML, SHAP, drift, weekly briefs), populate alerts.db |
 | `make all-synthetic` | Run the full pipeline end-to-end with synthetic data |
-| `make test` | Run all 46 unit tests |
+| `make test` | Run all unit tests |
 | `make clean` | Delete all generated data files |
 | `streamlit run src/dashboard/app.py` | Launch the live Streamlit dashboard |
 
 For faster runs during development, append flags:
 ```bash
 python -m src.pipeline.run_all --synthetic --skip-topics --skip-search
+python -m src.pipeline.run_features --config config/default.yaml --force   # always rebuild features
 python -m src.pipeline.run_train --skip-lstm    # XGBoost only
 python -m src.pipeline.run_train --skip-search  # LSTM + XGBoost, no hyperparam search
 ```
@@ -238,7 +250,13 @@ src/
 │   ├── case_study.py          Narrative markdown case studies
 │   └── dashboard.py           Combined HTML report
 ├── dashboard/
-│   ├── app.py                 Streamlit live replay + STePS demo mode
+│   ├── app.py                 Streamlit entrypoint (layout + orchestration)
+│   ├── data_access.py         Cached loaders for features/eval/reports/db
+│   ├── briefs.py              Weekly brief rendering helpers
+│   ├── charts.py              Reusable chart builders (sparkline/SHAP)
+│   ├── components.py          Reusable UI blocks (drift table, metrics panel)
+│   ├── state.py               Session/index/state helper functions
+│   ├── types.py               Typed payload definitions for dashboard data
 │   └── demo_utils.py          Demo-mode helpers (scenario mapping, event parsing)
 └── pipeline/         CLI entry points
     ├── run_collect.py
@@ -362,4 +380,4 @@ make test
 python -m pytest tests/ -v
 ```
 
-46 unit tests covering collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard demo helpers, and text processing.
+Unit tests cover collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard demo helpers, and text processing.

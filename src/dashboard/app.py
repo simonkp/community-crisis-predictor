@@ -5,17 +5,12 @@ Run with:
     streamlit run src/dashboard/app.py
 """
 
-import json
-import re
-import sqlite3
-from html import escape
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from src.config import load_config
 from src.core import ui_config as _ui_cfg
 from src.core.ui_config import (
     DASHBOARD_COPY,
@@ -54,6 +49,21 @@ from src.dashboard.demo_utils import (
     parse_demo_events,
     resolve_demo_feature_map,
 )
+from src.dashboard.data_access import (
+    load_app_config,
+    load_data_quality_report,
+    load_drift,
+    load_eval_results,
+    load_feature_df,
+    load_pipeline_profile,
+    load_shap,
+    load_transitions,
+    load_weekly_completeness,
+)
+from src.dashboard.briefs import _render_weekly_brief
+from src.dashboard.state import clamp_week_idx, trim_to_length, pick_model_results, monitoring_mode
+from src.dashboard.charts import build_shap_bar, build_sparkline
+from src.dashboard.components import render_drift_table, render_model_metrics
 from src.labeling.target import CrisisLabeler
 from src.modeling.train_xgb import XGBCrisisModel
 from src.narration.narrative_generator import week_key_from_row
@@ -68,102 +78,6 @@ st.set_page_config(
 st.title(DASHBOARD_COPY["title"])
 st.caption(DASHBOARD_COPY["caption"])
 
-
-# ── Data loading (cached) ─────────────────────────────────────────────
-@st.cache_data
-def load_feature_df():
-    cfg = load_app_config()
-    path = Path(cfg["paths"]["features"]) / "features.parquet"
-    if not path.exists():
-        return None
-    return pd.read_parquet(path)
-
-
-@st.cache_data
-def load_eval_results():
-    cfg = load_app_config()
-    path = Path(cfg["paths"]["models"]) / "eval_results.json"
-    if not path.exists():
-        return None
-    with open(path) as f:
-        return json.load(f)
-
-
-@st.cache_data
-def load_app_config():
-    return load_config("config/default.yaml")
-
-
-@st.cache_data
-def load_shap(sub: str):
-    cfg = load_app_config()
-    reports_root = Path(cfg["paths"]["reports"])
-    path = reports_root / sub / "shap.csv"
-    if not path.exists():
-        path = reports_root / f"{sub}_shap.csv"
-    if not path.exists():
-        return None
-    return pd.read_csv(path)
-
-
-@st.cache_data
-def load_drift(sub: str):
-    cfg = load_app_config()
-    reports_root = Path(cfg["paths"]["reports"])
-    path = reports_root / sub / "drift_alerts.json"
-    if not path.exists():
-        path = reports_root / f"{sub}_drift_alerts.json"
-    if not path.exists():
-        return None
-    return pd.read_json(path)
-
-
-@st.cache_data
-def load_data_quality_report(sub: str):
-    cfg = load_app_config()
-    path = Path(cfg["paths"]["reports"]) / sub / "data_quality_report.json"
-    if not path.exists():
-        return None
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)
-
-
-@st.cache_data
-def load_weekly_completeness(sub: str):
-    cfg = load_app_config()
-    path = Path(cfg["paths"]["reports"]) / sub / "weekly_completeness.csv"
-    if not path.exists():
-        return None
-    return pd.read_csv(path)
-
-
-@st.cache_data
-def load_pipeline_profile():
-    cfg = load_app_config()
-    path = Path(cfg["paths"]["reports"]) / "pipeline_profile.json"
-    if not path.exists():
-        return []
-    with open(path, encoding="utf-8") as f:
-        payload = json.load(f)
-    return payload if isinstance(payload, list) else [payload]
-
-
-def load_transitions(n: int = 30) -> list[dict]:
-    cfg = load_app_config()
-    db = Path(cfg["paths"].get("alerts_db", "data/alerts.db"))
-    if not db.exists():
-        return []
-    with sqlite3.connect(db) as conn:
-        cursor = conn.execute(
-            """
-            SELECT timestamp, subreddit, week_start, from_state, to_state,
-                   distress_score, dominant_signal
-            FROM transitions ORDER BY timestamp DESC LIMIT ?
-            """,
-            (n,),
-        )
-        cols = [d[0] for d in cursor.description]
-        return [dict(zip(cols, row)) for row in cursor.fetchall()]
 
 
 @st.cache_resource
@@ -236,10 +150,10 @@ if not available_models:
 model_choice = st.sidebar.selectbox("Model", available_models)
 
 # Get results for chosen model
-if model_choice == "LSTM":
-    results = sub_results.get("lstm", sub_results)
-else:
-    results = sub_results.get("xgb", sub_results)
+results = pick_model_results(sub_results, model_choice)
+
+monitoring_min_crisis_weeks = int(app_config.get("evaluation", {}).get("monitoring_min_crisis_weeks", 10))
+is_monitoring_mode, actual_crisis_weeks = monitoring_mode(results, monitoring_min_crisis_weeks)
 
 if not isinstance(results, dict) or not results:
     st.warning(
@@ -268,6 +182,12 @@ if not per_week:
     )
     st.stop()
 
+if is_monitoring_mode:
+    st.warning(
+        f"Monitoring mode: r/{subreddit} has only {int(actual_crisis_weeks)} crisis weeks "
+        f"(threshold {monitoring_min_crisis_weeks}). Prediction badge is informational only."
+    )
+
 # Filter sub data
 sub_df = feature_df[feature_df["subreddit"] == subreddit].copy()
 sub_df = sub_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
@@ -279,14 +199,9 @@ if n_weeks == 0:
     st.stop()
 
 # Align arrays to sub_df length
-def _trim(arr, n):
-    if len(arr) >= n:
-        return arr[:n]
-    return np.concatenate([arr, np.full(n - len(arr), np.nan)])
-
-predictions_all = _trim(predictions_all, n_weeks)
-probabilities_all = _trim(probabilities_all, n_weeks)
-actuals_all = _trim(actuals_all, n_weeks)
+predictions_all = trim_to_length(predictions_all, n_weeks)
+probabilities_all = trim_to_length(probabilities_all, n_weeks)
+actuals_all = trim_to_length(actuals_all, n_weeks)
 
 # Week slider
 st.sidebar.markdown("---")
@@ -296,7 +211,7 @@ if "week_idx" not in st.session_state:
     st.session_state["week_idx"] = min(40, n_weeks - 1)
 else:
     # Clamp stale slider state when subreddit/data size changes.
-    st.session_state["week_idx"] = max(0, min(int(st.session_state["week_idx"]), n_weeks - 1))
+    st.session_state["week_idx"] = clamp_week_idx(st.session_state["week_idx"], n_weeks)
 
 week_idx = st.sidebar.slider("Current Week", 0, n_weeks - 1, st.session_state["week_idx"])
 st.session_state["week_idx"] = week_idx
@@ -324,88 +239,6 @@ if not _brief_path.exists():
     _brief_path = _reports_root / f"{subreddit}_weekly_brief_{_brief_week_key}.txt"
 st.sidebar.markdown("---")
 st.sidebar.subheader(DASHBOARD_COPY["weekly_brief_header"])
-
-
-def _split_brief_sentences(text: str) -> list[str]:
-    parts = re.split(r"(?<=[.!?])\s+", text.strip())
-    return [p.strip() for p in parts if p.strip()]
-
-
-def _pick_brief_palette(text: str, is_dark_mode: bool) -> dict[str, str]:
-    lower = text.lower()
-    if "severe" in lower or "critical" in lower:
-        return {
-            "border": "#f87171",
-            "bg": "#451f24" if is_dark_mode else "#ffe7e7",
-            "title": "#ffd7db" if is_dark_mode else "#7f1d1d",
-            "text": "#ffeef1" if is_dark_mode else "#4a0f11",
-            "action_bg": "#5a2229" if is_dark_mode else "#ffd7d5",
-        }
-    if "elevated" in lower or "vulnerability" in lower or "warning" in lower:
-        return {
-            "border": "#f59e0b",
-            "bg": "#3c2e15" if is_dark_mode else "#fff3dc",
-            "title": "#ffecbf" if is_dark_mode else "#7c4a03",
-            "text": "#fff5db" if is_dark_mode else "#4a2e00",
-            "action_bg": "#4b3617" if is_dark_mode else "#ffe5bc",
-        }
-    return {
-        "border": "#60a5fa",
-        "bg": "#1f3558" if is_dark_mode else "#e8f1ff",
-        "title": "#d8e9ff" if is_dark_mode else "#1f3f71",
-        "text": "#e9f2ff" if is_dark_mode else "#1d3557",
-        "action_bg": "#274268" if is_dark_mode else "#d8e8ff",
-    }
-
-
-def _render_weekly_brief(raw_text: str, week_key: str):
-    theme_base_local = st.get_option("theme.base") or "light"
-    is_dark_mode = theme_base_local == "dark"
-    palette = _pick_brief_palette(raw_text, is_dark_mode)
-
-    sentences = _split_brief_sentences(raw_text)
-    summary = sentences[0] if sentences else raw_text
-    signals = sentences[1] if len(sentences) > 1 else ""
-    action_sentence = ""
-    for s in sentences:
-        if "recommended action:" in s.lower():
-            action_sentence = s
-            break
-    if not action_sentence and len(sentences) > 2:
-        action_sentence = sentences[2]
-
-    action_text = action_sentence
-    if action_sentence.lower().startswith("recommended action:"):
-        action_text = action_sentence.split(":", 1)[1].strip()
-
-    brief_html = f"""
-    <div style="
-        border-left:5px solid {palette['border']};
-        background:linear-gradient(180deg, {palette['bg']} 0%, rgba(0,0,0,0) 240%);
-        border-radius:10px;
-        padding:12px 12px 10px 12px;
-        margin-top:4px;
-    ">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
-        <div style="font-size:0.80rem;letter-spacing:0.04em;color:{palette['title']};font-weight:700;">WEEKLY SNAPSHOT</div>
-        <div style="font-size:0.74rem;opacity:0.92;color:{palette['title']};">{escape(week_key)}</div>
-      </div>
-
-      <div style="margin-top:8px;color:{palette['text']};line-height:1.5;font-size:0.98rem;">
-        <b>Summary:</b> {escape(summary)}
-      </div>
-
-      <div style="margin-top:8px;color:{palette['text']};line-height:1.45;font-size:0.94rem;">
-        <b>Key signals:</b> {escape(signals) if signals else 'Signal details unavailable for this week.'}
-      </div>
-
-      <div style="margin-top:10px;padding:8px 10px;border-radius:8px;background:{palette['action_bg']};color:{palette['text']};font-size:0.94rem;line-height:1.45;">
-        <b>Recommended action</b><br>{escape(action_text) if action_text else 'Review moderation playbook guidance for this signal level.'}
-      </div>
-    </div>
-    """
-
-    st.sidebar.markdown(brief_html, unsafe_allow_html=True)
 
 
 if _brief_path.exists():
@@ -547,6 +380,15 @@ else:
     state_name = "No prediction yet"
     badge_style = {
         "bg": "#1f2937" if is_dark else "#f3f4f6",
+        "border": "#9ca3af",
+        "label": "#e5e7eb" if is_dark else "#374151",
+        "value": "#f3f4f6" if is_dark else "#111827",
+    }
+
+if is_monitoring_mode:
+    state_name = f"{state_name} (Monitoring mode)"
+    badge_style = {
+        "bg": "#374151" if is_dark else "#f3f4f6",
         "border": "#9ca3af",
         "label": "#e5e7eb" if is_dark else "#374151",
         "value": "#f3f4f6" if is_dark else "#111827",
@@ -720,7 +562,15 @@ if demo_enabled:
             sub_pred = np.concatenate([sub_pred, np.full(len(sub_df_cmp) - len(sub_pred), np.nan)])
         sub_state = int(sub_pred[-1]) if len(sub_pred) and not np.isnan(sub_pred[-1]) else 0
         sub_state_name = STATE_NAMES.get(sub_state, "Unknown")
+        sub_actual_crisis = sub_res.get("n_crisis_actual", None) if isinstance(sub_res, dict) else None
+        sub_monitoring = (
+            isinstance(sub_actual_crisis, (int, float))
+            and sub_actual_crisis < monitoring_min_crisis_weeks
+        )
         badge_color = STATE_COLORS.get(sub_state, "#95a5a6")
+        if sub_monitoring:
+            sub_state_name = "Monitoring mode"
+            badge_color = "#9ca3af"
 
         with col:
             st.markdown(
@@ -729,25 +579,7 @@ if demo_enabled:
                 unsafe_allow_html=True,
             )
             spark = sub_scores.tail(8).reset_index(drop=True)
-            spark_fig = go.Figure(
-                go.Scatter(
-                    x=list(range(len(spark))),
-                    y=spark.values,
-                    mode="lines",
-                    line=dict(color=badge_color, width=2),
-                    fill="tozeroy",
-                    fillcolor="rgba(59,130,246,0.10)",
-                    hovertemplate="t-%{x}: %{y:.3f}<extra></extra>",
-                    showlegend=False,
-                )
-            )
-            spark_fig.update_layout(
-                margin=dict(l=8, r=8, t=8, b=8),
-                height=110,
-                xaxis=dict(visible=False),
-                yaxis=dict(visible=False),
-                template="plotly_white",
-            )
+            spark_fig = build_sparkline(spark, badge_color)
             st.plotly_chart(spark_fig, width="stretch")
 
 # ── Row 3: Drift alert table ──────────────────────────────────────────
@@ -758,76 +590,7 @@ if drift_df is not None and not drift_df.empty:
     drift_up = drift_df.iloc[: week_idx + 1].copy()
     alert_cols = [c for c in drift_df.columns if not c.startswith("z_")]
     display_drift = drift_up[alert_cols].copy()
-
-    theme_base = st.get_option("theme.base") or "light"
-    is_dark = theme_base == "dark"
-
-    # Use explicit text and background colors to preserve contrast in both themes.
-    if is_dark:
-        frame_color = "#273244"
-        header_bg = "#121826"
-        header_text = "#e6edf7"
-        row_styles = {
-            0: ("#0b1220", "#dbe7ff"),
-            1: ("#33481f", "#f8ffe8"),
-            2: ("#5b3713", "#fff7e6"),
-            3: ("#5c1f27", "#fff1f3"),
-        }
-    else:
-        frame_color = "#d8deea"
-        header_bg = "#f2f5fb"
-        header_text = "#1f2937"
-        row_styles = {
-            0: ("#ffffff", "#111827"),
-            1: ("#fff8db", "#3d2f00"),
-            2: ("#ffe9cc", "#4a2b00"),
-            3: ("#ffd9d6", "#5a1516"),
-        }
-
-    def _format_cell(col: str, value):
-        if pd.isna(value):
-            return "-"
-        if col == "week_start":
-            try:
-                numeric = float(value)
-                if numeric > 1e12:
-                    return pd.to_datetime(int(numeric), unit="ms").strftime("%Y-%m-%d")
-                if numeric > 1e9:
-                    return pd.to_datetime(int(numeric), unit="s").strftime("%Y-%m-%d")
-            except Exception:
-                pass
-        if isinstance(value, float):
-            return f"{value:.3f}"
-        return str(value)
-
-    table_rows = []
-    for _, row in display_drift.iterrows():
-        level = int(row.get("aggregate_level", 0)) if not pd.isna(row.get("aggregate_level", 0)) else 0
-        bg, text = row_styles.get(level, row_styles[0])
-        row_cells = "".join(
-            f"<td style='padding:10px 12px;border-top:1px solid {frame_color};color:{text};'>{escape(_format_cell(col, row[col]))}</td>"
-            for col in display_drift.columns
-        )
-        table_rows.append(f"<tr style='background:{bg};'>{row_cells}</tr>")
-
-    header_cells = "".join(
-        f"<th style='text-align:left;padding:10px 12px;background:{header_bg};color:{header_text};border-bottom:1px solid {frame_color};'>{escape(str(col))}</th>"
-        for col in display_drift.columns
-    )
-
-    drift_table_html = f"""
-    <div style='border:1px solid {frame_color}; border-radius:10px; overflow:auto; max-height:240px;'>
-      <table style='border-collapse:separate; border-spacing:0; width:100%; font-size:0.95rem;'>
-        <thead>
-          <tr>{header_cells}</tr>
-        </thead>
-        <tbody>
-          {''.join(table_rows)}
-        </tbody>
-      </table>
-    </div>
-    """
-    st.markdown(drift_table_html, unsafe_allow_html=True)
+    render_drift_table(display_drift)
 else:
     st.info("No drift data found. Run `make evaluate` to generate.")
 
@@ -837,21 +600,7 @@ st.markdown("### Feature Importance (SHAP — top 15)")
 shap_df = load_shap(subreddit)
 if shap_df is not None:
     top15 = shap_df.head(15).sort_values("mean_abs_shap", ascending=True)
-    fig_shap = go.Figure(
-        go.Bar(
-            x=top15["mean_abs_shap"],
-            y=top15["feature"],
-            orientation="h",
-            marker_color="steelblue",
-        )
-    )
-    fig_shap.update_layout(
-        xaxis_title="Mean |SHAP|",
-        yaxis_title="",
-        template="plotly_white",
-        height=400,
-        margin=dict(l=200),
-    )
+    fig_shap = build_shap_bar(top15)
     st.plotly_chart(fig_shap, width="stretch")
 else:
     st.info("No SHAP data found. Run `make evaluate` to generate.")
@@ -966,58 +715,4 @@ with st.expander("Data Quality & Reliability", expanded=False):
 
 # ── Metrics panel ─────────────────────────────────────────────────────
 with st.expander("Model Metrics", expanded=False):
-    col_a, col_b, col_c, col_d = st.columns(4)
-    col_a.metric("Recall", f"{results.get('recall', 0):.3f}")
-    col_b.metric("Precision", f"{results.get('precision', 0):.3f}")
-    col_c.metric("F1", f"{results.get('f1', 0):.3f}")
-    col_d.metric("PR-AUC", f"{results.get('pr_auc', 0):.3f}")
-
-    if "confusion_matrix_4class" in results:
-        st.markdown("**4-class confusion matrix**")
-        cm = results["confusion_matrix_4class"]
-        cm_df = pd.DataFrame(
-            cm,
-            index=[f"True {STATE_NAMES[i]}" for i in range(4)],
-            columns=[f"Pred {STATE_NAMES[i]}" for i in range(4)],
-        )
-        st.dataframe(cm_df)
-
-    if "recall_class_0" in results:
-        st.markdown("**Per-class recall**")
-        for cls in range(4):
-            val = results.get(f"recall_class_{cls}", 0)
-            st.write(f"- {STATE_NAMES[cls]}: {val:.3f}")
-
-    _du = results.get("decision_usefulness")
-    if _du and isinstance(_du, dict):
-        st.markdown(DECISION_USEFULNESS_COPY["title"])
-        st.markdown(DECISION_USEFULNESS_COPY["intro"])
-        kvals = _du.get("k_values") or []
-        model = _du.get("model") or {}
-        rnd = _du.get("random_expected_recall") or {}
-        pers = _du.get("persistence") or {}
-        rows_du = []
-        for k in kvals:
-            ks = str(k)
-            mk = model.get(ks) or model.get(k) or {}
-            pk = pers.get(ks) or pers.get(k) or {}
-            cap = mk.get("captured", 0)
-            tot = mk.get("total_positives", _du.get("n_elevated_distress_weeks", 0))
-            rec = mk.get("recall", 0.0)
-            r_rnd = rnd.get(str(k), rnd.get(k, 0.0))
-            p_cap = pk.get("captured", 0)
-            p_rec = pk.get("recall", 0.0)
-            rows_du.append(
-                {
-                    "K": k,
-                    "Captured (model)": f"{cap}/{tot}",
-                    "Recall@K (model)": f"{float(rec):.1%}",
-                    "Expected Recall@K (random)": f"{float(r_rnd):.1%}",
-                    "Persistence": f"{p_cap}/{tot} ({float(p_rec):.1%})",
-                }
-            )
-        st.caption(
-            f"Evaluation weeks n={_du.get('n_weeks', '—')}, "
-            f"elevated-distress weeks P={_du.get('n_elevated_distress_weeks', '—')}."
-        )
-        st.dataframe(pd.DataFrame(rows_du), width="stretch", hide_index=True)
+    render_model_metrics(results, STATE_NAMES, DECISION_USEFULNESS_COPY)

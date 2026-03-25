@@ -20,14 +20,9 @@ def main():
     parser.add_argument("--skip-topics", action="store_true",
                         help="Skip BERTopic feature extraction (faster)")
     parser.add_argument(
-        "--skip-if-up-to-date",
-        action="store_true",
-        help="Skip feature extraction when raw inputs/config are unchanged",
-    )
-    parser.add_argument(
         "--force",
         action="store_true",
-        help="Force rerun even when cache metadata indicates no upstream changes",
+        help="Force full feature extraction even when inputs/config are unchanged",
     )
     args = parser.parse_args()
 
@@ -35,9 +30,10 @@ def main():
     stage_start = time.perf_counter()
     cache_meta_path = Path(config["paths"]["features"]) / "feature_build_meta.json"
     current_fingerprint = _compute_feature_fingerprint(config, args.config, args.skip_topics)
-    if args.skip_if_up_to_date and not args.force and _is_feature_cache_valid(cache_meta_path, current_fingerprint):
+    if not args.force and _is_feature_cache_valid(cache_meta_path, current_fingerprint):
         print("Feature extraction skipped: upstream data/config unchanged.")
         print(f"  Cache metadata: {cache_meta_path}")
+        print("  Use --force to recompute features.")
         return
 
     print("Loading raw data...")
@@ -277,11 +273,15 @@ def _compute_feature_fingerprint(config: dict, config_path: str, skip_topics: bo
                     "mtime_ns": int(st.st_mtime_ns),
                 }
             )
-    cfg_path = Path(config_path)
-    cfg_sig = ""
-    if cfg_path.exists():
-        st = cfg_path.stat()
-        cfg_sig = f"{st.st_size}:{st.st_mtime_ns}"
+    cfg_relevant = {
+        "subreddits": list(config.get("reddit", {}).get("subreddits", [])),
+        "processing": config.get("processing", {}),
+        "features": config.get("features", {}),
+        "modeling_lstm_sequence_length": config.get("modeling", {}).get("lstm", {}).get("sequence_length", 8),
+    }
+    cfg_sig = hashlib.sha256(
+        json.dumps(cfg_relevant, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
 
     base = {
         "subreddits": subreddits,
