@@ -9,6 +9,7 @@ import pandas as pd
 
 from src.config import load_config
 from src.collector.storage import load_all_raw, save_processed
+from src.features.progress_util import iter_groupby_subreddit
 from src.processing.text_cleaner import process_posts
 from src.processing.weekly_aggregator import WeeklyAggregator
 from src.features.pipeline import FeaturePipeline
@@ -43,7 +44,13 @@ def main():
 
     print("Cleaning text...")
     min_len = config["processing"].get("min_post_length_chars", 20)
-    df = process_posts(df, min_length=min_len)
+    cleaned_chunks = []
+    for _, sub_df in iter_groupby_subreddit(df, "subreddit", desc="Cleaning text"):
+        cleaned_chunks.append(process_posts(sub_df, min_length=min_len))
+    if cleaned_chunks:
+        df = pd.concat(cleaned_chunks, ignore_index=True)
+    else:
+        df = df.iloc[0:0].copy()
     cleaned_counts = _counts_by_subreddit(df)
     print(f"  {len(df)} posts after cleaning")
     min_posts_after_cleaning = config.get("processing", {}).get("min_posts_after_cleaning", 50)

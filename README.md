@@ -55,7 +55,8 @@ pip install -e ".[dev]"
 # 3. Run the full pipeline with synthetic data
 #    --skip-topics  skips BERTopic (much faster for testing)
 #    --skip-search  skips XGBoost hyperparameter search
-python -m src.pipeline.run_all --config config/default.yaml --synthetic --skip-topics --skip-search
+#    --force        forces feature rebuild even if cache says unchanged
+python -m src.pipeline.run_all --config config/default.yaml --synthetic --skip-topics --skip-search --force
 
 # 4. Launch the Streamlit dashboard
 streamlit run src/dashboard/app.py
@@ -74,7 +75,7 @@ collection:
   source: "zenodo_covid"   # zenodo_covid | reddit_api | synthetic
 ```
 
-- `zenodo_covid`: primary mode for project experiments (download + local ingest, manifest-aware/idempotent)
+- `zenodo_covid`: primary mode for project experiments (Zenodo + Arctic Shift gap-fill, manifest-aware/idempotent)
 - `reddit_api`: existing PullPush.io + PRAW fallback path
 - `synthetic`: generated development data (can also be forced via `--synthetic`)
 
@@ -102,8 +103,10 @@ python -m src.pipeline.run_collect --config config/default.yaml
 Behavior:
 - Query Zenodo record metadata (`record_id`) and resolve matching file URLs
 - Download only matching subreddit/timeframe CSV files into `data/staging/zenodo/` (no full 3.1GB bulk fetch)
+- Download Arctic Shift gap-fill zip from Google Drive (once) into `data/staging/arctic_shift/` and ingest JSONL files for missing 2018/2020 windows
 - Build per-subreddit raw parquet under `data/raw/{subreddit}/posts.parquet`
 - Track file integrity + per-subreddit ingestion metadata in manifest (`collection.zenodo.manifest_path`)
+- Track source-level ingest state in `data/ingestion_manifest.json` (`zenodo`, `arctic_shift`)
 - Re-run is idempotent when manifest and outputs are valid
 
 Important:

@@ -36,6 +36,17 @@ collection:
     date_range:
       start: "2018-01-01"
       end: "2020-12-31"
+  ingestion_manifest_path: "data/ingestion_manifest.json"
+  arctic_shift:
+    gdrive_file_id: "10MBmVvf2F5rOPaNJhnjAyrGQZa2VXhhS"
+    zip_filename: "arctic_shift_gap_fill_v1.zip"
+    staging_dir: "data/staging/arctic_shift"
+    subreddits:
+      - depression
+      - anxiety
+      - mentalhealth
+      - SuicideWatch
+      - lonely
 
 processing:
   min_post_length_chars: 20

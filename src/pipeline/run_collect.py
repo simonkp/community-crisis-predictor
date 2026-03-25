@@ -2,9 +2,13 @@ import argparse
 import json
 import sys
 import time
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pandas as pd
+
+from src.collector.arctic_shift_loader import ArcticShiftLoader, parse_arctic_shift_filename
 from src.config import load_config
 from src.data_quality.completeness import (
     check_weekly_completeness,
@@ -65,6 +69,7 @@ def main():
         from src.collector.zenodo_loader import ZenodoLoader
 
         zen = config["collection"].get("zenodo", {})
+        arctic_cfg = config["collection"].get("arctic_shift", {})
         date_range = zen.get("date_range", config["reddit"]["date_range"])
         loader = ZenodoLoader(
             dataset_url=zen["dataset_url"],
@@ -84,19 +89,57 @@ def main():
             ),
         )
         manifest = load_manifest(manifest_path)
+        ingestion_manifest_path = config["collection"].get(
+            "ingestion_manifest_path", "data/ingestion_manifest.json"
+        )
+        ingestion_manifest = load_manifest(ingestion_manifest_path)
+        _init_ingestion_source_entry(
+            ingestion_manifest,
+            source_name="zenodo",
+            url=zen.get("dataset_url", ""),
+        )
+        arctic_url = f"https://drive.google.com/uc?id={arctic_cfg.get('gdrive_file_id', '')}"
+        _init_ingestion_source_entry(
+            ingestion_manifest,
+            source_name="arctic_shift",
+            url=arctic_url,
+        )
+        arctic_stage_dir = Path(arctic_cfg.get("staging_dir", "data/staging/arctic_shift"))
+        arctic_zip_filename = arctic_cfg.get("zip_filename", "arctic_shift_gap_fill_v1.zip")
+        arctic_zip_path = arctic_stage_dir / arctic_zip_filename
+        arctic_subreddits = set(arctic_cfg.get("subreddits", zen.get("subreddits", [])))
+        arctic_loader = ArcticShiftLoader(min_selftext_chars=10)
+        arctic_enabled = bool(arctic_cfg.get("gdrive_file_id"))
+        if arctic_enabled:
+            _ensure_arctic_shift_ready(
+                arctic_cfg=arctic_cfg,
+                zip_path=arctic_zip_path,
+                stage_dir=arctic_stage_dir,
+                ingestion_manifest=ingestion_manifest,
+            )
+            save_manifest(ingestion_manifest_path, ingestion_manifest)
 
         subreddits = zen.get("subreddits", config["reddit"]["subreddits"])
+        arctic_total_rows = 0
+        arctic_loaded_any = False
         for subreddit in subreddits:
             sub_start = time.perf_counter()
             raw_path = Path(config["paths"]["raw_data"]) / subreddit / "posts.parquet"
-            if raw_path.exists() and manifest.get("subreddits", {}).get(subreddit, {}).get("status") == "ingested":
+            sub_manifest = manifest.get("subreddits", {}).get(subreddit, {})
+            arctic_targeted_sub = bool(arctic_enabled and subreddit in arctic_subreddits)
+            arctic_already_loaded_for_sub = bool(sub_manifest.get("arctic_shift_loaded", False))
+            can_skip_for_arctic = (not arctic_targeted_sub) or arctic_already_loaded_for_sub
+            if raw_path.exists() and sub_manifest.get("status") == "ingested" and can_skip_for_arctic:
                 files_ok = True
-                for file_path in manifest.get("subreddits", {}).get(subreddit, {}).get("files", []):
+                for file_path in sub_manifest.get("files", []):
                     if not is_file_entry_valid(manifest, file_path):
                         files_ok = False
                         break
                 if files_ok:
-                    print(f"Skipping r/{subreddit}: already ingested and manifest valid.")
+                    reason = "already ingested, manifest valid, and Arctic gap-fill already merged"
+                    if not arctic_targeted_sub:
+                        reason = "already ingested and manifest valid"
+                    print(f"Skipping r/{subreddit}: {reason}.")
                     elapsed = time.perf_counter() - sub_start
                     profile_entries.append(
                         {
@@ -142,8 +185,28 @@ def main():
                 save_manifest(manifest_path, manifest)
                 continue
 
+            if arctic_enabled and subreddit in arctic_subreddits:
+                arctic_df, file_stats = _load_arctic_shift_for_subreddit(
+                    subreddit=subreddit,
+                    stage_dir=arctic_stage_dir,
+                    loader=arctic_loader,
+                )
+                for fs in file_stats:
+                    print(
+                        "  [ArcticShift] "
+                        f"{fs['file']} | parsed={fs['parsed']} kept={fs['kept']} inserted={fs['inserted']} "
+                        f"skipped={fs['skipped']}"
+                    )
+                if not arctic_df.empty:
+                    before_len = len(df)
+                    df = pd.concat([df, arctic_df], ignore_index=True)
+                    df = df.drop_duplicates(subset=["post_id"]).reset_index(drop=True)
+                    inserted_rows = len(df) - before_len
+                    if inserted_rows > 0:
+                        arctic_total_rows += inserted_rows
+                        arctic_loaded_any = True
+
             df = strip_pii(df, config["collection"]["privacy_salt"])
-            df["data_source"] = "zenodo_covid"
             path = save_raw(df, config["paths"]["raw_data"], subreddit)
             print(f"  Saved {len(df)} posts to {path}")
 
@@ -156,6 +219,9 @@ def main():
                 min_created_utc=min_ts,
                 max_created_utc=max_ts,
                 status="ingested",
+            )
+            manifest.setdefault("subreddits", {}).setdefault(subreddit, {})["arctic_shift_loaded"] = bool(
+                arctic_targeted_sub
             )
             save_manifest(manifest_path, manifest)
 
@@ -179,6 +245,15 @@ def main():
                     "source": "zenodo_covid",
                 }
             )
+        if arctic_enabled:
+            _update_ingestion_source_entry(
+                ingestion_manifest,
+                source_name="arctic_shift",
+                downloaded=bool(arctic_zip_path.exists()),
+                loaded=arctic_loaded_any,
+                row_count=arctic_total_rows,
+            )
+            save_manifest(ingestion_manifest_path, ingestion_manifest)
 
     else:
         # Real collection via PushshiftLoader (PullPush.io — free, no auth needed)
@@ -289,6 +364,99 @@ def _collect_via_praw(config, subreddit, after, before):
 
     collector = RedditCollector(config)
     return collector.collect_subreddit(subreddit, after, before)
+
+
+def _init_ingestion_source_entry(manifest: dict, source_name: str, url: str) -> None:
+    manifest.setdefault(source_name, {})
+    section = manifest[source_name]
+    section.setdefault("url", url)
+    section.setdefault("expected_sha256", "")
+    section.setdefault("downloaded", False)
+    section.setdefault("loaded", False)
+    section.setdefault("row_count", 0)
+    section.setdefault("loaded_at", None)
+
+
+def _update_ingestion_source_entry(
+    manifest: dict,
+    source_name: str,
+    downloaded: bool,
+    loaded: bool,
+    row_count: int,
+) -> None:
+    _init_ingestion_source_entry(manifest, source_name=source_name, url=manifest.get(source_name, {}).get("url", ""))
+    section = manifest[source_name]
+    section["downloaded"] = bool(downloaded)
+    section["loaded"] = bool(loaded)
+    section["row_count"] = int(row_count)
+    section["loaded_at"] = datetime.now(timezone.utc).isoformat()
+
+
+def _ensure_arctic_shift_ready(
+    arctic_cfg: dict,
+    zip_path: Path,
+    stage_dir: Path,
+    ingestion_manifest: dict,
+) -> None:
+    gdrive_file_id = arctic_cfg.get("gdrive_file_id", "").strip()
+    if not gdrive_file_id:
+        return
+    stage_dir.mkdir(parents=True, exist_ok=True)
+    if not zip_path.exists():
+        try:
+            import gdown  # type: ignore
+        except ImportError as exc:
+            raise RuntimeError("gdown is required for Arctic Shift download. Install dependencies again.") from exc
+        url = f"https://drive.google.com/uc?id={gdrive_file_id}"
+        print(f"  [ArcticShift] Downloading gap-fill zip: {url}")
+        gdown.download(url, str(zip_path), quiet=False)
+    with zipfile.ZipFile(zip_path, "r") as zf:
+        for member in zf.namelist():
+            target = stage_dir / member
+            if not target.exists():
+                zf.extract(member, path=stage_dir)
+    _update_ingestion_source_entry(
+        ingestion_manifest,
+        source_name="arctic_shift",
+        downloaded=True,
+        loaded=bool(ingestion_manifest.get("arctic_shift", {}).get("loaded", False)),
+        row_count=int(ingestion_manifest.get("arctic_shift", {}).get("row_count", 0)),
+    )
+
+
+def _load_arctic_shift_for_subreddit(
+    subreddit: str,
+    stage_dir: Path,
+    loader: ArcticShiftLoader,
+) -> tuple[pd.DataFrame, list[dict]]:
+    frames: list[pd.DataFrame] = []
+    stats_out: list[dict] = []
+    for path in sorted(stage_dir.glob("arctic_shift_*_*.jsonl")):
+        sub_from_name = parse_arctic_shift_filename(path)
+        if sub_from_name is None:
+            continue
+        if sub_from_name.lower() != subreddit.lower():
+            continue
+        df, stats = loader.load_jsonl(path, subreddit=subreddit)
+        stats["inserted"] = int(len(df))
+        stats["skipped"] = int(
+            stats.get("skipped_json", 0)
+            + stats.get("skipped_non_self", 0)
+            + stats.get("skipped_body", 0)
+            + stats.get("skipped_subreddit", 0)
+        )
+        stats_out.append(stats)
+        if not df.empty:
+            frames.append(df)
+    if not frames:
+        return pd.DataFrame(columns=["post_id", "created_utc", "selftext", "subreddit", "author", "data_source"]), stats_out
+    out = pd.concat(frames, ignore_index=True)
+    out = out.dropna(subset=["created_utc", "selftext", "post_id"])
+    out["created_utc"] = pd.to_numeric(out["created_utc"], errors="coerce")
+    out = out.dropna(subset=["created_utc"])
+    out["created_utc"] = out["created_utc"].astype(int)
+    out = out.drop_duplicates(subset=["post_id"]).reset_index(drop=True)
+    return out, stats_out
 
 
 def _run_data_quality_and_log(

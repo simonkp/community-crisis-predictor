@@ -17,6 +17,11 @@ def main():
                         help="Skip BERTopic (faster)")
     parser.add_argument("--skip-search", action="store_true",
                         help="Skip hyperparameter search")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Force full feature extraction even when cache says unchanged",
+    )
     args = parser.parse_args()
 
     print("=" * 60)
@@ -42,6 +47,8 @@ def main():
     sys.argv = ["run_features", "--config", args.config]
     if args.skip_topics:
         sys.argv.append("--skip-topics")
+    if args.force:
+        sys.argv.append("--force")
     from src.pipeline.run_features import main as features_main
     features_main()
     stage_profile.append({"stage": "features", "elapsed_seconds": round(time.perf_counter() - t0, 3)})

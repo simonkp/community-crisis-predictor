@@ -8,8 +8,14 @@ class WeeklyAggregator:
     def aggregate(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
 
-        if "created_utc_dt" not in df.columns:
-            df["created_utc_dt"] = pd.to_datetime(df["created_utc"], unit="s")
+        # Always normalize datetime and drop invalid timestamps before iso calendar conversion.
+        if "created_utc_dt" in df.columns:
+            df["created_utc_dt"] = pd.to_datetime(df["created_utc_dt"], errors="coerce", utc=True)
+        else:
+            df["created_utc_dt"] = pd.to_datetime(df["created_utc"], unit="s", errors="coerce", utc=True)
+        df = df[df["created_utc_dt"].notna()].copy()
+        if df.empty:
+            return pd.DataFrame()
 
         df["iso_year"] = df["created_utc_dt"].dt.isocalendar().year.astype(int)
         df["iso_week"] = df["created_utc_dt"].dt.isocalendar().week.astype(int)
