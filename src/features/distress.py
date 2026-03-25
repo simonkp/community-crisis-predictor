@@ -3,6 +3,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.features.progress_util import iter_weeks
+
 
 class DistressScorer:
     def __init__(self, lexicon_dir: str = "config/lexicons"):
@@ -35,7 +37,7 @@ class DistressScorer:
 
     def extract_distress_features(self, weekly_df: pd.DataFrame) -> pd.DataFrame:
         rows = []
-        for idx, row in weekly_df.iterrows():
+        for idx, row in iter_weeks(weekly_df, desc="  Distress"):
             texts = row["texts"]
             if not texts:
                 rows.append({

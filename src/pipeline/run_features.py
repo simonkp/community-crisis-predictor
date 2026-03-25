@@ -5,6 +5,8 @@ import sys
 import time
 from pathlib import Path
 
+import pandas as pd
+
 from src.config import load_config
 from src.collector.storage import load_all_raw, save_processed
 from src.processing.text_cleaner import process_posts
@@ -40,14 +42,14 @@ def main():
 
     print("Loading raw data...")
     df = load_all_raw(config["paths"]["raw_data"], config["reddit"]["subreddits"])
+    loaded_counts = _counts_by_subreddit(df)
     print(f"  {len(df)} total posts loaded")
-    _print_counts_by_subreddit(df, label="posts loaded")
 
     print("Cleaning text...")
     min_len = config["processing"].get("min_post_length_chars", 20)
     df = process_posts(df, min_length=min_len)
+    cleaned_counts = _counts_by_subreddit(df)
     print(f"  {len(df)} posts after cleaning")
-    _print_counts_by_subreddit(df, label="posts after cleaning")
     min_posts_after_cleaning = config.get("processing", {}).get("min_posts_after_cleaning", 50)
     if len(df) < min_posts_after_cleaning:
         print(
@@ -60,8 +62,8 @@ def main():
     print("Aggregating by week...")
     aggregator = WeeklyAggregator()
     weekly_df = aggregator.aggregate(df)
-    print(f"  {len(weekly_df)} weeks")
-    _print_counts_by_subreddit(weekly_df, label="weeks aggregated")
+    week_counts = _counts_by_subreddit(weekly_df)
+    print(f"  {len(weekly_df)} week-rows (one row per subreddit per ISO week with posts)")
     wf_cfg = config.get("modeling", {}).get("walk_forward", {})
     min_train_weeks = int(wf_cfg.get("min_train_weeks", 26))
     gap_weeks = int(wf_cfg.get("gap_weeks", 1))
@@ -81,12 +83,33 @@ def main():
     # Save processed weekly data
     save_processed(weekly_df, config["paths"]["processed_data"], "weekly")
 
+    _print_subreddit_summary_table(
+        config["reddit"]["subreddits"],
+        loaded_counts,
+        cleaned_counts,
+        week_counts,
+        weekly_df,
+        feature_df=None,
+        include_feat_rows=False,
+        title="Per-subreddit summary (before feature extraction)",
+    )
+
     print("Extracting features...")
     pipeline = FeaturePipeline(config)
     feature_df = pipeline.run(weekly_df, skip_topics=args.skip_topics)
 
     save_processed(feature_df, config["paths"]["features"], "features")
     print(f"Feature matrix saved: {feature_df.shape}")
+    _print_subreddit_summary_table(
+        config["reddit"]["subreddits"],
+        loaded_counts,
+        cleaned_counts,
+        week_counts,
+        weekly_df,
+        feature_df=feature_df,
+        include_feat_rows=True,
+        title="Per-subreddit summary (after feature extraction)",
+    )
     _append_profile(
         config,
         {
@@ -117,18 +140,126 @@ def _append_profile(config: dict, entry: dict) -> None:
         json.dump(payload, f, indent=2)
 
 
-def _print_counts_by_subreddit(df, label: str) -> None:
+def _counts_by_subreddit(df) -> pd.Series:
     if "subreddit" not in df.columns or df.empty:
-        print(f"  No subreddit breakdown available for {label}.")
-        return
-    counts = (
-        df.groupby("subreddit")
-        .size()
-        .sort_values(ascending=False)
+        return pd.Series(dtype=int)
+    return df.groupby("subreddit").size()
+
+
+def _print_subreddit_summary_table(
+    subreddits: list[str],
+    loaded: pd.Series,
+    cleaned: pd.Series,
+    week_rows: pd.Series,
+    weekly_df: pd.DataFrame,
+    feature_df: pd.DataFrame | None,
+    *,
+    include_feat_rows: bool = True,
+    title: str = "Per-subreddit summary",
+) -> None:
+    """ASCII table: loaded, cleaned, dropped, week_rows, avg posts/week, optional feat_rows."""
+    feat_counts = (
+        _counts_by_subreddit(feature_df)
+        if feature_df is not None and not feature_df.empty
+        else pd.Series(dtype=int)
     )
-    print(f"  Per-subreddit {label}:")
-    for sub, count in counts.items():
-        print(f"    r/{sub}: {int(count)}")
+    unique_iso_weeks = 0
+    if not weekly_df.empty and {"iso_year", "iso_week"}.issubset(weekly_df.columns):
+        unique_iso_weeks = int(
+            weekly_df[["iso_year", "iso_week"]].drop_duplicates().shape[0]
+        )
+    sum_week_rows = int(week_rows.sum()) if not week_rows.empty else 0
+
+    print("")
+    print(f"  {title}")
+    print(
+        f"  Week-rows sum across subs = {sum_week_rows} "
+        f"(same calendar week counted once per subreddit; not deduplicated across subs)."
+    )
+    if unique_iso_weeks:
+        print(
+            f"  Unique ISO weeks (union across all subs): {unique_iso_weeks}"
+        )
+
+    rows_out: list[dict] = []
+    t_loaded = t_cleaned = t_dropped = t_weeks = t_feat = 0
+    for sub in subreddits:
+        pl = int(loaded.get(sub, 0)) if not loaded.empty else 0
+        pc = int(cleaned.get(sub, 0)) if not cleaned.empty else 0
+        wr = int(week_rows.get(sub, 0)) if not week_rows.empty else 0
+        fr = int(feat_counts.get(sub, 0)) if not feat_counts.empty else 0
+        dr = pl - pc
+        avg = (pc / wr) if wr else 0.0
+        row = {
+            "sub": f"r/{sub}",
+            "loaded": pl,
+            "cleaned": pc,
+            "dropped": dr,
+            "week_rows": wr,
+            "avg": avg,
+            "feat": fr,
+        }
+        rows_out.append(row)
+        t_loaded += pl
+        t_cleaned += pc
+        t_dropped += dr
+        t_weeks += wr
+        t_feat += fr
+
+    def _w(label: str, vals: list, is_float: bool = False, is_str: bool = False) -> int:
+        m = len(label)
+        for v in vals:
+            if is_str:
+                s = str(v)
+            elif is_float:
+                s = f"{v:.1f}"
+            else:
+                s = str(int(v))
+            m = max(m, len(s))
+        return m
+
+    labs_base = ["subreddit", "loaded", "cleaned", "dropped", "week_rows", "avg_posts/wk"]
+    if include_feat_rows:
+        labs = labs_base + ["feat_rows"]
+    else:
+        labs = labs_base
+
+    def col_vals(key: str) -> list:
+        return [r[key] for r in rows_out]
+
+    w0 = _w(labs[0], col_vals("sub"), is_str=True)
+    w1 = _w(labs[1], col_vals("loaded"))
+    w2 = _w(labs[2], col_vals("cleaned"))
+    w3 = _w(labs[3], col_vals("dropped"))
+    w4 = _w(labs[4], col_vals("week_rows"))
+    w5 = _w(labs[5], col_vals("avg"), is_float=True)
+    widths = [w0, w1, w2, w3, w4, w5]
+    if include_feat_rows:
+        w6 = _w(labs[6], col_vals("feat"))
+        widths.append(w6)
+
+    parts_hdr = [f"{labs[i]:>{widths[i]}}" if i else f"{labs[0]:<{widths[0]}}" for i in range(len(labs))]
+    hdr = "  " + "  ".join(parts_hdr)
+    sep_parts = ["-" * widths[i] for i in range(len(labs))]
+    sep = "  " + "  ".join(sep_parts)
+    print(hdr)
+    print(sep)
+    for r in rows_out:
+        line = (
+            f"  {r['sub']:<{w0}}  {r['loaded']:>{w1}}  {r['cleaned']:>{w2}}  {r['dropped']:>{w3}}  "
+            f"{r['week_rows']:>{w4}}  {r['avg']:>{w5}.1f}"
+        )
+        if include_feat_rows:
+            line += f"  {r['feat']:>{w6}}"
+        print(line)
+    total_avg = (t_cleaned / t_weeks) if t_weeks else 0.0
+    tot = (
+        f"  {'TOTAL':<{w0}}  {t_loaded:>{w1}}  {t_cleaned:>{w2}}  {t_dropped:>{w3}}  "
+        f"{t_weeks:>{w4}}  {total_avg:>{w5}.1f}"
+    )
+    if include_feat_rows:
+        tot += f"  {t_feat:>{w6}}"
+    print(tot)
 
 
 def _compute_feature_fingerprint(config: dict, config_path: str, skip_topics: bool) -> dict:

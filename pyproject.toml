@@ -24,6 +24,7 @@ dependencies = [
     "numpy>=1.24",
     "scipy>=1.11",
     "requests>=2.31",
+    "tqdm>=4.66",
     "streamlit>=1.28",
     "torch>=2.0",
     "anthropic>=0.40",

@@ -1,5 +1,6 @@
 import pandas as pd
 
+from src.features.progress_util import iter_groupby_subreddit
 from src.features.linguistic import extract_linguistic_features
 from src.features.sentiment import extract_sentiment_features
 from src.features.distress import DistressScorer
@@ -64,7 +65,7 @@ class FeaturePipeline:
 
         # Group by subreddit for proper temporal computation
         parts = []
-        for sub, group in feature_df.groupby("subreddit"):
+        for sub, group in iter_groupby_subreddit(feature_df, "subreddit", "  Temporal"):
             group = group.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
             group = add_temporal_features(group, self.rolling_windows)
             parts.append(group)

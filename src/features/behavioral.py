@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 from scipy.stats import entropy
 
+from src.features.progress_util import iter_weeks
+
 
 def _posting_time_entropy(hours: list[int]) -> float:
     if not hours:
@@ -19,7 +21,7 @@ def _posting_time_entropy(hours: list[int]) -> float:
 
 def extract_behavioral_features(weekly_df: pd.DataFrame) -> pd.DataFrame:
     rows = []
-    for idx, row in weekly_df.iterrows():
+    for idx, row in iter_weeks(weekly_df, desc="  Behavioral"):
         post_count = row.get("post_count", 0)
         hours = row.get("post_hours", [])
 

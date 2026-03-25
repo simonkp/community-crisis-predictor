@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+from src.features.progress_util import iter_weeks
+
 
 _analyzer = None
 
@@ -23,7 +25,7 @@ def extract_sentiment_features(
     analyzer = _get_analyzer()
     rows = []
 
-    for idx, row in weekly_df.iterrows():
+    for idx, row in iter_weeks(weekly_df, desc="  Sentiment"):
         texts = row["texts"]
         if not texts:
             rows.append({

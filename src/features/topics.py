@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 from scipy.spatial.distance import jensenshannon
 
+from src.features.progress_util import iter_weeks, tqdm_index
+
 
 class TopicFeatureExtractor:
     def __init__(self, model_name: str = "all-MiniLM-L6-v2", n_topics: int = 15,
@@ -38,7 +40,7 @@ class TopicFeatureExtractor:
         all_texts = []
         week_labels = []
 
-        for idx, row in weekly_df.iterrows():
+        for idx, row in iter_weeks(weekly_df, desc="  Topic: collect texts"):
             texts = row.get("texts", [])
             # Subsample if too many posts
             if len(texts) > self.max_posts_per_week:
@@ -60,6 +62,7 @@ class TopicFeatureExtractor:
             }, index=weekly_df.index)
 
         model = self._get_model()
+        print("  Topic model: embedding + BERTopic fit_transform (slow; CPU/GPU bound)...")
         topics, probs = model.fit_transform(all_texts)
         self._n_fitted_topics = len(set(topics)) - (1 if -1 in topics else 0)
 
@@ -77,7 +80,11 @@ class TopicFeatureExtractor:
         prev_dist = None
         dist_history: deque = deque(maxlen=4)
 
-        for idx in weekly_df.index:
+        for idx in tqdm_index(
+            weekly_df.index,
+            total=len(weekly_df),
+            desc="  Topic: per-week stats",
+        ):
             dist = week_topic_dists.get(idx, np.zeros(max(n_topics, 1)))
             total = dist.sum()
 
