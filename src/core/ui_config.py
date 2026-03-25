@@ -16,8 +16,8 @@ TIMELINE_THRESHOLD_COLORS = ["gold", "orangered", "darkred"]
 
 DASHBOARD_COPY = {
     "page_title": "Community Crisis Predictor",
-    "title": "Community Mental Health Crisis Predictor",
-    "caption": "Live replay dashboard — use the sidebar controls to step through weeks.",
+    "title": "Community mental health early warning",
+    "caption": "5-community distress monitoring · 2018–2020 · Zenodo dataset",
     "current_state_header": "### Current Community Signal State",
     "state_badge_label": "Community Signal State",
     "probability_metric_label": "High-Distress Probability",
@@ -76,41 +76,6 @@ DECISION_USEFULNESS_COPY = {
     "table_header": "Metric comparison (same K)",
 }
 
-DEMO_MODE_COPY = {
-    "sidebar_header": "Live Demo Mode",
-    "section_label": "**Scenario Preview (STePS)**",
-    "section_caption": "Interactive preview mode for stakeholder walkthroughs (not production behavior).",
-    "about_expander_label": "What is live demo mode?",
-    "about_markdown": (
-        "**Live demo mode** is for **STePS-style** walkthroughs (stakeholders, classroom). "
-        "It is **not** a production deployment.\n\n"
-        "**When enabled**\n"
-        "- **What-if sandbox**: nudge a few signals for the **current replay week**; a **fresh in-memory XGBoost** "
-        "is fit on that subreddit’s history and you see **scenario vs baseline** probability (hypothetical, not causal).\n"
-        "- **Timeline markers**: optional vertical lines for calendar events from `config/default.yaml` → `demo_mode.events`.\n"
-        "- **Subreddit comparison**: sparklines for every subreddit in `features.parquet`, ordered by latest predicted state.\n\n"
-        "**What does *not* change**: stored model artifacts, `eval_results.json`, or the main replay metrics — "
-        "only extra UI and in-session scenario math."
-    ),
-    "toggle_label": "Enable scenario preview (STePS)",
-    "toggle_help_short": (
-        "Turns on what-if sandbox, timeline event markers, and multi-subreddit comparison. "
-        "Does not modify saved models or evaluation files."
-    ),
-    "where_changes_label": (
-        "Where you will see changes: sidebar scenario metrics, main-panel scenario impact strip, "
-        "timeline scenario overlay, and subreddit comparison cards."
-    ),
-    "timeline_overlay_toggle_label": "Show scenario overlay on timeline",
-    "demo_active_subheader": "Scenario & overlays",
-    "scenario_header": "What-if sandbox",
-    "scenario_label": "Scenario mode - not a real prediction",
-    "scenario_probability_label": "Scenario high-distress probability",
-    "scenario_vs_baseline_header": "Scenario vs baseline",
-    "events_header": "Context events",
-    "comparison_header": "Subreddit live comparison",
-}
-
 # Keep exported for convenience where both semantics and UI are needed.
 __all__ = [
     "STATE_NAMES",
@@ -125,5 +90,4 @@ __all__ = [
     "ALERT_ENGINE_COPY",
     "PIPELINE_COPY",
     "DECISION_USEFULNESS_COPY",
-    "DEMO_MODE_COPY",
 ]

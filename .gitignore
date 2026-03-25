@@ -8,3 +8,5 @@ build/
 .venv/
 venv/
 .ipynb_checkpoints/
+temp/
+# .rules/

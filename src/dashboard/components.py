@@ -75,6 +75,15 @@ def render_drift_table(display_drift: pd.DataFrame) -> None:
     st.markdown(drift_table_html, unsafe_allow_html=True)
 
 
+def render_model_metrics_tiles(results: dict) -> None:
+    """Compact Recall / Precision / F1 / PR-AUC row for dashboard side column."""
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Recall", f"{results.get('recall', 0):.3f}")
+    c2.metric("Precision", f"{results.get('precision', 0):.3f}")
+    c3.metric("F1", f"{results.get('f1', 0):.3f}")
+    c4.metric("PR-AUC", f"{results.get('pr_auc', 0):.3f}")
+
+
 def render_model_metrics(results: dict, state_names: dict, decision_usefulness_copy: dict) -> None:
     col_a, col_b, col_c, col_d = st.columns(4)
     col_a.metric("Recall", f"{results.get('recall', 0):.3f}")

@@ -1,0 +1,362 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary);font-size:14px}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0 12px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:16px}
+.hdr-left h1{font-size:18px;font-weight:500;margin-bottom:2px}
+.hdr-left p{font-size:12px;color:var(--color-text-secondary)}
+.week-ctrl{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-secondary)}
+.week-ctrl input[type=range]{width:160px}
+.week-lbl{font-size:13px;font-weight:500;min-width:80px;color:var(--color-text-primary)}
+.btn-sm{padding:4px 12px;font-size:12px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-primary)}
+.btn-sm:hover{background:var(--color-background-secondary)}
+.communities{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:16px}
+.com-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;cursor:pointer;transition:border-color .15s,background .15s;background:var(--color-background-primary)}
+.com-card:hover{border-color:var(--color-border-secondary)}
+.com-card.active{border-width:1.5px}
+.com-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.com-name{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.com-role{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.state-pill{font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.com-score{font-size:20px;font-weight:500;margin:6px 0 4px}
+.com-prob{font-size:11px;color:var(--color-text-secondary)}
+.spark{display:block;width:100%;height:28px;margin-top:6px}
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+.chart-panel{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px}
+.panel-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.panel-hdr h2{font-size:14px;font-weight:500}
+.chart-area{height:180px;position:relative}
+.chart-legend{display:flex;gap:16px;margin-top:8px}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.legend-line{width:16px;height:2px;flex-shrink:0}
+.covid-lbl{font-size:11px;color:var(--color-text-danger);position:absolute;top:2px;right:4px}
+.right-col{display:flex;flex-direction:column;gap:12px}
+.brief-panel{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px}
+.brief-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.brief-tag{font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--color-text-tertiary)}
+.brief-week{font-size:11px;color:var(--color-text-tertiary)}
+.brief-body p{font-size:13px;line-height:1.55;color:var(--color-text-secondary);margin-bottom:6px}
+.brief-body p b{font-weight:500;color:var(--color-text-primary)}
+.action-box{margin-top:8px;padding:8px 10px;border-left:2px solid var(--color-border-info);border-radius:0;background:var(--color-background-info)}
+.action-box p{font-size:12px;color:var(--color-text-info)}
+.action-box .act-lbl{font-size:11px;font-weight:500;color:var(--color-text-info);margin-bottom:2px;display:block}
+.metrics-panel{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px}
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.metric-cell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px}
+.metric-lbl{font-size:11px;color:var(--color-text-tertiary);margin-bottom:3px}
+.metric-val{font-size:18px;font-weight:500}
+.metric-val.bad{color:var(--color-text-danger)}
+.metric-val.ok{color:var(--color-text-warning)}
+.metric-val.good{color:var(--color-text-success)}
+.tabs-row{display:flex;gap:0;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:12px}
+.tab{padding:6px 12px;font-size:12px;cursor:pointer;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-0.5px}
+.tab.on{color:var(--color-text-primary);font-weight:500;border-bottom-color:var(--color-text-primary)}
+.drift-row{display:grid;grid-template-columns:90px 1fr 1fr;gap:0;border-bottom:0.5px solid var(--color-border-tertiary);padding:5px 0;font-size:12px}
+.drift-row.hd{font-weight:500;color:var(--color-text-secondary);font-size:11px}
+.warn{color:var(--color-text-warning)}
+.shap-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.shap-lbl{font-size:11px;color:var(--color-text-secondary);width:180px;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shap-bar{height:12px;border-radius:2px;background:#378ADD;min-width:2px}
+.shap-val{font-size:11px;color:var(--color-text-tertiary);width:36px}
+.com-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;display:inline-block}
+</style>
+
+<div style="padding:0 2px">
+
+<div class="hdr">
+  <div class="hdr-left">
+    <h1>Community mental health early warning</h1>
+    <p>5-community distress monitoring · 2018–2020 · Zenodo dataset</p>
+  </div>
+  <div class="week-ctrl">
+    <button class="btn-sm" id="btn-back">◀ Back</button>
+    <input type="range" min="0" max="103" value="55" id="week-slider" step="1">
+    <span class="week-lbl" id="week-display">2019-W04</span>
+    <button class="btn-sm" id="btn-fwd">Advance ▶</button>
+  </div>
+</div>
+
+<div class="communities" id="com-row"></div>
+
+<div class="main-grid">
+  <div class="chart-panel">
+    <div class="panel-hdr">
+      <h2 id="chart-title">Distress timeline — r/anxiety</h2>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="model-sel" style="font-size:12px;padding:3px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary)">
+          <option>XGBoost</option><option>LSTM</option><option>Ensemble</option>
+        </select>
+      </div>
+    </div>
+    <div class="chart-area">
+      <canvas id="main-chart" style="width:100%;height:100%"></canvas>
+      <div class="covid-lbl" id="covid-marker" style="display:none">▲ COVID-19 period</div>
+    </div>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-line" style="background:#378ADD"></div> Distress score</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#E24B4A"></div> Elevated / Severe</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#EF9F27"></div> Early signal</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2DD4BF"></div> Stable</div>
+      <div class="legend-item"><div class="legend-line" style="background:#E24B4A;border-top:1px dashed #E24B4A;height:1px"></div> Current week</div>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <div class="brief-panel">
+      <div class="brief-meta">
+        <span class="brief-tag">Weekly snapshot</span>
+        <span class="brief-week" id="brief-week">2019-W04</span>
+      </div>
+      <div class="brief-body" id="brief-body">
+        <p><b>Summary:</b> r/anxiety is showing a stable baseline this week. Distress score is within 0.5σ of the 4-week rolling average.</p>
+        <p><b>Key signals:</b> unique_posters_delta is the top contributor. No significant topic drift detected.</p>
+        <div class="action-box">
+          <span class="act-lbl">Recommended action</span>
+          <p>Continue routine moderation. Keep community resources pinned.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics-panel">
+      <div style="font-size:13px;font-weight:500;margin-bottom:2px">Model performance</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:8px">Walk-forward CV across 50 eval weeks</div>
+      <div class="metrics-grid">
+        <div class="metric-cell"><div class="metric-lbl">Recall</div><div class="metric-val bad" id="m-recall">0.000</div></div>
+        <div class="metric-cell"><div class="metric-lbl">Precision</div><div class="metric-val bad" id="m-prec">0.000</div></div>
+        <div class="metric-cell"><div class="metric-lbl">F1</div><div class="metric-val bad" id="m-f1">0.000</div></div>
+        <div class="metric-cell"><div class="metric-lbl">PR-AUC</div><div class="metric-val ok" id="m-prauc">0.278</div></div>
+      </div>
+      <div style="margin-top:8px;padding:6px 8px;background:var(--color-background-warning);border-radius:var(--border-radius-md)">
+        <p style="font-size:11px;color:var(--color-text-warning)">Model predicting Stable only — class imbalance needs fixing before demo. See retraining issue.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:16px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px">
+  <div class="tabs-row" id="tabs-row">
+    <div class="tab on" data-tab="drift">Drift alerts</div>
+    <div class="tab" data-tab="shap">Feature importance</div>
+    <div class="tab" data-tab="quality">Data quality</div>
+  </div>
+  <div id="tab-drift">
+    <div class="drift-row hd"><span>Week</span><span>Alert level</span><span>Dominant signal</span></div>
+    <div class="drift-row"><span>2019-W01</span><span>Normal</span><span style="color:var(--color-text-tertiary)">avg_negative</span></div>
+    <div class="drift-row"><span>2019-W02</span><span>Normal</span><span style="color:var(--color-text-tertiary)">avg_negative</span></div>
+    <div class="drift-row"><span>2019-W03</span><span>Normal</span><span style="color:var(--color-text-tertiary)">topic_shift_jsd</span></div>
+    <div class="drift-row"><span>2019-W04</span><span class="warn">Warning</span><span class="warn">hopelessness_density</span></div>
+    <div class="drift-row"><span>2019-W05</span><span>Normal</span><span style="color:var(--color-text-tertiary)">avg_negative</span></div>
+  </div>
+  <div id="tab-shap" style="display:none;padding-top:4px">
+    <div id="shap-bars"></div>
+  </div>
+  <div id="tab-quality" style="display:none">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+      <div class="metric-cell"><div class="metric-lbl">Total weeks</div><div class="metric-val">104</div></div>
+      <div class="metric-cell"><div class="metric-lbl">Gap weeks</div><div class="metric-val ok">6</div></div>
+      <div class="metric-cell"><div class="metric-lbl">Avg completeness</div><div class="metric-val good">1.00</div></div>
+    </div>
+    <canvas id="quality-chart" style="width:100%;height:60px;display:block"></canvas>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+const SUBS = {
+  mentalhealth: {label:'r/mentalhealth',role:'General discussion',color:'#1D9E75',pill:'#E1F5EE',pillText:'#085041'},
+  anxiety:      {label:'r/anxiety',     role:'Early warning',    color:'#BA7517',pill:'#FAEEDA',pillText:'#412402'},
+  lonely:       {label:'r/lonely',      role:'Isolation signal', color:'#D85A30',pill:'#FAECE7',pillText:'#4A1B0C'},
+  depression:   {label:'r/depression',  role:'Core signal',      color:'#A32D2D',pill:'#FCEBEB',pillText:'#501313'},
+  SuicideWatch: {label:'r/SuicideWatch',role:'Acute sentinel',   color:'#534AB7',pill:'#EEEDFE',pillText:'#26215C'},
+};
+const STATES = ['Stable','Early Signal','Elevated Distress','Severe Signal'];
+const STATE_COLS = {'Stable':'#1D9E75','Early Signal':'#BA7517','Elevated Distress':'#D85A30','Severe Signal':'#A32D2D'};
+const STATE_BG   = {'Stable':'#E1F5EE','Early Signal':'#FAEEDA','Elevated Distress':'#FAECE7','Severe Signal':'#FCEBEB'};
+const STATE_TXT  = {'Stable':'#085041','Early Signal':'#412402','Elevated Distress':'#4A1B0C','Severe Signal':'#501313'};
+
+function seeded(seed){let s=seed;return()=>{s=(s*1103515245+12345)&0x7fffffff;return s/0x7fffffff};}
+function genTimeline(sub,n=104){
+  const r=seeded(sub.charCodeAt(0)*17+sub.length*31);
+  const sev={mentalhealth:0,anxiety:1,lonely:1.5,depression:2.2,SuicideWatch:3}[sub]||1;
+  const weeks=[];let d=0;
+  for(let i=0;i<n;i++){
+    const covid=(i>=96&&i<=104)?(i-96)*0.15:0;
+    d=d*0.72+(r()-0.46)*0.9+covid+(sev-1.5)*0.04;
+    d=Math.max(-2,Math.min(2,d));
+    const p=Math.min(0.99,Math.max(0.01,0.12+d*0.28+r()*0.08));
+    const si=d<-0.25?0:d<0.5?1:d<1.1?2:3;
+    const dt=new Date(2018,0,1+i*7);
+    weeks.push({i,date:dt.toISOString().slice(0,7)+'-W'+(Math.ceil(i/7)||1).toString().padStart(2,'0'),
+      dateStr:dt.toISOString().slice(0,10),d:+d.toFixed(3),p:+p.toFixed(3),state:STATES[si]});
+  }
+  return weeks;
+}
+const TL=Object.fromEntries(Object.keys(SUBS).map(s=>[s,genTimeline(s)]));
+let currentWeek=55,selectedSub='anxiety';
+
+function getWkLabel(i){const d=new Date(2018,0,1+i*7);return d.toISOString().slice(0,10);}
+
+function renderCommunityCards(){
+  const row=document.getElementById('com-row');row.innerHTML='';
+  Object.entries(SUBS).forEach(([sub,meta])=>{
+    const wk=TL[sub][currentWeek];
+    const recent=TL[sub].slice(Math.max(0,currentWeek-15),currentWeek+1);
+    const active=sub===selectedSub;
+    const card=document.createElement('div');
+    card.className='com-card'+(active?' active':'');
+    if(active){card.style.borderColor=meta.color;card.style.background=meta.pill+'33';}
+    const vals=recent.map(w=>w.d);
+    const mn=Math.min(...vals),mx=Math.max(...vals),rng=mx-mn||1;
+    const pts=vals.map((v,i)=>{
+      const x=(i/(vals.length-1))*100;
+      const y=100-((v-mn)/rng)*80-10;
+      return `${x},${y}`;
+    }).join(' ');
+    const sc=STATE_COLS[wk.state];const sb=STATE_BG[wk.state];const st=STATE_TXT[wk.state];
+    card.innerHTML=`
+      <div class="com-top">
+        <div><div class="com-name">${meta.label}</div><div class="com-role">${meta.role}</div></div>
+      </div>
+      <div style="margin-top:4px"><span class="state-pill" style="background:${sb};color:${st}">${wk.state}</span></div>
+      <div class="com-score" style="color:${meta.color}">${wk.d>0?'+':''}${wk.d.toFixed(2)}</div>
+      <div class="com-prob" style="color:var(--color-text-secondary)">p(distress) ${(wk.p*100).toFixed(1)}%</div>
+      <svg class="spark" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polyline points="${pts}" fill="none" stroke="${meta.color}" stroke-width="2.5" stroke-linejoin="round"/>
+        <line x1="100" y1="0" x2="100" y2="100" stroke="${meta.color}" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+      </svg>`;
+    card.onclick=()=>{selectedSub=sub;renderAll();};
+    row.appendChild(card);
+  });
+}
+
+let mainChart=null;
+function renderMainChart(){
+  const meta=SUBS[selectedSub];
+  document.getElementById('chart-title').textContent=`Distress timeline — ${meta.label}`;
+  const data=TL[selectedSub].slice(0,currentWeek+1);
+  const labels=data.map(w=>w.dateStr);
+  const scores=data.map(w=>w.d);
+  const pointColors=data.map(w=>{
+    const c=STATE_COLS[w.state];return c;
+  });
+  const pointR=data.map((_,i)=>i===currentWeek?6:3);
+  const covidVis=currentWeek>=96;
+  document.getElementById('covid-marker').style.display=covidVis?'block':'none';
+  const ctx=document.getElementById('main-chart').getContext('2d');
+  if(mainChart){mainChart.destroy();}
+  const isDark=document.documentElement.classList.contains('dark')||window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const gridCol=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+  const txtCol=isDark?'rgba(255,255,255,0.4)':'rgba(0,0,0,0.4)';
+  mainChart=new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[{
+      data:scores,borderColor:meta.color,borderWidth:1.5,
+      pointBackgroundColor:pointColors,pointRadius:pointR,
+      pointBorderColor:'transparent',tension:0.3,fill:false
+    }]},
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:false,
+      plugins:{legend:{display:false},tooltip:{
+        callbacks:{label:ctx=>`Distress: ${ctx.raw.toFixed(3)}`},
+        bodyFont:{size:12},titleFont:{size:11}
+      }},
+      scales:{
+        x:{ticks:{font:{size:10},color:txtCol,maxTicksLimit:8},grid:{color:gridCol},border:{display:false}},
+        y:{ticks:{font:{size:10},color:txtCol},grid:{color:gridCol},border:{display:false},
+          title:{display:true,text:'distress score',font:{size:10},color:txtCol}}
+      }
+    }
+  });
+}
+
+function renderBrief(){
+  const wk=TL[selectedSub][currentWeek];
+  const meta=SUBS[selectedSub];
+  const sc=STATE_COLS[wk.state];
+  document.getElementById('brief-week').textContent=wk.date;
+  const prev=currentWeek>0?TL[selectedSub][currentWeek-1]:wk;
+  const delta=(wk.d-prev.d).toFixed(3);
+  const actions={
+    'Stable':'Continue routine moderation. Keep community resources pinned.',
+    'Early Signal':'Increase moderator check-in frequency. Consider a weekly support thread.',
+    'Elevated Distress':'Pin crisis resources thread. Notify moderator team. Monitor high-frequency posters.',
+    'Severe Signal':'Escalate to senior moderators. Activate crisis response protocol. Post official mental health resources prominently.'
+  };
+  const infoStyle=wk.state==='Elevated Distress'||wk.state==='Severe Signal'?
+    'border-left-color:var(--color-border-danger);background:var(--color-background-danger)':'';
+  const infoTxt=wk.state==='Elevated Distress'||wk.state==='Severe Signal'?
+    'color:var(--color-text-danger)':'color:var(--color-text-info)';
+  document.getElementById('brief-body').innerHTML=`
+    <p><b>Summary:</b> ${meta.label} is showing <span style="font-weight:500;color:${sc}">${wk.state.toLowerCase()}</span> this week (${wk.date}). Community-level indicator — not individual assessment.</p>
+    <p><b>Key signals:</b> Distress score change vs prior week is ${delta}. High-distress probability ${(wk.p*100).toFixed(1)}%.</p>
+    <div class="action-box" style="${infoStyle}">
+      <span class="act-lbl" style="${infoTxt}">Recommended action</span>
+      <p style="${infoTxt}">${actions[wk.state]}</p>
+    </div>`;
+}
+
+function renderShap(){
+  const features=[
+    {n:'unique_posters_delta',v:0.21},
+    {n:'new_poster_ratio',v:0.19},
+    {n:'avg_flesch_kincaid_roll2w',v:0.17},
+    {n:'hopelessness_density',v:0.15},
+    {n:'avg_negative_roll4w',v:0.13},
+    {n:'first_person_singular_ratio',v:0.11},
+    {n:'topic_shift_jsd',v:0.10},
+    {n:'pct_negative_delta',v:0.09},
+    {n:'post_volume',v:0.08},
+    {n:'avg_neutral',v:0.07},
+  ];
+  const mx=features[0].v;
+  document.getElementById('shap-bars').innerHTML=features.map(f=>`
+    <div class="shap-bar-row">
+      <span class="shap-lbl">${f.n}</span>
+      <div class="shap-bar" style="width:${Math.round((f.v/mx)*180)}px"></div>
+      <span class="shap-val">${f.v.toFixed(2)}</span>
+    </div>`).join('');
+}
+
+function renderTabs(){
+  document.querySelectorAll('.tab').forEach(t=>{
+    const on=t.classList.contains('on');
+    const id='tab-'+t.dataset.tab;
+    document.getElementById(id).style.display=on?'block':'none';
+  });
+}
+
+function updateWeekDisplay(){
+  document.getElementById('week-display').textContent=getWkLabel(currentWeek);
+}
+
+function renderAll(){
+  renderCommunityCards();
+  renderMainChart();
+  renderBrief();
+  renderShap();
+  updateWeekDisplay();
+}
+
+document.getElementById('week-slider').addEventListener('input',e=>{
+  currentWeek=+e.target.value;renderAll();
+});
+document.getElementById('btn-back').onclick=()=>{
+  if(currentWeek>0){currentWeek--;document.getElementById('week-slider').value=currentWeek;renderAll();}
+};
+document.getElementById('btn-fwd').onclick=()=>{
+  if(currentWeek<103){currentWeek++;document.getElementById('week-slider').value=currentWeek;renderAll();}
+};
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    renderTabs();
+    if(t.dataset.tab==='shap')renderShap();
+  };
+});
+
+renderAll();
+</script>

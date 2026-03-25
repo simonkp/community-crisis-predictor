@@ -32,7 +32,7 @@ The model never sees future data. Walk-forward time-series cross-validation ensu
    - **LSTM** (primary) — PyTorch sequence model; sees the last 8 weeks as context
    - **XGBoost** (baseline) — Binary crisis classifier; trained on the same walk-forward splits
 5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state transitions to SQLite
-6. **Visualize** — Streamlit live dashboard with week-by-week replay, STePS demo mode, or static HTML reports
+6. **Visualize** — Streamlit dashboard with an all-community card row, week replay, drift/SHAP/data-quality tabs, or static HTML reports
 7. **Weekly brief** — After evaluation, each week with a prediction can get a short text brief: structured JSON is built from model outputs + global SHAP top features (with per-week deltas), augmented with retrieved text from `config/intervention_playbook.md`, then sent to **Claude** (`claude-sonnet-4-20250514`) if `ANTHROPIC_API_KEY` is set, else **GPT-4o** if `OPENAI_API_KEY` is set, else a **template** string. This is deterministic retrieval over fixed sources (no vector database). Optional: set `WEEKLY_NARRATIVE_MAX_WEEKS` to only generate the most recent N weeks (saves API calls).
 
 State semantics and dashboard/report copy are centralized in code:
@@ -61,7 +61,7 @@ python -m src.pipeline.run_all --config config/default.yaml --synthetic --skip-t
 streamlit run src/dashboard/app.py
 ```
 
-The dashboard will open in your browser. Use the **week slider** in the sidebar to replay predictions week by week, and the **Advance / Back** buttons to step through the timeline.
+The dashboard opens in your browser. Use the **header week slider** (and **Back / Advance**) to replay all communities in sync; click a community card to focus the timeline, weekly brief, and tabs.
 
 ---
 
@@ -299,37 +299,7 @@ modeling:
 synthetic:
   n_weeks: 104              # 2 years of synthetic data
   crisis_frequency: 0.12    # ~12% of weeks are crisis weeks
-
-demo_mode:
-  enabled: true             # enables STePS-oriented interactive panels in Streamlit
-  what_if:
-    hopelessness_density_pct: 30
-    post_volume_pct: 50
-    late_night_ratio_pct: 20
 ```
-
----
-
-## STePS Demo Runbook
-
-For the live showcase, use demo mode in Streamlit:
-
-1. Keep `demo_mode.enabled: true` in `config/default.yaml` (default **on** for the **Enable scenario preview (STePS)** checkbox in the sidebar; users can still turn it off).
-2. In the sidebar, open **What is live demo mode?** (under **STePS · Live demo**) for scope and limitations before toggling.
-3. Run latest training/evaluation once:
-   - `python -m src.pipeline.run_train --config config/default.yaml`
-   - `python -m src.pipeline.run_evaluate --config config/default.yaml`
-4. Launch dashboard:
-   - `streamlit run src/dashboard/app.py`
-5. (Optional) Open dedicated page `STePS Demo` from Streamlit navigation for a focused walkthrough view.
-
-Demo features:
-- **What-if sandbox** in sidebar adjusts feature inputs (hopelessness density, post volume, late-night ratio) and re-scores XGBoost live.
-- **Main-panel scenario impact strip** now shows baseline vs scenario probabilities and state labels for the selected week.
-- **Timeline scenario overlay** adds a dashed scenario probability trace (toggleable in sidebar).
-- **Scenario mode is exploratory only**; it is clearly labeled and should not be treated as an operational forecast.
-- **Context event markers** (exams/holidays/MH awareness month) appear on the timeline as dashed vertical lines.
-- **Subreddit live comparison** shows current state badge + 8-week sparkline per subreddit (auto-scales when more subreddits are added).
 
 ---
 
@@ -380,4 +350,4 @@ make test
 python -m pytest tests/ -v
 ```
 
-Unit tests cover collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard demo helpers, and text processing.
+Unit tests cover collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard state/ensemble helpers, demo_utils (scenario mapping tests), and text processing.

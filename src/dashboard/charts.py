@@ -1,22 +1,22 @@
 import plotly.graph_objects as go
 
 
-def build_sparkline(spark, badge_color: str) -> go.Figure:
+def build_sparkline(spark, line_color: str, *, height: int = 90) -> go.Figure:
     fig = go.Figure(
         go.Scatter(
             x=list(range(len(spark))),
             y=spark.values,
             mode="lines",
-            line=dict(color=badge_color, width=2),
+            line=dict(color=line_color, width=2.5),
             fill="tozeroy",
-            fillcolor="rgba(59,130,246,0.10)",
+            fillcolor="rgba(55,65,81,0.08)",
             hovertemplate="t-%{x}: %{y:.3f}<extra></extra>",
             showlegend=False,
         )
     )
     fig.update_layout(
-        margin=dict(l=8, r=8, t=8, b=8),
-        height=110,
+        margin=dict(l=0, r=0, t=4, b=0),
+        height=height,
         xaxis=dict(visible=False),
         yaxis=dict(visible=False),
         template="plotly_white",

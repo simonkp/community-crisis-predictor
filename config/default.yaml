@@ -96,20 +96,6 @@ evaluation:
   probability_threshold: 0.5
   monitoring_min_crisis_weeks: 10
 
-demo_mode:
-  enabled: true
-  what_if:
-    hopelessness_density_pct: 30
-    post_volume_pct: 50
-    late_night_ratio_pct: 20
-  events:
-    - label: "Academic exam period"
-      date: "2026-04-15"
-    - label: "Year-end holiday season"
-      date: "2025-12-20"
-    - label: "Mental Health Awareness Month (Oct)"
-      date: "2025-10-01"
-
 synthetic:
   n_weeks: 104
   posts_per_week_range: [80, 200]

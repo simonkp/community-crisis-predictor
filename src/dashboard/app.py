@@ -11,43 +11,19 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from src.core import ui_config as _ui_cfg
+
 from src.core.ui_config import (
     DASHBOARD_COPY,
     DECISION_USEFULNESS_COPY,
     STATE_COLORS,
     STATE_NAMES,
 )
-
-# Fallback if an older ui_config is on disk / bytecode cache is stale.
-DEMO_MODE_COPY = getattr(
-    _ui_cfg,
-    "DEMO_MODE_COPY",
-    {
-        "sidebar_header": "Live Demo Mode",
-        "section_label": "**Scenario Preview (STePS)**",
-        "section_caption": "Interactive preview mode for stakeholder walkthroughs (not production behavior).",
-        "about_expander_label": "What is live demo mode?",
-        "about_markdown": "See project README (STePS demo) for full behavior.",
-        "toggle_label": "Enable scenario preview (STePS)",
-        "toggle_help_short": "Enables sandbox, timeline markers, and comparison.",
-        "where_changes_label": "Where you will see changes: sidebar metrics + timeline overlay + comparison cards.",
-        "timeline_overlay_toggle_label": "Show scenario overlay on timeline",
-        "demo_active_subheader": "Scenario & overlays",
-        "scenario_header": "What-if sandbox",
-        "scenario_label": "Scenario mode - not a real prediction",
-        "scenario_probability_label": "Scenario high-distress probability",
-        "scenario_vs_baseline_header": "Scenario vs baseline",
-        "events_header": "Context events",
-        "comparison_header": "Subreddit live comparison",
-    },
-)
-from src.dashboard.demo_utils import (
-    DemoFeatureMap,
-    apply_scenario_adjustments,
-    event_in_range,
-    parse_demo_events,
-    resolve_demo_feature_map,
+from src.dashboard.briefs import _render_weekly_brief
+from src.dashboard.charts import build_shap_bar, build_sparkline
+from src.dashboard.components import (
+    render_drift_table,
+    render_model_metrics,
+    render_model_metrics_tiles,
 )
 from src.dashboard.data_access import (
     load_app_config,
@@ -57,16 +33,32 @@ from src.dashboard.data_access import (
     load_feature_df,
     load_pipeline_profile,
     load_shap,
-    load_transitions,
     load_weekly_completeness,
 )
-from src.dashboard.briefs import _render_weekly_brief
-from src.dashboard.state import clamp_week_idx, trim_to_length, pick_model_results, monitoring_mode
-from src.dashboard.charts import build_shap_bar, build_sparkline
-from src.dashboard.components import render_drift_table, render_model_metrics
-from src.labeling.target import CrisisLabeler
-from src.modeling.train_xgb import XGBCrisisModel
+from src.dashboard.state import clamp_week_idx, monitoring_mode, pick_model_results, trim_to_length
+from src.labeling.distress_score import compute_distress_score
 from src.narration.narrative_generator import week_key_from_row
+
+# ── Dashboard layout constants (issue #32) ─────────────────────────────
+SUBREDDIT_ROLES = {
+    "mentalhealth": "General discussion",
+    "anxiety": "Early warning signal",
+    "lonely": "Isolation indicator",
+    "depression": "Core signal",
+    "SuicideWatch": "Acute sentinel",
+}
+
+SUBREDDIT_ACCENT = {
+    "mentalhealth": "#1D9E75",
+    "anxiety": "#BA7517",
+    "lonely": "#D85A30",
+    "depression": "#A32D2D",
+    "SuicideWatch": "#534AB7",
+}
+
+MONITORING_MODE = {"lonely", "mentalhealth"}
+
+DASHBOARD_SUBORDER = ["mentalhealth", "anxiety", "lonely", "depression", "SuicideWatch"]
 
 # ── Page config ───────────────────────────────────────────────────────
 st.set_page_config(
@@ -75,53 +67,102 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title(DASHBOARD_COPY["title"])
-st.caption(DASHBOARD_COPY["caption"])
+
+def _format_week_label(value) -> str:
+    try:
+        dt = pd.to_datetime(value)
+        if pd.notna(dt):
+            return dt.strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    return str(value)[:10]
 
 
+def available_models_for_sub(sub_results: dict) -> list[str]:
+    out: list[str] = []
+    if sub_results.get("lstm"):
+        out.append("LSTM")
+    if sub_results.get("xgb"):
+        out.append("XGBoost")
+    if sub_results.get("lstm") and sub_results.get("xgb"):
+        out.append("Ensemble")
+    return out or ["LSTM"]
 
-@st.cache_resource
-def train_demo_xgb(sub: str, feature_df: pd.DataFrame, config: dict):
-    sub_df = feature_df[feature_df["subreddit"] == sub].copy()
-    sub_df = sub_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
-    if sub_df.empty:
-        return None, []
 
-    meta_cols = {"subreddit", "iso_year", "iso_week", "week_start"}
-    feature_columns = [c for c in sub_df.columns if c not in meta_cols]
-    from src.labeling.distress_score import compute_distress_score
+def resolve_model_results(sub_results: dict, preferred: str):
+    avail = available_models_for_sub(sub_results)
+    choice = preferred if preferred in avail else avail[0]
+    return pick_model_results(sub_results, choice), choice
 
-    distress_scores = compute_distress_score(sub_df)
-    labeling_cfg = config.get("labeling", {})
-    labeler = CrisisLabeler(
-        threshold_std=labeling_cfg.get("crisis_threshold_std", 1.5),
-        thresholds_std=labeling_cfg.get("crisis_thresholds_std", [0.5, 1.0, 2.0]),
+
+def _timeline_annotation_x(weeks_arr: np.ndarray) -> list[tuple[object, str, bool]]:
+    """(x, label, is_covid_highlight) for vertical reference lines."""
+    out: list[tuple[object, str, bool]] = []
+    covid_ts = pd.Timestamp("2020-03-16")
+    for w in weeks_arr:
+        dt = pd.to_datetime(w)
+        if pd.isna(dt):
+            continue
+        if dt >= covid_ts:
+            out.append((dt, "2020-03-16 — COVID-19 lockdowns begin", True))
+            break
+    for w in weeks_arr:
+        dt = pd.to_datetime(w)
+        if pd.isna(dt):
+            continue
+        if dt.year == 2019 and dt.month == 10:
+            out.append((dt, "2019-10 — Mental Health Awareness Month", False))
+            break
+    return out
+
+
+def _dt_plotly(x) -> object:
+    """Single x value for Plotly (avoids add_vline + annotation bugs on datetime axes)."""
+    if isinstance(x, (int, float, np.integer, np.floating)) and not isinstance(x, bool):
+        return float(x)
+    t = pd.Timestamp(x)
+    if pd.isna(t):
+        return x
+    return t.to_pydatetime()
+
+
+def _add_timeline_vline(
+    fig: go.Figure,
+    x,
+    *,
+    color: str,
+    width: int = 1,
+    dash: str = "dash",
+    annotation: str | None = None,
+    y_annotation: float = 1.02,
+) -> None:
+    """Vertical line via add_shape (add_vline annotations call numpy mean on datetimes and crash)."""
+    x0 = _dt_plotly(x)
+    fig.add_shape(
+        type="line",
+        x0=x0,
+        x1=x0,
+        y0=0,
+        y1=1,
+        yref="paper",
+        xref="x",
+        line=dict(color=color, width=width, dash=dash),
     )
-    labeler.fit(distress_scores)
-    labels = labeler.label(distress_scores)
-    valid = ~labels.isna()
-    if valid.sum() < 10:
-        return None, feature_columns
-    y = (labels[valid].astype(int) >= 2).astype(int)
-    if y.sum() < 2:
-        return None, feature_columns
-    X = sub_df.loc[valid, feature_columns]
-    model = XGBCrisisModel(config)
-    model.train(X, y, do_search=False)
-    return model, feature_columns
+    if annotation:
+        fig.add_annotation(
+            x=x0,
+            xref="x",
+            y=y_annotation,
+            yref="paper",
+            text=annotation,
+            showarrow=False,
+            yanchor="bottom",
+            font=dict(size=10),
+            xanchor="center",
+        )
 
-
-# ── Sidebar ───────────────────────────────────────────────────────────
-st.sidebar.header("Controls")
 
 app_config = load_app_config()
-demo_cfg = app_config.get("demo_mode", {})
-prob_threshold = float(app_config.get("evaluation", {}).get("probability_threshold", 0.5))
-
-# Demo toggle: single key `demo_enabled` (default from YAML once)
-if "demo_enabled" not in st.session_state:
-    st.session_state.demo_enabled = bool(demo_cfg.get("enabled", False))
-
 feature_df = load_feature_df()
 eval_results = load_eval_results()
 
@@ -136,24 +177,186 @@ available_subs = sorted(feature_df["subreddit"].unique().tolist())
 if not available_subs:
     st.error("No subreddits available in feature data. Run collection + feature pipeline first.")
     st.stop()
-subreddit = st.sidebar.selectbox("Subreddit", available_subs)
 
-available_models = []
-sub_results = eval_results.get(subreddit, {})
-if "lstm" in sub_results and sub_results["lstm"]:
-    available_models.append("LSTM")
-if "xgb" in sub_results and sub_results["xgb"]:
-    available_models.append("XGBoost")
-if not available_models:
-    available_models = ["LSTM"]
+visible_subs = [s for s in DASHBOARD_SUBORDER if s in available_subs]
+if not visible_subs:
+    st.error("None of the expected Zenodo subreddits are present in features. Check config reddit.subreddits.")
+    st.stop()
 
-model_choice = st.sidebar.selectbox("Model", available_models)
 
-# Get results for chosen model
-results = pick_model_results(sub_results, model_choice)
+def _n_weeks(sub: str) -> int:
+    return int(feature_df[feature_df["subreddit"] == sub].shape[0])
 
+
+n_weeks_max = max(_n_weeks(s) for s in visible_subs)
 monitoring_min_crisis_weeks = int(app_config.get("evaluation", {}).get("monitoring_min_crisis_weeks", 10))
-is_monitoring_mode, actual_crisis_weeks = monitoring_mode(results, monitoring_min_crisis_weeks)
+
+# ── Session state ─────────────────────────────────────────────────────
+if "selected_sub" not in st.session_state:
+    st.session_state.selected_sub = "depression" if "depression" in visible_subs else visible_subs[0]
+if st.session_state.selected_sub not in visible_subs:
+    st.session_state.selected_sub = visible_subs[0]
+
+if "current_week" not in st.session_state:
+    st.session_state.current_week = min(40, n_weeks_max - 1)
+if "week_idx" in st.session_state:
+    st.session_state.current_week = clamp_week_idx(int(st.session_state["week_idx"]), n_weeks_max)
+    del st.session_state["week_idx"]
+
+st.session_state.current_week = clamp_week_idx(int(st.session_state.current_week), n_weeks_max)
+
+_ref_sub = st.session_state.selected_sub
+if "selected_model" not in st.session_state:
+    _ma = available_models_for_sub(eval_results.get(_ref_sub, {}))
+    st.session_state.selected_model = "LSTM" if "LSTM" in _ma else _ma[0]
+
+# ── Header: title + week controls ───────────────────────────────────────
+hdr_l, hdr_r = st.columns([2, 1])
+with hdr_l:
+    st.title(DASHBOARD_COPY["title"])
+    st.caption(DASHBOARD_COPY["caption"])
+with hdr_r:
+    # Buttons must run before the slider: Streamlit forbids mutating a widget key after it is built.
+    nav_l, nav_r, slider_col = st.columns([0.11, 0.11, 0.78])
+    with nav_l:
+        if st.button(
+            "◀",
+            key="wk_back",
+            help="Previous week",
+            use_container_width=True,
+        ):
+            st.session_state.current_week = max(0, int(st.session_state.current_week) - 1)
+            st.rerun()
+        st.markdown(
+            "<div style='text-align:center;font-size:0.72rem;color:#94a3b8;margin-top:-0.35rem'>Previous</div>",
+            unsafe_allow_html=True,
+        )
+    with nav_r:
+        if st.button(
+            "▶",
+            key="wk_fwd",
+            help="Next week",
+            use_container_width=True,
+        ):
+            st.session_state.current_week = min(n_weeks_max - 1, int(st.session_state.current_week) + 1)
+            st.rerun()
+        st.markdown(
+            "<div style='text-align:center;font-size:0.72rem;color:#94a3b8;margin-top:-0.35rem'>Next</div>",
+            unsafe_allow_html=True,
+        )
+    with slider_col:
+        st.slider(
+            "Week",
+            0,
+            n_weeks_max - 1,
+            key="current_week",
+            label_visibility="collapsed",
+        )
+    _idx = int(st.session_state.current_week)
+    _ref_df = feature_df[feature_df["subreddit"] == visible_subs[0]].copy()
+    _ref_df = _ref_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
+    _wl = _ref_df["week_start"].values if "week_start" in _ref_df.columns and len(_ref_df) else np.arange(len(_ref_df))
+    _wi = min(_idx, len(_wl) - 1) if len(_wl) else 0
+    _lbl = _format_week_label(_wl[_wi]) if len(_wl) else "—"
+    st.caption(f"Replay week (calendar): {_lbl}")
+
+week_idx = int(st.session_state.current_week)
+subreddit = st.session_state.selected_sub
+
+# Model selector must run before community cards so cards + timeline stay in sync on the same run.
+sel_sub_results = eval_results.get(subreddit, {})
+models_avail = available_models_for_sub(sel_sub_results)
+if st.session_state.selected_model not in models_avail:
+    st.session_state.selected_model = models_avail[0]
+mod_a, mod_b = st.columns([0.12, 0.45])
+with mod_a:
+    st.markdown("**Model**")
+with mod_b:
+    st.selectbox(
+        "Model",
+        models_avail,
+        key="selected_model",
+        label_visibility="collapsed",
+    )
+model_choice = st.session_state.selected_model
+
+# ── Community cards ───────────────────────────────────────────────────
+card_cols = st.columns(len(visible_subs))
+for i, sub in enumerate(visible_subs):
+    with card_cols[i]:
+        sub_results = eval_results.get(sub, {})
+        results_i, _used_model = resolve_model_results(sub_results, model_choice)
+        is_mm, _n_crisis = monitoring_mode(results_i, monitoring_min_crisis_weeks)
+        use_trend_pill = sub in MONITORING_MODE and is_mm
+
+        sub_df_i = feature_df[feature_df["subreddit"] == sub].copy()
+        sub_df_i = sub_df_i.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
+        n_wi = len(sub_df_i)
+        wi_local = min(week_idx, n_wi - 1) if n_wi else 0
+
+        distress_i = compute_distress_score(sub_df_i) if n_wi else pd.Series(dtype=float)
+        per_w = (results_i or {}).get("per_week", {}) or {}
+        preds = np.array(per_w.get("predictions", []))
+        probs = np.array(per_w.get("probabilities", []))
+        preds = trim_to_length(preds, n_wi)
+        probs = trim_to_length(probs, n_wi)
+
+        accent = SUBREDDIT_ACCENT.get(sub, "#64748b")
+        role = SUBREDDIT_ROLES.get(sub, "")
+        sel = subreddit == sub
+        border = f"3px solid {accent}" if sel else "1px solid rgba(148,163,184,0.5)"
+        bg = f"{accent}18" if sel else "transparent"
+
+        st.markdown(
+            f"<div style='border:{border};border-radius:10px;padding:10px;background:{bg};'>"
+            f"<div style='font-weight:600;font-size:0.9rem'>r/{sub}</div>"
+            f"<div style='font-size:0.75rem;color:#64748b;margin-bottom:6px'>{role}</div></div>",
+            unsafe_allow_html=True,
+        )
+
+        if use_trend_pill:
+            status_html = (
+                "<div style='min-height:2.6em;line-height:1.35;color:#94a3b8;font-size:0.78rem'>"
+                "<b>Trend monitoring</b><br/>"
+                "<span style='opacity:0.9'>Insufficient crisis weeks for stable eval (&lt;10)</span>"
+                "</div>"
+            )
+        else:
+            cp = preds[wi_local] if len(preds) > wi_local and np.isfinite(preds[wi_local]) else np.nan
+            state_line = STATE_NAMES.get(int(cp), "—") if not np.isnan(cp) else "—"
+            status_html = (
+                f"<div style='min-height:2.6em;line-height:1.35;font-size:0.82rem'>{state_line}</div>"
+            )
+        st.markdown(status_html, unsafe_allow_html=True)
+
+        d_score = float(distress_i.iloc[wi_local]) if n_wi else 0.0
+        p_hi = float(probs[wi_local]) if len(probs) > wi_local and np.isfinite(probs[wi_local]) else float("nan")
+        p_line = f"{(p_hi * 100):.1f}%" if not np.isnan(p_hi) else "—"
+        st.markdown(
+            f"<div style='font-size:1.35rem;font-weight:600;color:{accent}'>{d_score:+.3f}</div>"
+            f"<div style='font-size:0.75rem;color:#64748b'>p(distress) {p_line}</div>",
+            unsafe_allow_html=True,
+        )
+
+        if n_wi:
+            start_sp = max(0, wi_local - 11)
+            spark = distress_i.iloc[start_sp : wi_local + 1]
+            if len(spark) > 0:
+                sp_fig = build_sparkline(spark, accent, height=72)
+                st.plotly_chart(sp_fig, width="stretch", config={"displayModeBar": False})
+
+        help_txt = (
+            "Insufficient crisis frequency for reliable prediction (<10 crisis weeks)."
+            if use_trend_pill
+            else f"Focus dashboard on r/{sub}"
+        )
+        if st.button(f"Select r/{sub}", key=f"sel_card_{sub}", use_container_width=True, type="primary" if sel else "secondary", help=help_txt):
+            st.session_state.selected_sub = sub
+            st.rerun()
+
+# ── Selected subreddit: evaluation + dataframe ────────────────────────
+sub_results = eval_results.get(subreddit, {})
+results, _used = resolve_model_results(sub_results, model_choice)
 
 if not isinstance(results, dict) or not results:
     st.warning(
@@ -169,7 +372,6 @@ if not isinstance(results, dict) or not results:
 per_week = results.get("per_week", {})
 predictions_all = np.array(per_week.get("predictions", []))
 probabilities_all = np.array(per_week.get("probabilities", []))
-actuals_all = np.array(per_week.get("actuals", []))
 
 if not per_week:
     st.warning(
@@ -182,13 +384,8 @@ if not per_week:
     )
     st.stop()
 
-if is_monitoring_mode:
-    st.warning(
-        f"Monitoring mode: r/{subreddit} has only {int(actual_crisis_weeks)} crisis weeks "
-        f"(threshold {monitoring_min_crisis_weeks}). Prediction badge is informational only."
-    )
+is_monitoring_mode, _actual_crisis_weeks = monitoring_mode(results, monitoring_min_crisis_weeks)
 
-# Filter sub data
 sub_df = feature_df[feature_df["subreddit"] == subreddit].copy()
 sub_df = sub_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
 n_weeks = len(sub_df)
@@ -198,449 +395,172 @@ if n_weeks == 0:
     st.warning(f"No feature rows found for r/{subreddit}. Re-run features/training for this subreddit.")
     st.stop()
 
-# Align arrays to sub_df length
+week_idx_plot = min(week_idx, n_weeks - 1)
+
 predictions_all = trim_to_length(predictions_all, n_weeks)
 probabilities_all = trim_to_length(probabilities_all, n_weeks)
-actuals_all = trim_to_length(actuals_all, n_weeks)
-
-# Week slider
-st.sidebar.markdown("---")
-st.sidebar.subheader("Live Replay")
-
-if "week_idx" not in st.session_state:
-    st.session_state["week_idx"] = min(40, n_weeks - 1)
-else:
-    # Clamp stale slider state when subreddit/data size changes.
-    st.session_state["week_idx"] = clamp_week_idx(st.session_state["week_idx"], n_weeks)
-
-week_idx = st.sidebar.slider("Current Week", 0, n_weeks - 1, st.session_state["week_idx"])
-st.session_state["week_idx"] = week_idx
-
-col_btn1, col_btn2 = st.sidebar.columns(2)
-if col_btn1.button("◀ Back"):
-    week_idx = max(0, week_idx - 1)
-    st.session_state["week_idx"] = week_idx
-    st.rerun()
-if col_btn2.button("▶ Advance"):
-    week_idx = min(n_weeks - 1, week_idx + 1)
-    st.session_state["week_idx"] = week_idx
-    st.rerun()
-
-# ── Compute distress score ────────────────────────────────────────────
-from src.labeling.distress_score import compute_distress_score  # noqa: E402
 
 distress_scores = compute_distress_score(sub_df)
 
-# ── Sidebar: weekly brief (generated by run_evaluate) ───────────────────
-_brief_week_key = week_key_from_row(sub_df.iloc[week_idx])
-_reports_root = Path(app_config["paths"]["reports"])
-_brief_path = _reports_root / subreddit / "weekly_briefs" / f"{_brief_week_key}.txt"
-if not _brief_path.exists():
-    _brief_path = _reports_root / f"{subreddit}_weekly_brief_{_brief_week_key}.txt"
-st.sidebar.markdown("---")
-st.sidebar.subheader(DASHBOARD_COPY["weekly_brief_header"])
-
-
-if _brief_path.exists():
-    _brief_text = _brief_path.read_text(encoding="utf-8").strip()
-    _render_weekly_brief(_brief_text, _brief_week_key)
-else:
-    st.sidebar.caption(DASHBOARD_COPY["weekly_brief_missing"])
-
-st.sidebar.markdown("---")
-st.sidebar.markdown(DEMO_MODE_COPY["section_label"])
-st.sidebar.caption(DEMO_MODE_COPY.get("section_caption", ""))
-_about = DEMO_MODE_COPY.get("about_markdown", "").strip()
-if _about:
-    with st.sidebar.expander(DEMO_MODE_COPY.get("about_expander_label", "About"), expanded=False):
-        st.markdown(_about)
-demo_enabled = st.sidebar.checkbox(
-    DEMO_MODE_COPY.get("toggle_label", "Enable demo tools"),
-    key="demo_enabled",
-    help=DEMO_MODE_COPY.get("toggle_help_short", ""),
-)
-
-# ── Row 1: Current state badge ────────────────────────────────────────
-st.markdown(DASHBOARD_COPY["current_state_header"])
-
-current_pred = predictions_all[week_idx]
-current_prob = probabilities_all[week_idx]
-current_distress = float(distress_scores.iloc[week_idx])
 theme_base = st.get_option("theme.base") or "light"
 is_dark = theme_base == "dark"
 
-def _format_week_label(value) -> str:
-    try:
-        dt = pd.to_datetime(value)
-        if pd.notna(dt):
-            return dt.strftime("%Y-%m-%d")
-    except Exception:
-        pass
-    return str(value)[:10]
+week_label = _format_week_label(weeks[week_idx_plot]) if week_idx_plot < len(weeks) else "-"
 
+# ── Main row: timeline + brief / metrics ──────────────────────────────
+main_l, main_r = st.columns([0.65, 0.35])
 
-def _last_predicted_state_for_sub(sub_name: str) -> int:
-    sub_eval = eval_results.get(sub_name, {})
-    if "lstm" in sub_eval or "xgb" in sub_eval:
-        sub_res = sub_eval.get("lstm") or sub_eval.get("xgb", {})
+with main_l:
+    st.markdown("##### Distress timeline")
+    accent_sel = SUBREDDIT_ACCENT.get(subreddit, "#378ADD")
+    _w_slice = weeks[: week_idx_plot + 1]
+    if "week_start" in sub_df.columns:
+        x_hist = pd.to_datetime(_w_slice)
     else:
-        sub_res = sub_eval
-    sub_pred = np.array((sub_res.get("per_week", {}) or {}).get("predictions", []))
-    sub_df_cmp = feature_df[feature_df["subreddit"] == sub_name].copy()
-    sub_df_cmp = sub_df_cmp.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
-    if len(sub_pred) < len(sub_df_cmp):
-        sub_pred = np.concatenate([sub_pred, np.full(len(sub_df_cmp) - len(sub_pred), np.nan)])
-    return int(sub_pred[-1]) if len(sub_pred) and not np.isnan(sub_pred[-1]) else 0
+        x_hist = np.asarray(_w_slice, dtype=float)
+    y_hist = distress_scores.values[: week_idx_plot + 1]
 
-
-week_label = _format_week_label(weeks[week_idx]) if week_idx < len(weeks) else "-"
-
-scenario_prob = None
-baseline_prob = None
-delta_prob = None
-scenario_label = None
-baseline_label = None
-hop_delta = 0.0
-vol_delta = 0.0
-late_delta = 0.0
-show_scenario_overlay = False
-
-# ── Demo mode: what-if sandbox ────────────────────────────────────────
-if demo_enabled:
-    st.sidebar.markdown("---")
-    st.sidebar.subheader(DEMO_MODE_COPY.get("demo_active_subheader", DEMO_MODE_COPY["sidebar_header"]))
-    st.sidebar.caption(DEMO_MODE_COPY["scenario_label"])
-    st.sidebar.info(DEMO_MODE_COPY.get("where_changes_label", ""))
-    st.sidebar.markdown(f"**{DEMO_MODE_COPY['scenario_header']}**")
-    what_if_cfg = demo_cfg.get("what_if", {})
-    hop_limit = int(what_if_cfg.get("hopelessness_density_pct", 30))
-    vol_limit = int(what_if_cfg.get("post_volume_pct", 50))
-    late_limit = int(what_if_cfg.get("late_night_ratio_pct", 20))
-
-    hop_delta = st.sidebar.slider("Hopelessness density (%)", -hop_limit, hop_limit, 0, 1)
-    vol_delta = st.sidebar.slider("Post volume (%)", -vol_limit, vol_limit, 0, 1)
-    late_delta = st.sidebar.slider("Late-night ratio (%)", -late_limit, late_limit, 0, 1)
-    show_scenario_overlay = st.sidebar.checkbox(
-        DEMO_MODE_COPY.get("timeline_overlay_toggle_label", "Show scenario overlay on timeline"),
-        value=True,
+    fig = go.Figure()
+    fig.add_trace(
+        go.Scatter(
+            x=x_hist,
+            y=y_hist,
+            mode="lines",
+            name=DASHBOARD_COPY["timeline_distress_label"],
+            line=dict(color=accent_sel, width=2),
+        )
     )
 
-    feature_map: DemoFeatureMap = resolve_demo_feature_map(list(sub_df.columns))
-    if not any([feature_map.hopelessness_feature, feature_map.post_volume_feature, feature_map.late_night_feature]):
-        st.sidebar.warning("Scenario inputs unavailable: required feature columns not found.")
-    else:
-        demo_model, demo_feature_columns = train_demo_xgb(subreddit, feature_df, app_config)
-        if demo_model is None or not demo_feature_columns:
-            st.sidebar.warning("Scenario model unavailable for this subreddit (insufficient training rows).")
+    marker_colors_list = []
+    for i in range(week_idx_plot + 1):
+        p = predictions_all[i]
+        if not np.isnan(p):
+            marker_colors_list.append(STATE_COLORS.get(int(p), "#95a5a6"))
         else:
-            row_features = sub_df.iloc[week_idx][demo_feature_columns]
-            scenario_features = apply_scenario_adjustments(
-                row_features,
-                feature_map,
-                hopelessness_pct=float(hop_delta),
-                post_volume_pct=float(vol_delta),
-                late_night_pct=float(late_delta),
+            marker_colors_list.append("#bdc3c7")
+
+    fig.add_trace(
+        go.Scatter(
+            x=x_hist,
+            y=y_hist,
+            mode="markers",
+            name=DASHBOARD_COPY["timeline_predicted_state_label"],
+            marker=dict(color=marker_colors_list, size=9),
+            hovertemplate="%{x}<br>Distress: %{y:.3f}<extra></extra>",
+        )
+    )
+
+    probs_up_to = probabilities_all[: week_idx_plot + 1]
+    valid_prob = ~np.isnan(probs_up_to)
+    if valid_prob.any():
+        fig.add_trace(
+            go.Scatter(
+                x=x_hist[valid_prob],
+                y=probs_up_to[valid_prob],
+                mode="lines",
+                name=DASHBOARD_COPY["timeline_probability_label"],
+                line=dict(color="#7c3aed", width=1, dash="dot"),
+                yaxis="y2",
+                opacity=0.65,
             )
-            scenario_df = pd.DataFrame([scenario_features], columns=demo_feature_columns)
-            scenario_prob = float(demo_model.predict_proba(scenario_df)[0])
-            baseline_prob = float(current_prob) if not np.isnan(current_prob) else float(demo_model.predict_proba(pd.DataFrame([row_features], columns=demo_feature_columns))[0])
-            delta_prob = scenario_prob - baseline_prob
-            baseline_label = "High-distress alert" if baseline_prob >= prob_threshold else "No high-distress alert"
-            scenario_label = "High-distress alert" if scenario_prob >= prob_threshold else "No high-distress alert"
+        )
 
-            st.sidebar.markdown(f"**{DEMO_MODE_COPY['scenario_vs_baseline_header']}**")
-            st.sidebar.metric("Baseline probability", f"{baseline_prob:.1%}")
-            st.sidebar.metric(DEMO_MODE_COPY["scenario_probability_label"], f"{scenario_prob:.1%}", delta=f"{delta_prob:+.1%}")
-            st.sidebar.caption(f"Baseline: {baseline_label} -> Scenario: {scenario_label}")
+    cur_x = weeks[week_idx_plot] if week_idx_plot < len(weeks) else None
+    if cur_x is not None:
+        _add_timeline_vline(
+            fig,
+            cur_x,
+            color="rgba(100,116,139,0.9)",
+            width=1,
+            annotation="Current week",
+            y_annotation=1.02,
+        )
 
-if not np.isnan(current_pred):
-    state = int(current_pred)
-    state_name = STATE_NAMES.get(state, "Unknown")
-    if is_dark:
-        dark_badge_style = {
-            0: {"bg": "#153528", "border": "#4ade80", "label": "#d9ffe9", "value": "#86efac"},
-            1: {"bg": "#3a2f14", "border": "#facc15", "label": "#fff6d5", "value": "#fde68a"},
-            2: {"bg": "#4a2a11", "border": "#fb923c", "label": "#ffedd8", "value": "#fdba74"},
-            3: {"bg": "#4a1d22", "border": "#f87171", "label": "#ffe3e6", "value": "#fca5a5"},
-        }
-        badge_style = dark_badge_style.get(
-            state, {"bg": "#1f2937", "border": "#9ca3af", "label": "#e5e7eb", "value": "#f3f4f6"}
+    for i, (ax, lab, is_cov) in enumerate(_timeline_annotation_x(weeks)):
+        _add_timeline_vline(
+            fig,
+            ax,
+            color="#dc2626" if is_cov else "rgba(100,116,139,0.55)",
+            width=2 if is_cov else 1,
+            annotation=lab,
+            y_annotation=1.07 + i * 0.06,
+        )
+
+    fig.update_layout(
+        xaxis_title="Week",
+        yaxis_title="Distress score",
+        yaxis2=dict(
+            title=DASHBOARD_COPY["timeline_probability_axis_label"],
+            overlaying="y",
+            side="right",
+            range=[0, 1],
+        ),
+        hovermode="x unified",
+        template="plotly_white" if not is_dark else "plotly_dark",
+        height=400,
+        legend=dict(orientation="h", yanchor="bottom", y=1.02),
+    )
+    st.plotly_chart(fig, width="stretch")
+
+with main_r:
+    st.markdown("##### Weekly snapshot")
+    _brief_week_key = week_key_from_row(sub_df.iloc[week_idx_plot])
+    _reports_root = Path(app_config["paths"]["reports"])
+    _brief_path = _reports_root / subreddit / "weekly_briefs" / f"{_brief_week_key}.txt"
+    if not _brief_path.exists():
+        _brief_path = _reports_root / f"{subreddit}_weekly_brief_{_brief_week_key}.txt"
+
+    if _brief_path.exists():
+        _brief_text = _brief_path.read_text(encoding="utf-8").strip()
+        _render_weekly_brief(_brief_text, _brief_week_key, in_sidebar=False)
+    else:
+        st.caption(DASHBOARD_COPY["weekly_brief_missing"])
+
+    st.markdown("##### Model performance")
+    st.caption("Walk-forward CV (metrics from eval_results.json)")
+    if is_monitoring_mode:
+        st.info(
+            "Prediction disabled — fewer than 10 crisis weeks in dataset.",
         )
     else:
-        light_badge_style = {
-            0: {"bg": "#e6f7ee", "border": "#22c55e", "label": "#14532d", "value": "#15803d"},
-            1: {"bg": "#fff8db", "border": "#eab308", "label": "#713f12", "value": "#a16207"},
-            2: {"bg": "#ffecd8", "border": "#f97316", "label": "#7c2d12", "value": "#c2410c"},
-            3: {"bg": "#ffe5e5", "border": "#ef4444", "label": "#7f1d1d", "value": "#b91c1c"},
-        }
-        badge_style = light_badge_style.get(
-            state, {"bg": "#f3f4f6", "border": "#9ca3af", "label": "#374151", "value": "#111827"}
-        )
-else:
-    state_name = "No prediction yet"
-    badge_style = {
-        "bg": "#1f2937" if is_dark else "#f3f4f6",
-        "border": "#9ca3af",
-        "label": "#e5e7eb" if is_dark else "#374151",
-        "value": "#f3f4f6" if is_dark else "#111827",
-    }
-
-if is_monitoring_mode:
-    state_name = f"{state_name} (Monitoring mode)"
-    badge_style = {
-        "bg": "#374151" if is_dark else "#f3f4f6",
-        "border": "#9ca3af",
-        "label": "#e5e7eb" if is_dark else "#374151",
-        "value": "#f3f4f6" if is_dark else "#111827",
-    }
-
-col1, col2, col3, col4 = st.columns(4)
-col1.markdown(
-    f"""
-    <div style="background:{badge_style['bg']};border-left:6px solid {badge_style['border']};
-    padding:12px 16px;border-radius:6px;">
-    <b style="font-size:1.1em;color:{badge_style['label']};">{DASHBOARD_COPY["state_badge_label"]}</b><br>
-    <span style="font-size:1.6em;color:{badge_style['value']};font-weight:bold">{state_name}</span>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-col2.metric(DASHBOARD_COPY["probability_metric_label"], f"{current_prob:.1%}" if not np.isnan(current_prob) else "—")
-col3.metric("Distress Score", f"{current_distress:.3f}")
-col4.metric("Week", week_label)
-
-if demo_enabled and scenario_prob is not None and baseline_prob is not None and delta_prob is not None:
-    st.markdown("### Scenario Impact Preview")
-    p1, p2, p3, p4 = st.columns(4)
-    p1.metric("Baseline probability", f"{baseline_prob:.1%}")
-    p2.metric("Scenario probability", f"{scenario_prob:.1%}", delta=f"{delta_prob:+.1%}")
-    p3.metric("Baseline state", baseline_label or "—")
-    p4.metric("Scenario state", scenario_label or "—")
-    st.caption(
-        f"Active scenario input: hopelessness {hop_delta:+.0f}%, "
-        f"post volume {vol_delta:+.0f}%, late-night ratio {late_delta:+.0f}%."
-    )
+        render_model_metrics_tiles(results)
 
 st.markdown("---")
 
-# ── Row 2: Timeline ───────────────────────────────────────────────────
-st.markdown(DASHBOARD_COPY["timeline_header"])
+# ── Bottom tabs ───────────────────────────────────────────────────────
+tab_drift, tab_shap, tab_dq = st.tabs(["Drift alerts", "Feature importance", "Data quality"])
 
-is_multiclass = bool(np.nanmax(predictions_all) > 1) if (~np.isnan(predictions_all)).any() else False
-fig = go.Figure()
-
-# Show history up to current week
-x_hist = weeks[: week_idx + 1]
-y_hist = distress_scores.values[: week_idx + 1]
-
-fig.add_trace(
-    go.Scatter(
-        x=x_hist,
-        y=y_hist,
-        mode="lines",
-        name=DASHBOARD_COPY["timeline_distress_label"],
-        line=dict(color="steelblue", width=2),
-    )
-)
-
-# State-colored markers for predictions up to current week
-marker_colors_list = []
-for i in range(week_idx + 1):
-    p = predictions_all[i]
-    if not np.isnan(p):
-        marker_colors_list.append(STATE_COLORS.get(int(p), "#95a5a6"))
+with tab_drift:
+    st.markdown("##### Drift alerts (up to current week)")
+    drift_df = load_drift(subreddit)
+    if drift_df is not None and not drift_df.empty:
+        drift_up = drift_df.iloc[: week_idx_plot + 1].copy()
+        alert_cols = [c for c in drift_df.columns if not c.startswith("z_")]
+        display_drift = drift_up[alert_cols].copy()
+        render_drift_table(display_drift)
     else:
-        marker_colors_list.append("#bdc3c7")
+        st.info("No drift data found. Run `make evaluate` to generate.")
 
-fig.add_trace(
-    go.Scatter(
-        x=x_hist,
-        y=y_hist,
-        mode="markers",
-        name=DASHBOARD_COPY["timeline_predicted_state_label"],
-        marker=dict(color=marker_colors_list, size=8),
-        hovertemplate="%{x}<br>Distress: %{y:.3f}<extra></extra>",
-    )
-)
+with tab_shap:
+    st.markdown("##### Feature importance (SHAP — top 15)")
+    shap_df = load_shap(subreddit)
+    if shap_df is not None:
+        top15 = shap_df.head(15).sort_values("mean_abs_shap", ascending=True)
+        fig_shap = build_shap_bar(top15)
+        st.plotly_chart(fig_shap, width="stretch")
+    else:
+        st.info("No SHAP data found. Run `make evaluate` to generate.")
 
-# Crisis probability on secondary axis
-probs_up_to = probabilities_all[: week_idx + 1]
-valid_prob = ~np.isnan(probs_up_to)
-if valid_prob.any():
-    fig.add_trace(
-        go.Scatter(
-            x=x_hist[valid_prob],
-            y=probs_up_to[valid_prob],
-            mode="lines",
-            name=DASHBOARD_COPY["timeline_probability_label"],
-            line=dict(color="purple", width=1, dash="dot"),
-            yaxis="y2",
-            opacity=0.6,
-        )
-    )
-
-if demo_enabled and show_scenario_overlay and not sub_df.empty:
-    feature_map = resolve_demo_feature_map(list(sub_df.columns))
-    demo_model, demo_feature_columns = train_demo_xgb(subreddit, feature_df, app_config)
-    if (
-        demo_model is not None
-        and demo_feature_columns
-        and any([feature_map.hopelessness_feature, feature_map.post_volume_feature, feature_map.late_night_feature])
-    ):
-        scenario_prob_series: list[float] = []
-        for idx in range(week_idx + 1):
-            base_row = sub_df.iloc[idx][demo_feature_columns]
-            adjusted = apply_scenario_adjustments(
-                base_row,
-                feature_map,
-                hopelessness_pct=float(hop_delta),
-                post_volume_pct=float(vol_delta),
-                late_night_pct=float(late_delta),
-            )
-            scenario_df = pd.DataFrame([adjusted], columns=demo_feature_columns)
-            scenario_prob_series.append(float(demo_model.predict_proba(scenario_df)[0]))
-        fig.add_trace(
-            go.Scatter(
-                x=x_hist,
-                y=np.array(scenario_prob_series),
-                mode="lines",
-                name="Scenario probability",
-                line=dict(color="#ef4444", width=2, dash="dash"),
-                yaxis="y2",
-                opacity=0.9,
-            )
-        )
-
-if demo_enabled:
-    for event_dt, event_label in parse_demo_events(demo_cfg.get("events", [])):
-        if not event_in_range(event_dt, x_hist):
-            continue
-        fig.add_vline(x=event_dt, line_width=1, line_dash="dash", line_color="#6366f1")
-        fig.add_trace(
-            go.Scatter(
-                x=[event_dt],
-                y=[float(np.nanmax(y_hist)) if len(y_hist) else 0.0],
-                mode="markers",
-                marker=dict(size=10, opacity=0.0),
-                name=event_label,
-                hovertemplate=f"{event_label}<br>%{{x}}<extra></extra>",
-                showlegend=False,
-            )
-        )
-
-fig.update_layout(
-    xaxis_title="Week",
-    yaxis_title="Distress Score",
-    yaxis2=dict(title=DASHBOARD_COPY["timeline_probability_axis_label"], overlaying="y", side="right", range=[0, 1]),
-    hovermode="x unified",
-    template="plotly_white",
-    height=380,
-    legend=dict(orientation="h", yanchor="bottom", y=1.02),
-)
-st.plotly_chart(fig, width="stretch")
-
-# ── Demo mode: side-by-side subreddit comparison ──────────────────────
-if demo_enabled:
-    st.markdown(DEMO_MODE_COPY["comparison_header"])
-    all_subs = sorted(
-        feature_df["subreddit"].unique().tolist(),
-        key=lambda s: (-_last_predicted_state_for_sub(s), s),
-    )
-    cols = st.columns(3)
-    for idx, sub_name in enumerate(all_subs):
-        col = cols[idx % 3]
-        sub_eval = eval_results.get(sub_name, {})
-        if "lstm" in sub_eval or "xgb" in sub_eval:
-            sub_res = sub_eval.get("lstm") or sub_eval.get("xgb", {})
-        else:
-            sub_res = sub_eval
-        sub_pred = np.array((sub_res.get("per_week", {}) or {}).get("predictions", []))
-        sub_df_cmp = feature_df[feature_df["subreddit"] == sub_name].copy()
-        sub_df_cmp = sub_df_cmp.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
-        sub_scores = compute_distress_score(sub_df_cmp)
-        if len(sub_pred) < len(sub_df_cmp):
-            sub_pred = np.concatenate([sub_pred, np.full(len(sub_df_cmp) - len(sub_pred), np.nan)])
-        sub_state = int(sub_pred[-1]) if len(sub_pred) and not np.isnan(sub_pred[-1]) else 0
-        sub_state_name = STATE_NAMES.get(sub_state, "Unknown")
-        sub_actual_crisis = sub_res.get("n_crisis_actual", None) if isinstance(sub_res, dict) else None
-        sub_monitoring = (
-            isinstance(sub_actual_crisis, (int, float))
-            and sub_actual_crisis < monitoring_min_crisis_weeks
-        )
-        badge_color = STATE_COLORS.get(sub_state, "#95a5a6")
-        if sub_monitoring:
-            sub_state_name = "Monitoring mode"
-            badge_color = "#9ca3af"
-
-        with col:
-            st.markdown(
-                f"<div style='border-left:5px solid {badge_color};padding:8px 10px;border-radius:8px;background:rgba(148,163,184,0.12)'>"
-                f"<b>r/{sub_name}</b><br><span style='color:{badge_color};font-weight:700'>{sub_state_name}</span></div>",
-                unsafe_allow_html=True,
-            )
-            spark = sub_scores.tail(8).reset_index(drop=True)
-            spark_fig = build_sparkline(spark, badge_color)
-            st.plotly_chart(spark_fig, width="stretch")
-
-# ── Row 3: Drift alert table ──────────────────────────────────────────
-st.markdown("### Drift Alerts (up to current week)")
-
-drift_df = load_drift(subreddit)
-if drift_df is not None and not drift_df.empty:
-    drift_up = drift_df.iloc[: week_idx + 1].copy()
-    alert_cols = [c for c in drift_df.columns if not c.startswith("z_")]
-    display_drift = drift_up[alert_cols].copy()
-    render_drift_table(display_drift)
-else:
-    st.info("No drift data found. Run `make evaluate` to generate.")
-
-# ── Row 4: Feature importance ─────────────────────────────────────────
-st.markdown("### Feature Importance (SHAP — top 15)")
-
-shap_df = load_shap(subreddit)
-if shap_df is not None:
-    top15 = shap_df.head(15).sort_values("mean_abs_shap", ascending=True)
-    fig_shap = build_shap_bar(top15)
-    st.plotly_chart(fig_shap, width="stretch")
-else:
-    st.info("No SHAP data found. Run `make evaluate` to generate.")
-
-# ── Row 5: Recent state transitions ───────────────────────────────────
-st.markdown(DASHBOARD_COPY["recent_transitions_header"])
-
-transitions = load_transitions(n=20)
-if transitions:
-    rows = []
-    for t in transitions:
-        from_name = STATE_NAMES.get(t["from_state"], str(t["from_state"]))
-        to_name = STATE_NAMES.get(t["to_state"], str(t["to_state"]))
-        rows.append(
-            {
-                "Timestamp": t["timestamp"][:19],
-                "Subreddit": t["subreddit"],
-                "Week": t["week_start"],
-                "Transition": f"{from_name} -> {to_name}",
-                "Distress": f"{t['distress_score']:.3f}",
-                "Top Signal": t["dominant_signal"],
-            }
-        )
-    st.dataframe(pd.DataFrame(rows), width="stretch")
-else:
-    st.info(
-        "No escalations logged yet. Run the full pipeline to populate alerts.db."
-    )
-
-# ── Row 6: Data quality & reliability ──────────────────────────────────
-with st.expander("Data Quality & Reliability", expanded=False):
+with tab_dq:
     dq_report = load_data_quality_report(subreddit)
     dq_weekly = load_weekly_completeness(subreddit)
     pipeline_profile = load_pipeline_profile()
 
     if dq_report:
         c1, c2, c3 = st.columns(3)
-        c1.metric("Missing Weeks", dq_report.get("missing_week_count", 0))
-        c2.metric("Gap Weeks (<50%)", dq_report.get("gap_weeks_below_50pct", 0))
-        c3.metric("Avg Completeness", f"{dq_report.get('avg_completeness_score', 0.0):.2f}")
+        c1.metric("Total weeks", dq_report.get("total_weeks_observed", "—"))
+        c2.metric("Gap weeks (<50%)", dq_report.get("gap_weeks_below_50pct", 0))
+        c3.metric("Avg completeness", f"{dq_report.get('avg_completeness_score', 0.0):.2f}")
         if dq_report.get("missing_weeks"):
             st.caption(f"Missing weeks sample: {', '.join(dq_report['missing_weeks'][:8])}")
     else:
@@ -654,20 +574,20 @@ with st.expander("Data Quality & Reliability", expanded=False):
                 marker_color=[
                     "#e74c3c" if bool(v) else "#2ecc71" for v in dq_weekly["is_gap"].tolist()
                 ],
-                name="Completeness Score",
+                name="Completeness score",
             )
         )
         fig_c.update_layout(
-            title="Weekly Completeness Score (red = flagged gap)",
+            title="Weekly completeness score (red = flagged gap)",
             xaxis_title="Week",
-            yaxis_title="Completeness Score",
+            yaxis_title="Completeness score",
             template="plotly_white",
             height=280,
         )
-        st.plotly_chart(fig_c, use_container_width=True)
+        st.plotly_chart(fig_c, width="stretch")
 
     if pipeline_profile:
-        st.markdown("**Pipeline Stage Timing**")
+        st.markdown("**Pipeline stage timing**")
         flat_rows = []
         for entry in pipeline_profile:
             if "steps" in entry and isinstance(entry["steps"], list):
@@ -690,29 +610,28 @@ with st.expander("Data Quality & Reliability", expanded=False):
                     )
             else:
                 flat_rows.append(entry)
-        st.dataframe(pd.DataFrame(flat_rows), use_container_width=True, height=220)
+        st.dataframe(pd.DataFrame(flat_rows), width="stretch", height=220)
 
     fold_diag = results.get("fold_diagnostics", [])
     if fold_diag:
-        st.markdown("**Fold Diagnostics**")
-        st.dataframe(pd.DataFrame(fold_diag), use_container_width=True, height=180)
+        st.markdown("**Fold diagnostics**")
+        st.dataframe(pd.DataFrame(fold_diag), width="stretch", height=180)
+
+    with st.expander("Full model metrics & decision usefulness", expanded=False):
+        render_model_metrics(results, STATE_NAMES, DECISION_USEFULNESS_COPY)
 
     lead = results.get("detection_lead_time_distribution", {})
     lead_dist = lead.get("distribution", []) if isinstance(lead, dict) else []
     if lead_dist:
         fig_l = go.Figure(go.Histogram(x=lead_dist, nbinsx=10, marker_color="#3498db"))
         fig_l.update_layout(
-            title="Detection Lead Time Distribution (weeks)",
+            title="Detection lead time distribution (weeks)",
             xaxis_title="Lead time (weeks)",
             yaxis_title="Count",
             template="plotly_white",
             height=260,
         )
-        st.plotly_chart(fig_l, use_container_width=True)
+        st.plotly_chart(fig_l, width="stretch")
         st.caption(
             f"p50={lead.get('p50', 0):.2f}, p75={lead.get('p75', 0):.2f}, p90={lead.get('p90', 0):.2f}"
         )
-
-# ── Metrics panel ─────────────────────────────────────────────────────
-with st.expander("Model Metrics", expanded=False):
-    render_model_metrics(results, STATE_NAMES, DECISION_USEFULNESS_COPY)

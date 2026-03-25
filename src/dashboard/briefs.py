@@ -36,7 +36,7 @@ def _pick_brief_palette(text: str, is_dark_mode: bool) -> dict[str, str]:
     }
 
 
-def _render_weekly_brief(raw_text: str, week_key: str):
+def _render_weekly_brief(raw_text: str, week_key: str, *, in_sidebar: bool = True):
     theme_base_local = st.get_option("theme.base") or "light"
     is_dark_mode = theme_base_local == "dark"
     palette = _pick_brief_palette(raw_text, is_dark_mode)
@@ -83,5 +83,6 @@ def _render_weekly_brief(raw_text: str, week_key: str):
     </div>
     """
 
-    st.sidebar.markdown(brief_html, unsafe_allow_html=True)
+    target = st.sidebar if in_sidebar else st
+    target.markdown(brief_html, unsafe_allow_html=True)
 
