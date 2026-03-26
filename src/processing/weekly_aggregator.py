@@ -7,6 +7,8 @@ class WeeklyAggregator:
 
     def aggregate(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
+        if "subreddit" in df.columns:
+            df["subreddit"] = df["subreddit"].astype(str).str.strip().str.lower()
 
         # Normalize datetime.
         # If mixed sources produced partial `created_utc_dt` (e.g., Zenodo has it, Arctic Shift doesn't),

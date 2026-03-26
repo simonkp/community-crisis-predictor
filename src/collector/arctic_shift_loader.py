@@ -15,7 +15,7 @@ def parse_arctic_shift_filename(path: str | Path) -> str | None:
     m = _FILENAME_RE.match(Path(path).name)
     if not m:
         return None
-    return m.group("subreddit")
+    return m.group("subreddit").lower()
 
 
 class ArcticShiftLoader:
@@ -58,8 +58,9 @@ class ArcticShiftLoader:
                     stats["skipped_body"] += 1
                     continue
 
-                sub = str(rec.get("subreddit", "")).strip()
-                if subreddit and sub.lower() != subreddit.lower():
+                # Reddit JSON uses inconsistent casing; pipeline + Zenodo use lowercase slugs.
+                sub = str(rec.get("subreddit", "")).strip().lower()
+                if subreddit and sub != subreddit.lower():
                     stats["skipped_subreddit"] += 1
                     continue
 

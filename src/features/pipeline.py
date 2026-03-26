@@ -13,7 +13,9 @@ class FeaturePipeline:
     def __init__(self, config: dict):
         self.config = config
         feat_cfg = config.get("features", {})
-        self.sentiment_bins = feat_cfg.get("sentiment", {}).get("bins")
+        sent_cfg = feat_cfg.get("sentiment", {})
+        self.sentiment_bins = sent_cfg.get("bins")
+        self.sentiment_parallel_workers = sent_cfg.get("parallel_workers", 0)
         self.rolling_windows = feat_cfg.get("temporal", {}).get("rolling_windows", [2, 4])
 
         topic_cfg = feat_cfg.get("topics", {})
@@ -32,7 +34,11 @@ class FeaturePipeline:
         linguistic = extract_linguistic_features(weekly_df)
 
         print("  Extracting sentiment features...")
-        sentiment = extract_sentiment_features(weekly_df, bins=self.sentiment_bins)
+        sentiment = extract_sentiment_features(
+            weekly_df,
+            bins=self.sentiment_bins,
+            parallel_workers=self.sentiment_parallel_workers,
+        )
 
         print("  Extracting distress features...")
         distress = self.distress_scorer.extract_distress_features(weekly_df)

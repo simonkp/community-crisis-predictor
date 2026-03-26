@@ -57,6 +57,8 @@ processing:
 features:
   sentiment:
     analyzer: "vader"
+    # 0 = auto (min(8, CPU count)), 1 = single-process (legacy), N = up to N processes
+    parallel_workers: 0
     bins:
       very_negative: -0.5
       negative: -0.05
