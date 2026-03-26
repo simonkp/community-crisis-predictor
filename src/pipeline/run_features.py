@@ -146,7 +146,8 @@ def _append_profile(config: dict, entry: dict) -> None:
 def _counts_by_subreddit(df) -> pd.Series:
     if "subreddit" not in df.columns or df.empty:
         return pd.Series(dtype=int)
-    return df.groupby("subreddit").size()
+    keys = df["subreddit"].astype(str).str.strip().str.lower()
+    return keys.groupby(keys).size()
 
 
 def _print_subreddit_summary_table(
@@ -187,10 +188,11 @@ def _print_subreddit_summary_table(
     rows_out: list[dict] = []
     t_loaded = t_cleaned = t_dropped = t_weeks = t_feat = 0
     for sub in subreddits:
-        pl = int(loaded.get(sub, 0)) if not loaded.empty else 0
-        pc = int(cleaned.get(sub, 0)) if not cleaned.empty else 0
-        wr = int(week_rows.get(sub, 0)) if not week_rows.empty else 0
-        fr = int(feat_counts.get(sub, 0)) if not feat_counts.empty else 0
+        sub_key = str(sub).strip().lower()
+        pl = int(loaded.get(sub_key, 0)) if not loaded.empty else 0
+        pc = int(cleaned.get(sub_key, 0)) if not cleaned.empty else 0
+        wr = int(week_rows.get(sub_key, 0)) if not week_rows.empty else 0
+        fr = int(feat_counts.get(sub_key, 0)) if not feat_counts.empty else 0
         dr = pl - pc
         avg = (pc / wr) if wr else 0.0
         row = {
