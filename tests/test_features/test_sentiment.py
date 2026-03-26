@@ -23,3 +23,15 @@ def test_positive_sentiment():
     })
     result = extract_sentiment_features(df)
     assert result["avg_compound"].iloc[0] > 0
+
+
+def test_parallel_matches_serial():
+    df = pd.DataFrame({
+        "texts": [
+            ["bad awful terrible"],
+            ["great wonderful excellent"],
+        ],
+    })
+    serial = extract_sentiment_features(df, parallel_workers=1)
+    parallel = extract_sentiment_features(df, parallel_workers=2)
+    pd.testing.assert_frame_equal(serial, parallel)

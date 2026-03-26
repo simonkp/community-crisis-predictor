@@ -140,6 +140,19 @@ def main():
                     if not arctic_targeted_sub:
                         reason = "already ingested and manifest valid"
                     print(f"Skipping r/{subreddit}: {reason}.")
+                    # Keep dashboard data-quality artifacts in sync even when collection is skipped.
+                    try:
+                        existing_df = pd.read_parquet(raw_path)
+                        _run_data_quality_and_log(
+                            df=existing_df,
+                            subreddit=subreddit,
+                            source="zenodo_covid",
+                            date_range=date_range,
+                            reports_root=reports_root,
+                            quality_db_path=config.get("paths", {}).get("quality_db", "data/quality.db"),
+                        )
+                    except Exception as exc:
+                        print(f"  Warning: failed to refresh data-quality artifacts for r/{subreddit}: {exc}")
                     elapsed = time.perf_counter() - sub_start
                     profile_entries.append(
                         {

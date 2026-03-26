@@ -46,3 +46,17 @@ def test_log_source_provenance_writes_row(tmp_path):
     db_path = tmp_path / "quality.db"
     log_source_provenance("depression", "2024-01-01/2024-01-07", "pushshift", str(db_path))
     assert Path(db_path).exists()
+
+
+def test_check_weekly_completeness_falls_back_to_created_utc():
+    dt = pd.to_datetime(["2024-01-01", "2024-01-02", "2024-01-08"], utc=True)
+    df = pd.DataFrame(
+        {
+            "subreddit": ["anxiety", "anxiety", "anxiety"],
+            "created_utc": (dt.astype("int64") // 10**9).astype(int),
+            # Simulate mixed-source: missing created_utc_dt for rows that should still count.
+            "created_utc_dt": [pd.NaT, pd.NaT, pd.NaT],
+        }
+    )
+    out = check_weekly_completeness(df, "anxiety")
+    assert len(out) == 2

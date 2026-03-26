@@ -25,10 +25,22 @@ def check_weekly_completeness(
 
     work = df.copy()
     if "week_start" not in work.columns:
-        if "created_utc_dt" not in work.columns:
+        if "created_utc_dt" not in work.columns and "created_utc" not in work.columns:
             raise ValueError("Data must include week_start or created_utc_dt for completeness checks.")
+
+        if "created_utc_dt" in work.columns:
+            work["created_utc_dt"] = pd.to_datetime(work["created_utc_dt"], errors="coerce", utc=True)
+        else:
+            work["created_utc_dt"] = pd.NaT
+        if "created_utc" in work.columns:
+            fallback_dt = pd.to_datetime(work["created_utc"], unit="s", errors="coerce", utc=True)
+            work["created_utc_dt"] = work["created_utc_dt"].fillna(fallback_dt)
+
+        # Convert to timezone-naive before Period conversion to avoid pandas timezone warning.
+        work["created_utc_dt"] = work["created_utc_dt"].dt.tz_localize(None)
         # Use Monday-start weeks to align with expected_freq default W-MON.
-        work["week_start"] = pd.to_datetime(work["created_utc_dt"]).dt.to_period("W-SUN").dt.start_time
+        work = work[work["created_utc_dt"].notna()].copy()
+        work["week_start"] = work["created_utc_dt"].dt.to_period("W-SUN").dt.start_time
     else:
         work["week_start"] = pd.to_datetime(work["week_start"])
 

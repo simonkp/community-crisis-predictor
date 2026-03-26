@@ -39,3 +39,20 @@ def test_aggregate_tracks_new_authors():
     # Week 2 should have d as new (a, b are returning)
     if len(result) > 1:
         assert result.iloc[1]["new_author_ratio"] < 1.0
+
+
+def test_aggregate_fills_missing_created_utc_dt_from_created_utc():
+    df = pd.DataFrame(
+        {
+            "subreddit": ["mix", "mix"],
+            "created_utc": [1704067200, 1704672000],  # both valid unix seconds
+            "created_utc_dt": [pd.Timestamp("2024-01-01T00:00:00Z"), pd.NaT],  # second row missing dt
+            "author_hash": ["a", "b"],
+            "clean_text": ["x", "y"],
+            "score": [1, 1],
+            "num_comments": [0, 0],
+        }
+    )
+    out = WeeklyAggregator().aggregate(df)
+    assert len(out) == 2
+    assert int(out["post_count"].sum()) == 2
