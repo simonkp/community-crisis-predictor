@@ -10,3 +10,5 @@ venv/
 .ipynb_checkpoints/
 temp/
 # .rules/
+reports/.~lock.*
+reports/*.tmp
