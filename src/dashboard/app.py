@@ -3,14 +3,23 @@ Streamlit live dashboard for Community Mental Health Crisis Predictor.
 
 Run with:
     streamlit run src/dashboard/app.py
+
+Environment variables
+---------------------
+API_MODE   Set to "true" to show live API connection status in the sidebar.
+           Predictions still use the local pipeline outputs (eval_results.json)
+           but the sidebar shows the Render API health for demonstration.
+API_URL    URL of the deployed FastAPI service (e.g. https://your-api.onrender.com).
+           Only used when API_MODE=true.
 """
 
-from pathlib import Path
-
+import os
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+
+import requests as _requests
 
 from src.core.ui_config import (
     DASHBOARD_COPY,
@@ -26,6 +35,7 @@ from src.dashboard.components import (
     render_model_metrics_tiles,
 )
 from src.dashboard.data_access import (
+    get_brief_text,
     load_app_config,
     load_data_quality_report,
     load_drift,
@@ -40,6 +50,52 @@ from src.labeling.distress_score import compute_distress_score
 from src.narration.narrative_generator import week_key_from_row
 
 # ── Dashboard layout constants (issue #32) ─────────────────────────────
+# ── API mode configuration ─────────────────────────────────────────────
+_API_MODE: bool = os.getenv("API_MODE", "false").lower() == "true"
+_API_URL: str = os.getenv("API_URL", "").rstrip("/")
+
+
+@st.cache_data(ttl=30)
+def _fetch_api_health(api_url: str) -> dict | None:
+    """Fetch /health from the FastAPI service; returns None on failure."""
+    try:
+        resp = _requests.get(f"{api_url}/health", timeout=5)
+        if resp.status_code == 200:
+            return resp.json()
+    except Exception:
+        pass
+    return None
+
+
+def _render_api_sidebar() -> None:
+    """Add an API connection status indicator to the Streamlit sidebar."""
+    with st.sidebar:
+        st.markdown("---")
+        st.markdown("**Deployment**")
+        if _API_MODE and _API_URL:
+            health = _fetch_api_health(_API_URL)
+            if health:
+                st.success(f"API live — {_API_URL}")
+                loaded = health.get("models_loaded", [])
+                st.caption(f"Models loaded: {', '.join(loaded) if loaded else 'none'}")
+                if health.get("mock_mode"):
+                    st.warning("API running in mock mode (no real models)")
+            else:
+                st.warning(f"API unreachable — {_API_URL}")
+                st.caption("Dashboard using local pipeline outputs (local mode fallback)")
+            if st.button("Refresh API status", key="_api_refresh"):
+                _fetch_api_health.clear()
+                st.rerun()
+        elif _API_MODE:
+            st.info("API_MODE=true but API_URL is not set.")
+        else:
+            st.info("Mode: Local (reading pipeline outputs)")
+            st.caption(
+                "To connect to the deployed API, set `API_MODE=true` and `API_URL` "
+                "in Streamlit Cloud secrets or your environment."
+            )
+
+
 SUBREDDIT_ROLES = {
     "mentalhealth": "General discussion",
     "anxiety": "Early warning signal",
@@ -228,6 +284,8 @@ def _state_badge_html(state_text: str, state_color: str) -> str:
         f"Signal: {state_text}</span></div>"
     )
 
+
+_render_api_sidebar()
 
 app_config = load_app_config()
 feature_df = load_feature_df()
@@ -592,13 +650,9 @@ with main_l:
 with main_r:
     st.markdown("##### Weekly snapshot")
     _brief_week_key = week_key_from_row(sub_df.iloc[week_idx_plot])
-    _reports_root = Path(app_config["paths"]["reports"])
-    _brief_path = _reports_root / subreddit / "weekly_briefs" / f"{_brief_week_key}.txt"
-    if not _brief_path.exists():
-        _brief_path = _reports_root / f"{subreddit}_weekly_brief_{_brief_week_key}.txt"
+    _brief_text = get_brief_text(subreddit, _brief_week_key)
 
-    if _brief_path.exists():
-        _brief_text = _brief_path.read_text(encoding="utf-8").strip()
+    if _brief_text:
         _render_weekly_brief(_brief_text, _brief_week_key, in_sidebar=False)
     else:
         st.caption(DASHBOARD_COPY["weekly_brief_missing"])

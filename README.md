@@ -189,30 +189,6 @@ For a convincing live demo:
 
 ---
 
-## Step-by-Step Commands Reference
-
-| Command | What it does |
-|---------|--------------|
-| `make collect-synthetic` | Generate 2 years of synthetic Reddit data |
-| `make collect` | Collect from configured source in `collection.source` |
-| `make features` | Build weekly feature matrix (skips if cache says inputs unchanged; use `--force` on the underlying command to rebuild) |
-| `make train` | Train LSTM + XGBoost, save `eval_results.json` |
-| `make evaluate` | Generate structured per-subreddit reports (HTML, SHAP, drift, weekly briefs), populate alerts.db |
-| `make all-synthetic` | Run the full pipeline end-to-end with synthetic data |
-| `make test` | Run all unit tests |
-| `make clean` | Delete all generated data files |
-| `streamlit run src/dashboard/app.py` | Launch the live Streamlit dashboard |
-
-For faster runs during development, append flags:
-```bash
-python -m src.pipeline.run_all --synthetic --skip-topics --skip-search
-python -m src.pipeline.run_features --config config/default.yaml --force   # always rebuild features
-python -m src.pipeline.run_train --skip-lstm    # XGBoost only
-python -m src.pipeline.run_train --skip-search  # LSTM + XGBoost, no hyperparam search
-```
-
----
-
 ## Project Structure
 
 ```
@@ -272,8 +248,21 @@ src/
 Also at repo root:
 
 ```
+serving/                       FastAPI inference service (deployed to Render.com)
+├── main.py                    API endpoints: /health /predict /model-info /logs/summary
+├── requirements.txt           Service-only dependencies (lean, no BERTopic/Optuna)
+├── Procfile                   Render start command
+├── .python-version            Pins Python 3.11.7 (avoids pandas/Python 3.13 issues)
+├── README.md                  Local run instructions + deployed URL + cold-start note
+├── models/                    Committed model artifacts (copied by `make copy-models`)
+└── tests/                     API test suite (29 tests, runs with MOCK_MODELS=true)
+
 config/
 └── intervention_playbook.md   Retrieved moderation copy for weekly narrative (with structured model outputs)
+
+.github/workflows/
+├── ci.yml                     CI: core tests + API tests on every push/PR
+└── retrain.yml                Manual dispatch: synthetic retrain + auto-commit + redeploy
 ```
 
 ---
@@ -336,12 +325,113 @@ data/
 
 ---
 
-## Non-git Data Strategy
+## Data Strategy (git-tracked vs ignored)
 
-The whole `data/` directory is intentionally gitignored.
-All downloaded sources, staging files, parquet outputs, sqlite databases, and generated reports remain local-only.
+Raw and intermediate data remain gitignored to keep the repo lean:
 
-Commit code/config/docs/metadata, but not large source archives.
+| Path | Tracked? | Reason |
+|------|----------|--------|
+| `data/raw/`, `data/processed/`, `data/staging/`, `data/external/` | No | Large source files |
+| `data/features/features.parquet` | **Yes** | Read by Streamlit Cloud dashboard |
+| `data/models/eval_results.json` | **Yes** | Read by dashboard + serving layer |
+| `data/models/{sub}_xgb.pkl`, `{sub}_lstm.pt`, `{sub}_feature_stats.json` | **Yes** | Loaded by serving layer |
+| `data/reports/**` (shap, drift, briefs, quality) | **Yes** | Read by dashboard tabs |
+| `data/alerts.db`, `data/quality.db` | No | SQLite DBs reset on deploy anyway |
+| `serving/models/**` | **Yes** | Copied from `data/models/` for Render |
+| `serving/logs/*.jsonl` | No | Ephemeral (resets on Render restart) |
+
+After retraining, run `make prepare-deploy` then `git push` — both cloud platforms redeploy automatically.
+
+---
+
+## Production Deployment
+
+The system is deployed as two hosted services following the Train → API → Deploy pattern:
+
+| Service | Platform | URL |
+|---------|----------|-----|
+| FastAPI inference API | Render.com | https://community-crisis-predictor.onrender.com |
+| Streamlit dashboard | Streamlit Cloud | https://community-crisis-predictor.streamlit.app |
+
+> **Cold-start note (free Render tier):** the API sleeps after 15 min of inactivity. The first
+> request after sleep takes ~30–60 s. Hit `/health` once before a live demo to wake it.
+
+### Local → Cloud in 2 commands
+
+```bash
+# 1. Run pipeline + copy model artifacts (real data, or add --synthetic for quick test)
+make prepare-deploy
+
+# 2. Commit and push — Render + Streamlit Cloud auto-redeploy
+git add . && git commit -m "Update model artifacts" && git push
+```
+
+### One-click retrain on GitHub Actions
+
+Go to **Actions → Retrain (Synthetic)** → **Run workflow**. This retrains on synthetic data,
+commits the artifacts back to the repo, and triggers both cloud platforms to redeploy automatically.
+
+### Local API demo (Render fallback)
+
+If the Render service is cold during a live demo, run the API locally instead:
+
+```bash
+make serve-local        # starts FastAPI at http://localhost:8000
+# then visit http://localhost:8000/docs for interactive Swagger UI
+```
+
+Set `API_URL=http://localhost:8000` in the Streamlit run environment for the same demo experience.
+
+### Streamlit Cloud secrets
+
+In Streamlit Cloud → Advanced Settings → Secrets:
+
+```toml
+API_URL = "https://community-crisis-predictor.onrender.com"
+API_MODE = "true"
+```
+
+When `API_MODE=true`, the dashboard sidebar shows a live API connection status indicator.
+When the API is unreachable, the dashboard automatically falls back to local pipeline outputs.
+
+### API endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Service status, loaded models list |
+| `/predict` | POST | XGB + optional LSTM inference, drift warnings |
+| `/model-info` | GET | Walk-forward metrics + top SHAP features |
+| `/logs/summary` | GET | Aggregate prediction log statistics |
+| `/docs` | GET | Interactive Swagger UI (auto-generated) |
+
+See `serving/README.md` for full endpoint documentation and local run instructions.
+
+---
+
+## Step-by-Step Commands Reference
+
+| Command | What it does |
+|---------|--------------|
+| `make collect-synthetic` | Generate 2 years of synthetic Reddit data |
+| `make collect` | Collect from configured source in `collection.source` |
+| `make features` | Build weekly feature matrix (skips if cache says inputs unchanged; use `--force` on the underlying command to rebuild) |
+| `make train` | Train LSTM + XGBoost, save `eval_results.json` + model pkl/pt files |
+| `make evaluate` | Generate structured per-subreddit reports (HTML, SHAP, drift, weekly briefs), populate alerts.db |
+| `make all-synthetic` | Run the full pipeline end-to-end with synthetic data |
+| `make copy-models` | Copy trained artifacts from `data/models/` into `serving/models/` |
+| `make prepare-deploy` | Run full pipeline + copy models (then `git push` to deploy) |
+| `make serve-local` | Start FastAPI inference service at http://localhost:8000 |
+| `make test` | Run all unit tests |
+| `make clean` | Delete all generated data files |
+| `streamlit run src/dashboard/app.py` | Launch the live Streamlit dashboard |
+
+For faster runs during development, append flags:
+```bash
+python -m src.pipeline.run_all --synthetic --skip-topics --skip-search
+python -m src.pipeline.run_features --config config/default.yaml --force   # always rebuild features
+python -m src.pipeline.run_train --skip-lstm    # XGBoost only
+python -m src.pipeline.run_train --skip-search  # LSTM + XGBoost, no hyperparam search
+```
 
 ---
 
@@ -350,7 +440,8 @@ Commit code/config/docs/metadata, but not large source archives.
 ```bash
 make test
 # or
-python -m pytest tests/ -v
+python -m pytest tests/ -v          # 67 core tests
+pytest serving/tests/ -v            # 29 API tests (MOCK_MODELS=true)
 ```
 
-Unit tests cover collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard state/ensemble helpers, demo_utils (scenario mapping tests), and text processing.
+Unit tests cover collectors, features, labeling, modeling splits, narration helpers, decision-usefulness metrics, dashboard state/ensemble helpers, demo_utils (scenario mapping tests), text processing, and the FastAPI inference service (all endpoints, validation, drift detection, log aggregation).

@@ -29,6 +29,10 @@ def main():
     meta_cols = {"subreddit", "iso_year", "iso_week", "week_start"}
     feature_columns = [c for c in feature_df.columns if c not in meta_cols]
 
+    # Ensure models directory exists before the loop so save_dir is valid
+    models_path = Path(config["paths"]["models"])
+    models_path.mkdir(parents=True, exist_ok=True)
+
     all_results: dict = {}
 
     for sub, sub_df in feature_df.groupby("subreddit"):
@@ -40,7 +44,12 @@ def main():
         # --- XGBoost baseline ---
         print(f"\n{PIPELINE_COPY['xgb_section_title']}")
         xgb_results = evaluate_walk_forward(
-            sub_df, config, feature_columns, skip_search=args.skip_search
+            sub_df,
+            config,
+            feature_columns,
+            skip_search=args.skip_search,
+            save_dir=models_path,
+            sub=str(sub),
         )
         if "error" in xgb_results:
             print(f"  XGBoost error: {xgb_results['error']}")
@@ -50,7 +59,13 @@ def main():
         lstm_results: dict = {}
         if not args.skip_lstm:
             print("\n[LSTM — 4-class primary model]")
-            lstm_results = evaluate_walk_forward_lstm(sub_df, config, feature_columns)
+            lstm_results = evaluate_walk_forward_lstm(
+                sub_df,
+                config,
+                feature_columns,
+                save_dir=models_path,
+                sub=str(sub),
+            )
             if "error" in lstm_results:
                 print(f"  LSTM error: {lstm_results['error']}")
                 lstm_results = {}
@@ -63,8 +78,6 @@ def main():
     _print_section3_summary(all_results)
 
     # Save results
-    models_path = Path(config["paths"]["models"])
-    models_path.mkdir(parents=True, exist_ok=True)
     results_path = models_path / "eval_results.json"
 
     def convert(obj):

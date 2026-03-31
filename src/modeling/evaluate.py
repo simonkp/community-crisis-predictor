@@ -1,5 +1,8 @@
+import datetime
+import json
 import numpy as np
 import pandas as pd
+from pathlib import Path
 from sklearn.metrics import (
     average_precision_score,
     confusion_matrix,
@@ -135,11 +138,39 @@ def compute_decision_usefulness(
     }
 
 
+def _save_feature_stats(
+    X_train: pd.DataFrame,
+    feature_columns: list[str],
+    sub: str,
+    save_dir: Path,
+) -> None:
+    """Save per-feature training distribution stats for serving-layer drift detection."""
+    stats: dict = {
+        "subreddit": sub,
+        "features": {},
+        "generated_at": datetime.datetime.utcnow().isoformat(),
+        "n_training_weeks": len(X_train),
+    }
+    for col in feature_columns:
+        if col in X_train.columns:
+            vals = X_train[col].dropna()
+            stats["features"][col] = {
+                "mean": float(vals.mean()) if len(vals) else 0.0,
+                "std": float(vals.std()) if len(vals) > 1 else 0.0,
+                "min": float(vals.min()) if len(vals) else 0.0,
+                "max": float(vals.max()) if len(vals) else 0.0,
+            }
+    with open(save_dir / f"{sub}_feature_stats.json", "w", encoding="utf-8") as f:
+        json.dump(stats, f, indent=2)
+
+
 def evaluate_walk_forward(
     feature_df: pd.DataFrame,
     config: dict,
     feature_columns: list[str],
     skip_search: bool = False,
+    save_dir: Path | None = None,
+    sub: str = "",
 ) -> dict:
     labeling_cfg = config.get("labeling", {})
     thresholds_std = labeling_cfg.get("crisis_thresholds_std", [0.5, 1.0, 2.0])
@@ -163,6 +194,8 @@ def evaluate_walk_forward(
     n_folds = splitter.n_splits(n_samples)
     print(f"  Running {n_folds} walk-forward folds (XGBoost)...")
     fold_diagnostics: list[dict[str, str | int]] = []
+    _last_xgb_model: XGBCrisisModel | None = None
+    _last_X_train_df: pd.DataFrame | None = None
 
     for fold_i, (train_idx, test_idx) in enumerate(splitter.split(n_samples)):
         labeler = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
@@ -201,6 +234,9 @@ def evaluate_walk_forward(
             )
             continue
 
+        _last_xgb_model = model
+        _last_X_train_df = pd.DataFrame(X_train, columns=feature_columns)
+
         for ti in test_idx:
             X_test = feature_df.iloc[[ti]][feature_columns]
             prob = model.predict_proba(X_test)[0]
@@ -211,6 +247,22 @@ def evaluate_walk_forward(
                 actual_label = labeler.label(distress_scores.iloc[train_idx[0] : ti + 2])
                 if not actual_label.isna().iloc[-2]:
                     all_actuals[ti] = int(actual_label.iloc[-2] >= 2)
+
+    # Serialize the last successfully trained XGBoost model
+    if save_dir is not None and sub and _last_xgb_model is not None:
+        try:
+            import joblib
+            save_dir.mkdir(parents=True, exist_ok=True)
+            joblib.dump(_last_xgb_model.model, save_dir / f"{sub}_xgb.pkl")
+            print(f"  XGB model saved -> {save_dir / f'{sub}_xgb.pkl'}")
+        except Exception as e:
+            print(f"  Warning: could not save XGB model for {sub}: {e}")
+        if _last_X_train_df is not None:
+            try:
+                _save_feature_stats(_last_X_train_df, feature_columns, sub, save_dir)
+                print(f"  Feature stats saved -> {save_dir / f'{sub}_feature_stats.json'}")
+            except Exception as e:
+                print(f"  Warning: could not save feature stats for {sub}: {e}")
 
     valid = ~(np.isnan(all_preds) | np.isnan(all_actuals))
     if valid.sum() < 5:
@@ -257,6 +309,8 @@ def evaluate_walk_forward_lstm(
     feature_df: pd.DataFrame,
     config: dict,
     feature_columns: list[str],
+    save_dir: Path | None = None,
+    sub: str = "",
 ) -> dict:
     from src.modeling.train_rnn import LSTMCrisisModel
 
@@ -282,6 +336,7 @@ def evaluate_walk_forward_lstm(
     n_folds = splitter.n_splits(n_samples)
     print(f"  Running {n_folds} walk-forward folds (LSTM)...")
     fold_diagnostics: list[dict[str, str | int]] = []
+    _last_lstm_model: "LSTMCrisisModel | None" = None
 
     for fold_i, (train_idx, test_idx) in enumerate(splitter.split(n_samples)):
         labeler = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
@@ -312,6 +367,8 @@ def evaluate_walk_forward_lstm(
             )
             continue
 
+        _last_lstm_model = model
+
         for ti in test_idx:
             seq_start = max(0, ti - sequence_length + 1)
             X_seq = feature_df.iloc[seq_start : ti + 1][feature_columns]
@@ -333,6 +390,27 @@ def evaluate_walk_forward_lstm(
                 actual_label = labeler.label(distress_scores.iloc[train_idx[0] : ti + 2])
                 if not actual_label.isna().iloc[-2]:
                     all_actuals_4class[ti] = actual_label.iloc[-2]
+
+    # Serialize the last successfully trained LSTM model
+    if save_dir is not None and sub and _last_lstm_model is not None:
+        try:
+            import torch
+            save_dir.mkdir(parents=True, exist_ok=True)
+            torch.save(
+                {
+                    "state_dict": _last_lstm_model.model.state_dict(),
+                    "feature_size": _last_lstm_model._feature_size,
+                    "sequence_length": _last_lstm_model.sequence_length,
+                    "hidden_size": _last_lstm_model.hidden_size,
+                    "num_layers": _last_lstm_model.num_layers,
+                    "num_classes": _last_lstm_model.num_classes,
+                    "dropout": _last_lstm_model.dropout,
+                },
+                save_dir / f"{sub}_lstm.pt",
+            )
+            print(f"  LSTM model saved -> {save_dir / f'{sub}_lstm.pt'}")
+        except Exception as e:
+            print(f"  Warning: could not save LSTM model for {sub}: {e}")
 
     valid = ~(np.isnan(all_states) | np.isnan(all_actuals_4class))
     if valid.sum() < 5:

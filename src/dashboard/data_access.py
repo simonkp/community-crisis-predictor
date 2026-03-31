@@ -6,6 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from src.config import load_config
+from src.narration.narrative_generator import load_weekly_briefs_json
 
 
 @st.cache_data
@@ -84,6 +85,44 @@ def load_pipeline_profile():
     with open(path, encoding="utf-8") as f:
         payload = json.load(f)
     return payload if isinstance(payload, list) else [payload]
+
+
+@st.cache_data
+def load_weekly_briefs(subreddit_short: str) -> dict[str, dict]:
+    """Load consolidated weekly_briefs.json for a subreddit.
+
+    Returns dict keyed by week_key, each value has 'text', 'source', 'generated_at'.
+    Falls back to scanning legacy .txt files if JSON is missing.
+    """
+    cfg = load_app_config()
+    reports_root = Path(cfg["paths"]["reports"])
+
+    briefs = load_weekly_briefs_json(reports_root, subreddit_short)
+    if briefs:
+        return briefs
+
+    # Backward-compat: read legacy txt files if JSON hasn't been generated yet
+    txt_dir = reports_root / subreddit_short / "weekly_briefs"
+    if not txt_dir.exists():
+        return {}
+    result: dict[str, dict] = {}
+    for f in sorted(txt_dir.glob("*.txt")):
+        week_key = f.stem
+        try:
+            text = f.read_text(encoding="utf-8").strip()
+            result[week_key] = {"text": text, "source": "legacy_txt", "generated_at": ""}
+        except OSError:
+            pass
+    return result
+
+
+def get_brief_text(subreddit_short: str, week_key: str) -> str | None:
+    """Convenience: return just the brief text for a week, or None if not found."""
+    briefs = load_weekly_briefs(subreddit_short)
+    entry = briefs.get(week_key.replace("/", "-"))
+    if entry:
+        return entry.get("text")
+    return None
 
 
 def load_transitions(n: int = 30) -> list[dict]:
