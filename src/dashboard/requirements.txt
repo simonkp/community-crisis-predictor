@@ -1,0 +1,11 @@
+# Slim deps for Streamlit Community Cloud only (entrypoint next to this file is preferred over repo-root pyproject/Poetry).
+# Dashboard reads bundled data under data/ and calls the FastAPI URL for API_MODE; it does not load torch/xgboost/bertopic.
+# Full pipeline / tests: from repo root run  pip install -e ".[dev]"  (see pyproject.toml).
+
+streamlit>=1.28
+pandas>=2.0
+numpy>=1.24
+plotly>=5.18
+requests>=2.31
+pyyaml>=6.0
+pyarrow>=14.0
