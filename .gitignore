@@ -22,6 +22,7 @@ __pycache__/
 .streamlit/secrets.toml
 *.egg-info/
 dist/
+dist_wheel_test/
 build/
 .venv/
 venv/
