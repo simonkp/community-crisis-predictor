@@ -26,15 +26,15 @@ The model never sees future data. Walk-forward time-series cross-validation ensu
 ## How It Works
 
 1. **Collect** — Collect from configurable source (`zenodo_covid`, `reddit_api`, or `synthetic`)
-2. **Extract** — Build weekly feature vectors: linguistic patterns, VADER sentiment, distress lexicon density, topic distributions (BERTopic), behavioral signals, JS-divergence topic drift (1-week and 4-week lookback)
+2. **Extract** — Build weekly feature vectors: linguistic patterns, VADER sentiment, distress lexicon density, topic distributions (BERTopic), behavioral signals, and JSD topic drift (1-week and 4-week lookback)
 3. **Label** — Score each week's distress; classify next week into one of 4 states using community-specific baselines
 4. **Train** — Two models run in parallel:
    - **LSTM** (primary) — PyTorch sequence model; sees the last 8 weeks as context. Features are **MinMax-normalized per fold** (scaler fit on training window only, applied at prediction time — no data leakage)
    - **XGBoost** (baseline) — Binary crisis classifier; trained on the same walk-forward splits
 5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state transitions to SQLite
 6. **Visualize** — Streamlit dashboard with an all-community card row, week replay, drift/SHAP/data-quality tabs, or static HTML reports
-7. **EDA** — After feature extraction, an automated EDA report is generated per subreddit: IQR-based outlier detection, linear distress trend (rising/stable/declining), crisis rate by year, feature distribution table with missingness flags
-7. **Weekly brief** — After evaluation, each week with a prediction can get a short text brief: structured JSON is built from model outputs + global SHAP top features (with per-week deltas), augmented with retrieved text from `config/intervention_playbook.md`, then sent to **Claude** (`claude-sonnet-4-20250514`) if `ANTHROPIC_API_KEY` is set, else **GPT-4o** if `OPENAI_API_KEY` is set, else a **template** string. This is deterministic retrieval over fixed sources (no vector database). Optional: set `WEEKLY_NARRATIVE_MAX_WEEKS` to only generate the most recent N weeks (saves API calls).
+7. **EDA** — After feature extraction, an automated EDA report is generated per subreddit: IQR-based outlier detection, linear distress trend (rising/stable/declining), crisis rate by year, and feature distribution table with missingness flags
+8. **Weekly brief** — After evaluation, each week with a prediction can get a short text brief: structured JSON is built from model outputs + global SHAP top features (with per-week deltas), augmented with retrieved text from `config/intervention_playbook.md`, then sent to **Claude** (if `ANTHROPIC_API_KEY` is set), else **GPT-4o** (if `OPENAI_API_KEY` is set), else a **template** string. This is deterministic retrieval over fixed sources (no vector database). Optional: set `WEEKLY_NARRATIVE_MAX_WEEKS` to only generate the most recent N weeks (saves API calls).
 
 State semantics and dashboard/report copy are centralized in code:
 - `src/core/domain_config.py` — canonical state names + threshold/semantics labels
@@ -79,6 +79,19 @@ collection:
 - `zenodo_covid`: primary mode for project experiments (Zenodo + Arctic Shift gap-fill, manifest-aware/idempotent)
 - `reddit_api`: existing PullPush.io + PRAW fallback path
 - `synthetic`: generated development data (can also be forced via `--synthetic`)
+
+### 2021 extension (planned)
+
+To extend analysis to 2021-01 through 2021-12, switch to `collection.source: reddit_api` and set:
+
+```yaml
+reddit:
+  date_range:
+    start: "2021-01-01"
+    end: "2021-12-31"
+```
+
+Then run `make collect && make features && make train && make evaluate`.
 
 `run_collect` writes canonical raw schema with provenance:
 - `post_id`, `created_utc`, `selftext`, `subreddit`, `author`, `data_source`
@@ -195,10 +208,12 @@ For a convincing live demo:
 ```
 src/
 ├── collector/        Data collection
+│   ├── zenodo_loader.py       Zenodo downloader + selective ingest
+│   ├── arctic_shift_loader.py Arctic Shift gap-fill ingest for missing windows
 │   ├── historical_loader.py   PushshiftLoader — PullPush.io API client
 │   ├── reddit_client.py       PRAW fallback collector
-│   ├── redarcs_loader.py      Load pre-downloaded CSV dumps
 │   ├── synthetic.py           Synthetic data generator
+│   ├── manifest.py            Collection manifest and idempotency helpers
 │   ├── privacy.py             PII stripping (hash authors, remove URLs)
 │   └── storage.py             Parquet read/write helpers
 ├── processing/       Text cleaning + weekly aggregation
@@ -257,7 +272,7 @@ serving/                       FastAPI inference service (deployed to Render.com
 ├── Procfile                   Render start command
 ├── .python-version            Pins Python 3.11.7 (avoids pandas/Python 3.13 issues)
 ├── README.md                  Local run instructions + deployed URL + cold-start note
-├── models/                    Deprecated local cache dir (artifacts now read from `data/`)
+├── models/                    Optional fallback cache dir (primary artifact source is `data/models`)
 └── tests/                     API test suite (29 tests, runs with MOCK_MODELS=true)
 
 config/
@@ -293,6 +308,29 @@ The table also shows which model family (LSTM vs XGBoost) wins per community and
 
 ---
 
+## Current Model Snapshot
+
+Latest tracked metrics come from `data/models/eval_results.json` (walk-forward evaluation on current committed artifacts):
+
+| Subreddit | Model | Recall | F1 | PR-AUC | Crisis weeks | Valid prediction weeks |
+|---|---|---:|---:|---:|---:|---:|
+| anxiety | XGBoost | 0.259 | 0.275 | 0.270 | 27 | 120 |
+| anxiety | LSTM | 0.148 | 0.178 | 0.274 | 27 | 112 |
+| depression | XGBoost | 0.290 | 0.286 | 0.314 | 31 | 105 |
+| depression | LSTM | 0.258 | 0.320 | 0.448 | 31 | 97 |
+| lonely | XGBoost | 0.118 | 0.129 | 0.251 | 17 | 120 |
+| lonely | LSTM | 0.118 | 0.138 | 0.181 | 17 | 112 |
+| mentalhealth | XGBoost | 0.053 | 0.065 | 0.198 | 19 | 120 |
+| mentalhealth | LSTM | 0.222 | 0.200 | 0.235 | 18 | 112 |
+| suicidewatch | XGBoost | 0.143 | 0.143 | 0.191 | 21 | 119 |
+| suicidewatch | LSTM | 0.300 | 0.273 | 0.244 | 20 | 111 |
+
+Notes:
+- These values change whenever `make prepare-deploy` retrains and refreshes artifacts.
+- PR-AUC should be interpreted against each community's crisis-rate baseline, not against 0.5.
+
+---
+
 ## EDA Reports
 
 After feature extraction (`run_features`), an exploratory data analysis report is generated per subreddit at `data/reports/{sub}/eda_summary.html`. It contains:
@@ -313,10 +351,18 @@ Key settings you may want to change:
 
 ```yaml
 reddit:
-  subreddits: [depression, anxiety]   # subreddits to monitor
+  subreddits: [depression, anxiety, mentalhealth, SuicideWatch, lonely]
   date_range:
     start: "2024-01-01"
     end: "2026-03-01"
+
+collection:
+  source: "zenodo_covid"              # synthetic | zenodo_covid | reddit_api
+  zenodo:
+    date_range:
+      start: "2018-01-01"
+      end: "2020-12-31"
+  ingestion_manifest_path: "data/ingestion_manifest.json"
 
 labeling:
   crisis_thresholds_std: [0.5, 1.0, 2.0]   # sigma cutoffs for the 4 states
@@ -342,8 +388,13 @@ After running the full pipeline, `data/` contains:
 ```
 data/
 ├── raw/{subreddit}/posts.parquet          Raw collected posts (+ data_source provenance column)
+├── ingestion_manifest.json                Source-level ingest state (zenodo/arctic_shift)
 ├── features/features.parquet             Weekly feature matrix
+├── features/feature_build_meta.json       Feature cache signature metadata
 ├── models/eval_results.json              XGB + LSTM walk-forward metrics
+├── models/{sub}_xgb.pkl                  XGBoost model artifacts
+├── models/{sub}_lstm.pt                  LSTM checkpoint artifacts
+├── models/{sub}_feature_stats.json       Training feature stats (serving drift checks)
 ├── alerts.db                             SQLite log of state transitions
 └── reports/
     ├── {sub}/
@@ -373,12 +424,14 @@ Raw and intermediate data remain gitignored to keep the repo lean:
 | Path | Tracked? | Reason |
 |------|----------|--------|
 | `data/raw/`, `data/processed/`, `data/staging/`, `data/external/` | No | Large source files |
+| `data/ingestion_manifest.json` | **Yes** | Provenance + idempotent ingest tracking |
 | `data/features/features.parquet` | **Yes** | Read by Streamlit Cloud dashboard |
+| `data/features/feature_build_meta.json` | **Yes** | Feature cache validity checks |
 | `data/models/eval_results.json` | **Yes** | Read by dashboard + serving layer |
 | `data/models/{sub}_xgb.pkl`, `{sub}_lstm.pt`, `{sub}_feature_stats.json` | **Yes** | Loaded by serving layer |
 | `data/reports/**` (shap, drift, briefs, quality) | **Yes** | Read by dashboard tabs |
 | `data/alerts.db`, `data/quality.db` | No | SQLite DBs reset on deploy anyway |
-| `serving/models/**` | No | Deprecated duplicate store; API reads directly from `data/` |
+| `serving/models/**` | No | Optional fallback cache; API defaults to `../data/models` |
 | `serving/logs/*.jsonl` | No | Ephemeral (resets on Render restart) |
 
 After retraining, run `make prepare-deploy` then `git push` — both cloud platforms redeploy automatically.
