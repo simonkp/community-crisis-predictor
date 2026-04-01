@@ -27,9 +27,30 @@ class ZenodoLoader:
     def _fetch_record_metadata(self, timeout_seconds: int = 60) -> dict:
         api_url = f"https://zenodo.org/api/records/{self.record_id}"
         print(f"  [Zenodo] Fetching record metadata: {api_url}")
-        resp = requests.get(api_url, timeout=timeout_seconds)
-        resp.raise_for_status()
+        try:
+            resp = requests.get(api_url, timeout=timeout_seconds)
+            resp.raise_for_status()
+        except requests.ConnectionError:
+            raise RuntimeError(
+                f"Cannot reach Zenodo ({api_url}). Check your internet connection.\n"
+                "Tip: run with --synthetic for an offline demo."
+            ) from None
+        except requests.Timeout:
+            raise RuntimeError(
+                f"Zenodo request timed out after {timeout_seconds}s. "
+                "Try again later or run with --synthetic."
+            ) from None
+        except requests.HTTPError as exc:
+            raise RuntimeError(
+                f"Zenodo returned HTTP {exc.response.status_code} for record {self.record_id}. "
+                "The dataset may be temporarily unavailable. "
+                "Tip: run with --synthetic for an offline demo."
+            ) from exc
         payload = resp.json()
+        if not payload:
+            raise RuntimeError(
+                f"Zenodo returned an empty response for record {self.record_id}."
+            )
         print(f"  [Zenodo] Record metadata fetched ({len(payload.get('files', []))} files listed)")
         return payload
 
@@ -62,8 +83,19 @@ class ZenodoLoader:
             if not target.exists():
                 print(f"  [Zenodo] Downloading {key} ...")
                 t0 = time.perf_counter()
-                r = requests.get(url, timeout=timeout_seconds)
-                r.raise_for_status()
+                try:
+                    r = requests.get(url, timeout=timeout_seconds)
+                    r.raise_for_status()
+                except (requests.ConnectionError, requests.Timeout) as exc:
+                    print(f"  [Zenodo] WARNING: failed to download {key}: {exc}")
+                    print("  Skipping this file; other files will continue.")
+                    continue
+                except requests.HTTPError as exc:
+                    print(f"  [Zenodo] WARNING: HTTP {exc.response.status_code} for {key}")
+                    continue
+                if len(r.content) == 0:
+                    print(f"  [Zenodo] WARNING: empty response for {key}, skipping.")
+                    continue
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(r.content)
                 elapsed = time.perf_counter() - t0
@@ -207,5 +239,7 @@ class ZenodoLoader:
         if numeric.notna().mean() > 0.8:
             return numeric
         dt = pd.to_datetime(series, errors="coerce", utc=True)
-        return (dt.astype("int64") // 10**9).astype("float64")
+        # Use total_seconds() so this works across pandas versions (ns, us, ms resolution)
+        epoch = pd.Timestamp("1970-01-01", tz="UTC")
+        return (dt - epoch).dt.total_seconds()
 

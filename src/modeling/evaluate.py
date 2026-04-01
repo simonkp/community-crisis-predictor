@@ -9,6 +9,7 @@ from sklearn.metrics import (
     f1_score,
     precision_score,
     recall_score,
+    roc_auc_score,
 )
 
 from src.labeling.distress_score import compute_distress_score
@@ -287,6 +288,9 @@ def evaluate_walk_forward(
         "pr_auc": float(average_precision_score(y_true, y_prob))
         if y_true.sum() > 0
         else 0.0,
+        "roc_auc": float(roc_auc_score(y_true, y_prob))
+        if (y_true.sum() > 0 and (y_true == 0).sum() > 0)
+        else None,
         "confusion_matrix": confusion_matrix(y_true, y_pred, labels=[0, 1]).tolist(),
     }
 
@@ -437,6 +441,9 @@ def evaluate_walk_forward_lstm(
         "pr_auc": float(average_precision_score(y_true_bin, y_prob))
         if y_true_bin.sum() > 0
         else 0.0,
+        "roc_auc": float(roc_auc_score(y_true_bin, y_prob))
+        if (y_true_bin.sum() > 0 and (y_true_bin == 0).sum() > 0)
+        else None,
         "confusion_matrix": confusion_matrix(y_true_bin, y_pred_bin, labels=[0, 1]).tolist(),
         "confusion_matrix_4class": confusion_matrix(
             y_true_4, y_pred_4, labels=[0, 1, 2, 3]

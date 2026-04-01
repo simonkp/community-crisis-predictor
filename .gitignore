@@ -11,7 +11,7 @@ data/quality.db
 #   data/features/    <- features.parquet (Streamlit Cloud reads this)
 #   data/models/      <- eval_results.json + serialized model artifacts
 #   data/reports/     <- shap, drift, weekly briefs, quality reports
-
+data
 # Serving runtime logs — reset on Render cold start, no repo value
 serving/models/
 serving/logs/*.jsonl
@@ -33,3 +33,10 @@ reports/*.tmp
 
 /logs/
 /logs/*.jsonl
+
+
+
+
+
+
+

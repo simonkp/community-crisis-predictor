@@ -187,7 +187,21 @@ def main():
 
             print(f"Collecting r/{subreddit} via Zenodo dataset ...")
             print(f"  Date range filter: {date_range.get('start')} -> {date_range.get('end')}")
-            downloaded_files = loader.ensure_subreddit_files(subreddit)
+            try:
+                downloaded_files = loader.ensure_subreddit_files(subreddit)
+            except RuntimeError as exc:
+                print(f"\n  [COLLECTION ERROR] r/{subreddit}: {exc}")
+                print(f"  Skipping r/{subreddit} — other subreddits will continue.")
+                record_subreddit_ingestion(
+                    manifest,
+                    subreddit=subreddit,
+                    rows=0,
+                    min_created_utc=None,
+                    max_created_utc=None,
+                    status="connection_error",
+                )
+                save_manifest(manifest_path, manifest)
+                continue
             print(f"  Files prepared for r/{subreddit}: {len(downloaded_files)}")
             for p in downloaded_files:
                 record_file_entry(manifest, p)

@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
+from sklearn.preprocessing import MinMaxScaler
 from torch.utils.data import DataLoader, TensorDataset
 
 
@@ -54,6 +55,7 @@ class LSTMCrisisModel:
         self.num_classes: int = 4
         self.seed: int = config.get("random_seed", 42)
         self.model: LSTMNet | None = None
+        self.scaler: MinMaxScaler | None = None
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self._feature_size: int | None = None
 
@@ -91,6 +93,11 @@ class LSTMCrisisModel:
         torch.manual_seed(self.seed)
         X_arr = X.values.astype(np.float32)
         y_arr = y.values.astype(np.int64)
+
+        # Normalize features: fit scaler on train window only (never on future data)
+        # Matches professor's L9 notebook pattern: MinMaxScaler fit on train, applied to all
+        self.scaler = MinMaxScaler()
+        X_arr = self.scaler.fit_transform(X_arr)
 
         seqs, labels = self._make_sequences(X_arr, y_arr)
         if len(seqs) == 0:
@@ -131,6 +138,8 @@ class LSTMCrisisModel:
         if self.model is None:
             raise ValueError("Must train before predicting")
         X_arr = X.values.astype(np.float32)
+        if self.scaler is not None:
+            X_arr = self.scaler.transform(X_arr)
         if len(X_arr) < self.sequence_length:
             return np.zeros(len(X_arr))
 
@@ -150,6 +159,8 @@ class LSTMCrisisModel:
         if self.model is None:
             raise ValueError("Must train before predicting")
         X_arr = X.values.astype(np.float32)
+        if self.scaler is not None:
+            X_arr = self.scaler.transform(X_arr)
         if len(X_arr) < self.sequence_length:
             return np.zeros(len(X_arr), dtype=int)
 

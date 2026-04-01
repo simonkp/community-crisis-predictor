@@ -29,10 +29,11 @@ The model never sees future data. Walk-forward time-series cross-validation ensu
 2. **Extract** — Build weekly feature vectors: linguistic patterns, VADER sentiment, distress lexicon density, topic distributions (BERTopic), behavioral signals, JS-divergence topic drift (1-week and 4-week lookback)
 3. **Label** — Score each week's distress; classify next week into one of 4 states using community-specific baselines
 4. **Train** — Two models run in parallel:
-   - **LSTM** (primary) — PyTorch sequence model; sees the last 8 weeks as context
+   - **LSTM** (primary) — PyTorch sequence model; sees the last 8 weeks as context. Features are **MinMax-normalized per fold** (scaler fit on training window only, applied at prediction time — no data leakage)
    - **XGBoost** (baseline) — Binary crisis classifier; trained on the same walk-forward splits
 5. **Monitor** — Rolling z-score drift detection flags sudden signal changes; an alert engine logs state transitions to SQLite
 6. **Visualize** — Streamlit dashboard with an all-community card row, week replay, drift/SHAP/data-quality tabs, or static HTML reports
+7. **EDA** — After feature extraction, an automated EDA report is generated per subreddit: IQR-based outlier detection, linear distress trend (rising/stable/declining), crisis rate by year, feature distribution table with missingness flags
 7. **Weekly brief** — After evaluation, each week with a prediction can get a short text brief: structured JSON is built from model outputs + global SHAP top features (with per-week deltas), augmented with retrieved text from `config/intervention_playbook.md`, then sent to **Claude** (`claude-sonnet-4-20250514`) if `ANTHROPIC_API_KEY` is set, else **GPT-4o** if `OPENAI_API_KEY` is set, else a **template** string. This is deterministic retrieval over fixed sources (no vector database). Optional: set `WEEKLY_NARRATIVE_MAX_WEEKS` to only generate the most recent N weeks (saves API calls).
 
 State semantics and dashboard/report copy are centralized in code:
@@ -223,6 +224,8 @@ src/
 ├── monitoring/       Drift detection + alert engine
 │   ├── drift_detector.py      Rolling z-score detection, 4 signals, 3 alert levels
 │   └── alert_engine.py        SQLite-backed escalation logger (data/alerts.db)
+├── reporting/        Analytics reports
+│   └── eda.py                 EDA report — IQR outlier detection, trend, crisis rate, self-contained HTML
 ├── visualization/    Static HTML reports
 │   ├── timeline.py            4-color backtesting timeline (Plotly)
 │   ├── feature_importance.py  SHAP bar chart
@@ -267,6 +270,43 @@ config/
 
 ---
 
+## Evaluation Metrics
+
+Walk-forward evaluation reports the following per model per subreddit:
+
+| Metric | What it measures |
+|--------|-----------------|
+| **Recall** | Fraction of true crisis weeks the model catches (sensitivity) |
+| **Precision** | Of weeks flagged as crisis, what fraction actually were |
+| **F1** | Harmonic mean of precision and recall |
+| **PR-AUC** | Area under the Precision-Recall curve — the primary metric for imbalanced detection tasks; baseline = crisis rate % |
+| **ROC-AUC** | Area under the ROC curve — 0.5 = random, 1.0 = perfect; shows overall discrimination ability |
+| **Recall@K** | If an ops team can only investigate K weeks, what fraction of true crisis weeks are caught? |
+| **Avg detection lead time** | How many weeks ahead on average the model flags a crisis before it peaks |
+
+After training all subreddits, a **High / Medium / Low performance band table** is printed:
+- **High** (PR-AUC ≥ 0.45): model reliably detects crises in these communities
+- **Medium** (0.20 – 0.45): moderate signal; worth monitoring
+- **Low** (< 0.20): crisis signal hard to detect — usually means more data or better feature coverage is needed
+
+The table also shows which model family (LSTM vs XGBoost) wins per community and prints data-grounded cross-learning recommendations (which community's SHAP features to apply to poorly-performing ones).
+
+---
+
+## EDA Reports
+
+After feature extraction (`run_features`), an exploratory data analysis report is generated per subreddit at `data/reports/{sub}/eda_summary.html`. It contains:
+
+- **Feature distribution table** — mean, std, IQR, skew, % missing per feature (color-coded: green <5%, amber 5–20%, red >20%)
+- **Outlier detection (IQR rule)** — flags specific weeks where a feature value falls outside [Q1 − 1.5×IQR, Q3 + 1.5×IQR]
+- **Distress trend** — linear regression on the community distress score over time; classifies as *rising*, *stable*, or *declining* with % change over the data period
+- **Crisis rate by year** — fraction of weeks that reached State 2 or 3 each year
+- **Quality flags** — high-missingness features, top outlier-prone features, class imbalance warnings
+
+Open the HTML directly in any browser — no server required.
+
+---
+
 ## Configuration (`config/default.yaml`)
 
 Key settings you may want to change:
@@ -307,6 +347,8 @@ data/
 ├── alerts.db                             SQLite log of state transitions
 └── reports/
     ├── {sub}/
+    │   ├── eda_report.json               EDA summary — outlier weeks, distress trend, crisis rate by year
+    │   ├── eda_summary.html              Self-contained EDA HTML for the project report
     │   ├── timeline.html                 4-color interactive backtesting plot
     │   ├── feature_importance.html       SHAP top-20 feature chart
     │   ├── shap.csv                      SHAP values for dashboard
@@ -457,7 +499,7 @@ python -m src.pipeline.run_train --skip-search  # LSTM + XGBoost, no hyperparam 
 ```bash
 make test
 # or
-python -m pytest tests/ -v          # 67 core tests
+python -m pytest tests/ -v          # 72 core tests
 pytest serving/tests/ -v            # 29 API tests (MOCK_MODELS=true)
 ```
 

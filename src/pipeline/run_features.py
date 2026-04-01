@@ -13,6 +13,7 @@ from src.features.progress_util import iter_groupby_subreddit
 from src.processing.text_cleaner import process_posts
 from src.processing.weekly_aggregator import WeeklyAggregator
 from src.features.pipeline import FeaturePipeline
+from src.reporting.eda import generate_eda_report
 
 # Presentation artifact legend:
 # - Input artifact      -> data/raw/{subreddit}/posts.parquet
@@ -118,6 +119,25 @@ def main():
     # Path: data/features/features.parquet
     save_processed(feature_df, config["paths"]["features"], "features")
     print(f"Feature matrix saved: {feature_df.shape}")
+
+    # EDA reports: one per subreddit — outlier detection, trend, feature distributions.
+    # Outputs: data/reports/{sub}/eda_report.json + eda_summary.html
+    meta_cols = {"subreddit", "iso_year", "iso_week", "week_start"}
+    feat_cols = [c for c in feature_df.columns if c not in meta_cols]
+    reports_root = Path(config["paths"]["reports"])
+    print("Generating EDA reports...")
+    for sub, sub_df in feature_df.groupby("subreddit"):
+        sub_df = sub_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
+        try:
+            generate_eda_report(
+                feature_df=sub_df,
+                config=config,
+                feature_columns=feat_cols,
+                subreddit=str(sub),
+                output_dir=reports_root / str(sub),
+            )
+        except Exception as exc:
+            print(f"  Warning: EDA report failed for r/{sub}: {exc}")
     _print_subreddit_summary_table(
         config["reddit"]["subreddits"],
         loaded_counts,

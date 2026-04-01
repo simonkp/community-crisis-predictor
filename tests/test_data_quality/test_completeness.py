@@ -53,7 +53,7 @@ def test_check_weekly_completeness_falls_back_to_created_utc():
     df = pd.DataFrame(
         {
             "subreddit": ["anxiety", "anxiety", "anxiety"],
-            "created_utc": (dt.astype("int64") // 10**9).astype(int),
+            "created_utc": [int(t.timestamp()) for t in dt],
             # Simulate mixed-source: missing created_utc_dt for rows that should still count.
             "created_utc_dt": [pd.NaT, pd.NaT, pd.NaT],
         }
