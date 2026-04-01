@@ -16,6 +16,14 @@ API_URL    URL of the FastAPI service (e.g. https://your-api.onrender.com).
            Only used when API_MODE=true.
 """
 
+import sys
+from pathlib import Path
+
+# Repo root on sys.path so `from src...` works with slim Streamlit Cloud deps (no editable install).
+_root = Path(__file__).resolve().parents[2]
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+
 import os
 import numpy as np
 import pandas as pd
