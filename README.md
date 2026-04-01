@@ -392,7 +392,7 @@ The system is deployed as two hosted services following the Train → API → De
 | Service | Platform | URL |
 |---------|----------|-----|
 | FastAPI inference API | Render.com | https://community-crisis-predictor.onrender.com |
-| Streamlit dashboard | Streamlit Cloud | https://community-crisis-predictor.streamlit.app |
+| Streamlit dashboard | Streamlit Cloud | https://community-crisis-predictor-g4-2026.streamlit.app |
 
 > **Cold-start note (free Render tier):** the API sleeps after 15 min of inactivity. The first
 > request after sleep takes ~30–60 s. Hit `/health` once before a live demo to wake it.
