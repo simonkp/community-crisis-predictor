@@ -71,10 +71,14 @@ streamlit run src/dashboard/app.py
 
 ## 6. Latest Preprocessing Reliability Additions
 
-- **Leak-proof distress scoring:** Labeling now builds distress scores without normalizing over the entire timeline; models normalize per training fold to avoid future leakage and keep thresholds stable.  
-- **Calendar-complete aggregator:** Weekly aggregation creates placeholder rows for missing ISO weeks, marks them with `is_missing_week`, and zero-fills counts so temporal indicators and downstream features remain deterministic.  
-- **Artifact schema guards:** Raw, weekly, and feature outputs enforce required columns/IDs before writing to `data/raw`, `data/processed`, and `data/features`, preventing silent corruption when new sources add fields.  
+- **Leak-proof distress scoring:** Labeling now builds distress scores without normalizing over the entire timeline; models normalize per training fold to avoid future leakage and keep thresholds stable.
+- **Calendar-complete aggregator:** Weekly aggregation creates placeholder rows for missing ISO weeks, marks them with `is_missing_week`, and zero-fills counts so temporal indicators and downstream features remain deterministic.
+- **Artifact schema guards:** Raw, weekly, and feature outputs enforce required columns/IDs before writing to `data/raw`, `data/processed`, and `data/features`, preventing silent corruption when new sources add fields.
 - **Idempotent provenance logging:** The data-quality store now enforces a `(subreddit, week, source)` unique key and upserts timestamps, so repeated collection runs do not flood the provenance table.
+- **Stable post identity & dedupe hardening:** Both `ArcticShiftLoader` and `ZenodoLoader` now enforce non-empty `post_id` values. Any record whose source ID is absent, `"nan"`, or `"null"` receives a deterministic `hash_<sha256[:16]>` fallback derived from `subreddit + created_utc + selftext[:200]`, ensuring `drop_duplicates(subset=["post_id"])` in `run_collect.py` is never defeated by colliding empty strings.
+- **Token-aware lexicon matching:** `DistressScorer` now compiles `\b`-bounded regex patterns at init time for all three lexicons (hopelessness, help-seeking, distress). Matching uses `re.findall` instead of plain substring search, eliminating false positives such as "panic" firing inside "panicking" or unrelated compound tokens.
+- **Selective `fillna` with core-input assertion:** `FeaturePipeline.run()` no longer applies a blanket `fillna(0.0)` over the entire feature matrix. Only `_delta` columns (which legitimately produce NaN on the first row of each subreddit series from `.diff()`) are zero-filled. A post-fill assertion raises `ValueError` if any core (non-meta, non-temporal) column contains nulls, surfacing upstream extractor bugs instead of silently masking them.
+- **Content-hash cache invalidation:** The feature-build fingerprint in `run_features.py` now includes a SHA-256 hash of each raw `posts.parquet` file in addition to mtime/size. In-place overwrites that preserve file metadata but change content (e.g. re-collected data written to the same path) now correctly invalidate the cache and trigger a full feature rebuild.
 
 ## 7. Handoff Orientation Checklist
 
@@ -101,4 +105,4 @@ streamlit run src/dashboard/app.py
 
 5. **Next-to-Do Ideas**
    - Implement cross-source schema validation (source-aware compatibility) upstream in `run_collect.py`.
-   - Add automated regression tests covering weekly gaps and schema violations in CI or smoke scripts.
+   - Add automated regression tests covering weekly gaps, schema violations, ID hash fallback paths, and lexicon boundary matching in CI or smoke scripts.

@@ -78,8 +78,24 @@ class FeaturePipeline:
 
         feature_df = pd.concat(parts, ignore_index=True)
 
-        # Fill NaN from deltas and rolling (first rows)
-        feature_df = feature_df.fillna(0.0)
+        # Fill NaN only in delta columns (first row per subreddit series after .diff()).
+        # Rolling columns use min_periods=1 and week_sin/cos are derived from non-null iso_week,
+        # so they never produce NaN. Blanket fillna would silently mask upstream data bugs.
+        delta_cols = [c for c in feature_df.columns if c.endswith("_delta")]
+        if delta_cols:
+            feature_df[delta_cols] = feature_df[delta_cols].fillna(0.0)
+
+        # Assert that all non-meta, non-temporal columns are non-null. Any null here
+        # indicates a bug in an upstream extractor, not expected boundary NaN.
+        _meta = {"subreddit", "iso_year", "iso_week", "week_start"}
+        _temporal = set(delta_cols) | {c for c in feature_df.columns if "_roll" in c} | {"week_sin", "week_cos"}
+        core_cols = [c for c in feature_df.columns if c not in _meta and c not in _temporal]
+        null_counts = feature_df[core_cols].isnull().sum()
+        null_cols = null_counts[null_counts > 0]
+        if not null_cols.empty:
+            raise ValueError(
+                f"Unexpected nulls in core feature columns — check upstream extractors:\n{null_cols.to_dict()}"
+            )
 
         print(f"  Feature matrix: {feature_df.shape[0]} weeks x {feature_df.shape[1]} columns")
         return feature_df

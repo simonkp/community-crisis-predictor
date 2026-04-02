@@ -1,3 +1,4 @@
+import hashlib
 import io
 import re
 import time
@@ -222,6 +223,14 @@ class ZenodoLoader:
                 "data_source": "zenodo_covid",
             }
         )
+        # Apply hash fallback for empty/invalid post_ids before deduplication.
+        weak = out["post_id"].str.strip().str.lower().isin({"", "nan", "none", "null"})
+        if weak.any():
+            def _hash_id(row: pd.Series) -> str:
+                fp = f"{row['subreddit']}:{row['created_utc']}:{str(row['selftext'])[:200]}"
+                return "hash_" + hashlib.sha256(fp.encode("utf-8")).hexdigest()[:16]
+            out.loc[weak, "post_id"] = out[weak].apply(_hash_id, axis=1)
+
         # Keep only canonical raw columns; ignore precomputed features.
         return out[["post_id", "created_utc", "selftext", "subreddit", "author", "data_source"]]
 

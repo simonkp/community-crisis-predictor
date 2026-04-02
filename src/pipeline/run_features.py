@@ -302,6 +302,15 @@ def _print_subreddit_summary_table(
     print(tot)
 
 
+def _file_content_hash(path: Path) -> str:
+    """SHA-256 of file contents, read in chunks to handle large parquet files."""
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def _compute_feature_fingerprint(config: dict, config_path: str, skip_topics: bool) -> dict:
     # Cache key includes raw parquet signatures + relevant config slices.
     # If any input changes, digest changes and feature rebuild is triggered.
@@ -317,6 +326,7 @@ def _compute_feature_fingerprint(config: dict, config_path: str, skip_topics: bo
                     "path": str(p),
                     "size": int(st.st_size),
                     "mtime_ns": int(st.st_mtime_ns),
+                    "sha256": _file_content_hash(p),
                 }
             )
     cfg_relevant = {

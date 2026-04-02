@@ -1,3 +1,4 @@
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -74,9 +75,13 @@ class ArcticShiftLoader:
                     stats["skipped_json"] += 1
                     continue
 
+                raw_id = str(rec.get("id", "")).strip()
+                if not raw_id:
+                    fp = f"{sub}:{int(created)}:{selftext[:200]}"
+                    raw_id = "hash_" + hashlib.sha256(fp.encode("utf-8")).hexdigest()[:16]
                 rows.append(
                     {
-                        "post_id": str(rec.get("id", "")).strip(),
+                        "post_id": raw_id,
                         "created_utc": int(created),
                         "selftext": selftext,
                         "subreddit": sub,
