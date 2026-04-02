@@ -195,6 +195,7 @@ def evaluate_walk_forward(
     n_folds = splitter.n_splits(n_samples)
     print(f"  Running {n_folds} walk-forward folds (XGBoost)...")
     fold_diagnostics: list[dict[str, str | int]] = []
+    fold_records: list[dict] = []  # EDA: per-fold class balance tracking
     _last_xgb_model: XGBCrisisModel | None = None
     _last_X_train_df: pd.DataFrame | None = None
 
@@ -220,6 +221,14 @@ def evaluate_walk_forward(
                     "reason": "insufficient_training_examples_or_positives",
                 }
             )
+            fold_records.append({
+                "fold_i": int(fold_i),
+                "n_train": int(len(y_train)),
+                "n_crisis_train": int(y_train.sum()),
+                "crisis_rate_train": float(y_train.mean()) if len(y_train) > 0 else 0.0,
+                "skipped": True,
+                "skip_reason": "insufficient_training_examples_or_positives",
+            })
             continue
 
         model = XGBCrisisModel(config)
@@ -237,6 +246,13 @@ def evaluate_walk_forward(
 
         _last_xgb_model = model
         _last_X_train_df = pd.DataFrame(X_train, columns=feature_columns)
+        fold_records.append({
+            "fold_i": int(fold_i),
+            "n_train": int(len(y_train)),
+            "n_crisis_train": int(y_train.sum()),
+            "crisis_rate_train": round(float(y_train.mean()), 4),
+            "skipped": False,
+        })
 
         for ti in test_idx:
             X_test = feature_df.iloc[[ti]][feature_columns]
@@ -300,6 +316,7 @@ def evaluate_walk_forward(
     metrics["avg_detection_lead_time_weeks"] = float(lead_time["mean"])
     metrics["detection_lead_time_distribution"] = lead_time
     metrics["fold_diagnostics"] = fold_diagnostics
+    metrics["fold_records"] = fold_records  # EDA hook
     metrics["decision_usefulness"] = compute_decision_usefulness(y_true, y_prob)
     metrics["per_week"] = {
         "predictions": all_preds.tolist(),
@@ -340,6 +357,7 @@ def evaluate_walk_forward_lstm(
     n_folds = splitter.n_splits(n_samples)
     print(f"  Running {n_folds} walk-forward folds (LSTM)...")
     fold_diagnostics: list[dict[str, str | int]] = []
+    fold_records_lstm: list[dict] = []  # EDA: per-fold class balance tracking
     _last_lstm_model: "LSTMCrisisModel | None" = None
 
     for fold_i, (train_idx, test_idx) in enumerate(splitter.split(n_samples)):
@@ -359,6 +377,14 @@ def evaluate_walk_forward_lstm(
             fold_diagnostics.append(
                 {"fold": int(fold_i), "reason": "insufficient_sequence_or_class_variety"}
             )
+            fold_records_lstm.append({
+                "fold_i": int(fold_i),
+                "n_train": int(len(y_train)),
+                "n_crisis_train": int((y_train >= 2).sum()),
+                "crisis_rate_train": float((y_train >= 2).mean()) if len(y_train) > 0 else 0.0,
+                "skipped": True,
+                "skip_reason": "insufficient_sequence_or_class_variety",
+            })
             continue
 
         model = LSTMCrisisModel(config)
@@ -372,6 +398,13 @@ def evaluate_walk_forward_lstm(
             continue
 
         _last_lstm_model = model
+        fold_records_lstm.append({
+            "fold_i": int(fold_i),
+            "n_train": int(len(y_train)),
+            "n_crisis_train": int((y_train >= 2).sum()),
+            "crisis_rate_train": round(float((y_train >= 2).mean()), 4),
+            "skipped": False,
+        })
 
         for ti in test_idx:
             seq_start = max(0, ti - sequence_length + 1)
@@ -464,6 +497,7 @@ def evaluate_walk_forward_lstm(
     metrics["avg_detection_lead_time_weeks"] = float(lead_time["mean"])
     metrics["detection_lead_time_distribution"] = lead_time
     metrics["fold_diagnostics"] = fold_diagnostics
+    metrics["fold_records"] = fold_records_lstm  # EDA hook
     metrics["decision_usefulness"] = compute_decision_usefulness(y_true_bin, y_prob)
     metrics["per_week"] = {
         "predictions": all_states.tolist(),

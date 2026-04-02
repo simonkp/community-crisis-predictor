@@ -18,6 +18,12 @@ from src.visualization.feature_importance import plot_feature_importance
 from src.visualization.case_study import CaseStudyGenerator
 from src.visualization.dashboard import generate_html_report
 from src.narration.narrative_generator import generate_weekly_briefs_for_subreddit
+from src.modeling.eda import (
+    generate_pre_training_eda,
+    generate_fold_diagnostics_eda,
+    generate_post_training_eda,
+    write_modelling_eda_html,
+)
 
 # Presentation artifact legend:
 # - Input artifacts     -> data/features/features.parquet, data/models/eval_results.json
@@ -197,6 +203,89 @@ def main():
             timeline_path, importance_path, case_study_paths, results, dashboard_path
         )
         print(f"  Dashboard: {dashboard_path}")
+
+        # ── Modelling EDA (three-stage) ─────────────────────────────────────
+        modelling_eda_dir = sub_reports_path / "modelling_eda"
+        modelling_eda_dir.mkdir(parents=True, exist_ok=True)
+
+        # Stage 1: Pre-training
+        try:
+            pre_eda = generate_pre_training_eda(
+                feature_df=sub_df,
+                labels=labeler.label(distress_scores),
+                feature_columns=feature_columns,
+                subreddit=sub,
+                output_dir=modelling_eda_dir,
+            )
+        except Exception as e:
+            print(f"  Warning: pre-training EDA failed for {sub}: {e}")
+            pre_eda = {"subreddit": sub}
+
+        # Stage 2: Fold diagnostics (from both models; prefer LSTM if available)
+        xgb_results = sub_results.get("xgb", {})
+        lstm_results = sub_results.get("lstm", {})
+        fold_records_combined = (
+            lstm_results.get("fold_records") or xgb_results.get("fold_records") or []
+        )
+        try:
+            fold_eda = generate_fold_diagnostics_eda(
+                fold_records=fold_records_combined,
+                subreddit=sub,
+                output_dir=modelling_eda_dir,
+            )
+        except Exception as e:
+            print(f"  Warning: fold diagnostics EDA failed for {sub}: {e}")
+            fold_eda = {"subreddit": sub}
+
+        # Stage 3: Post-training diagnostics for XGBoost
+        post_eda_xgb = None
+        xgb_pw = xgb_results.get("per_week", {})
+        if xgb_pw.get("actuals") and xgb_pw.get("probabilities"):
+            try:
+                import numpy as _np
+                post_eda_xgb = generate_post_training_eda(
+                    y_true=_np.array(xgb_pw["actuals"]),
+                    y_prob=_np.array(xgb_pw["probabilities"]),
+                    y_pred=_np.array(xgb_pw["predictions"]),
+                    subreddit=sub,
+                    output_dir=modelling_eda_dir,
+                    model_name="xgb",
+                )
+            except Exception as e:
+                print(f"  Warning: post-training XGBoost EDA failed for {sub}: {e}")
+
+        # Stage 3: Post-training diagnostics for LSTM
+        post_eda_lstm = None
+        lstm_pw = lstm_results.get("per_week", {})
+        if lstm_pw.get("actuals") and lstm_pw.get("probabilities"):
+            try:
+                import numpy as _np
+                # LSTM actuals are 4-class; binarise for post-training EDA
+                lstm_actuals_bin = (_np.array(lstm_pw["actuals"]) >= 2).astype(float)
+                lstm_preds_bin = (_np.array(lstm_pw["predictions"]) >= 2).astype(float)
+                post_eda_lstm = generate_post_training_eda(
+                    y_true=lstm_actuals_bin,
+                    y_prob=_np.array(lstm_pw["probabilities"]),
+                    y_pred=lstm_preds_bin,
+                    subreddit=sub,
+                    output_dir=modelling_eda_dir,
+                    model_name="lstm",
+                )
+            except Exception as e:
+                print(f"  Warning: post-training LSTM EDA failed for {sub}: {e}")
+
+        # Write combined HTML
+        try:
+            eda_html_path = modelling_eda_dir / "modelling_eda_summary.html"
+            write_modelling_eda_html(
+                pre_eda=pre_eda,
+                fold_eda=fold_eda,
+                post_eda_xgb=post_eda_xgb,
+                post_eda_lstm=post_eda_lstm,
+                output_path=eda_html_path,
+            )
+        except Exception as e:
+            print(f"  Warning: modelling EDA HTML failed for {sub}: {e}")
 
     print("\nVisualization complete.")
     print(f"Alert transitions logged to: {alerts_db_path}")
