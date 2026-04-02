@@ -75,3 +75,30 @@ streamlit run src/dashboard/app.py
 - **Calendar-complete aggregator:** Weekly aggregation creates placeholder rows for missing ISO weeks, marks them with `is_missing_week`, and zero-fills counts so temporal indicators and downstream features remain deterministic.  
 - **Artifact schema guards:** Raw, weekly, and feature outputs enforce required columns/IDs before writing to `data/raw`, `data/processed`, and `data/features`, preventing silent corruption when new sources add fields.  
 - **Idempotent provenance logging:** The data-quality store now enforces a `(subreddit, week, source)` unique key and upserts timestamps, so repeated collection runs do not flood the provenance table.
+
+## 7. Handoff Orientation Checklist
+
+1. **Environment**
+   - Python 3.12.11 via `pyenv` (see `.python-version`). Install with `pip install -e ".[dev]"`.
+   - `streamlit` and other CLI tools already used in prior automation (run `pip install -r serving/requirements.txt` if needed).
+
+2. **Data Artifacts**
+   - Raw downloads live under `data/raw/{subreddit}/posts.parquet`.
+   - Weekly aggregates are saved at `data/processed/weekly.parquet`.
+   - Feature matrix and models stored in `data/features/features.parquet` and `data/models/{sub}_*.pkl/.pt`.
+   - Reports (`data/reports/{sub}`) and quality DBs (`data/alerts.db`, `data/quality.db`) should stay out of commits unless explicitly requested.
+
+3. **Core Commands**
+   - Collection: `python -m src.pipeline.run_collect --config config/default.yaml`.
+   - Feature extraction: `python -m src.pipeline.run_features --config config/default.yaml`.
+   - Training: `python -m src.pipeline.run_train --config config/default.yaml`.
+   - Evaluation: `python -m src.pipeline.run_evaluate --config config/default.yaml`.
+
+4. **Reliability Notes**
+   - If modifying `src/features` or `src/processing`, rerun `run_features` with `--force` to refresh fingerprints.
+   - Always validate new collectors against the schema guard in `src/collector/storage.py`; failing to provide required columns will raise before overwriting artifacts.
+   - Use the weekly `is_missing_week` flag to detect data gaps before training; downstream code now assumes missing weeks exist for temporal consistency.
+
+5. **Next-to-Do Ideas**
+   - Implement cross-source schema validation (source-aware compatibility) upstream in `run_collect.py`.
+   - Add automated regression tests covering weekly gaps and schema violations in CI or smoke scripts.
