@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
+import sqlite3
 
 from src.data_quality.completeness import (
     check_weekly_completeness,
@@ -46,6 +47,19 @@ def test_log_source_provenance_writes_row(tmp_path):
     db_path = tmp_path / "quality.db"
     log_source_provenance("depression", "2024-01-01/2024-01-07", "pushshift", str(db_path))
     assert Path(db_path).exists()
+
+
+def test_log_source_provenance_is_idempotent(tmp_path):
+    db_path = tmp_path / "quality.db"
+    week = "2024-01-01/2024-01-07"
+    log_source_provenance("depression", week, "pushshift", str(db_path))
+    log_source_provenance("depression", week, "pushshift", str(db_path))
+    with sqlite3.connect(db_path) as conn:
+        count = conn.execute(
+            "SELECT COUNT(*) FROM data_provenance WHERE subreddit=? AND week=? AND source=?",
+            ("depression", week, "pushshift"),
+        ).fetchone()[0]
+    assert int(count) == 1
 
 
 def test_check_weekly_completeness_falls_back_to_created_utc():

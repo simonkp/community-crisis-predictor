@@ -115,14 +115,34 @@ def log_source_provenance(
                 timestamp TEXT NOT NULL,
                 subreddit TEXT NOT NULL,
                 week TEXT NOT NULL,
-                source TEXT NOT NULL
+                source TEXT NOT NULL,
+                UNIQUE(subreddit, week, source)
             )
+            """
+        )
+        # Migration-safe dedupe + unique index for idempotent upserts.
+        conn.execute(
+            """
+            DELETE FROM data_provenance
+            WHERE id NOT IN (
+                SELECT MIN(id)
+                FROM data_provenance
+                GROUP BY subreddit, week, source
+            )
+            """
+        )
+        conn.execute(
+            """
+            CREATE UNIQUE INDEX IF NOT EXISTS ux_data_provenance_sub_week_source
+            ON data_provenance (subreddit, week, source)
             """
         )
         conn.execute(
             """
             INSERT INTO data_provenance (timestamp, subreddit, week, source)
             VALUES (?, ?, ?, ?)
+            ON CONFLICT(subreddit, week, source)
+            DO UPDATE SET timestamp = excluded.timestamp
             """,
             (
                 datetime.now(timezone.utc).isoformat(),

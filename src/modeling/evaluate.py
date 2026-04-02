@@ -341,7 +341,8 @@ def evaluate_walk_forward(
     calibration_min_samples = int(cal_cfg.get("min_samples", 20))
     calibration_min_class = int(cal_cfg.get("min_class_count", 3))
 
-    distress_scores = compute_distress_score(feature_df, weights)
+    # Avoid temporal leakage: do not globally z-score with future weeks included.
+    distress_scores = compute_distress_score(feature_df, weights, normalize=False)
     n_samples = len(feature_df)
     dev_n = _compute_dev_samples(
         n_samples=n_samples,
@@ -566,7 +567,8 @@ def evaluate_walk_forward_lstm(
     min_train = int(wf_cfg.get("min_train_weeks", 26)) + sequence_length
     splitter = WalkForwardSplitter(min_train_weeks=min_train, gap_weeks=1)
 
-    distress_scores = compute_distress_score(feature_df, weights)
+    # Avoid temporal leakage: do not globally z-score with future weeks included.
+    distress_scores = compute_distress_score(feature_df, weights, normalize=False)
     n_samples = len(feature_df)
     dev_n = _compute_dev_samples(n_samples=n_samples, holdout_weeks=holdout_weeks, min_train_required=min_train + 1)
     tuned_params, tuning_summary = _tune_lstm_hyperparams(
