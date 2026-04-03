@@ -36,7 +36,9 @@ reports/*.tmp
 
 project_overview.md
 
-
+.DS_Store
+.idea/
+.vscode/
 
 
 
