@@ -20,12 +20,12 @@ class XGBCrisisModel:
         self.model: xgb.XGBClassifier | None = None
         self.best_params: dict = {}
 
-    def _compute_scale_pos_weight(self, y: pd.Series) -> float:
+    def _compute_scale_pos_weight(self, y: pd.Series, max_weight: float = 8.0) -> float:
         n_pos = (y == 1).sum()
         n_neg = (y == 0).sum()
         if n_pos == 0:
             return 1.0
-        return n_neg / n_pos
+        return min(n_neg / n_pos, max_weight)
 
     def train(self, X_train: pd.DataFrame, y_train: pd.Series,
               do_search: bool = True) -> None:
