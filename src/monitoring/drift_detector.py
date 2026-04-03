@@ -6,6 +6,9 @@ DRIFT_SIGNALS = [
     "hopelessness_density",
     "topic_shift_jsd",
     "topic_shift_jsd_4w",
+    "suicidality_total",
+    "isolation_total",
+    "post_volume",
 ]
 
 ALERT_LEVELS = {0: "normal", 1: "warning", 2: "alert", 3: "critical"}
