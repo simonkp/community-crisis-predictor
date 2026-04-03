@@ -252,36 +252,56 @@
   },
   {
     "stage": "collect_total",
-    "elapsed_seconds": 2.115,
-    "subreddit_runs": []
+    "elapsed_seconds": 819.003,
+    "subreddit_runs": [
+      {
+        "stage": "collect",
+        "subreddit": "depression",
+        "elapsed_seconds": 128.957,
+        "rows_processed": 624224,
+        "throughput_rows_per_sec": 4840.568,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "anxiety",
+        "elapsed_seconds": 80.86,
+        "rows_processed": 387370,
+        "throughput_rows_per_sec": 4790.649,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "mentalhealth",
+        "elapsed_seconds": 97.725,
+        "rows_processed": 398576,
+        "throughput_rows_per_sec": 4078.545,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "SuicideWatch",
+        "elapsed_seconds": 224.588,
+        "rows_processed": 550267,
+        "throughput_rows_per_sec": 2450.122,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "lonely",
+        "elapsed_seconds": 114.694,
+        "rows_processed": 261448,
+        "throughput_rows_per_sec": 2279.529,
+        "source": "zenodo_covid"
+      }
+    ]
   },
   {
     "stage": "features",
-    "elapsed_seconds": 6.123,
-    "rows_processed": 71865,
-    "weeks_generated": 525,
-    "feature_rows": 525,
+    "elapsed_seconds": 88872.345,
+    "rows_processed": 2207696,
+    "weeks_generated": 1769,
+    "feature_rows": 1769,
     "feature_cols": 107
-  },
-  {
-    "stage": "run_all",
-    "steps": [
-      {
-        "stage": "collect",
-        "elapsed_seconds": 3.876
-      },
-      {
-        "stage": "features",
-        "elapsed_seconds": 8.347
-      },
-      {
-        "stage": "train",
-        "elapsed_seconds": 52.262
-      },
-      {
-        "stage": "evaluate",
-        "elapsed_seconds": 5.606
-      }
-    ]
   }
 ]

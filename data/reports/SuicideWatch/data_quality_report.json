@@ -1,19 +1,20 @@
 {
   "subreddit": "SuicideWatch",
-  "source": "synthetic",
-  "total_weeks_observed": 105,
-  "gap_weeks_below_50pct": 0,
-  "missing_week_count": 9,
+  "source": "zenodo_covid",
+  "total_weeks_observed": 356,
+  "gap_weeks_below_50pct": 9,
+  "missing_week_count": 10,
   "missing_weeks": [
-    "2025-12-29",
-    "2026-01-05",
-    "2026-01-12",
-    "2026-01-19",
-    "2026-01-26",
-    "2026-02-02",
-    "2026-02-09",
-    "2026-02-16",
-    "2026-02-23"
+    "2018-04-23",
+    "2019-05-27",
+    "2019-11-04",
+    "2019-11-11",
+    "2019-11-18",
+    "2019-11-25",
+    "2019-12-02",
+    "2019-12-09",
+    "2019-12-16",
+    "2019-12-23"
   ],
-  "avg_completeness_score": 1.0104673704804026
+  "avg_completeness_score": 1.0046270280130678
 }
