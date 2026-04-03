@@ -77,11 +77,15 @@ features:
 
 labeling:
   distress_weights:
-    neg_sentiment: 0.4
-    hopelessness: 0.35
-    help_seeking: 0.25
-  crisis_threshold_std: 1.5
-  crisis_thresholds_std: [0.5, 1.0, 2.0]
+    neg_sentiment: 0.25
+    hopelessness: 0.20
+    help_seeking: 0.15
+    suicidality: 0.20
+    isolation: 0.10
+    economic_stress: 0.05
+    domestic_stress: 0.05
+  crisis_threshold_std: 1.0
+  crisis_thresholds_std: [0.3, 0.6, 1.0]
 
 modeling:
   xgboost:
@@ -99,12 +103,12 @@ modeling:
     min_features: 20
     max_features: 80
   lstm:
-    sequence_length: 8
+    sequence_length: 4
     hidden_size: 16
     num_layers: 1
     dropout: 0.2
     epochs: 50
-    walk_forward_epochs: 20
+    walk_forward_epochs: 30
     val_split: 0.2
     early_stopping_patience: 5
     min_val_sequences: 12

@@ -126,7 +126,16 @@ def audit_labels_with_llm(
 
     for idx in sample_idx:
         row = weekly_df.iloc[idx]
-        texts = row.get("texts", []) or []
+        raw_texts = row.get("texts", None)
+        if raw_texts is None:
+            texts = []
+        elif isinstance(raw_texts, (list, tuple)):
+            texts = list(raw_texts)
+        else:
+            try:
+                texts = list(raw_texts) if len(raw_texts) > 0 else []
+            except Exception:
+                texts = []
         model_label = int(labels.iloc[idx])
         week = str(row.get("week_start", idx))
 

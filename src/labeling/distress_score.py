@@ -9,13 +9,25 @@ def compute_distress_score(
     normalize: bool = True,
 ) -> pd.Series:
     if weights is None:
-        weights = {"neg_sentiment": 0.4, "hopelessness": 0.35, "help_seeking": 0.25}
+        weights = {
+            "neg_sentiment": 0.25,
+            "hopelessness": 0.20,
+            "help_seeking": 0.15,
+            "suicidality": 0.20,
+            "isolation": 0.10,
+            "economic_stress": 0.05,
+            "domestic_stress": 0.05,
+        }
 
     # Map weight keys to feature columns
     col_map = {
         "neg_sentiment": "avg_negative",
         "hopelessness": "hopelessness_density",
         "help_seeking": "help_seeking_density",
+        "suicidality": "suicidality_total",
+        "isolation": "isolation_total",
+        "economic_stress": "economic_stress_total",
+        "domestic_stress": "domestic_stress_total",
     }
 
     components = {}
