@@ -13,11 +13,19 @@ class DistressScorer:
         self.hopelessness_terms = self._load_lexicon("hopelessness.txt")
         self.help_seeking_terms = self._load_lexicon("help_seeking.txt")
         self.distress_terms = self._load_lexicon("distress.txt")
+        self.suicidality_terms = self._load_lexicon("suicidality.txt")
+        self.isolation_terms = self._load_lexicon("isolation.txt")
+        self.economic_stress_terms = self._load_lexicon("economic_stress.txt")
+        self.domestic_stress_terms = self._load_lexicon("domestic_stress.txt")
         # Precompile word-boundary patterns to avoid substring false positives
         # (e.g. "panic" matching inside "panicking" or unrelated compound tokens).
         self._hopelessness_re = self._compile_patterns(self.hopelessness_terms)
         self._help_seeking_re = self._compile_patterns(self.help_seeking_terms)
         self._distress_re = self._compile_patterns(self.distress_terms)
+        self._suicidality_re = self._compile_patterns(self.suicidality_terms)
+        self._isolation_re = self._compile_patterns(self.isolation_terms)
+        self._economic_stress_re = self._compile_patterns(self.economic_stress_terms)
+        self._domestic_stress_re = self._compile_patterns(self.domestic_stress_terms)
 
     def _load_lexicon(self, filename: str) -> list[str]:
         path = self.lexicon_dir / filename
@@ -50,17 +58,29 @@ class DistressScorer:
                     "hopelessness_density": 0,
                     "help_seeking_density": 0,
                     "distress_density": 0,
+                    "suicidality_total": 0,
+                    "isolation_total": 0,
+                    "economic_stress_total": 0,
+                    "domestic_stress_total": 0,
                 })
                 continue
 
             hope_densities = [self._density(t, self._hopelessness_re) for t in texts]
             help_densities = [self._density(t, self._help_seeking_re) for t in texts]
             dist_densities = [self._density(t, self._distress_re) for t in texts]
+            suic_totals = [self._count_matches(t, self._suicidality_re) for t in texts]
+            isol_totals = [self._count_matches(t, self._isolation_re) for t in texts]
+            econ_totals = [self._count_matches(t, self._economic_stress_re) for t in texts]
+            dome_totals = [self._count_matches(t, self._domestic_stress_re) for t in texts]
 
             rows.append({
                 "hopelessness_density": np.mean(hope_densities),
                 "help_seeking_density": np.mean(help_densities),
                 "distress_density": np.mean(dist_densities),
+                "suicidality_total": int(sum(suic_totals)),
+                "isolation_total": int(sum(isol_totals)),
+                "economic_stress_total": int(sum(econ_totals)),
+                "domestic_stress_total": int(sum(dome_totals)),
             })
 
         return pd.DataFrame(rows, index=weekly_df.index)

@@ -24,6 +24,12 @@ from src.modeling.eda import (
     generate_post_training_eda,
     write_modelling_eda_html,
 )
+from src.modeling.evaluate import (
+    evaluate_cross_subreddit_generalization,
+    evaluate_feature_family_ablation,
+)
+from src.modeling.granger import compute_granger_causality, save_granger_report
+from src.modeling.label_audit import audit_labels_with_llm, save_audit_report
 
 # Presentation artifact legend:
 # - Input artifacts     -> data/features/features.parquet, data/models/eval_results.json
@@ -286,6 +292,94 @@ def main():
             )
         except Exception as e:
             print(f"  Warning: modelling EDA HTML failed for {sub}: {e}")
+
+    # ── Cross-subreddit analyses (require ≥2 subreddits) ──────────────────────
+    subreddits_with_data = list(all_results.keys())
+    all_sub_dfs: dict[str, pd.DataFrame] = {}
+    weekly_dfs_by_sub: dict[str, pd.DataFrame] = {}
+    for sub in subreddits_with_data:
+        sub_df = feature_df[feature_df["subreddit"] == sub].copy()
+        sub_df = sub_df.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
+        if not sub_df.empty:
+            all_sub_dfs[sub] = sub_df
+
+    # --- #10: Cross-subreddit generalization ---
+    # Output: data/reports/cross_subreddit_generalization.json
+    if len(all_sub_dfs) >= 2:
+        print("\nRunning cross-subreddit generalization evaluation...")
+        try:
+            gen_results = evaluate_cross_subreddit_generalization(
+                all_sub_dfs, config, feature_columns
+            )
+            gen_path = reports_path / "cross_subreddit_generalization.json"
+            with open(gen_path, "w", encoding="utf-8") as f:
+                json.dump(gen_results, f, indent=2)
+            print(f"  Cross-subreddit generalization: {gen_path}")
+        except Exception as e:
+            print(f"  Warning: cross-subreddit generalization failed: {e}")
+
+    # --- #8: Feature family ablation (per subreddit) ---
+    # Output: data/reports/{sub}/ablation_study.json
+    print("\nRunning feature family ablation studies...")
+    for sub, sub_df in all_sub_dfs.items():
+        try:
+            ablation = evaluate_feature_family_ablation(sub_df, config, feature_columns)
+            ablation_path = reports_path / sub / "ablation_study.json"
+            with open(ablation_path, "w", encoding="utf-8") as f:
+                json.dump(ablation, f, indent=2)
+            print(f"  Ablation study for r/{sub}: {ablation_path}")
+        except Exception as e:
+            print(f"  Warning: ablation study failed for r/{sub}: {e}")
+
+    # --- #9: Granger causality (requires distress_score column on feature_df) ---
+    # Output: data/reports/granger_causality.json
+    if len(all_sub_dfs) >= 2:
+        print("\nRunning Granger causality analysis...")
+        try:
+            distress_col = "distress_density"  # proxy; present in all feature matrices
+            if distress_col in feature_df.columns:
+                granger_results = compute_granger_causality(
+                    feature_df, subreddits_with_data, distress_col=distress_col, max_lag=4
+                )
+                granger_path = reports_path / "granger_causality.json"
+                save_granger_report(granger_results, granger_path)
+                print(f"  Granger causality: {granger_path}")
+            else:
+                print(f"  Skipping Granger causality: column '{distress_col}' not in feature matrix")
+        except Exception as e:
+            print(f"  Warning: Granger causality analysis failed: {e}")
+
+    # --- #14: LLM-assisted label auditing (per subreddit, best-effort) ---
+    # Output: data/reports/{sub}/label_audit.json
+    # Only runs if an API key is available; skips silently otherwise.
+    print("\nRunning LLM label auditing (best-effort)...")
+    llm_provider = config.get("evaluation", {}).get("label_audit_provider", "anthropic")
+    for sub, sub_df in all_sub_dfs.items():
+        try:
+            sub_scores = compute_distress_score(sub_df, weights)
+            sub_labeler = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
+            sub_labeler.fit(sub_scores)
+            sub_labels = sub_labeler.label(sub_scores)
+
+            # Load weekly_df for this subreddit (needs `texts` column)
+            processed_path = Path(config["paths"]["processed_data"]) / "weekly.parquet"
+            if processed_path.exists():
+                weekly_full = pd.read_parquet(processed_path, engine="pyarrow")
+                weekly_sub = weekly_full[weekly_full["subreddit"] == sub].copy()
+                weekly_sub = weekly_sub.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
+                audit = audit_labels_with_llm(
+                    weekly_sub, sub_labels, subreddit=sub,
+                    sample_size=10, provider=llm_provider,
+                )
+                audit_path = reports_path / sub / "label_audit.json"
+                save_audit_report(audit, audit_path)
+                rate = audit.get("agreement_rate")
+                if rate is not None:
+                    print(f"  Label audit for r/{sub}: agreement={rate:.0%} ({audit_path})")
+                else:
+                    print(f"  Label audit for r/{sub}: {audit.get('status', 'unknown')} ({audit_path})")
+        except Exception as e:
+            print(f"  Warning: label audit skipped for r/{sub}: {e}")
 
     print("\nVisualization complete.")
     print(f"Alert transitions logged to: {alerts_db_path}")

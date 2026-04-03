@@ -12,6 +12,7 @@ from src.collector.arctic_shift_loader import ArcticShiftLoader, parse_arctic_sh
 from src.config import load_config
 from src.data_quality.completeness import (
     check_weekly_completeness,
+    cross_source_validate,
     flag_missing_weeks,
     log_source_provenance,
 )
@@ -23,7 +24,7 @@ from src.collector.manifest import (
     save_manifest,
 )
 from src.collector.privacy import strip_pii
-from src.collector.storage import save_raw
+from src.collector.storage import save_raw, validate_source_compatibility
 from src.collector.synthetic import generate_synthetic_data
 
 # Presentation artifact legend:
@@ -253,6 +254,12 @@ def main():
                         f"{fs['file']} | parsed={fs['parsed']} kept={fs['kept']} inserted={fs['inserted']} "
                         f"skipped={fs['skipped']}"
                     )
+                if not arctic_df.empty:
+                    try:
+                        validate_source_compatibility({"zenodo": df, "arctic_shift": arctic_df})
+                    except ValueError as exc:
+                        print(f"  [ArcticShift] WARNING: compatibility check failed — skipping merge: {exc}")
+                        arctic_df = pd.DataFrame()
                 if not arctic_df.empty:
                     before_len = len(df)
                     df = pd.concat([df, arctic_df], ignore_index=True)
@@ -547,6 +554,8 @@ def _run_data_quality_and_log(
     completeness_csv = sub_report_dir / "weekly_completeness.csv"
     completeness_df.to_csv(completeness_csv, index=False)
 
+    cross_src = cross_source_validate(df, subreddit)
+
     report = {
         "subreddit": subreddit,
         "source": source,
@@ -557,7 +566,13 @@ def _run_data_quality_and_log(
         "avg_completeness_score": float(completeness_df["completeness_score"].mean())
         if not completeness_df.empty
         else 0.0,
+        "cross_source_validation": cross_src,
     }
+    if cross_src.get("n_discrepancies", 0) > 0:
+        print(
+            f"  Warning: {cross_src['n_discrepancies']} cross-source count discrepancy week(s) "
+            f"detected for r/{subreddit} — see data_quality_report.json for details."
+        )
     with open(sub_report_dir / "data_quality_report.json", "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
     print(

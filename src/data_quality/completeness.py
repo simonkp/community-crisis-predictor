@@ -99,6 +99,66 @@ def flag_missing_weeks(
     return [w for w in expected_weeks if w not in present_weeks]
 
 
+def cross_source_validate(
+    df: pd.DataFrame,
+    subreddit: str,
+) -> dict:
+    """
+    Check for cross-source discrepancies for a given subreddit.
+
+    Identifies weeks where data from multiple sources overlap and flags
+    weeks where the post-count ratio between sources exceeds 2× (indicating
+    a likely double-count or gap-fill alignment problem).
+
+    Returns a structured report dict with:
+      - sources_present: list of source names seen
+      - total_weeks: number of distinct weeks in the data
+      - weeks_with_multiple_sources: weeks covered by >1 source
+      - discrepancies: list of weeks where per-source counts diverge >2×
+      - n_discrepancies: count of flagged weeks
+    """
+    if "data_source" not in df.columns or "created_utc" not in df.columns:
+        return {"status": "skipped", "reason": "missing data_source or created_utc", "subreddit": subreddit}
+
+    work = df[df["subreddit"] == subreddit].copy() if "subreddit" in df.columns else df.copy()
+    if work.empty:
+        return {"status": "empty", "subreddit": subreddit, "n_discrepancies": 0}
+
+    work["_dt"] = _utc_dt_from_created_utc(work["created_utc"])
+    work = work[work["_dt"].notna()].copy()
+    work["_week"] = work["_dt"].dt.tz_localize(None).dt.to_period("W-SUN").dt.start_time
+
+    week_source = (
+        work.groupby(["_week", "data_source"])
+        .size()
+        .reset_index(name="post_count")
+    )
+
+    multi = week_source.groupby("_week").filter(lambda g: len(g) > 1)
+
+    discrepancies: list[dict] = []
+    for week, group in multi.groupby("_week"):
+        counts = group.set_index("data_source")["post_count"]
+        max_c, min_c = int(counts.max()), int(counts.min())
+        ratio = max_c / min_c if min_c > 0 else float("inf")
+        if ratio > 2.0:
+            discrepancies.append({
+                "week": str(week.date()),
+                "sources": {k: int(v) for k, v in counts.items()},
+                "ratio": round(float(ratio), 2),
+            })
+
+    return {
+        "status": "ok",
+        "subreddit": subreddit,
+        "sources_present": sorted(work["data_source"].unique().tolist()),
+        "total_weeks": int(week_source["_week"].nunique()),
+        "weeks_with_multiple_sources": int(multi["_week"].nunique()),
+        "discrepancies": discrepancies,
+        "n_discrepancies": len(discrepancies),
+    }
+
+
 def log_source_provenance(
     subreddit: str,
     week: str,

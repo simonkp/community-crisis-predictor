@@ -821,6 +821,177 @@ def evaluate_walk_forward_lstm(
     return metrics
 
 
+def evaluate_cross_subreddit_generalization(
+    all_sub_dfs: dict[str, pd.DataFrame],
+    config: dict,
+    feature_columns: list[str],
+) -> dict:
+    """
+    For each (source, target) subreddit pair, train an XGBoost model on the
+    source subreddit and evaluate it on the target subreddit (zero-shot transfer).
+
+    Returns a dict of {source_sub: {target_sub: {pr_auc, recall, f1, n_test, n_positive}}}.
+    Useful for diagnosing whether signal learned in one community generalises across
+    communities — a prerequisite for a shared/pooled model.
+    """
+    labeling_cfg = config.get("labeling", {})
+    threshold_std = labeling_cfg.get("crisis_threshold_std", 1.5)
+    thresholds_std = labeling_cfg.get("crisis_thresholds_std", [0.5, 1.0, 2.0])
+    weights = labeling_cfg.get("distress_weights")
+    prob_threshold = float(config.get("evaluation", {}).get("probability_threshold", 0.5))
+
+    results: dict = {}
+    subreddits = list(all_sub_dfs.keys())
+
+    for src in subreddits:
+        src_df = all_sub_dfs[src]
+        if len(src_df) < 20:
+            continue
+        src_scores = compute_distress_score(src_df, weights, normalize=False)
+        labeler_src = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
+        labeler_src.fit(src_scores)
+        labels_src = labeler_src.label(src_scores)
+        valid_src = ~labels_src.isna()
+        X_src = src_df.loc[valid_src, feature_columns]
+        y_src = (labels_src[valid_src].astype(int) >= 2).astype(int)
+        if len(y_src) < 10 or int(y_src.sum()) < 2:
+            continue
+        model = XGBCrisisModel(config)
+        try:
+            model.train(X_src, y_src, do_search=False)
+        except Exception as e:
+            results.setdefault(src, {})["_train_error"] = str(e)
+            continue
+
+        results[src] = {}
+        for tgt in subreddits:
+            if tgt == src:
+                continue
+            tgt_df = all_sub_dfs[tgt]
+            if len(tgt_df) < 10:
+                continue
+            tgt_scores = compute_distress_score(tgt_df, weights, normalize=False)
+            labeler_tgt = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
+            labeler_tgt.fit(tgt_scores)
+            labels_tgt = labeler_tgt.label(tgt_scores)
+            valid_tgt = ~labels_tgt.isna()
+            X_tgt = tgt_df.loc[valid_tgt, feature_columns]
+            y_tgt = (labels_tgt[valid_tgt].astype(int) >= 2).astype(int)
+            if len(y_tgt) < 5:
+                results[src][tgt] = {"skipped": True, "reason": "too_few_target_samples"}
+                continue
+            try:
+                probs = model.predict_proba(X_tgt)
+                preds = (probs >= prob_threshold).astype(int)
+                pr_auc = float(average_precision_score(y_tgt, probs)) if int(y_tgt.sum()) > 0 else 0.0
+                results[src][tgt] = {
+                    "pr_auc": round(pr_auc, 4),
+                    "recall": round(float(recall_score(y_tgt, preds, zero_division=0)), 4),
+                    "f1": round(float(f1_score(y_tgt, preds, zero_division=0)), 4),
+                    "n_test": int(len(y_tgt)),
+                    "n_positive": int(y_tgt.sum()),
+                }
+            except Exception as e:
+                results[src][tgt] = {"skipped": True, "reason": str(e)}
+
+    return results
+
+
+def evaluate_feature_family_ablation(
+    feature_df: pd.DataFrame,
+    config: dict,
+    feature_columns: list[str],
+) -> dict:
+    """
+    Train an XGBoost model on the full feature set, then re-train with each
+    feature family held out (one at a time), recording the drop in PR-AUC.
+
+    Feature families are identified by column-name conventions:
+      - linguistic:  word_count, char_count, type_token_ratio, flesch_kincaid,
+                     first_person_*
+      - sentiment:   avg_compound, avg_positive, avg_negative, avg_neutral,
+                     pct_*, sentiment_std
+      - distress:    *_density, *_total
+      - behavioral:  post_volume, avg_comments, unique_posters, new_poster_ratio,
+                     posting_time_entropy
+      - topic:       dominant_topic, topic_entropy, topic_shift_jsd
+      - temporal:    *_delta, *_roll*w, week_sin, week_cos
+
+    Returns {family: {pr_auc, pr_auc_drop, recall, n_features_removed}}.
+    """
+    labeling_cfg = config.get("labeling", {})
+    threshold_std = labeling_cfg.get("crisis_threshold_std", 1.5)
+    thresholds_std = labeling_cfg.get("crisis_thresholds_std", [0.5, 1.0, 2.0])
+    weights = labeling_cfg.get("distress_weights")
+    prob_threshold = float(config.get("evaluation", {}).get("probability_threshold", 0.5))
+
+    distress_scores = compute_distress_score(feature_df, weights, normalize=False)
+    labeler = CrisisLabeler(threshold_std=threshold_std, thresholds_std=thresholds_std)
+    labeler.fit(distress_scores)
+    labels = labeler.label(distress_scores)
+    valid = ~labels.isna()
+    X_all = feature_df.loc[valid, feature_columns]
+    y_all = (labels[valid].astype(int) >= 2).astype(int)
+
+    if len(y_all) < 15 or int(y_all.sum()) < 2:
+        return {"error": "insufficient_data_for_ablation"}
+
+    def _pr_auc(X: pd.DataFrame, y: pd.Series) -> float:
+        if int(y.sum()) < 2:
+            return 0.0
+        m = XGBCrisisModel(config)
+        try:
+            m.train(X, y, do_search=False)
+            probs = m.predict_proba(X)
+            return float(average_precision_score(y, probs))
+        except Exception:
+            return 0.0
+
+    full_pr_auc = _pr_auc(X_all, y_all)
+
+    _linguistic = {c for c in feature_columns if c in {
+        "word_count", "char_count", "type_token_ratio", "flesch_kincaid",
+        "first_person_singular_ratio", "first_person_plural_ratio",
+        "avg_word_count", "avg_char_count",
+    }}
+    _sentiment = {c for c in feature_columns if c.startswith(("avg_compound", "avg_positive",
+        "avg_negative", "avg_neutral", "pct_", "sentiment_std", "pct_high"))}
+    _distress = {c for c in feature_columns if c.endswith(("_density", "_total"))}
+    _behavioral = {c for c in feature_columns if c in {
+        "post_volume", "avg_comments", "unique_posters", "new_poster_ratio", "posting_time_entropy",
+    }}
+    _topic = {c for c in feature_columns if c in {
+        "dominant_topic", "topic_entropy", "topic_shift_jsd",
+    }}
+    _temporal = {c for c in feature_columns if (
+        c.endswith("_delta") or "_roll" in c or c in {"week_sin", "week_cos"}
+    )}
+
+    families = {
+        "linguistic": _linguistic,
+        "sentiment": _sentiment,
+        "distress": _distress,
+        "behavioral": _behavioral,
+        "topic": _topic,
+        "temporal": _temporal,
+    }
+
+    ablation_results: dict = {"full_model_pr_auc": round(full_pr_auc, 4)}
+    for family, drop_cols in families.items():
+        remaining = [c for c in feature_columns if c not in drop_cols]
+        if not remaining:
+            ablation_results[family] = {"skipped": True, "reason": "no_remaining_features"}
+            continue
+        ablated_pr_auc = _pr_auc(X_all[remaining], y_all)
+        ablation_results[family] = {
+            "pr_auc": round(ablated_pr_auc, 4),
+            "pr_auc_drop": round(full_pr_auc - ablated_pr_auc, 4),
+            "n_features_removed": len(drop_cols & set(feature_columns)),
+        }
+
+    return ablation_results
+
+
 def _compute_detection_lead_time(
     predictions: pd.Series,
     actuals: pd.Series,

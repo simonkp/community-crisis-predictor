@@ -79,6 +79,13 @@ streamlit run src/dashboard/app.py
 - **Token-aware lexicon matching:** `DistressScorer` now compiles `\b`-bounded regex patterns at init time for all three lexicons (hopelessness, help-seeking, distress). Matching uses `re.findall` instead of plain substring search, eliminating false positives such as "panic" firing inside "panicking" or unrelated compound tokens.
 - **Selective `fillna` with core-input assertion:** `FeaturePipeline.run()` no longer applies a blanket `fillna(0.0)` over the entire feature matrix. Only `_delta` columns (which legitimately produce NaN on the first row of each subreddit series from `.diff()`) are zero-filled. A post-fill assertion raises `ValueError` if any core (non-meta, non-temporal) column contains nulls, surfacing upstream extractor bugs instead of silently masking them.
 - **Content-hash cache invalidation:** The feature-build fingerprint in `run_features.py` now includes a SHA-256 hash of each raw `posts.parquet` file in addition to mtime/size. In-place overwrites that preserve file metadata but change content (e.g. re-collected data written to the same path) now correctly invalidate the cache and trigger a full feature rebuild.
+- **Cross-source discrepancy detection (#13):** `cross_source_validate()` in `src/data_quality/completeness.py` identifies weeks covered by multiple collectors and flags those where per-source post counts diverge more than 2×. Called from `run_collect.py` and embedded in `data_quality_report.json`.
+- **Fail-fast source compatibility gate (#29):** `validate_source_compatibility()` in `src/collector/storage.py` checks required-column presence and `created_utc` dtype compatibility before merging Arctic Shift into Zenodo data; aborts with a descriptive error rather than silently producing a malformed artifact.
+- **Extended lexicon coverage (#29):** Four new lexicons added under `config/lexicons/` — `suicidality.txt`, `isolation.txt`, `economic_stress.txt`, `domestic_stress.txt`. `DistressScorer` now produces four additional features: `suicidality_total`, `isolation_total`, `economic_stress_total`, `domestic_stress_total` (raw match counts, token-aware).
+- **Cross-subreddit generalization validation (#10):** `evaluate_cross_subreddit_generalization()` in `src/modeling/evaluate.py` trains XGBoost on each source subreddit and scores it on every other subreddit (zero-shot transfer). Results saved to `data/reports/cross_subreddit_generalization.json` by `run_evaluate.py`.
+- **Feature family ablation study (#8):** `evaluate_feature_family_ablation()` holds out one feature family at a time (linguistic, sentiment, distress, behavioral, topic, temporal) and records the PR-AUC drop versus the full model. Results saved per-subreddit to `data/reports/{sub}/ablation_study.json`.
+- **Granger causality analysis (#9):** `src/modeling/granger.py` runs OLS-based Granger causality tests (via `statsmodels`) between every ordered pair of sureddit distress series at lags 1–4. Results saved to `data/reports/granger_causality.json` with F-statistics and p-values per lag.
+- **LLM-assisted label auditing (#14):** `src/modeling/label_audit.py` samples up to 10 weeks per subreddit, constructs structured prompts with post excerpts and model labels, queries Claude (or GPT-4o) for an independent distress rating, and records agreement rate + disagreement cases in `data/reports/{sub}/label_audit.json`.
 
 ## 7. Handoff Orientation Checklist
 
@@ -104,5 +111,6 @@ streamlit run src/dashboard/app.py
    - Use the weekly `is_missing_week` flag to detect data gaps before training; downstream code now assumes missing weeks exist for temporal consistency.
 
 5. **Next-to-Do Ideas**
-   - Implement cross-source schema validation (source-aware compatibility) upstream in `run_collect.py`.
-   - Add automated regression tests covering weekly gaps, schema violations, ID hash fallback paths, and lexicon boundary matching in CI or smoke scripts.
+   - Add automated regression tests covering weekly gaps, schema violations, ID hash fallback paths, lexicon boundary matching, and the new cross-source and ablation code paths in CI or smoke scripts.
+   - Wire Granger causality results and ablation study outputs into the Streamlit dashboard (`src/dashboard/app.py`) for interactive inspection.
+   - Surface label audit agreement rates in the dashboard quality tab.
