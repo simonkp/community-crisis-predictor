@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fingerprint": "128745899e9b95bdd6ffbb1ed1e9765f19a7f4703e13de4593fe6ea0b6a0a00c",
+  "fingerprint": "8589390fac1a49d8983891dacd45da1f6fe58a85cb9dcb0af2a7fd6c272dcdaf",
   "base": {
     "subreddits": [
       "depression",
@@ -9,7 +9,7 @@
       "SuicideWatch",
       "lonely"
     ],
-    "skip_topics": false,
+    "skip_topics": true,
     "raw_files": [
       {
         "path": "data/raw/depression/posts.parquet",

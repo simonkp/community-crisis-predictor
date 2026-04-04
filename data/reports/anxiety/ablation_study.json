@@ -2,12 +2,12 @@
   "full_model_pr_auc": 1.0,
   "linguistic": {
     "pr_auc": 1.0,
-    "pr_auc_drop": 0.0,
+    "pr_auc_drop": -0.0,
     "n_features_removed": 4
   },
   "sentiment": {
     "pr_auc": 1.0,
-    "pr_auc_drop": 0.0,
+    "pr_auc_drop": -0.0,
     "n_features_removed": 32
   },
   "distress": {
@@ -28,6 +28,6 @@
   "temporal": {
     "pr_auc": 1.0,
     "pr_auc_drop": 0.0,
-    "n_features_removed": 92
+    "n_features_removed": 89
   }
 }

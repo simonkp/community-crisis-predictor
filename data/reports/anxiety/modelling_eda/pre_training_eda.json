@@ -122,13 +122,6 @@
       "abs_rho": 0.0868
     },
     {
-      "feature": "topic_entropy_delta",
-      "spearman_rho": -0.0801,
-      "p_value": 0.126068,
-      "significant": false,
-      "abs_rho": 0.0801
-    },
-    {
       "feature": "posting_time_entropy",
       "spearman_rho": 0.0753,
       "p_value": 0.150665,
@@ -162,13 +155,6 @@
       "p_value": 0.188925,
       "significant": false,
       "abs_rho": 0.0688
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "spearman_rho": 0.067,
-      "p_value": 0.200928,
-      "significant": false,
-      "abs_rho": 0.067
     },
     {
       "feature": "pct_positive_delta",
@@ -213,13 +199,6 @@
       "abs_rho": 0.0492
     },
     {
-      "feature": "topic_entropy",
-      "spearman_rho": -0.0488,
-      "p_value": 0.351898,
-      "significant": false,
-      "abs_rho": 0.0488
-    },
-    {
       "feature": "help_seeking_density_delta",
       "spearman_rho": 0.0444,
       "p_value": 0.397083,
@@ -232,20 +211,6 @@
       "p_value": 0.485747,
       "significant": false,
       "abs_rho": 0.0366
-    },
-    {
-      "feature": "topic_shift_jsd",
-      "spearman_rho": 0.0352,
-      "p_value": 0.502314,
-      "significant": false,
-      "abs_rho": 0.0352
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "spearman_rho": -0.0341,
-      "p_value": 0.515941,
-      "significant": false,
-      "abs_rho": 0.0341
     },
     {
       "feature": "hopelessness_density_delta",
@@ -267,13 +232,6 @@
       "p_value": 0.588785,
       "significant": false,
       "abs_rho": 0.0283
-    },
-    {
-      "feature": "topic_shift_jsd_4w",
-      "spearman_rho": -0.026,
-      "p_value": 0.620607,
-      "significant": false,
-      "abs_rho": 0.026
     },
     {
       "feature": "posting_time_entropy_delta",
@@ -395,6 +353,20 @@
       "abs_rho": 0.0035
     },
     {
+      "feature": "distress_density_delta",
+      "spearman_rho": -0.0033,
+      "p_value": 0.949586,
+      "significant": false,
+      "abs_rho": 0.0033
+    },
+    {
+      "feature": "pct_negative_delta",
+      "spearman_rho": -0.0032,
+      "p_value": 0.950668,
+      "significant": false,
+      "abs_rho": 0.0032
+    },
+    {
       "feature": "std_word_count",
       "spearman_rho": 0.0017,
       "p_value": 0.974509,
@@ -416,21 +388,35 @@
       "abs_rho": NaN
     },
     {
-      "feature": "distress_density_delta",
-      "spearman_rho": -0.0033,
-      "p_value": 0.949586,
+      "feature": "topic_entropy",
+      "spearman_rho": NaN,
+      "p_value": NaN,
       "significant": false,
-      "abs_rho": 0.0033
+      "abs_rho": NaN
     },
     {
-      "feature": "pct_negative_delta",
-      "spearman_rho": -0.0032,
-      "p_value": 0.950668,
+      "feature": "topic_shift_jsd",
+      "spearman_rho": NaN,
+      "p_value": NaN,
       "significant": false,
-      "abs_rho": 0.0032
+      "abs_rho": NaN
     },
     {
       "feature": "avg_comments_delta",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_entropy_delta",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd_delta",
       "spearman_rho": NaN,
       "p_value": NaN,
       "significant": false,
@@ -731,20 +717,6 @@
       "abs_rho": 0.0537
     },
     {
-      "feature": "topic_entropy_roll4w",
-      "spearman_rho": -0.0518,
-      "p_value": 0.323116,
-      "significant": false,
-      "abs_rho": 0.0518
-    },
-    {
-      "feature": "topic_shift_jsd_4w_roll4w",
-      "spearman_rho": -0.0408,
-      "p_value": 0.436513,
-      "significant": false,
-      "abs_rho": 0.0408
-    },
-    {
       "feature": "new_poster_ratio_roll2w",
       "spearman_rho": 0.0343,
       "p_value": 0.512517,
@@ -757,20 +729,6 @@
       "p_value": 0.51957,
       "significant": false,
       "abs_rho": 0.0338
-    },
-    {
-      "feature": "week_sin",
-      "spearman_rho": 0.0336,
-      "p_value": 0.521643,
-      "significant": false,
-      "abs_rho": 0.0336
-    },
-    {
-      "feature": "topic_shift_jsd_roll2w",
-      "spearman_rho": 0.032,
-      "p_value": 0.542253,
-      "significant": false,
-      "abs_rho": 0.032
     },
     {
       "feature": "distress_density_roll2w",
@@ -787,32 +745,11 @@
       "abs_rho": 0.0224
     },
     {
-      "feature": "topic_shift_jsd_roll4w",
-      "spearman_rho": -0.0172,
-      "p_value": 0.74259,
-      "significant": false,
-      "abs_rho": 0.0172
-    },
-    {
       "feature": "help_seeking_density_roll2w",
       "spearman_rho": -0.0157,
       "p_value": 0.764302,
       "significant": false,
       "abs_rho": 0.0157
-    },
-    {
-      "feature": "topic_shift_jsd_4w_roll2w",
-      "spearman_rho": -0.0117,
-      "p_value": 0.822966,
-      "significant": false,
-      "abs_rho": 0.0117
-    },
-    {
-      "feature": "topic_entropy_roll2w",
-      "spearman_rho": 0.0075,
-      "p_value": 0.886153,
-      "significant": false,
-      "abs_rho": 0.0075
     },
     {
       "feature": "pct_neutral_roll2w",
@@ -836,6 +773,27 @@
       "abs_rho": NaN
     },
     {
+      "feature": "topic_entropy_roll2w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd_roll2w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "week_sin",
+      "spearman_rho": 0.0336,
+      "p_value": 0.521643,
+      "significant": false,
+      "abs_rho": 0.0336
+    },
+    {
       "feature": "pct_negative_roll4w",
       "spearman_rho": -0.0036,
       "p_value": 0.945256,
@@ -855,6 +813,20 @@
       "p_value": 0.995118,
       "significant": false,
       "abs_rho": 0.0003
+    },
+    {
+      "feature": "topic_entropy_roll4w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd_roll4w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
     },
     {
       "feature": "week_cos",
@@ -1154,7 +1126,6 @@
     "dominant_topic": 0.0,
     "topic_entropy": 0.0,
     "topic_shift_jsd": 0.0,
-    "topic_shift_jsd_4w": 0.0,
     "avg_word_count_delta": 0.0,
     "std_word_count_delta": 0.0,
     "avg_char_count_delta": 0.0,
@@ -1184,7 +1155,6 @@
     "posting_time_entropy_delta": 0.0,
     "topic_entropy_delta": 0.0,
     "topic_shift_jsd_delta": 0.0,
-    "topic_shift_jsd_4w_delta": 0.0,
     "avg_word_count_roll2w": 0.0,
     "std_word_count_roll2w": 0.0,
     "avg_char_count_roll2w": 0.0,
@@ -1214,7 +1184,6 @@
     "posting_time_entropy_roll2w": 0.0,
     "topic_entropy_roll2w": 0.0,
     "topic_shift_jsd_roll2w": 0.0,
-    "topic_shift_jsd_4w_roll2w": 0.0,
     "avg_word_count_roll4w": 0.0,
     "std_word_count_roll4w": 0.0,
     "avg_char_count_roll4w": 0.0,
@@ -1244,7 +1213,6 @@
     "posting_time_entropy_roll4w": 0.0,
     "topic_entropy_roll4w": 0.0,
     "topic_shift_jsd_roll4w": 0.0,
-    "topic_shift_jsd_4w_roll4w": 0.0,
     "week_sin": 0.0,
     "week_cos": 0.0
   },

@@ -1,76 +1,81 @@
 [
   {
     "stage": "collect_total",
-    "elapsed_seconds": 255.969,
+    "elapsed_seconds": 22.104,
     "subreddit_runs": [
       {
         "stage": "collect",
         "subreddit": "depression",
-        "elapsed_seconds": 67.729,
+        "elapsed_seconds": 4.66,
         "rows_processed": 624224,
-        "throughput_rows_per_sec": 9216.504,
-        "source": "zenodo_covid"
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
       },
       {
         "stage": "collect",
         "subreddit": "anxiety",
-        "elapsed_seconds": 40.837,
+        "elapsed_seconds": 4.325,
         "rows_processed": 387370,
-        "throughput_rows_per_sec": 9485.708,
-        "source": "zenodo_covid"
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
       },
       {
         "stage": "collect",
         "subreddit": "mentalhealth",
-        "elapsed_seconds": 50.403,
+        "elapsed_seconds": 4.371,
         "rows_processed": 398576,
-        "throughput_rows_per_sec": 7907.816,
-        "source": "zenodo_covid"
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
       },
       {
         "stage": "collect",
         "subreddit": "SuicideWatch",
-        "elapsed_seconds": 64.278,
+        "elapsed_seconds": 5.037,
         "rows_processed": 550267,
-        "throughput_rows_per_sec": 8560.761,
-        "source": "zenodo_covid"
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
       },
       {
         "stage": "collect",
         "subreddit": "lonely",
-        "elapsed_seconds": 32.663,
+        "elapsed_seconds": 3.643,
         "rows_processed": 261448,
-        "throughput_rows_per_sec": 8004.461,
-        "source": "zenodo_covid"
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
       }
     ]
   },
   {
     "stage": "features",
-    "elapsed_seconds": 6541.294,
+    "elapsed_seconds": 6016.129,
     "rows_processed": 2207696,
     "weeks_generated": 1830,
     "feature_rows": 1830,
-    "feature_cols": 127
+    "feature_cols": 123
   },
   {
     "stage": "run_all",
     "steps": [
       {
         "stage": "collect",
-        "elapsed_seconds": 256.24
+        "elapsed_seconds": 22.371
       },
       {
         "stage": "features",
-        "elapsed_seconds": 6543.607
+        "elapsed_seconds": 6018.283
       },
       {
         "stage": "train",
-        "elapsed_seconds": 3296.839
+        "elapsed_seconds": 3324.269
       },
       {
         "stage": "evaluate",
-        "elapsed_seconds": 151.488
+        "elapsed_seconds": 150.069
       }
     ]
   }

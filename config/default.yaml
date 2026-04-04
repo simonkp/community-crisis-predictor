@@ -98,7 +98,7 @@ modeling:
       subsample: [0.6, 0.8, 1.0]
     n_search_iter: 30
   feature_selection:
-    enabled: true
+    enabled: false
     shap_min_ratio_to_top: 0.01
     min_features: 20
     max_features: 80
@@ -115,7 +115,7 @@ modeling:
     learning_rate: 0.001
     batch_size: 16
     search:
-      enabled: true
+      enabled: false
       max_trials: 16
       grid:
         hidden_size: [32, 64, 128]

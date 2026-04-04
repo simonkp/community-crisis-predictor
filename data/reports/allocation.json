@@ -2,16 +2,16 @@
   "subreddits": {
     "anxiety": {
       "hours": 0.5,
-      "probability": 0.8304,
-      "state": 1,
-      "state_label": "Early Vulnerability",
+      "probability": 0.838,
+      "state": 2,
+      "state_label": "Elevated Distress",
       "effectiveness": 0.65
     },
     "depression": {
       "hours": 0.5,
-      "probability": 0.3946,
-      "state": 0,
-      "state_label": "Stable",
+      "probability": 0.4187,
+      "state": 1,
+      "state_label": "Early Vulnerability",
       "effectiveness": 0.75
     },
     "lonely": {
@@ -23,7 +23,7 @@
     },
     "mentalhealth": {
       "hours": 0.5,
-      "probability": 0.8167,
+      "probability": 0.8179,
       "state": 2,
       "state_label": "Elevated Distress",
       "effectiveness": 0.6
@@ -37,7 +37,7 @@
     }
   },
   "total_hours": 10.0,
-  "objective": 7.7448,
+  "objective": 7.7567,
   "sensitivity": {
     "5": {
       "anxiety": 0.5,

@@ -441,31 +441,32 @@
   </div>
   <div>
     <h3>LSTM — Confusion Matrix</h3>
-    <div class="section"><p>43 true alerts, 22 false alarms, 239 missed crises, 28 correct non-alerts out of 332 predicted weeks.</p><table><tr><th></th><th>Predicted Crisis</th><th>Predicted Stable</th></tr><tr><td><strong>Actual Crisis</strong></td><td style='background:#d4edda'>43 TP</td><td style='background:#f8d7da'>239 FN</td></tr><tr><td><strong>Actual Stable</strong></td><td style='background:#f8d7da'>22 FP</td><td style='background:#d4edda'>28 TN</td></tr></table><p>Precision: <strong>0.661</strong> | Recall: <strong>0.152</strong> | F1: <strong>0.248</strong> | Miss rate: <strong>84.8%</strong> | False alarm rate: <strong>44.0%</strong></p></div>
+    <div class="section"><p>44 true alerts, 6 false alarms, 238 missed crises, 44 correct non-alerts out of 332 predicted weeks.</p><table><tr><th></th><th>Predicted Crisis</th><th>Predicted Stable</th></tr><tr><td><strong>Actual Crisis</strong></td><td style='background:#d4edda'>44 TP</td><td style='background:#f8d7da'>238 FN</td></tr><tr><td><strong>Actual Stable</strong></td><td style='background:#f8d7da'>6 FP</td><td style='background:#d4edda'>44 TN</td></tr></table><p>Precision: <strong>0.880</strong> | Recall: <strong>0.156</strong> | F1: <strong>0.265</strong> | Miss rate: <strong>84.4%</strong> | False alarm rate: <strong>12.0%</strong></p></div>
   </div>
 </div>
 
 <div class="two-col">
   <div>
     <h3>XGBoost — Probability Calibration</h3>
-    <div class="section"><p><strong>Verdict:</strong> <span style='color:#f0ad4e;font-weight:bold'>under-confident</span> | Mean predicted: 0.703 vs actual: 0.844 (gap: -0.141)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.2–0.3]</td><td>5</td><td>0.269</td><td>0.800</td><td style='color:#d9534f'>-0.531</td></tr>
-<tr><td>[0.3–0.4]</td><td>10</td><td>0.365</td><td>0.700</td><td style='color:#d9534f'>-0.335</td></tr>
-<tr><td>[0.4–0.5]</td><td>25</td><td>0.452</td><td>0.640</td><td style='color:#d9534f'>-0.188</td></tr>
-<tr><td>[0.5–0.6]</td><td>31</td><td>0.548</td><td>0.839</td><td style='color:#d9534f'>-0.291</td></tr>
-<tr><td>[0.6–0.7]</td><td>69</td><td>0.653</td><td>0.913</td><td style='color:#d9534f'>-0.260</td></tr>
-<tr><td>[0.7–0.8]</td><td>95</td><td>0.744</td><td>0.842</td><td style='color:#333'>-0.098</td></tr>
-<tr><td>[0.8–0.9]</td><td>57</td><td>0.846</td><td>0.825</td><td style='color:#333'>+0.021</td></tr>
-<tr><td>[0.9–1.0]</td><td>35</td><td>0.935</td><td>0.943</td><td style='color:#333'>-0.008</td></tr>
+    <div class="section"><p><strong>Verdict:</strong> <span style='color:#f0ad4e;font-weight:bold'>under-confident</span> | Mean predicted: 0.704 vs actual: 0.844 (gap: -0.140)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.2–0.3]</td><td>5</td><td>0.269</td><td>0.800</td><td style='color:#d9534f'>-0.531</td></tr>
+<tr><td>[0.3–0.4]</td><td>10</td><td>0.362</td><td>0.800</td><td style='color:#d9534f'>-0.438</td></tr>
+<tr><td>[0.4–0.5]</td><td>28</td><td>0.446</td><td>0.607</td><td style='color:#d9534f'>-0.161</td></tr>
+<tr><td>[0.5–0.6]</td><td>29</td><td>0.544</td><td>0.828</td><td style='color:#d9534f'>-0.283</td></tr>
+<tr><td>[0.6–0.7]</td><td>62</td><td>0.653</td><td>0.903</td><td style='color:#d9534f'>-0.250</td></tr>
+<tr><td>[0.7–0.8]</td><td>101</td><td>0.749</td><td>0.852</td><td style='color:#d9534f'>-0.103</td></tr>
+<tr><td>[0.8–0.9]</td><td>57</td><td>0.845</td><td>0.842</td><td style='color:#333'>+0.003</td></tr>
+<tr><td>[0.9–1.0]</td><td>35</td><td>0.937</td><td>0.943</td><td style='color:#333'>-0.006</td></tr>
 </table></div>
   </div>
   <div>
     <h3>LSTM — Probability Calibration</h3>
-    <div class="section"><p><strong>Verdict:</strong> <span style='color:#f0ad4e;font-weight:bold'>under-confident</span> | Mean predicted: 0.675 vs actual: 0.849 (gap: -0.175)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.3–0.4]</td><td>11</td><td>0.364</td><td>0.909</td><td style='color:#d9534f'>-0.545</td></tr>
-<tr><td>[0.4–0.5]</td><td>29</td><td>0.461</td><td>0.690</td><td style='color:#d9534f'>-0.229</td></tr>
-<tr><td>[0.5–0.6]</td><td>52</td><td>0.562</td><td>0.981</td><td style='color:#d9534f'>-0.419</td></tr>
-<tr><td>[0.6–0.7]</td><td>103</td><td>0.638</td><td>0.845</td><td style='color:#d9534f'>-0.206</td></tr>
-<tr><td>[0.7–0.8]</td><td>67</td><td>0.749</td><td>0.836</td><td style='color:#333'>-0.087</td></tr>
-<tr><td>[0.8–0.9]</td><td>44</td><td>0.841</td><td>0.750</td><td style='color:#333'>+0.091</td></tr>
+    <div class="section"><p><strong>Verdict:</strong> <span style='color:#f0ad4e;font-weight:bold'>under-confident</span> | Mean predicted: 0.673 vs actual: 0.849 (gap: -0.176)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.2–0.3]</td><td>2</td><td>0.300</td><td>1.000</td><td style='color:#d9534f'>-0.700</td></tr>
+<tr><td>[0.3–0.4]</td><td>6</td><td>0.375</td><td>1.000</td><td style='color:#d9534f'>-0.625</td></tr>
+<tr><td>[0.4–0.5]</td><td>32</td><td>0.462</td><td>0.750</td><td style='color:#d9534f'>-0.288</td></tr>
+<tr><td>[0.5–0.6]</td><td>56</td><td>0.558</td><td>0.946</td><td style='color:#d9534f'>-0.388</td></tr>
+<tr><td>[0.6–0.7]</td><td>102</td><td>0.639</td><td>0.843</td><td style='color:#d9534f'>-0.204</td></tr>
+<tr><td>[0.7–0.8]</td><td>64</td><td>0.749</td><td>0.828</td><td style='color:#333'>-0.080</td></tr>
+<tr><td>[0.8–0.9]</td><td>44</td><td>0.840</td><td>0.750</td><td style='color:#333'>+0.090</td></tr>
 <tr><td>[0.9–1.0]</td><td>26</td><td>0.943</td><td>0.962</td><td style='color:#333'>-0.019</td></tr>
 </table></div>
   </div>
@@ -476,18 +477,18 @@
     <h3>XGBoost — Threshold Sensitivity</h3>
     <div class="section"><table><tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1</th><th>#Alerts</th></tr><tr style='font-weight:bold;background:#eaf7ea'><td>0.2</td><td>0.844</td><td>1.000</td><td>0.915</td><td>327</td></tr>
 <tr style=''><td>0.3</td><td>0.845</td><td>0.986</td><td>0.910</td><td>322</td></tr>
-<tr style=''><td>0.4</td><td>0.849</td><td>0.960</td><td>0.901</td><td>312</td></tr>
-<tr style=''><td>0.5</td><td>0.868</td><td>0.902</td><td>0.884</td><td>287</td></tr>
-<tr style=''><td>0.6</td><td>0.871</td><td>0.808</td><td>0.838</td><td>256</td></tr>
+<tr style=''><td>0.4</td><td>0.846</td><td>0.957</td><td>0.898</td><td>312</td></tr>
+<tr style=''><td>0.5</td><td>0.870</td><td>0.895</td><td>0.882</td><td>284</td></tr>
+<tr style=''><td>0.6</td><td>0.875</td><td>0.808</td><td>0.840</td><td>255</td></tr>
 </table></div>
   </div>
   <div>
     <h3>LSTM — Threshold Sensitivity</h3>
     <div class="section"><table><tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1</th><th>#Alerts</th></tr><tr style='font-weight:bold;background:#eaf7ea'><td>0.2</td><td>0.849</td><td>1.000</td><td>0.919</td><td>332</td></tr>
-<tr style='font-weight:bold;background:#eaf7ea'><td>0.3</td><td>0.849</td><td>1.000</td><td>0.919</td><td>332</td></tr>
-<tr style=''><td>0.4</td><td>0.847</td><td>0.965</td><td>0.902</td><td>321</td></tr>
-<tr style=''><td>0.5</td><td>0.863</td><td>0.894</td><td>0.878</td><td>292</td></tr>
-<tr style=''><td>0.6</td><td>0.838</td><td>0.713</td><td>0.770</td><td>240</td></tr>
+<tr style=''><td>0.3</td><td>0.849</td><td>0.993</td><td>0.915</td><td>330</td></tr>
+<tr style=''><td>0.4</td><td>0.846</td><td>0.972</td><td>0.904</td><td>324</td></tr>
+<tr style=''><td>0.5</td><td>0.856</td><td>0.886</td><td>0.871</td><td>292</td></tr>
+<tr style=''><td>0.6</td><td>0.835</td><td>0.699</td><td>0.761</td><td>236</td></tr>
 </table></div>
   </div>
 </div>

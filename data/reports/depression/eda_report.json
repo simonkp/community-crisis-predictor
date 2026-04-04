@@ -339,38 +339,26 @@
       "n_valid": 366
     },
     "topic_entropy": {
-      "mean": 0.1327,
-      "std": 0.1474,
-      "min": -0.0,
-      "max": 0.6823,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
       "q1": 0.0,
-      "median": 0.135,
-      "q3": 0.1747,
-      "skew": 1.1997,
+      "median": 0.0,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
     "topic_shift_jsd": {
-      "mean": 0.0811,
-      "std": 0.0632,
+      "mean": 0.0,
+      "std": 0.0,
       "min": 0.0,
-      "max": 0.2109,
+      "max": 0.0,
       "q1": 0.0,
-      "median": 0.0881,
-      "q3": 0.1284,
-      "skew": -0.0969,
-      "missing_pct": 0.0,
-      "n_valid": 366
-    },
-    "topic_shift_jsd_4w": {
-      "mean": 0.0804,
-      "std": 0.0591,
-      "min": 0.0,
-      "max": 0.1992,
-      "q1": 0.0002,
-      "median": 0.0862,
-      "q3": 0.1229,
-      "skew": -0.1397,
+      "median": 0.0,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
@@ -699,38 +687,26 @@
       "n_valid": 366
     },
     "topic_entropy_delta": {
-      "mean": 0.0009,
-      "std": 0.1773,
-      "min": -0.6309,
-      "max": 0.5472,
-      "q1": -0.1086,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "q1": 0.0,
       "median": 0.0,
-      "q3": 0.0904,
-      "skew": 0.0555,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
     "topic_shift_jsd_delta": {
-      "mean": 0.0001,
-      "std": 0.0594,
-      "min": -0.188,
-      "max": 0.1827,
-      "q1": -0.0288,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "q1": 0.0,
       "median": 0.0,
-      "q3": 0.0283,
-      "skew": -0.0562,
-      "missing_pct": 0.0,
-      "n_valid": 366
-    },
-    "topic_shift_jsd_4w_delta": {
-      "mean": 0.0003,
-      "std": 0.0687,
-      "min": -0.1898,
-      "max": 0.1992,
-      "q1": -0.0379,
-      "median": 0.0,
-      "q3": 0.0353,
-      "skew": 0.0782,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
@@ -1059,38 +1035,26 @@
       "n_valid": 366
     },
     "topic_entropy_roll2w": {
-      "mean": 0.1322,
-      "std": 0.1177,
-      "min": -0.0,
-      "max": 0.5667,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
       "q1": 0.0,
-      "median": 0.1334,
-      "q3": 0.2044,
-      "skew": 0.7368,
+      "median": 0.0,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
     "topic_shift_jsd_roll2w": {
-      "mean": 0.081,
-      "std": 0.0558,
+      "mean": 0.0,
+      "std": 0.0,
       "min": 0.0,
-      "max": 0.1919,
-      "q1": 0.0399,
-      "median": 0.0871,
-      "q3": 0.1292,
-      "skew": -0.0833,
-      "missing_pct": 0.0,
-      "n_valid": 366
-    },
-    "topic_shift_jsd_4w_roll2w": {
-      "mean": 0.0803,
-      "std": 0.0479,
-      "min": 0.0,
-      "max": 0.1767,
-      "q1": 0.0426,
-      "median": 0.0866,
-      "q3": 0.1185,
-      "skew": -0.2619,
+      "max": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
@@ -1419,38 +1383,26 @@
       "n_valid": 366
     },
     "topic_entropy_roll4w": {
-      "mean": 0.1313,
-      "std": 0.0996,
-      "min": -0.0,
-      "max": 0.4635,
-      "q1": 0.0371,
-      "median": 0.1374,
-      "q3": 0.2018,
-      "skew": 0.4271,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
     "topic_shift_jsd_roll4w": {
-      "mean": 0.0808,
-      "std": 0.0491,
+      "mean": 0.0,
+      "std": 0.0,
       "min": 0.0,
-      "max": 0.1773,
-      "q1": 0.0423,
-      "median": 0.0875,
-      "q3": 0.1217,
-      "skew": -0.2065,
-      "missing_pct": 0.0,
-      "n_valid": 366
-    },
-    "topic_shift_jsd_4w_roll4w": {
-      "mean": 0.0801,
-      "std": 0.0418,
-      "min": 0.0,
-      "max": 0.1719,
-      "q1": 0.048,
-      "median": 0.0895,
-      "q3": 0.1122,
-      "skew": -0.4588,
+      "max": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "skew": 0.0,
       "missing_pct": 0.0,
       "n_valid": 366
     },
@@ -4145,15 +4097,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2018,
-      "iso_week": 24,
-      "value": 0.1652,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "first_person_plural_ratio_roll2w",
       "iso_year": 2018,
       "iso_week": 24,
@@ -4161,24 +4104,6 @@
       "direction": "high",
       "lower_bound": 0.0013,
       "upper_bound": 0.0023
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2018,
-      "iso_week": 26,
-      "value": -0.188,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2018,
-      "iso_week": 28,
-      "value": 0.1714,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
     },
     {
       "feature": "avg_type_token_ratio_delta",
@@ -4206,15 +4131,6 @@
       "direction": "high",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2018,
-      "iso_week": 42,
-      "value": -0.1484,
-      "direction": "low",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
     },
     {
       "feature": "suicidality_total_delta",
@@ -32864,15 +32780,6 @@
       "upper_bound": 0.0023
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2020,
-      "iso_week": 24,
-      "value": -0.116,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "first_person_plural_ratio",
       "iso_year": 2020,
       "iso_week": 26,
@@ -32916,24 +32823,6 @@
       "direction": "high",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2020,
-      "iso_week": 28,
-      "value": 0.1361,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2020,
-      "iso_week": 30,
-      "value": -0.1237,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
     },
     {
       "feature": "std_word_count",
@@ -32981,15 +32870,6 @@
       "upper_bound": 0.0024
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2020,
-      "iso_week": 33,
-      "value": 0.128,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "std_word_count_roll2w",
       "iso_year": 2020,
       "iso_week": 33,
@@ -33006,15 +32886,6 @@
       "direction": "high",
       "lower_bound": 159.143,
       "upper_bound": 247.8558
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2020,
-      "iso_week": 34,
-      "value": 0.5222,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
     },
     {
       "feature": "std_word_count_delta",
@@ -33071,15 +32942,6 @@
       "upper_bound": 247.8558
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2020,
-      "iso_week": 37,
-      "value": 0.1557,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "avg_flesch_kincaid",
       "iso_year": 2020,
       "iso_week": 38,
@@ -33132,15 +32994,6 @@
       "direction": "high",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2020,
-      "iso_week": 47,
-      "value": 0.138,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
     },
     {
       "feature": "posting_time_entropy_delta",
@@ -33251,15 +33104,6 @@
       "upper_bound": 0.0116
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2021,
-      "iso_week": 4,
-      "value": -0.1211,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "distress_density_roll4w",
       "iso_year": 2021,
       "iso_week": 4,
@@ -33330,15 +33174,6 @@
       "direction": "high",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2021,
-      "iso_week": 20,
-      "value": 0.1312,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
     },
     {
       "feature": "avg_flesch_kincaid_delta",
@@ -33431,15 +33266,6 @@
       "upper_bound": 9.7532
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2021,
-      "iso_week": 25,
-      "value": -0.1211,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2021,
       "iso_week": 26,
@@ -33474,51 +33300,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2021,
-      "iso_week": 33,
-      "value": 0.6153,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2021,
-      "iso_week": 34,
-      "value": -0.4761,
-      "direction": "low",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2021,
-      "iso_week": 34,
-      "value": -0.1898,
-      "direction": "low",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2021,
-      "iso_week": 35,
-      "value": -0.1593,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2021,
-      "iso_week": 36,
-      "value": 0.1229,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
     },
     {
       "feature": "avg_neutral_delta",
@@ -33611,15 +33392,6 @@
       "upper_bound": 0.9269
     },
     {
-      "feature": "topic_entropy",
-      "iso_year": 2022,
-      "iso_week": 5,
-      "value": 0.4992,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2022,
       "iso_week": 5,
@@ -33627,33 +33399,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2022,
-      "iso_week": 8,
-      "value": 0.5388,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2022,
-      "iso_week": 9,
-      "value": -0.5388,
-      "direction": "low",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2022,
-      "iso_week": 10,
-      "value": -0.1566,
-      "direction": "low",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
     },
     {
       "feature": "posting_time_entropy_delta",
@@ -33665,15 +33410,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2022,
-      "iso_week": 11,
-      "value": 0.1454,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2022,
       "iso_week": 12,
@@ -33683,42 +33419,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2022,
-      "iso_week": 13,
-      "value": -0.1726,
-      "direction": "low",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2022,
-      "iso_week": 14,
-      "value": 0.459,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2022,
-      "iso_week": 14,
-      "value": 0.459,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2022,
-      "iso_week": 14,
-      "value": 0.1539,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2022,
       "iso_week": 15,
@@ -33726,15 +33426,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2022,
-      "iso_week": 21,
-      "value": 0.5049,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
     },
     {
       "feature": "post_volume_delta",
@@ -33782,42 +33473,6 @@
       "upper_bound": 78.6382
     },
     {
-      "feature": "topic_entropy",
-      "iso_year": 2022,
-      "iso_week": 28,
-      "value": 0.5349,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2022,
-      "iso_week": 28,
-      "value": 0.3978,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2022,
-      "iso_week": 29,
-      "value": -0.5349,
-      "direction": "low",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2022,
-      "iso_week": 30,
-      "value": -0.1741,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2022,
       "iso_week": 31,
@@ -33834,33 +33489,6 @@
       "direction": "low",
       "lower_bound": -0.0489,
       "upper_bound": 0.0497
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2022,
-      "iso_week": 33,
-      "value": -0.1225,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2022,
-      "iso_week": 34,
-      "value": 0.1303,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2022,
-      "iso_week": 40,
-      "value": 0.1992,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
     },
     {
       "feature": "avg_negative_delta",
@@ -33890,15 +33518,6 @@
       "upper_bound": 0.0132
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2022,
-      "iso_week": 44,
-      "value": 0.1575,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "std_word_count",
       "iso_year": 2022,
       "iso_week": 45,
@@ -33926,15 +33545,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_entropy",
-      "iso_year": 2022,
-      "iso_week": 49,
-      "value": 0.5222,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
       "feature": "avg_flesch_kincaid_delta",
       "iso_year": 2022,
       "iso_week": 49,
@@ -33953,24 +33563,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2022,
-      "iso_week": 49,
-      "value": 0.5222,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2022,
-      "iso_week": 49,
-      "value": 0.169,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "avg_flesch_kincaid_delta",
       "iso_year": 2022,
       "iso_week": 52,
@@ -33980,42 +33572,6 @@
       "upper_bound": 0.9269
     },
     {
-      "feature": "topic_entropy",
-      "iso_year": 2023,
-      "iso_week": 1,
-      "value": 0.5388,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2023,
-      "iso_week": 1,
-      "value": 0.4058,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 3,
-      "value": -0.1469,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2023,
-      "iso_week": 4,
-      "value": 0.6325,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2023,
       "iso_week": 4,
@@ -34023,33 +33579,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2023,
-      "iso_week": 4,
-      "value": 0.4933,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 4,
-      "value": 0.156,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2023,
-      "iso_week": 6,
-      "value": 0.6001,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
     },
     {
       "feature": "posting_time_entropy_delta",
@@ -34070,15 +33599,6 @@
       "upper_bound": 0.0292
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2023,
-      "iso_week": 10,
-      "value": 0.1729,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2023,
       "iso_week": 15,
@@ -34088,24 +33608,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2023,
-      "iso_week": 15,
-      "value": 0.4293,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2023,
-      "iso_week": 18,
-      "value": 0.6309,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2023,
       "iso_week": 18,
@@ -34113,15 +33615,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2023,
-      "iso_week": 18,
-      "value": 0.3899,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
     },
     {
       "feature": "std_word_count",
@@ -34149,15 +33642,6 @@
       "direction": "high",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2023,
-      "iso_week": 19,
-      "value": -0.6309,
-      "direction": "low",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
     },
     {
       "feature": "std_word_count_delta",
@@ -34340,24 +33824,6 @@
       "upper_bound": 290.75
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 27,
-      "value": -0.1274,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 29,
-      "value": 0.1166,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "hopelessness_density",
       "iso_year": 2023,
       "iso_week": 32,
@@ -34367,15 +33833,6 @@
       "upper_bound": 0.0027
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 35,
-      "value": -0.1186,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2023,
       "iso_week": 36,
@@ -34383,15 +33840,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 36,
-      "value": 0.1173,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
     },
     {
       "feature": "avg_flesch_kincaid_delta",
@@ -34421,15 +33869,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2023,
-      "iso_week": 40,
-      "value": -0.1411,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2023,
       "iso_week": 44,
@@ -34437,15 +33876,6 @@
       "direction": "high",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2023,
-      "iso_week": 51,
-      "value": 0.1587,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
     },
     {
       "feature": "avg_flesch_kincaid",
@@ -34484,24 +33914,6 @@
       "upper_bound": 0.0153
     },
     {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 4,
-      "value": 0.4512,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2024,
-      "iso_week": 4,
-      "value": 0.4512,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
       "feature": "avg_flesch_kincaid",
       "iso_year": 2024,
       "iso_week": 6,
@@ -34529,15 +33941,6 @@
       "upper_bound": 0.9269
     },
     {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2024,
-      "iso_week": 9,
-      "value": 0.1152,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2024,
       "iso_week": 11,
@@ -34545,33 +33948,6 @@
       "direction": "low",
       "lower_bound": -0.0123,
       "upper_bound": 0.0127
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2024,
-      "iso_week": 14,
-      "value": 0.1346,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 15,
-      "value": 0.4368,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2024,
-      "iso_week": 19,
-      "value": 0.4077,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
     },
     {
       "feature": "avg_word_count_delta",
@@ -34601,15 +33977,6 @@
       "upper_bound": 0.0153
     },
     {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 21,
-      "value": 0.4756,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
       "feature": "posting_time_entropy_delta",
       "iso_year": 2024,
       "iso_week": 26,
@@ -34619,51 +33986,6 @@
       "upper_bound": 0.0127
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2024,
-      "iso_week": 26,
-      "value": -0.1563,
-      "direction": "low",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 32,
-      "value": 0.4921,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 36,
-      "value": 0.4395,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2024,
-      "iso_week": 38,
-      "value": -0.4077,
-      "direction": "low",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2024,
-      "iso_week": 39,
-      "value": -0.1522,
-      "direction": "low",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
       "feature": "economic_stress_total",
       "iso_year": 2024,
       "iso_week": 40,
@@ -34671,33 +33993,6 @@
       "direction": "high",
       "lower_bound": 17.5,
       "upper_bound": 317.5
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 40,
-      "value": 0.5219,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2024,
-      "iso_week": 40,
-      "value": 0.5219,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2024,
-      "iso_week": 40,
-      "value": 0.1827,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
     },
     {
       "feature": "isolation_total_delta",
@@ -34727,15 +34022,6 @@
       "upper_bound": 184.625
     },
     {
-      "feature": "topic_shift_jsd_4w_delta",
-      "iso_year": 2024,
-      "iso_week": 44,
-      "value": 0.1827,
-      "direction": "high",
-      "lower_bound": -0.1476,
-      "upper_bound": 0.1451
-    },
-    {
       "feature": "post_volume_delta",
       "iso_year": 2024,
       "iso_week": 45,
@@ -34752,69 +34038,6 @@
       "direction": "low",
       "lower_bound": -311.25,
       "upper_bound": 290.75
-    },
-    {
-      "feature": "topic_shift_jsd_delta",
-      "iso_year": 2024,
-      "iso_week": 46,
-      "value": 0.1211,
-      "direction": "high",
-      "lower_bound": -0.1145,
-      "upper_bound": 0.1141
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 49,
-      "value": 0.6823,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_delta",
-      "iso_year": 2024,
-      "iso_week": 49,
-      "value": 0.5472,
-      "direction": "high",
-      "lower_bound": -0.4072,
-      "upper_bound": 0.389
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 50,
-      "value": 0.4512,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_roll2w",
-      "iso_year": 2024,
-      "iso_week": 50,
-      "value": 0.5667,
-      "direction": "high",
-      "lower_bound": -0.3065,
-      "upper_bound": 0.5109
-    },
-    {
-      "feature": "topic_entropy",
-      "iso_year": 2024,
-      "iso_week": 51,
-      "value": 0.4512,
-      "direction": "high",
-      "lower_bound": -0.262,
-      "upper_bound": 0.4367
-    },
-    {
-      "feature": "topic_entropy_roll4w",
-      "iso_year": 2024,
-      "iso_week": 52,
-      "value": 0.4635,
-      "direction": "high",
-      "lower_bound": -0.2099,
-      "upper_bound": 0.4488
     },
     {
       "feature": "first_person_plural_ratio",
@@ -34925,7 +34148,7 @@
       "upper_bound": 0.0127
     }
   ],
-  "n_outlier_weeks": 3716,
+  "n_outlier_weeks": 3635,
   "trend": {
     "slope_per_week": 0.002184,
     "total_change_weeks": 366,

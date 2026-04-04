@@ -1,0 +1,538 @@
+{
+  "subreddit": "suicidewatch",
+  "model": "xgb",
+  "n_valid": 338,
+  "calibration": {
+    "bins": [
+      {
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "n": 3,
+        "mean_predicted": 0.0376,
+        "mean_actual": 0.3333,
+        "calibration_gap": -0.2958
+      },
+      {
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "n": 59,
+        "mean_predicted": 0.1626,
+        "mean_actual": 0.1864,
+        "calibration_gap": -0.0239
+      },
+      {
+        "bin_low": 0.2,
+        "bin_high": 0.3,
+        "n": 34,
+        "mean_predicted": 0.2451,
+        "mean_actual": 0.4412,
+        "calibration_gap": -0.1961
+      },
+      {
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "n": 25,
+        "mean_predicted": 0.3552,
+        "mean_actual": 0.32,
+        "calibration_gap": 0.0352
+      },
+      {
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "n": 35,
+        "mean_predicted": 0.4557,
+        "mean_actual": 0.5714,
+        "calibration_gap": -0.1158
+      },
+      {
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "n": 24,
+        "mean_predicted": 0.5462,
+        "mean_actual": 0.5,
+        "calibration_gap": 0.0462
+      },
+      {
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "n": 21,
+        "mean_predicted": 0.6575,
+        "mean_actual": 0.5714,
+        "calibration_gap": 0.0861
+      },
+      {
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "n": 35,
+        "mean_predicted": 0.7567,
+        "mean_actual": 0.7143,
+        "calibration_gap": 0.0424
+      },
+      {
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "n": 62,
+        "mean_predicted": 0.8514,
+        "mean_actual": 0.9194,
+        "calibration_gap": -0.0679
+      },
+      {
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "n": 40,
+        "mean_predicted": 0.9319,
+        "mean_actual": 0.925,
+        "calibration_gap": 0.0069
+      }
+    ],
+    "overall_mean_predicted": 0.5513,
+    "overall_mean_actual": 0.5858,
+    "overall_calibration_gap": -0.0345,
+    "verdict": "well-calibrated"
+  },
+  "confusion_breakdown": {
+    "tp": 171,
+    "fp": 71,
+    "fn": 27,
+    "tn": 69,
+    "false_alarm_rate": 0.5071,
+    "miss_rate": 0.1364,
+    "precision": 0.7066,
+    "recall": 0.8636,
+    "f1": 0.7773,
+    "summary": "171 true alerts, 71 false alarms, 27 missed crises, 69 correct non-alerts out of 338 predicted weeks."
+  },
+  "error_timeline": [
+    {
+      "week_index": 37,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 40,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 41,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 51,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 52,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 53,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 54,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 55,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 56,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 57,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 66,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 67,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 68,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 69,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 70,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 71,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 72,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 73,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 74,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 75,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 76,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 77,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 78,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 79,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 80,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 81,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 82,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 86,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 87,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 88,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 89,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 94,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 95,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 103,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 106,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 107,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 119,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 120,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 121,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 182,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 183,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 184,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 185,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 186,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 187,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 188,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 189,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 190,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 191,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 193,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 194,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 195,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 196,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 197,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 198,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 199,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 201,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 202,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 203,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 204,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 205,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 206,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 207,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 208,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 209,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 211,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 212,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 213,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 214,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 215,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 216,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 218,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 223,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 224,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 225,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 226,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 227,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 228,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 229,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 230,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 231,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 234,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 236,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 244,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 246,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 249,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 251,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 252,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 257,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 260,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 261,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 264,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 265,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 267,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 273,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 286,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 302,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 364,
+      "error_type": "false_positive"
+    }
+  ],
+  "n_false_positives": 71,
+  "n_false_negatives": 27,
+  "threshold_sweep": [
+    {
+      "threshold": 0.2,
+      "precision": 0.6739,
+      "recall": 0.9394,
+      "f1": 0.7848,
+      "n_alerts": 276
+    },
+    {
+      "threshold": 0.3,
+      "precision": 0.7066,
+      "recall": 0.8636,
+      "f1": 0.7773,
+      "n_alerts": 242
+    },
+    {
+      "threshold": 0.4,
+      "precision": 0.7512,
+      "recall": 0.8232,
+      "f1": 0.7855,
+      "n_alerts": 217
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.7857,
+      "recall": 0.7222,
+      "f1": 0.7526,
+      "n_alerts": 182
+    },
+    {
+      "threshold": 0.6,
+      "precision": 0.8291,
+      "recall": 0.6616,
+      "f1": 0.736,
+      "n_alerts": 158
+    }
+  ]
+}

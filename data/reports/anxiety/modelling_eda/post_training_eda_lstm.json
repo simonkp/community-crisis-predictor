@@ -8,83 +8,83 @@
         "bin_low": 0.1,
         "bin_high": 0.2,
         "n": 29,
-        "mean_predicted": 0.1611,
+        "mean_predicted": 0.1614,
         "mean_actual": 0.3793,
-        "calibration_gap": -0.2182
+        "calibration_gap": -0.2179
       },
       {
         "bin_low": 0.2,
         "bin_high": 0.3,
         "n": 49,
-        "mean_predicted": 0.2638,
+        "mean_predicted": 0.2643,
         "mean_actual": 0.3469,
-        "calibration_gap": -0.0831
+        "calibration_gap": -0.0826
       },
       {
         "bin_low": 0.3,
         "bin_high": 0.4,
-        "n": 51,
-        "mean_predicted": 0.3465,
-        "mean_actual": 0.4706,
-        "calibration_gap": -0.1241
+        "n": 50,
+        "mean_predicted": 0.347,
+        "mean_actual": 0.48,
+        "calibration_gap": -0.133
       },
       {
         "bin_low": 0.4,
         "bin_high": 0.5,
-        "n": 64,
-        "mean_predicted": 0.4504,
-        "mean_actual": 0.5,
-        "calibration_gap": -0.0496
+        "n": 90,
+        "mean_predicted": 0.4587,
+        "mean_actual": 0.4111,
+        "calibration_gap": 0.0476
       },
       {
         "bin_low": 0.5,
         "bin_high": 0.6,
-        "n": 68,
-        "mean_predicted": 0.5379,
-        "mean_actual": 0.4118,
-        "calibration_gap": 0.1262
+        "n": 43,
+        "mean_predicted": 0.543,
+        "mean_actual": 0.5581,
+        "calibration_gap": -0.0151
       },
       {
         "bin_low": 0.6,
         "bin_high": 0.7,
-        "n": 43,
-        "mean_predicted": 0.6445,
-        "mean_actual": 0.6744,
-        "calibration_gap": -0.0299
+        "n": 41,
+        "mean_predicted": 0.6468,
+        "mean_actual": 0.6829,
+        "calibration_gap": -0.0362
       },
       {
         "bin_low": 0.7,
         "bin_high": 0.8,
-        "n": 13,
-        "mean_predicted": 0.7395,
-        "mean_actual": 0.9231,
-        "calibration_gap": -0.1836
+        "n": 15,
+        "mean_predicted": 0.742,
+        "mean_actual": 0.8,
+        "calibration_gap": -0.058
       },
       {
         "bin_low": 0.8,
         "bin_high": 0.9,
         "n": 15,
-        "mean_predicted": 0.8282,
+        "mean_predicted": 0.8336,
         "mean_actual": 0.9333,
-        "calibration_gap": -0.1052
+        "calibration_gap": -0.0998
       }
     ],
-    "overall_mean_predicted": 0.4531,
+    "overall_mean_predicted": 0.4511,
     "overall_mean_actual": 0.503,
-    "overall_calibration_gap": -0.0499,
-    "verdict": "well-calibrated"
+    "overall_calibration_gap": -0.0519,
+    "verdict": "under-confident"
   },
   "confusion_breakdown": {
-    "tp": 135,
-    "fp": 139,
-    "fn": 32,
-    "tn": 26,
-    "false_alarm_rate": 0.8424,
-    "miss_rate": 0.1916,
-    "precision": 0.4927,
-    "recall": 0.8084,
-    "f1": 0.6122,
-    "summary": "135 true alerts, 139 false alarms, 32 missed crises, 26 correct non-alerts out of 332 predicted weeks."
+    "tp": 84,
+    "fp": 67,
+    "fn": 83,
+    "tn": 98,
+    "false_alarm_rate": 0.4061,
+    "miss_rate": 0.497,
+    "precision": 0.5563,
+    "recall": 0.503,
+    "f1": 0.5283,
+    "summary": "84 true alerts, 67 false alarms, 83 missed crises, 98 correct non-alerts out of 332 predicted weeks."
   },
   "error_timeline": [
     {
@@ -110,10 +110,6 @@
     {
       "week_index": 39,
       "error_type": "false_negative"
-    },
-    {
-      "week_index": 46,
-      "error_type": "false_positive"
     },
     {
       "week_index": 51,
@@ -160,14 +156,6 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 65,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 73,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 74,
       "error_type": "false_positive"
     },
@@ -188,11 +176,15 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 83,
+      "week_index": 81,
       "error_type": "false_positive"
     },
     {
-      "week_index": 84,
+      "week_index": 82,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 83,
       "error_type": "false_positive"
     },
     {
@@ -200,279 +192,195 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 86,
-      "error_type": "false_positive"
+      "week_index": 104,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 87,
-      "error_type": "false_positive"
+      "week_index": 105,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 88,
-      "error_type": "false_positive"
+      "week_index": 106,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 89,
-      "error_type": "false_positive"
+      "week_index": 107,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 90,
-      "error_type": "false_positive"
+      "week_index": 108,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 91,
-      "error_type": "false_positive"
+      "week_index": 109,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 92,
-      "error_type": "false_positive"
+      "week_index": 110,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 93,
-      "error_type": "false_positive"
+      "week_index": 111,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 94,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 95,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 96,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 97,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 98,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 99,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 100,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 101,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 102,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 103,
-      "error_type": "false_positive"
+      "week_index": 112,
+      "error_type": "false_negative"
     },
     {
       "week_index": 113,
       "error_type": "false_positive"
     },
     {
-      "week_index": 117,
-      "error_type": "false_positive"
+      "week_index": 115,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 118,
-      "error_type": "false_positive"
+      "week_index": 116,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 119,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 120,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 122,
-      "error_type": "false_positive"
+      "week_index": 121,
+      "error_type": "false_negative"
     },
     {
       "week_index": 124,
       "error_type": "false_positive"
     },
     {
-      "week_index": 141,
-      "error_type": "false_positive"
+      "week_index": 125,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 144,
-      "error_type": "false_positive"
+      "week_index": 126,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 145,
-      "error_type": "false_positive"
+      "week_index": 131,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 147,
-      "error_type": "false_positive"
+      "week_index": 132,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 150,
-      "error_type": "false_positive"
+      "week_index": 137,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 151,
-      "error_type": "false_positive"
+      "week_index": 138,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 152,
-      "error_type": "false_positive"
+      "week_index": 139,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 153,
-      "error_type": "false_positive"
+      "week_index": 140,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 154,
-      "error_type": "false_positive"
+      "week_index": 142,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 155,
-      "error_type": "false_positive"
+      "week_index": 143,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 156,
-      "error_type": "false_positive"
+      "week_index": 146,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 159,
-      "error_type": "false_positive"
+      "week_index": 148,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 166,
-      "error_type": "false_positive"
+      "week_index": 149,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 168,
-      "error_type": "false_positive"
+      "week_index": 157,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 170,
-      "error_type": "false_positive"
+      "week_index": 158,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 174,
-      "error_type": "false_positive"
+      "week_index": 160,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 181,
-      "error_type": "false_positive"
+      "week_index": 161,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 182,
-      "error_type": "false_positive"
+      "week_index": 162,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 183,
-      "error_type": "false_positive"
+      "week_index": 163,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 184,
-      "error_type": "false_positive"
+      "week_index": 164,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 185,
-      "error_type": "false_positive"
+      "week_index": 165,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 186,
-      "error_type": "false_positive"
+      "week_index": 167,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 187,
-      "error_type": "false_positive"
+      "week_index": 169,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 188,
-      "error_type": "false_positive"
+      "week_index": 171,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 190,
-      "error_type": "false_positive"
+      "week_index": 172,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 191,
-      "error_type": "false_positive"
+      "week_index": 173,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 192,
-      "error_type": "false_positive"
+      "week_index": 175,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 193,
-      "error_type": "false_positive"
+      "week_index": 176,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 194,
-      "error_type": "false_positive"
+      "week_index": 177,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 195,
-      "error_type": "false_positive"
+      "week_index": 178,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 196,
-      "error_type": "false_positive"
+      "week_index": 179,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 197,
-      "error_type": "false_positive"
+      "week_index": 180,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 198,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 199,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 200,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 201,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 202,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 203,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 204,
-      "error_type": "false_positive"
+      "week_index": 189,
+      "error_type": "false_negative"
     },
     {
       "week_index": 205,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 206,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 207,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 208,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 209,
       "error_type": "false_positive"
     },
     {
@@ -526,6 +434,10 @@
     {
       "week_index": 225,
       "error_type": "false_positive"
+    },
+    {
+      "week_index": 227,
+      "error_type": "false_negative"
     },
     {
       "week_index": 229,
@@ -588,12 +500,8 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 252,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 254,
-      "error_type": "false_positive"
+      "week_index": 253,
+      "error_type": "false_negative"
     },
     {
       "week_index": 255,
@@ -616,8 +524,8 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 261,
-      "error_type": "false_positive"
+      "week_index": 260,
+      "error_type": "false_negative"
     },
     {
       "week_index": 263,
@@ -628,8 +536,8 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 265,
-      "error_type": "false_positive"
+      "week_index": 267,
+      "error_type": "false_negative"
     },
     {
       "week_index": 268,
@@ -668,15 +576,7 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 277,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 278,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 279,
       "error_type": "false_positive"
     },
     {
@@ -704,6 +604,10 @@
       "error_type": "false_positive"
     },
     {
+      "week_index": 297,
+      "error_type": "false_negative"
+    },
+    {
       "week_index": 303,
       "error_type": "false_positive"
     },
@@ -720,6 +624,54 @@
       "error_type": "false_negative"
     },
     {
+      "week_index": 312,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 326,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 327,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 337,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 340,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 341,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 342,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 343,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 344,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 345,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 347,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 348,
+      "error_type": "false_negative"
+    },
+    {
       "week_index": 350,
       "error_type": "false_negative"
     },
@@ -732,48 +684,12 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 354,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 355,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 356,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 357,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 358,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 359,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 360,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 361,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 362,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 363,
-      "error_type": "false_negative"
+      "week_index": 364,
+      "error_type": "false_positive"
     }
   ],
-  "n_false_positives": 139,
-  "n_false_negatives": 32,
+  "n_false_positives": 67,
+  "n_false_negatives": 83,
   "threshold_sweep": [
     {
       "threshold": 0.2,
@@ -791,23 +707,23 @@
     },
     {
       "threshold": 0.4,
-      "precision": 0.5665,
+      "precision": 0.5637,
       "recall": 0.6886,
-      "f1": 0.6216,
-      "n_alerts": 203
+      "f1": 0.6199,
+      "n_alerts": 204
     },
     {
       "threshold": 0.5,
-      "precision": 0.5971,
-      "recall": 0.497,
-      "f1": 0.5425,
-      "n_alerts": 139
+      "precision": 0.6842,
+      "recall": 0.4671,
+      "f1": 0.5552,
+      "n_alerts": 114
     },
     {
       "threshold": 0.6,
-      "precision": 0.7746,
-      "recall": 0.3293,
-      "f1": 0.4622,
+      "precision": 0.7606,
+      "recall": 0.3234,
+      "f1": 0.4538,
       "n_alerts": 71
     }
   ]

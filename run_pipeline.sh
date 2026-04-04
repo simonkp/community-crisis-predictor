@@ -27,6 +27,6 @@ echo "=== Job started: $(date) ==="
 echo "=== Node: $(hostname) ==="
 python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 
-python -u -m src.pipeline.run_all --config config/default.yaml
+python -u -m src.pipeline.run_all --config config/default.yaml --skip-topics --force
 
 echo "=== Job finished: $(date) ==="

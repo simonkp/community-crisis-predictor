@@ -15,76 +15,76 @@
       {
         "bin_low": 0.1,
         "bin_high": 0.2,
-        "n": 43,
-        "mean_predicted": 0.1383,
-        "mean_actual": 0.2093,
-        "calibration_gap": -0.071
+        "n": 46,
+        "mean_predicted": 0.1374,
+        "mean_actual": 0.2609,
+        "calibration_gap": -0.1235
       },
       {
         "bin_low": 0.2,
         "bin_high": 0.3,
-        "n": 19,
-        "mean_predicted": 0.253,
-        "mean_actual": 0.2632,
-        "calibration_gap": -0.0102
+        "n": 40,
+        "mean_predicted": 0.2543,
+        "mean_actual": 0.175,
+        "calibration_gap": 0.0793
       },
       {
         "bin_low": 0.3,
         "bin_high": 0.4,
-        "n": 49,
-        "mean_predicted": 0.3551,
-        "mean_actual": 0.5102,
-        "calibration_gap": -0.1551
+        "n": 58,
+        "mean_predicted": 0.3438,
+        "mean_actual": 0.3276,
+        "calibration_gap": 0.0163
       },
       {
         "bin_low": 0.4,
         "bin_high": 0.5,
-        "n": 88,
-        "mean_predicted": 0.4547,
-        "mean_actual": 0.2955,
-        "calibration_gap": 0.1593
+        "n": 72,
+        "mean_predicted": 0.4564,
+        "mean_actual": 0.3889,
+        "calibration_gap": 0.0676
       },
       {
         "bin_low": 0.5,
         "bin_high": 0.6,
-        "n": 89,
-        "mean_predicted": 0.5351,
-        "mean_actual": 0.1348,
-        "calibration_gap": 0.4003
+        "n": 71,
+        "mean_predicted": 0.5193,
+        "mean_actual": 0.1549,
+        "calibration_gap": 0.3644
       },
       {
         "bin_low": 0.6,
         "bin_high": 0.7,
-        "n": 7,
-        "mean_predicted": 0.6571,
-        "mean_actual": 0.1429,
-        "calibration_gap": 0.5142
+        "n": 8,
+        "mean_predicted": 0.652,
+        "mean_actual": 0.125,
+        "calibration_gap": 0.527
       },
       {
         "bin_low": 0.7,
         "bin_high": 0.8,
         "n": 1,
-        "mean_predicted": 0.7002,
+        "mean_predicted": 0.7,
         "mean_actual": 0.0,
-        "calibration_gap": 0.7002
+        "calibration_gap": 0.7
       }
     ],
-    "overall_mean_predicted": 0.3743,
+    "overall_mean_predicted": 0.3471,
     "overall_mean_actual": 0.259,
-    "overall_calibration_gap": 0.1152,
+    "overall_calibration_gap": 0.0881,
     "verdict": "over-confident"
   },
   "confusion_breakdown": {
-    "tp": 24,
-    "fp": 129,
-    "fn": 62,
-    "tn": 117,
-    "false_alarm_rate": 0.5244,
-    "miss_rate": 0.7209,
-    "precision": 0.1569,
-    "recall": 0.2791,
-    "f1": 0.2008,
-    "summary": "24 true alerts, 129 false alarms, 62 missed crises, 117 correct non-alerts out of 332 predicted weeks."
+    "tp": 27,
+    "fp": 61,
+    "fn": 59,
+    "tn": 185,
+    "false_alarm_rate": 0.248,
+    "miss_rate": 0.686,
+    "precision": 0.3068,
+    "recall": 0.314,
+    "f1": 0.3103,
+    "summary": "27 true alerts, 61 false alarms, 59 missed crises, 185 correct non-alerts out of 332 predicted weeks."
   },
   "error_timeline": [
     {
@@ -117,6 +117,10 @@
     },
     {
       "week_index": 51,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 52,
       "error_type": "false_negative"
     },
     {
@@ -176,14 +180,6 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 73,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 74,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 75,
       "error_type": "false_positive"
     },
@@ -216,75 +212,39 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 87,
+      "week_index": 84,
       "error_type": "false_positive"
     },
     {
-      "week_index": 89,
-      "error_type": "false_positive"
+      "week_index": 88,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 90,
-      "error_type": "false_positive"
+      "week_index": 103,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 91,
-      "error_type": "false_positive"
+      "week_index": 104,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 92,
-      "error_type": "false_positive"
+      "week_index": 105,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 93,
-      "error_type": "false_positive"
+      "week_index": 106,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 94,
-      "error_type": "false_positive"
+      "week_index": 107,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 95,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 96,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 97,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 98,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 99,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 100,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 101,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 102,
-      "error_type": "false_positive"
+      "week_index": 110,
+      "error_type": "false_negative"
     },
     {
       "week_index": 111,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 112,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 115,
       "error_type": "false_negative"
     },
     {
@@ -292,24 +252,8 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 117,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 118,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 119,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 121,
       "error_type": "false_negative"
-    },
-    {
-      "week_index": 122,
-      "error_type": "false_positive"
     },
     {
       "week_index": 127,
@@ -328,10 +272,6 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 147,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 152,
       "error_type": "false_negative"
     },
@@ -344,199 +284,27 @@
       "error_type": "false_negative"
     },
     {
+      "week_index": 161,
+      "error_type": "false_positive"
+    },
+    {
       "week_index": 164,
       "error_type": "false_negative"
     },
     {
-      "week_index": 167,
-      "error_type": "false_positive"
+      "week_index": 177,
+      "error_type": "false_negative"
     },
     {
-      "week_index": 169,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 170,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 172,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 175,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 176,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 179,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 181,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 182,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 183,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 184,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 185,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 186,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 190,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 191,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 192,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 193,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 194,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 195,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 197,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 202,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 203,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 204,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 205,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 206,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 207,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 208,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 209,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 210,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 212,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 213,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 214,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 215,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 219,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 220,
-      "error_type": "false_positive"
+      "week_index": 178,
+      "error_type": "false_negative"
     },
     {
       "week_index": 227,
       "error_type": "false_negative"
     },
     {
-      "week_index": 237,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 238,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 239,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 243,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 244,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 245,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 248,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 249,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 252,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 253,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 254,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 255,
       "error_type": "false_positive"
     },
     {
@@ -548,19 +316,19 @@
       "error_type": "false_positive"
     },
     {
+      "week_index": 258,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 259,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 260,
+      "error_type": "false_positive"
+    },
+    {
       "week_index": 261,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 262,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 263,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 264,
       "error_type": "false_positive"
     },
     {
@@ -604,14 +372,6 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 275,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 276,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 277,
       "error_type": "false_positive"
     },
@@ -621,18 +381,6 @@
     },
     {
       "week_index": 279,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 280,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 281,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 282,
       "error_type": "false_positive"
     },
     {
@@ -660,15 +408,7 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 290,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 291,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 292,
       "error_type": "false_positive"
     },
     {
@@ -684,10 +424,6 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 296,
-      "error_type": "false_positive"
-    },
-    {
       "week_index": 297,
       "error_type": "false_positive"
     },
@@ -697,14 +433,6 @@
     },
     {
       "week_index": 299,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 300,
-      "error_type": "false_positive"
-    },
-    {
-      "week_index": 301,
       "error_type": "false_positive"
     },
     {
@@ -728,31 +456,35 @@
       "error_type": "false_positive"
     },
     {
-      "week_index": 312,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 313,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 314,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 316,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 318,
+      "week_index": 308,
       "error_type": "false_positive"
     },
     {
-      "week_index": 322,
+      "week_index": 309,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 310,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 317,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 319,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 320,
       "error_type": "false_negative"
     },
     {
       "week_index": 324,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 327,
       "error_type": "false_negative"
     },
     {
@@ -768,16 +500,20 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 333,
-      "error_type": "false_negative"
+      "week_index": 331,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 332,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 334,
+      "error_type": "false_positive"
     },
     {
       "week_index": 335,
       "error_type": "false_positive"
-    },
-    {
-      "week_index": 341,
-      "error_type": "false_negative"
     },
     {
       "week_index": 342,
@@ -804,40 +540,20 @@
       "error_type": "false_negative"
     },
     {
-      "week_index": 348,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 349,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 350,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 351,
-      "error_type": "false_negative"
-    },
-    {
       "week_index": 353,
       "error_type": "false_negative"
     },
     {
-      "week_index": 354,
-      "error_type": "false_negative"
+      "week_index": 356,
+      "error_type": "false_positive"
     },
     {
-      "week_index": 355,
-      "error_type": "false_negative"
+      "week_index": 359,
+      "error_type": "false_positive"
     },
     {
-      "week_index": 357,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 358,
-      "error_type": "false_negative"
+      "week_index": 360,
+      "error_type": "false_positive"
     },
     {
       "week_index": 361,
@@ -852,43 +568,43 @@
       "error_type": "false_negative"
     }
   ],
-  "n_false_positives": 129,
-  "n_false_negatives": 62,
+  "n_false_positives": 61,
+  "n_false_negatives": 59,
   "threshold_sweep": [
     {
       "threshold": 0.2,
-      "precision": 0.2727,
-      "recall": 0.8023,
-      "f1": 0.4071,
-      "n_alerts": 253
+      "precision": 0.264,
+      "recall": 0.7674,
+      "f1": 0.3929,
+      "n_alerts": 250
     },
     {
       "threshold": 0.3,
-      "precision": 0.2735,
-      "recall": 0.7442,
-      "f1": 0.4,
-      "n_alerts": 234
+      "precision": 0.281,
+      "recall": 0.686,
+      "f1": 0.3986,
+      "n_alerts": 210
     },
     {
       "threshold": 0.4,
-      "precision": 0.2108,
-      "recall": 0.4535,
-      "f1": 0.2878,
-      "n_alerts": 185
+      "precision": 0.2632,
+      "recall": 0.4651,
+      "f1": 0.3361,
+      "n_alerts": 152
     },
     {
       "threshold": 0.5,
-      "precision": 0.134,
-      "recall": 0.1512,
-      "f1": 0.1421,
-      "n_alerts": 97
+      "precision": 0.15,
+      "recall": 0.1395,
+      "f1": 0.1446,
+      "n_alerts": 80
     },
     {
       "threshold": 0.6,
-      "precision": 0.125,
+      "precision": 0.1111,
       "recall": 0.0116,
-      "f1": 0.0213,
-      "n_alerts": 8
+      "f1": 0.0211,
+      "n_alerts": 9
     }
   ]
 }
