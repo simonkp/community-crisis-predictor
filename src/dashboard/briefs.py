@@ -65,7 +65,7 @@ def _render_weekly_brief(raw_text: str, week_key: str, *, in_sidebar: bool = Tru
         margin-top:4px;
     ">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
-        <div style="font-size:0.80rem;letter-spacing:0.04em;color:{palette['title']};font-weight:700;">WEEKLY SNAPSHOT</div>
+        <div style="font-size:0.80rem;letter-spacing:0.04em;color:{palette['title']};font-weight:700;">LLM-GENERATED BRIEF</div>
         <div style="font-size:0.74rem;opacity:0.92;color:{palette['title']};">{escape(week_key)}</div>
       </div>
 

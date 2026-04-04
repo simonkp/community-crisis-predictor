@@ -121,11 +121,11 @@ def _render_api_sidebar() -> None:
 
 
 SUBREDDIT_ROLES = {
-    "mentalhealth": "General discussion",
-    "anxiety": "Early warning signal",
-    "lonely": "Isolation indicator",
-    "depression": "Core signal",
-    "suicidewatch": "Acute sentinel",
+    "mentalhealth": "General mental health discussion",
+    "anxiety": "Anxiety-focused community",
+    "lonely": "Loneliness & isolation community",
+    "depression": "Depression-focused community",
+    "suicidewatch": "Acute crisis support community",
 }
 
 SUBREDDIT_ACCENT = {
@@ -316,7 +316,7 @@ def _state_badge_html(state_text: str, state_color: str) -> str:
         f"<span style='display:inline-block;padding:4px 10px;border-radius:999px;"
         f"font-size:0.78rem;font-weight:700;color:{state_color};"
         f"border:1px solid {state_color};background:{state_color}14;'>"
-        f"Signal: {state_text}</span></div>"
+        f"{state_text}</span></div>"
     )
 
 
@@ -430,7 +430,7 @@ with hdr_l:
     st.title(DASHBOARD_COPY["title"])
     st.caption(DASHBOARD_COPY["caption"])
 with hdr_r:
-    st.caption("Replay controls")
+    st.caption("Select a week to inspect")
     # Buttons must run before the slider: Streamlit forbids mutating a widget key after it is built.
     nav_l, nav_r, slider_col = st.columns([0.11, 0.11, 0.78])
     with nav_l:
@@ -461,7 +461,7 @@ with hdr_r:
     _ts = pd.to_datetime(global_replay_weeks[_idx])
     _lbl = _format_week_label(_ts)
     _iso = _ts.isocalendar()
-    st.caption(f"Replay week (calendar): {_lbl}  |  ISO: {_iso.year}-W{int(_iso.week):02d}")
+    st.caption(f"Week of {_lbl}  (ISO {_iso.year}-W{int(_iso.week):02d})")
 
 week_idx = int(st.session_state.current_week)
 subreddit = st.session_state.selected_sub
@@ -472,9 +472,9 @@ sel_sub_results = eval_results.get(subreddit, {})
 models_avail = available_models_for_sub(sel_sub_results)
 if st.session_state.selected_model not in models_avail:
     st.session_state.selected_model = models_avail[0]
-mod_a, mod_b = st.columns([0.12, 0.45])
+mod_a, mod_b = st.columns([0.18, 0.45])
 with mod_a:
-    st.markdown("**Model**")
+    st.markdown("**Prediction model**")
 with mod_b:
     st.selectbox(
         "Model",
@@ -484,10 +484,10 @@ with mod_b:
     )
 model_choice = st.session_state.selected_model
 st.markdown(
-    "<div class='community-legend'>Subreddit color = community identity. "
-    "Signal badge color = model state. "
-    "Large tile number = composite <b>label</b> distress (same for every model). "
-    "<code>p(distress)</code> = probability from the selected model.</div>",
+    "<div class='community-legend'>Subreddit color = community identity (not risk level). "
+    "State badge = model's predicted state for the <b>following</b> week. "
+    "Large tile number = composite distress score (z-scored feature signal, same for every model). "
+    "<code>p(high-distress)</code> = model's predicted probability of high-distress next week.</div>",
     unsafe_allow_html=True,
 )
 
@@ -531,9 +531,9 @@ for i, sub in enumerate(visible_subs):
             _card_crisis_n = _n_crisis if _n_crisis is not None else "?"
             status_html = (
                 "<div style='min-height:2.6em;line-height:1.35;color:#64748b;font-size:0.79rem'>"
-                "<b>Signal: Trend monitoring</b><br/>"
-                f"<span style='opacity:0.9'>{_card_crisis_n} crisis weeks found "
-                f"(need ≥{monitoring_min_crisis_weeks})</span>"
+                "<b>Insufficient crisis history</b><br/>"
+                f"<span style='opacity:0.9'>Only {_card_crisis_n} crisis weeks in data "
+                f"(≥{monitoring_min_crisis_weeks} needed for reliable predictions)</span>"
                 "</div>"
             )
         else:
@@ -550,9 +550,9 @@ for i, sub in enumerate(visible_subs):
         p_hi = float(probs[wi_local]) if len(probs) > wi_local and np.isfinite(probs[wi_local]) else float("nan")
         p_line = f"{(p_hi * 100):.1f}%" if not np.isnan(p_hi) else "—"
         st.markdown(
-            f"<div class='community-meta-note' style='margin-bottom:2px'>Label distress</div>"
+            f"<div class='community-meta-note' style='margin-bottom:2px'>Distress score (z-scored)</div>"
             f"<div style='font-size:1.35rem;font-weight:600;color:{accent}'>{d_line}</div>"
-            f"<div class='community-meta-note'>p(distress) {p_line}</div>",
+            f"<div class='community-meta-note'>p(high-distress next wk) {p_line}</div>",
             unsafe_allow_html=True,
         )
 
@@ -644,7 +644,7 @@ week_label = _format_week_label(weeks[week_idx_plot]) if week_idx_plot < len(wee
 main_l, main_r = st.columns([0.65, 0.35])
 
 with main_l:
-    st.markdown("##### Distress timeline")
+    st.markdown("##### Observed distress score + walk-forward predictions")
     accent_sel = SUBREDDIT_ACCENT.get(subreddit, "#378ADD")
     _w_slice = weeks[: week_idx_plot + 1]
     if "week_start" in sub_df.columns:
@@ -731,8 +731,8 @@ with main_l:
         )
 
     fig.update_layout(
-        xaxis_title="Week",
-        yaxis_title="Distress score",
+        xaxis_title="",
+        yaxis_title="Distress score (z-scored)",
         yaxis2=dict(
             title=DASHBOARD_COPY["timeline_probability_axis_label"],
             overlaying="y",
@@ -750,7 +750,7 @@ with main_l:
         st.warning(f"Could not render distress timeline: {e}")
 
 with main_r:
-    st.markdown("##### Weekly snapshot")
+    st.markdown("##### Weekly brief")
     _brief_week_key = week_key_from_row(sub_df.iloc[week_idx_plot])
     _brief_text = get_brief_text(subreddit, _brief_week_key)
 
@@ -759,26 +759,56 @@ with main_r:
     else:
         st.caption(DASHBOARD_COPY["weekly_brief_missing"])
 
-    st.markdown("##### Model performance")
-    st.caption("Walk-forward CV (metrics from eval_results.json)")
+    st.markdown("##### Model performance (walk-forward backtest)")
+    st.caption("Recall, Precision, F1, PR-AUC from held-out weeks in walk-forward CV (eval_results.json)")
     if is_monitoring_mode:
         _crisis_count_str = str(_actual_crisis_weeks) if _actual_crisis_weeks is not None else "unknown"
         st.info(
-            f"**Trend monitoring mode** — only {_crisis_count_str} crisis weeks detected "
-            f"(threshold: {monitoring_min_crisis_weeks}). "
-            "Not enough positive examples for reliable walk-forward evaluation. "
-            "Metrics shown may not be meaningful."
+            f"Only {_crisis_count_str} crisis weeks found in this subreddit's history "
+            f"(need ≥{monitoring_min_crisis_weeks} for reliable walk-forward evaluation). "
+            "Predictions are available but performance metrics may not be meaningful at this scale."
         )
     else:
         render_model_metrics_tiles(results)
+        _du = results.get("decision_usefulness")
+        if _du and isinstance(_du, dict):
+            with st.expander("Decision usefulness — top-K alert recall", expanded=False):
+                st.markdown(DECISION_USEFULNESS_COPY["intro"])
+                kvals = _du.get("k_values") or []
+                model_du = _du.get("model") or {}
+                rnd_du = _du.get("random_expected_recall") or {}
+                pers_du = _du.get("persistence") or {}
+                rows_du = []
+                for k in kvals:
+                    ks = str(k)
+                    mk = model_du.get(ks) or model_du.get(k) or {}
+                    pk = pers_du.get(ks) or pers_du.get(k) or {}
+                    tot = mk.get("total_positives", _du.get("n_elevated_distress_weeks", 0))
+                    rows_du.append({
+                        "K": k,
+                        "Captured (model)": f"{mk.get('captured', 0)}/{tot}",
+                        "Recall@K (model)": f"{float(mk.get('recall', 0)):.1%}",
+                        "Expected (random)": f"{float(rnd_du.get(str(k), rnd_du.get(k, 0))):.1%}",
+                        "Persistence": f"{pk.get('captured', 0)}/{tot} ({float(pk.get('recall', 0)):.1%})",
+                    })
+                st.caption(
+                    f"n={_du.get('n_weeks', '—')} eval weeks, "
+                    f"P={_du.get('n_elevated_distress_weeks', '—')} elevated-distress weeks"
+                )
+                st.dataframe(pd.DataFrame(rows_du), use_container_width=True, hide_index=True)
 
 st.markdown("---")
 
 # ── Bottom tabs ───────────────────────────────────────────────────────
-tab_drift, tab_shap, tab_dq, tab_alloc, tab_alerts = st.tabs(["Drift alerts", "Feature importance", "Data quality", "Recommended Actions", "Alert feed"])
+tab_shap, tab_drift, tab_alerts, tab_alloc, tab_dq = st.tabs(["Feature importance", "Drift alerts", "State transitions", "Moderator allocation (LP)", "Data quality"])
 
 with tab_drift:
-    st.markdown("##### Drift alerts (up to current week)")
+    st.markdown("##### Drift alerts (up to selected week)")
+    st.caption(
+        "Each row is one week. The model computes a z-score for each signal relative to the preceding "
+        "12-week baseline. **aggregate_level** is the highest severity triggered (0 = normal, 1 = warning, "
+        "2 = alert, 3 = critical). **dominant_signal** is the feature with the largest absolute deviation that week."
+    )
     drift_df = load_drift(subreddit)
     if drift_df is not None and not drift_df.empty:
         # Clamp to drift_df length to avoid index mismatch with feature_df
@@ -800,6 +830,11 @@ with tab_drift:
 
 with tab_shap:
     st.markdown("##### Feature importance (SHAP — top 15)")
+    st.caption(
+        f"Mean absolute SHAP value for r/{subreddit}, averaged across all walk-forward folds. "
+        "Longer bar = stronger average influence on the model's high-distress prediction. "
+        "Computed by XGBoost; LSTM uses a separate gradient-based attribution."
+    )
     shap_df = load_shap(subreddit)
     if shap_df is not None:
         try:
@@ -818,6 +853,12 @@ with tab_shap:
         )
 
 with tab_dq:
+    st.markdown("##### Data quality")
+    st.caption(
+        f"Coverage and completeness of the ingested Reddit data for r/{subreddit}. "
+        "Gap weeks are weeks where fewer than 50% of the expected posts were recovered — "
+        "these can cause distress scores for those weeks to be understated."
+    )
     dq_report = load_data_quality_report(subreddit)
     dq_weekly = load_weekly_completeness(subreddit)
     pipeline_profile = load_pipeline_profile()
@@ -846,8 +887,8 @@ with tab_dq:
                 )
             )
             fig_c.update_layout(
-                title="Weekly completeness score (red = flagged gap)",
-                xaxis_title="Week",
+                title=f"Weekly data completeness — r/{subreddit} (red bars = gap weeks with <50% expected posts)",
+                xaxis_title="",
                 yaxis_title="Completeness score",
                 template="plotly_white",
                 height=280,
@@ -910,7 +951,7 @@ with tab_dq:
             st.warning(f"Could not render lead time chart: {e}")
 
 with tab_alloc:
-    st.markdown("##### Recommended moderator allocation (LP optimisation)")
+    st.markdown("##### Moderator hour allocation — LP optimisation over predicted crisis probabilities")
     alloc = load_allocation_report()
 
     if alloc is None or "error" in (alloc or {}):
@@ -1026,8 +1067,8 @@ Solved via `scipy.optimize.linprog` (HiGHS backend). Effectiveness coefficients 
             """)
 
 with tab_alerts:
-    st.markdown("##### Recent state transitions (alert feed)")
-    st.caption("Latest 30 transitions recorded in `data/alerts.db`. Updates each pipeline run.")
+    st.markdown("##### Predicted state transitions")
+    st.caption("Latest 30 transitions from `data/alerts.db` — logged when the model's predicted state for the following week changes. Populated on each pipeline run.")
     try:
         transitions = load_transitions(n=30)
         if transitions:
