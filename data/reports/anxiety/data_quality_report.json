@@ -15,5 +15,26 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 1.0039203891102493
+  "avg_completeness_score": 1.0039203891102493,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "anxiety",
+    "sources_present": [
+      "arctic_shift",
+      "zenodo_covid"
+    ],
+    "total_weeks": 357,
+    "weeks_with_multiple_sources": 1,
+    "discrepancies": [
+      {
+        "week": "2018-10-29",
+        "sources": {
+          "arctic_shift": 285,
+          "zenodo_covid": 100
+        },
+        "ratio": 2.85
+      }
+    ],
+    "n_discrepancies": 1
+  }
 }

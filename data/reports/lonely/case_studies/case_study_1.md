@@ -1,49 +1,49 @@
-# Case Study: High-Distress Signal Week 2025-W35
-**Week starting:** 2025-08-25
-**Distress score:** -0.292
+# Case Study: High-Distress Signal Week 2023-W19
+**Week starting:** 2023-05-08
+**Distress score:** 0.377
 
 ## What Happened
-The community distress score spiked to -0.292, 
+The community distress score spiked to 0.377, 
 exceeding the severe community distress threshold.
 
 ## Early Warning Signals
 
-### 2025-W32 (not flagged, probability: 0.33)
-- **avg_negative**: 0.1218 (5.3% below average)
-- **pct_positive_roll2w**: 0.5802 (16.9% above average)
-- **avg_compound**: 0.0812 (366.1% above average)
-- **new_poster_ratio**: 0.0000 (100.0% below average)
-- **avg_type_token_ratio_delta**: 0.0007 (45.2% above average)
+### 2023-W16 (FLAGGED, probability: 0.50)
+- **post_volume_roll2w**: 697.5000 (0.5% below average)
+- **domestic_stress_total_roll2w**: 2.0000 (37.9% below average)
+- **unique_posters_roll4w**: 516.0000 (6.5% below average)
+- **topic_shift_jsd_4w_delta**: -0.0373 (54781.6% below average)
+- **first_person_singular_ratio_roll4w**: 0.0816 (0.8% above average)
 
-### 2025-W33 (not flagged, probability: 0.43)
-- **avg_negative**: 0.1495 (16.2% above average)
-- **pct_positive_roll2w**: 0.4965 (0.0% above average)
-- **avg_compound**: -0.1737 (468.9% below average)
-- **new_poster_ratio**: 0.0000 (100.0% below average)
-- **avg_type_token_ratio_delta**: -0.0159 (3506.3% below average)
+### 2023-W17 (not flagged, probability: 0.68)
+- **post_volume_roll2w**: 668.5000 (4.6% below average)
+- **domestic_stress_total_roll2w**: 2.5000 (22.3% below average)
+- **unique_posters_roll4w**: 494.0000 (10.5% below average)
+- **topic_shift_jsd_4w_delta**: 0.0076 (11336.9% above average)
+- **first_person_singular_ratio_roll4w**: 0.0809 (0.0% below average)
 
-### 2025-W34 (not flagged, probability: 0.51)
-- **avg_negative**: 0.1666 (29.5% above average)
-- **pct_positive_roll2w**: 0.3417 (31.1% below average)
-- **avg_compound**: -0.3404 (1014.8% below average)
-- **new_poster_ratio**: 0.0000 (100.0% below average)
-- **avg_type_token_ratio_delta**: -0.0231 (5051.4% below average)
+### 2023-W18 (FLAGGED, probability: 0.48)
+- **post_volume_roll2w**: 638.0000 (9.0% below average)
+- **domestic_stress_total_roll2w**: 4.0000 (24.3% above average)
+- **unique_posters_roll4w**: 512.0000 (7.2% below average)
+- **topic_shift_jsd_4w_delta**: 0.0210 (31075.7% above average)
+- **first_person_singular_ratio_roll4w**: 0.0813 (0.4% above average)
 
 ## Top Contributing Features (SHAP)
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | avg_negative | 1.9528 |
-| 2 | pct_positive_roll2w | 0.6741 |
-| 3 | avg_compound | 0.6310 |
-| 4 | new_poster_ratio | 0.3908 |
-| 5 | avg_type_token_ratio_delta | 0.3697 |
-| 6 | post_volume_roll2w | 0.3221 |
-| 7 | std_word_count_roll2w | 0.3093 |
-| 8 | avg_flesch_kincaid_delta | 0.2599 |
-| 9 | posting_time_entropy_roll2w | 0.2531 |
-| 10 | avg_flesch_kincaid_roll2w | 0.2528 |
+| 1 | post_volume_roll2w | 1.0466 |
+| 2 | domestic_stress_total_roll2w | 0.8454 |
+| 3 | unique_posters_roll4w | 0.4101 |
+| 4 | topic_shift_jsd_4w_delta | 0.3611 |
+| 5 | first_person_singular_ratio_roll4w | 0.3527 |
+| 6 | isolation_total | 0.3433 |
+| 7 | avg_compound_roll4w | 0.3345 |
+| 8 | posting_time_entropy_roll4w | 0.3082 |
+| 9 | suicidality_total | 0.2963 |
+| 10 | avg_positive_delta | 0.2452 |
 
 ## Summary
 
-The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in avg_negative, pct_positive_roll2w, avg_compound.
+The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in post_volume_roll2w, domestic_stress_total_roll2w, unique_posters_roll4w.

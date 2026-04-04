@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fingerprint": "85cf331c74e9e3cb22326bf2c659c5a42ca2ea4662beb6ef4db4cc50c620a8bc",
+  "fingerprint": "128745899e9b95bdd6ffbb1ed1e9765f19a7f4703e13de4593fe6ea0b6a0a00c",
   "base": {
     "subreddits": [
       "depression",
@@ -9,34 +9,39 @@
       "SuicideWatch",
       "lonely"
     ],
-    "skip_topics": true,
+    "skip_topics": false,
     "raw_files": [
       {
-        "path": "data\\raw\\depression\\posts.parquet",
+        "path": "data/raw/depression/posts.parquet",
         "size": 370160798,
-        "mtime_ns": 1775044817486604400
+        "mtime_ns": 1775288770821075844,
+        "sha256": "fe6644dabbc196e32990734c0d462c8b229173d06a980ec63e27b5cc24e712d4"
       },
       {
-        "path": "data\\raw\\anxiety\\posts.parquet",
+        "path": "data/raw/anxiety/posts.parquet",
         "size": 209614918,
-        "mtime_ns": 1775044897040816600
+        "mtime_ns": 1775288811192456412,
+        "sha256": "fabb03bd8ae21ec0f04a5f12434ae88274d9ca60ee2a54432c6782d6ceaa278a"
       },
       {
-        "path": "data\\raw\\mentalhealth\\posts.parquet",
+        "path": "data/raw/mentalhealth/posts.parquet",
         "size": 277730967,
-        "mtime_ns": 1775044995997247500
+        "mtime_ns": 1775288861483684775,
+        "sha256": "56ca25c3a5bf979a49b1049dd8003a94b9227c28599d26afe211a072a2927d8a"
       },
       {
-        "path": "data\\raw\\SuicideWatch\\posts.parquet",
+        "path": "data/raw/SuicideWatch/posts.parquet",
         "size": 293414458,
-        "mtime_ns": 1775045219648382200
+        "mtime_ns": 1775288925318705331,
+        "sha256": "b4edf0727d02dc44aa06ef563c33a8455e81f5af95df89e1ce532a614e8dc738"
       },
       {
-        "path": "data\\raw\\lonely\\posts.parquet",
+        "path": "data/raw/lonely/posts.parquet",
         "size": 108941732,
-        "mtime_ns": 1775045334199750000
+        "mtime_ns": 1775288958210200665,
+        "sha256": "6b3682ef28f315644dc276f5d40a0b4e7387a3cccf6c32a9411cbe72512036cf"
       }
     ],
-    "config_sig": "2892cb7a488c8020ee7ee48515a2174c09df7de90d02afd73be302ff3bc9a696"
+    "config_sig": "346042a661945e83673d34802983203a9cfadee95017e12674b34bd40c4fac25"
   }
 }

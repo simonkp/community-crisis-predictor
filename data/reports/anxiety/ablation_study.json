@@ -1,0 +1,33 @@
+{
+  "full_model_pr_auc": 1.0,
+  "linguistic": {
+    "pr_auc": 1.0,
+    "pr_auc_drop": 0.0,
+    "n_features_removed": 4
+  },
+  "sentiment": {
+    "pr_auc": 1.0,
+    "pr_auc_drop": 0.0,
+    "n_features_removed": 32
+  },
+  "distress": {
+    "pr_auc": 1.0,
+    "pr_auc_drop": 0.0,
+    "n_features_removed": 7
+  },
+  "behavioral": {
+    "pr_auc": 1.0,
+    "pr_auc_drop": 0.0,
+    "n_features_removed": 5
+  },
+  "topic": {
+    "pr_auc": 1.0,
+    "pr_auc_drop": 0.0,
+    "n_features_removed": 3
+  },
+  "temporal": {
+    "pr_auc": 1.0,
+    "pr_auc_drop": 0.0,
+    "n_features_removed": 92
+  }
+}

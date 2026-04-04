@@ -15,5 +15,17 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 1.0130754732421314
+  "avg_completeness_score": 1.0130754732421314,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "mentalhealth",
+    "sources_present": [
+      "arctic_shift",
+      "zenodo_covid"
+    ],
+    "total_weeks": 357,
+    "weeks_with_multiple_sources": 1,
+    "discrepancies": [],
+    "n_discrepancies": 0
+  }
 }

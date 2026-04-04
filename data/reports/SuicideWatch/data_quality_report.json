@@ -16,5 +16,16 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 1.0046270280130678
+  "avg_completeness_score": 1.0046270280130678,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "SuicideWatch",
+    "sources_present": [
+      "zenodo_covid"
+    ],
+    "total_weeks": 85,
+    "weeks_with_multiple_sources": 0,
+    "discrepancies": [],
+    "n_discrepancies": 0
+  }
 }

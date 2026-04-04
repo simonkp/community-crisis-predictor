@@ -1,0 +1,152 @@
+{
+  "anxiety": {
+    "depression": {
+      "pr_auc": 0.3016,
+      "recall": 0.9659,
+      "f1": 0.3981,
+      "n_test": 365,
+      "n_positive": 88
+    },
+    "lonely": {
+      "pr_auc": 0.9902,
+      "recall": 1.0,
+      "f1": 0.907,
+      "n_test": 365,
+      "n_positive": 78
+    },
+    "mentalhealth": {
+      "pr_auc": 0.6352,
+      "recall": 1.0,
+      "f1": 0.5201,
+      "n_test": 365,
+      "n_positive": 97
+    },
+    "suicidewatch": {
+      "pr_auc": 0.6162,
+      "recall": 1.0,
+      "f1": 0.4234,
+      "n_test": 365,
+      "n_positive": 87
+    }
+  },
+  "depression": {
+    "anxiety": {
+      "pr_auc": 0.2785,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_test": 365,
+      "n_positive": 87
+    },
+    "lonely": {
+      "pr_auc": 0.3963,
+      "recall": 0.0128,
+      "f1": 0.0247,
+      "n_test": 365,
+      "n_positive": 78
+    },
+    "mentalhealth": {
+      "pr_auc": 0.2254,
+      "recall": 0.0515,
+      "f1": 0.0794,
+      "n_test": 365,
+      "n_positive": 97
+    },
+    "suicidewatch": {
+      "pr_auc": 0.8511,
+      "recall": 0.6322,
+      "f1": 0.7432,
+      "n_test": 365,
+      "n_positive": 87
+    }
+  },
+  "lonely": {
+    "anxiety": {
+      "pr_auc": 0.7295,
+      "recall": 0.2184,
+      "f1": 0.3551,
+      "n_test": 365,
+      "n_positive": 87
+    },
+    "depression": {
+      "pr_auc": 0.334,
+      "recall": 0.75,
+      "f1": 0.3964,
+      "n_test": 365,
+      "n_positive": 88
+    },
+    "mentalhealth": {
+      "pr_auc": 0.6118,
+      "recall": 0.9381,
+      "f1": 0.6087,
+      "n_test": 365,
+      "n_positive": 97
+    },
+    "suicidewatch": {
+      "pr_auc": 0.4774,
+      "recall": 0.7701,
+      "f1": 0.5339,
+      "n_test": 365,
+      "n_positive": 87
+    }
+  },
+  "mentalhealth": {
+    "anxiety": {
+      "pr_auc": 0.2926,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_test": 365,
+      "n_positive": 87
+    },
+    "depression": {
+      "pr_auc": 0.4609,
+      "recall": 0.9205,
+      "f1": 0.4576,
+      "n_test": 365,
+      "n_positive": 88
+    },
+    "lonely": {
+      "pr_auc": 0.3271,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_test": 365,
+      "n_positive": 78
+    },
+    "suicidewatch": {
+      "pr_auc": 0.8508,
+      "recall": 0.954,
+      "f1": 0.5338,
+      "n_test": 365,
+      "n_positive": 87
+    }
+  },
+  "suicidewatch": {
+    "anxiety": {
+      "pr_auc": 0.5089,
+      "recall": 0.0575,
+      "f1": 0.1087,
+      "n_test": 365,
+      "n_positive": 87
+    },
+    "depression": {
+      "pr_auc": 0.6098,
+      "recall": 0.7614,
+      "f1": 0.6872,
+      "n_test": 365,
+      "n_positive": 88
+    },
+    "lonely": {
+      "pr_auc": 0.5312,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_test": 365,
+      "n_positive": 78
+    },
+    "mentalhealth": {
+      "pr_auc": 0.7359,
+      "recall": 0.3402,
+      "f1": 0.5038,
+      "n_test": 365,
+      "n_positive": 97
+    }
+  }
+}

@@ -38,15 +38,15 @@
 
 <div class="section">
 <h3>Class Balance</h3>
-<div class="stat">Total labeled weeks: <strong>104</strong></div>
-<div class="stat">Crisis weeks (State 2+3): <strong>18</strong></div>
-<div class="stat">Crisis rate: <strong>17.3%</strong></div>
-<div class="stat">Imbalance ratio: <strong>4.8:1</strong></div>
+<div class="stat">Total labeled weeks: <strong>365</strong></div>
+<div class="stat">Crisis weeks (State 2+3): <strong>57</strong></div>
+<div class="stat">Crisis rate: <strong>15.6%</strong></div>
+<div class="stat">Imbalance ratio: <strong>5.4:1</strong></div>
 <br><br>
-<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 0 — Stable</span><span style='display:inline-block;width:200px;height:14px;background:#5cb85c;vertical-align:middle;border-radius:3px'></span> <small>83 (79.8%)</small></div>
-<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 1 — Early Signal</span><span style='display:inline-block;width:7px;height:14px;background:#f0ad4e;vertical-align:middle;border-radius:3px'></span> <small>3 (2.9%)</small></div>
-<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 2 — Elevated</span><span style='display:inline-block;width:14px;height:14px;background:#e67e22;vertical-align:middle;border-radius:3px'></span> <small>6 (5.8%)</small></div>
-<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 3 — Severe</span><span style='display:inline-block;width:29px;height:14px;background:#d9534f;vertical-align:middle;border-radius:3px'></span> <small>12 (11.5%)</small></div>
+<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 0 — Stable</span><span style='display:inline-block;width:162px;height:14px;background:#5cb85c;vertical-align:middle;border-radius:3px'></span> <small>237 (64.9%)</small></div>
+<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 1 — Early Signal</span><span style='display:inline-block;width:49px;height:14px;background:#f0ad4e;vertical-align:middle;border-radius:3px'></span> <small>71 (19.5%)</small></div>
+<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 2 — Elevated</span><span style='display:inline-block;width:29px;height:14px;background:#e67e22;vertical-align:middle;border-radius:3px'></span> <small>43 (11.8%)</small></div>
+<div style='margin-bottom:6px'><span style='display:inline-block;width:130px;font-size:0.85em'>State 3 — Severe</span><span style='display:inline-block;width:10px;height:14px;background:#d9534f;vertical-align:middle;border-radius:3px'></span> <small>14 (3.8%)</small></div>
 
 </div>
 
@@ -55,21 +55,21 @@
 <p>Top 15 features ranked by |ρ|. Green = significant (p&lt;0.05) and |ρ|≥0.3, grey = significant but weak, red = not significant.</p>
 <table>
   <tr><th>Feature</th><th>ρ with crisis label</th><th>Significant?</th></tr>
-  <tr><td>first_person_singular_ratio</td><td style='text-align:center'>+0.4010</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>hopelessness_density_delta</td><td style='text-align:center'>+0.3910</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>hopelessness_density</td><td style='text-align:center'>+0.3843</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_word_count_delta</td><td style='text-align:center'>+0.3693</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_char_count_delta</td><td style='text-align:center'>+0.3560</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>pct_positive</td><td style='text-align:center'>-0.3523</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_neutral_delta</td><td style='text-align:center'>-0.3460</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>pct_positive_delta</td><td style='text-align:center'>-0.3452</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>pct_very_negative_delta</td><td style='text-align:center'>+0.3393</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_compound_delta</td><td style='text-align:center'>-0.3368</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_char_count</td><td style='text-align:center'>+0.3327</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>first_person_singular_ratio_delta</td><td style='text-align:center'>+0.3260</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_negative_delta</td><td style='text-align:center'>+0.3252</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>avg_word_count</td><td style='text-align:center'>+0.3235</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
-<tr><td>distress_density_delta</td><td style='text-align:center'>+0.3135</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
+  <tr><td>post_volume</td><td style='text-align:center'>+0.3901</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
+<tr><td>isolation_total</td><td style='text-align:center'>+0.3892</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
+<tr><td>unique_posters</td><td style='text-align:center'>+0.3790</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
+<tr><td>economic_stress_total</td><td style='text-align:center'>+0.3524</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
+<tr><td>suicidality_total</td><td style='text-align:center'>+0.3363</td><td style='text-align:center;background:#5cb85c'>✓</td></tr>
+<tr><td>domestic_stress_total</td><td style='text-align:center'>+0.2580</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>avg_flesch_kincaid</td><td style='text-align:center'>+0.1838</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>avg_compound</td><td style='text-align:center'>-0.1676</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>avg_neutral</td><td style='text-align:center'>+0.1637</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>pct_very_negative</td><td style='text-align:center'>+0.1529</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>avg_positive</td><td style='text-align:center'>-0.1395</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>first_person_singular_ratio</td><td style='text-align:center'>-0.1173</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>pct_positive</td><td style='text-align:center'>-0.1062</td><td style='text-align:center;background:#f4f4f4'>✓</td></tr>
+<tr><td>avg_char_count</td><td style='text-align:center'>+0.1018</td><td style='text-align:center;background:#d9534f'>–</td></tr>
+<tr><td>avg_word_count</td><td style='text-align:center'>+0.0994</td><td style='text-align:center;background:#d9534f'>–</td></tr>
 
 </table>
 </div>
@@ -79,16 +79,16 @@
 <p>Redundant features may inflate SHAP uncertainty. Consider removing one from each pair.</p>
 <table>
   <tr><th>Feature A</th><th>Feature B</th><th>Spearman ρ</th></tr>
-  <tr><td>avg_word_count_roll4w</td><td>avg_char_count_roll4w</td><td style='text-align:center'>+0.9958</td></tr>
-<tr><td>avg_word_count_roll2w</td><td>avg_char_count_roll2w</td><td style='text-align:center'>+0.9941</td></tr>
-<tr><td>post_volume_roll4w</td><td>unique_posters_roll4w</td><td style='text-align:center'>+0.9928</td></tr>
-<tr><td>avg_word_count</td><td>avg_char_count</td><td style='text-align:center'>+0.9917</td></tr>
-<tr><td>avg_word_count_delta</td><td>avg_char_count_delta</td><td style='text-align:center'>+0.9903</td></tr>
-<tr><td>post_volume</td><td>unique_posters</td><td style='text-align:center'>+0.9901</td></tr>
-<tr><td>post_volume_delta</td><td>unique_posters_delta</td><td style='text-align:center'>+0.9898</td></tr>
-<tr><td>post_volume_roll2w</td><td>unique_posters_roll2w</td><td style='text-align:center'>+0.9895</td></tr>
-<tr><td>avg_compound_roll4w</td><td>avg_negative_roll4w</td><td style='text-align:center'>-0.9841</td></tr>
-<tr><td>avg_compound_roll4w</td><td>pct_very_negative_roll4w</td><td style='text-align:center'>-0.9772</td></tr>
+  <tr><td>avg_word_count_roll4w</td><td>avg_char_count_roll4w</td><td style='text-align:center'>+0.9991</td></tr>
+<tr><td>avg_word_count_roll2w</td><td>avg_char_count_roll2w</td><td style='text-align:center'>+0.9990</td></tr>
+<tr><td>avg_word_count</td><td>avg_char_count</td><td style='text-align:center'>+0.9987</td></tr>
+<tr><td>avg_word_count_delta</td><td>avg_char_count_delta</td><td style='text-align:center'>+0.9975</td></tr>
+<tr><td>unique_posters</td><td>unique_posters_roll2w</td><td style='text-align:center'>+0.9820</td></tr>
+<tr><td>post_volume</td><td>post_volume_roll2w</td><td style='text-align:center'>+0.9786</td></tr>
+<tr><td>post_volume_roll4w</td><td>unique_posters_roll4w</td><td style='text-align:center'>+0.9762</td></tr>
+<tr><td>post_volume_roll2w</td><td>unique_posters_roll2w</td><td style='text-align:center'>+0.9755</td></tr>
+<tr><td>post_volume</td><td>unique_posters</td><td style='text-align:center'>+0.9752</td></tr>
+<tr><td>post_volume_roll2w</td><td>post_volume_roll4w</td><td style='text-align:center'>+0.9705</td></tr>
 
 </table>
 </div>
@@ -97,72 +97,335 @@
 <h2>Stage 2 — Walk-forward Fold Health</h2>
 
 <div class="section">
-<div class="stat">Total folds: <strong>58</strong></div>
-<div class="stat">Ran: <strong>58</strong></div>
+<div class="stat">Total folds: <strong>321</strong></div>
+<div class="stat">Ran: <strong>321</strong></div>
 <div class="stat">Skipped: <strong>0</strong>
   (0.0%)</div>
-<div class="stat">Mean crisis rate across folds: <strong>18.3%</strong></div>
+<div class="stat">Mean crisis rate across folds: <strong>25.8%</strong></div>
 <div class="stat">Low-balance folds (≤5%): <strong>0</strong></div>
 <br><br>
 <h3>Crisis Rate per Fold (red = low-balance ≤5%)</h3>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 1</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.6%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 2</small><span style='display:inline-block;width:51px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 3</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 4</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 5</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 6</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 7</small><span style='display:inline-block;width:52px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 8</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 9</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 10</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 11</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 12</small><span style='display:inline-block;width:60px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.0%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 13</small><span style='display:inline-block;width:65px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.7%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 14</small><span style='display:inline-block;width:64px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.3%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 15</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.8%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 16</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 17</small><span style='display:inline-block;width:60px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.0%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 18</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.6%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 19</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 20</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 21</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 22</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 23</small><span style='display:inline-block;width:54px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 24</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 25</small><span style='display:inline-block;width:52px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 26</small><span style='display:inline-block;width:51px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.0%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 27</small><span style='display:inline-block;width:50px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.7%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 28</small><span style='display:inline-block;width:49px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 29</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 30</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 31</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.8%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 32</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 33</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 34</small><span style='display:inline-block;width:54px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 35</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.6%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 36</small><span style='display:inline-block;width:52px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 37</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.6%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 38</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.3%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 39</small><span style='display:inline-block;width:54px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 40</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.8%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 41</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.6%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 42</small><span style='display:inline-block;width:52px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.3%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 43</small><span style='display:inline-block;width:51px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 44</small><span style='display:inline-block;width:51px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 45</small><span style='display:inline-block;width:50px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.7%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 46</small><span style='display:inline-block;width:49px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.5%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 47</small><span style='display:inline-block;width:49px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 48</small><span style='display:inline-block;width:48px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 49</small><span style='display:inline-block;width:51px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.1%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 50</small><span style='display:inline-block;width:51px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.9%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 51</small><span style='display:inline-block;width:50px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>16.7%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 52</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.6%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 53</small><span style='display:inline-block;width:52px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.4%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 54</small><span style='display:inline-block;width:52px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 55</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.2%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 56</small><span style='display:inline-block;width:54px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.0%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 57</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.8%</small></div>
-<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 58</small><span style='display:inline-block;width:53px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>17.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 1</small><span style='display:inline-block;width:94px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 2</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 3</small><span style='display:inline-block;width:88px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>29.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 4</small><span style='display:inline-block;width:94px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 5</small><span style='display:inline-block;width:100px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>33.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 6</small><span style='display:inline-block;width:105px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>35.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 7</small><span style='display:inline-block;width:103px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>34.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 8</small><span style='display:inline-block;width:108px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>35.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 9</small><span style='display:inline-block;width:105px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>35.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 10</small><span style='display:inline-block;width:95px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 11</small><span style='display:inline-block;width:93px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>30.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 12</small><span style='display:inline-block;width:91px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>30.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 13</small><span style='display:inline-block;width:95px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 14</small><span style='display:inline-block;width:100px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>33.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 15</small><span style='display:inline-block;width:98px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>32.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 16</small><span style='display:inline-block;width:96px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 17</small><span style='display:inline-block;width:94px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 18</small><span style='display:inline-block;width:92px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>30.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 19</small><span style='display:inline-block;width:90px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>30.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 20</small><span style='display:inline-block;width:94px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 21</small><span style='display:inline-block;width:92px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>30.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 22</small><span style='display:inline-block;width:96px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>32.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 23</small><span style='display:inline-block;width:94px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>31.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 24</small><span style='display:inline-block;width:65px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 25</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 26</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 27</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 28</small><span style='display:inline-block;width:66px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 29</small><span style='display:inline-block;width:60px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 30</small><span style='display:inline-block;width:64px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 31</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 32</small><span style='display:inline-block;width:67px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 33</small><span style='display:inline-block;width:66px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 34</small><span style='display:inline-block;width:69px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 35</small><span style='display:inline-block;width:64px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 36</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 37</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 38</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 39</small><span style='display:inline-block;width:64px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 40</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 41</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 42</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 43</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 44</small><span style='display:inline-block;width:60px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 45</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 46</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 47</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 48</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 49</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 50</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 51</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 52</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 53</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 54</small><span style='display:inline-block;width:60px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 55</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 56</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 57</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 58</small><span style='display:inline-block;width:61px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 59</small><span style='display:inline-block;width:60px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 60</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 61</small><span style='display:inline-block;width:59px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 62</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 63</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 64</small><span style='display:inline-block;width:57px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 65</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 66</small><span style='display:inline-block;width:56px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 67</small><span style='display:inline-block;width:55px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>18.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 68</small><span style='display:inline-block;width:58px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>19.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 69</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 70</small><span style='display:inline-block;width:62px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>20.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 71</small><span style='display:inline-block;width:65px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 72</small><span style='display:inline-block;width:64px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 73</small><span style='display:inline-block;width:66px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 74</small><span style='display:inline-block;width:66px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 75</small><span style='display:inline-block;width:68px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 76</small><span style='display:inline-block;width:67px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 77</small><span style='display:inline-block;width:64px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 78</small><span style='display:inline-block;width:63px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 79</small><span style='display:inline-block;width:65px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>21.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 80</small><span style='display:inline-block;width:68px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 81</small><span style='display:inline-block;width:67px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 82</small><span style='display:inline-block;width:69px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 83</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 84</small><span style='display:inline-block;width:70px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 85</small><span style='display:inline-block;width:72px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 86</small><span style='display:inline-block;width:69px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 87</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 88</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 89</small><span style='display:inline-block;width:70px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 90</small><span style='display:inline-block;width:72px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 91</small><span style='display:inline-block;width:69px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>22.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 92</small><span style='display:inline-block;width:73px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 93</small><span style='display:inline-block;width:70px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 94</small><span style='display:inline-block;width:74px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 95</small><span style='display:inline-block;width:74px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 96</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 97</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 98</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 99</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 100</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 101</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 102</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 103</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 104</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 105</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 106</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 107</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 108</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 109</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 110</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 111</small><span style='display:inline-block;width:87px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 112</small><span style='display:inline-block;width:88px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>29.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 113</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 114</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 115</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 116</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 117</small><span style='display:inline-block;width:87px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>29.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 118</small><span style='display:inline-block;width:87px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 119</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 120</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 121</small><span style='display:inline-block;width:87px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 122</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 123</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 124</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 125</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 126</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 127</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 128</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 129</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 130</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 131</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 132</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 133</small><span style='display:inline-block;width:88px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>29.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 134</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 135</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 136</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 137</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 138</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 139</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 140</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 141</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 142</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 143</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 144</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 145</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 146</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 147</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 148</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 149</small><span style='display:inline-block;width:87px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 150</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 151</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 152</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 153</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 154</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 155</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 156</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 157</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 158</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 159</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 160</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 161</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 162</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 163</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 164</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 165</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 166</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 167</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 168</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 169</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 170</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 171</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 172</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 173</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 174</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 175</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 176</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 177</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 178</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 179</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 180</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 181</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 182</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 183</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 184</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 185</small><span style='display:inline-block;width:75px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 186</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 187</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 188</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 189</small><span style='display:inline-block;width:75px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 190</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 191</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 192</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 193</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 194</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 195</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 196</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 197</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 198</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 199</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 200</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 201</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 202</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 203</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 204</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 205</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 206</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 207</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 208</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 209</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 210</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 211</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 212</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 213</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 214</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 215</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 216</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 217</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 218</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 219</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 220</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 221</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 222</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 223</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 224</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 225</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 226</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 227</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 228</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 229</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 230</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 231</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 232</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 233</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 234</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 235</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 236</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 237</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 238</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 239</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 240</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 241</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 242</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 243</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 244</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 245</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 246</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 247</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 248</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 249</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 250</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 251</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 252</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 253</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 254</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 255</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 256</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 257</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 258</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 259</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 260</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 261</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 262</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 263</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 264</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 265</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 266</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 267</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 268</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 269</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 270</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 271</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 272</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 273</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 274</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 275</small><span style='display:inline-block;width:78px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 276</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 277</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 278</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 279</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 280</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 281</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 282</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 283</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 284</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 285</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 286</small><span style='display:inline-block;width:83px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 287</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 288</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 289</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 290</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 291</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 292</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 293</small><span style='display:inline-block;width:84px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 294</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 295</small><span style='display:inline-block;width:86px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 296</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 297</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 298</small><span style='display:inline-block;width:85px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>28.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 299</small><span style='display:inline-block;width:82px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>27.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 300</small><span style='display:inline-block;width:81px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 301</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 302</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 303</small><span style='display:inline-block;width:79px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.4%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 304</small><span style='display:inline-block;width:80px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>26.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 305</small><span style='display:inline-block;width:77px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 306</small><span style='display:inline-block;width:76px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.2%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 307</small><span style='display:inline-block;width:75px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 308</small><span style='display:inline-block;width:75px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>25.1%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 309</small><span style='display:inline-block;width:74px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 310</small><span style='display:inline-block;width:74px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 311</small><span style='display:inline-block;width:72px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>24.0%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 312</small><span style='display:inline-block;width:70px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.3%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 313</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 314</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 315</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 316</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.6%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 317</small><span style='display:inline-block;width:72px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.8%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 318</small><span style='display:inline-block;width:70px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.5%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 319</small><span style='display:inline-block;width:71px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.7%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 320</small><span style='display:inline-block;width:72px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.9%</small></div>
+<div style='margin-bottom:3px'><small style='display:inline-block;width:60px'>Fold 321</small><span style='display:inline-block;width:70px;height:12px;background:#5bc0de;border-radius:2px;vertical-align:middle'></span> <small>23.3%</small></div>
 
 <h3>Skip Reasons</h3>
 <ul><li>No skipped folds.</li></ul>
@@ -174,34 +437,38 @@
 <div class="two-col">
   <div>
     <h3>XGBoost — Confusion Matrix</h3>
-    <div class="section"><p>1 true alerts, 5 false alarms, 9 missed crises, 62 correct non-alerts out of 77 predicted weeks.</p><table><tr><th></th><th>Predicted Crisis</th><th>Predicted Stable</th></tr><tr><td><strong>Actual Crisis</strong></td><td style='background:#d4edda'>1 TP</td><td style='background:#f8d7da'>9 FN</td></tr><tr><td><strong>Actual Stable</strong></td><td style='background:#f8d7da'>5 FP</td><td style='background:#d4edda'>62 TN</td></tr></table><p>Precision: <strong>0.167</strong> | Recall: <strong>0.100</strong> | F1: <strong>0.125</strong> | Miss rate: <strong>90.0%</strong> | False alarm rate: <strong>7.5%</strong></p></div>
+    <div class="section"><p>148 true alerts, 93 false alarms, 24 missed crises, 73 correct non-alerts out of 338 predicted weeks.</p><table><tr><th></th><th>Predicted Crisis</th><th>Predicted Stable</th></tr><tr><td><strong>Actual Crisis</strong></td><td style='background:#d4edda'>148 TP</td><td style='background:#f8d7da'>24 FN</td></tr><tr><td><strong>Actual Stable</strong></td><td style='background:#f8d7da'>93 FP</td><td style='background:#d4edda'>73 TN</td></tr></table><p>Precision: <strong>0.614</strong> | Recall: <strong>0.861</strong> | F1: <strong>0.717</strong> | Miss rate: <strong>14.0%</strong> | False alarm rate: <strong>56.0%</strong></p></div>
   </div>
   <div>
     <h3>LSTM — Confusion Matrix</h3>
-    <div class="section"><p>2 true alerts, 8 false alarms, 6 missed crises, 53 correct non-alerts out of 69 predicted weeks.</p><table><tr><th></th><th>Predicted Crisis</th><th>Predicted Stable</th></tr><tr><td><strong>Actual Crisis</strong></td><td style='background:#d4edda'>2 TP</td><td style='background:#f8d7da'>6 FN</td></tr><tr><td><strong>Actual Stable</strong></td><td style='background:#f8d7da'>8 FP</td><td style='background:#d4edda'>53 TN</td></tr></table><p>Precision: <strong>0.200</strong> | Recall: <strong>0.250</strong> | F1: <strong>0.222</strong> | Miss rate: <strong>75.0%</strong> | False alarm rate: <strong>13.1%</strong></p></div>
+    <div class="section"><p>135 true alerts, 139 false alarms, 32 missed crises, 26 correct non-alerts out of 332 predicted weeks.</p><table><tr><th></th><th>Predicted Crisis</th><th>Predicted Stable</th></tr><tr><td><strong>Actual Crisis</strong></td><td style='background:#d4edda'>135 TP</td><td style='background:#f8d7da'>32 FN</td></tr><tr><td><strong>Actual Stable</strong></td><td style='background:#f8d7da'>139 FP</td><td style='background:#d4edda'>26 TN</td></tr></table><p>Precision: <strong>0.493</strong> | Recall: <strong>0.808</strong> | F1: <strong>0.612</strong> | Miss rate: <strong>19.2%</strong> | False alarm rate: <strong>84.2%</strong></p></div>
   </div>
 </div>
 
 <div class="two-col">
   <div>
     <h3>XGBoost — Probability Calibration</h3>
-    <div class="section"><p><strong>Verdict:</strong> <span style='color:#d9534f;font-weight:bold'>over-confident</span> | Mean predicted: 0.220 vs actual: 0.130 (gap: +0.090)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.0–0.1]</td><td>12</td><td>0.036</td><td>0.167</td><td style='color:#d9534f'>-0.131</td></tr>
-<tr><td>[0.1–0.2]</td><td>38</td><td>0.162</td><td>0.105</td><td style='color:#333'>+0.057</td></tr>
-<tr><td>[0.2–0.3]</td><td>20</td><td>0.233</td><td>0.150</td><td style='color:#333'>+0.083</td></tr>
-<tr><td>[0.3–0.4]</td><td>1</td><td>0.335</td><td>0.000</td><td style='color:#d9534f'>+0.335</td></tr>
-<tr><td>[0.7–0.8]</td><td>1</td><td>0.704</td><td>0.000</td><td style='color:#d9534f'>+0.704</td></tr>
-<tr><td>[0.8–0.9]</td><td>1</td><td>0.858</td><td>0.000</td><td style='color:#d9534f'>+0.858</td></tr>
-<tr><td>[0.9–1.0]</td><td>4</td><td>0.948</td><td>0.250</td><td style='color:#d9534f'>+0.698</td></tr>
+    <div class="section"><p><strong>Verdict:</strong> <span style='color:#f0ad4e;font-weight:bold'>under-confident</span> | Mean predicted: 0.444 vs actual: 0.509 (gap: -0.065)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.0–0.1]</td><td>5</td><td>0.067</td><td>0.000</td><td style='color:#333'>+0.067</td></tr>
+<tr><td>[0.1–0.2]</td><td>32</td><td>0.150</td><td>0.250</td><td style='color:#333'>-0.100</td></tr>
+<tr><td>[0.2–0.3]</td><td>60</td><td>0.248</td><td>0.267</td><td style='color:#333'>-0.018</td></tr>
+<tr><td>[0.3–0.4]</td><td>55</td><td>0.347</td><td>0.509</td><td style='color:#d9534f'>-0.162</td></tr>
+<tr><td>[0.4–0.5]</td><td>55</td><td>0.453</td><td>0.473</td><td style='color:#333'>-0.019</td></tr>
+<tr><td>[0.5–0.6]</td><td>48</td><td>0.540</td><td>0.583</td><td style='color:#333'>-0.043</td></tr>
+<tr><td>[0.6–0.7]</td><td>42</td><td>0.651</td><td>0.643</td><td style='color:#333'>+0.008</td></tr>
+<tr><td>[0.7–0.8]</td><td>18</td><td>0.749</td><td>0.944</td><td style='color:#d9534f'>-0.196</td></tr>
+<tr><td>[0.8–0.9]</td><td>23</td><td>0.843</td><td>0.957</td><td style='color:#d9534f'>-0.113</td></tr>
 </table></div>
   </div>
   <div>
     <h3>LSTM — Probability Calibration</h3>
-    <div class="section"><p><strong>Verdict:</strong> <span style='color:#d9534f;font-weight:bold'>over-confident</span> | Mean predicted: 0.336 vs actual: 0.116 (gap: +0.220)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.1–0.2]</td><td>33</td><td>0.183</td><td>0.151</td><td style='color:#333'>+0.032</td></tr>
-<tr><td>[0.2–0.3]</td><td>9</td><td>0.250</td><td>0.000</td><td style='color:#d9534f'>+0.250</td></tr>
-<tr><td>[0.3–0.4]</td><td>1</td><td>0.385</td><td>0.000</td><td style='color:#d9534f'>+0.385</td></tr>
-<tr><td>[0.4–0.5]</td><td>3</td><td>0.471</td><td>0.000</td><td style='color:#d9534f'>+0.471</td></tr>
-<tr><td>[0.5–0.6]</td><td>21</td><td>0.561</td><td>0.095</td><td style='color:#d9534f'>+0.466</td></tr>
-<tr><td>[0.6–0.7]</td><td>2</td><td>0.630</td><td>0.500</td><td style='color:#d9534f'>+0.130</td></tr>
+    <div class="section"><p><strong>Verdict:</strong> <span style='color:#5cb85c;font-weight:bold'>well-calibrated</span> | Mean predicted: 0.453 vs actual: 0.503 (gap: -0.050)</p><table><tr><th>Prob Bin</th><th>N</th><th>Mean Pred</th><th>Mean Actual</th><th>Gap</th></tr><tr><td>[0.1–0.2]</td><td>29</td><td>0.161</td><td>0.379</td><td style='color:#d9534f'>-0.218</td></tr>
+<tr><td>[0.2–0.3]</td><td>49</td><td>0.264</td><td>0.347</td><td style='color:#333'>-0.083</td></tr>
+<tr><td>[0.3–0.4]</td><td>51</td><td>0.346</td><td>0.471</td><td style='color:#d9534f'>-0.124</td></tr>
+<tr><td>[0.4–0.5]</td><td>64</td><td>0.450</td><td>0.500</td><td style='color:#333'>-0.050</td></tr>
+<tr><td>[0.5–0.6]</td><td>68</td><td>0.538</td><td>0.412</td><td style='color:#d9534f'>+0.126</td></tr>
+<tr><td>[0.6–0.7]</td><td>43</td><td>0.644</td><td>0.674</td><td style='color:#333'>-0.030</td></tr>
+<tr><td>[0.7–0.8]</td><td>13</td><td>0.740</td><td>0.923</td><td style='color:#d9534f'>-0.184</td></tr>
+<tr><td>[0.8–0.9]</td><td>15</td><td>0.828</td><td>0.933</td><td style='color:#d9534f'>-0.105</td></tr>
 </table></div>
   </div>
 </div>
@@ -209,20 +476,20 @@
 <div class="two-col">
   <div>
     <h3>XGBoost — Threshold Sensitivity</h3>
-    <div class="section"><table><tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1</th><th>#Alerts</th></tr><tr style='font-weight:bold;background:#eaf7ea'><td>0.2</td><td>0.148</td><td>0.400</td><td>0.216</td><td>27</td></tr>
-<tr style=''><td>0.3</td><td>0.143</td><td>0.100</td><td>0.118</td><td>7</td></tr>
-<tr style=''><td>0.4</td><td>0.167</td><td>0.100</td><td>0.125</td><td>6</td></tr>
-<tr style=''><td>0.5</td><td>0.167</td><td>0.100</td><td>0.125</td><td>6</td></tr>
-<tr style=''><td>0.6</td><td>0.167</td><td>0.100</td><td>0.125</td><td>6</td></tr>
+    <div class="section"><table><tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1</th><th>#Alerts</th></tr><tr style=''><td>0.2</td><td>0.545</td><td>0.954</td><td>0.693</td><td>301</td></tr>
+<tr style='font-weight:bold;background:#eaf7ea'><td>0.3</td><td>0.614</td><td>0.861</td><td>0.717</td><td>241</td></tr>
+<tr style=''><td>0.4</td><td>0.645</td><td>0.698</td><td>0.670</td><td>186</td></tr>
+<tr style=''><td>0.5</td><td>0.718</td><td>0.546</td><td>0.621</td><td>131</td></tr>
+<tr style=''><td>0.6</td><td>0.795</td><td>0.384</td><td>0.518</td><td>83</td></tr>
 </table></div>
   </div>
   <div>
     <h3>LSTM — Threshold Sensitivity</h3>
-    <div class="section"><table><tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1</th><th>#Alerts</th></tr><tr style=''><td>0.2</td><td>0.083</td><td>0.375</td><td>0.136</td><td>36</td></tr>
-<tr style=''><td>0.3</td><td>0.111</td><td>0.375</td><td>0.171</td><td>27</td></tr>
-<tr style=''><td>0.4</td><td>0.115</td><td>0.375</td><td>0.176</td><td>26</td></tr>
-<tr style=''><td>0.5</td><td>0.130</td><td>0.375</td><td>0.194</td><td>23</td></tr>
-<tr style='font-weight:bold;background:#eaf7ea'><td>0.6</td><td>0.500</td><td>0.125</td><td>0.200</td><td>2</td></tr>
+    <div class="section"><table><tr><th>Threshold</th><th>Precision</th><th>Recall</th><th>F1</th><th>#Alerts</th></tr><tr style='font-weight:bold;background:#eaf7ea'><td>0.2</td><td>0.515</td><td>0.934</td><td>0.664</td><td>303</td></tr>
+<tr style=''><td>0.3</td><td>0.547</td><td>0.832</td><td>0.660</td><td>254</td></tr>
+<tr style=''><td>0.4</td><td>0.567</td><td>0.689</td><td>0.622</td><td>203</td></tr>
+<tr style=''><td>0.5</td><td>0.597</td><td>0.497</td><td>0.542</td><td>139</td></tr>
+<tr style=''><td>0.6</td><td>0.775</td><td>0.329</td><td>0.462</td><td>71</td></tr>
 </table></div>
   </div>
 </div>
