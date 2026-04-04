@@ -75,13 +75,24 @@ def render_drift_table(display_drift: pd.DataFrame) -> None:
     st.markdown(drift_table_html, unsafe_allow_html=True)
 
 
+def _fmt_metric(value) -> str:
+    """Format a metric value; show '—' when absent or exactly 0 (uncomputed)."""
+    if value is None:
+        return "—"
+    try:
+        f = float(value)
+    except (TypeError, ValueError):
+        return "—"
+    return f"{f:.3f}" if f != 0.0 else "—"
+
+
 def render_model_metrics_tiles(results: dict) -> None:
     """Compact Recall / Precision / F1 / PR-AUC row for dashboard side column."""
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Recall", f"{results.get('recall', 0):.3f}")
-    c2.metric("Precision", f"{results.get('precision', 0):.3f}")
-    c3.metric("F1", f"{results.get('f1', 0):.3f}")
-    c4.metric("PR-AUC", f"{results.get('pr_auc', 0):.3f}")
+    c1.metric("Recall", _fmt_metric(results.get("recall")))
+    c2.metric("Precision", _fmt_metric(results.get("precision")))
+    c3.metric("F1", _fmt_metric(results.get("f1")))
+    c4.metric("PR-AUC", _fmt_metric(results.get("pr_auc")))
 
 
 def render_model_metrics(results: dict, state_names: dict, decision_usefulness_copy: dict) -> None:
@@ -139,4 +150,4 @@ def render_model_metrics(results: dict, state_names: dict, decision_usefulness_c
             f"Evaluation weeks n={_du.get('n_weeks', '—')}, "
             f"elevated-distress weeks P={_du.get('n_elevated_distress_weeks', '—')}."
         )
-        st.dataframe(pd.DataFrame(rows_du), width="stretch", hide_index=True)
+        st.dataframe(pd.DataFrame(rows_du), use_container_width=True, hide_index=True)

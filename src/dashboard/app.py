@@ -16,6 +16,7 @@ API_URL    URL of the FastAPI service (e.g. https://your-api.onrender.com).
            Only used when API_MODE=true.
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -23,12 +24,6 @@ from pathlib import Path
 _root = Path(__file__).resolve().parents[2]
 if str(_root) not in sys.path:
     sys.path.insert(0, str(_root))
-
-import os
-import sys
-from pathlib import Path
-# Ensure project root is on sys.path (required for Streamlit Cloud)
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import numpy as np
 import pandas as pd
@@ -61,6 +56,7 @@ from src.dashboard.data_access import (
     load_pipeline_last_run_time,
     load_pipeline_profile,
     load_shap,
+    load_transitions,
     load_weekly_completeness,
 )
 from src.dashboard.state import clamp_week_idx, monitoring_mode, pick_model_results, trim_to_length
@@ -140,8 +136,6 @@ SUBREDDIT_ACCENT = {
     "depression": "#14B8A6",
     "suicidewatch": "#6366F1",
 }
-
-MONITORING_MODE = {"lonely", "mentalhealth"}
 
 DASHBOARD_SUBORDER = ["mentalhealth", "anxiety", "lonely", "depression", "suicidewatch"]
 
@@ -504,7 +498,7 @@ for i, sub in enumerate(visible_subs):
         sub_results = eval_results.get(sub, {})
         results_i, _used_model = resolve_model_results(sub_results, model_choice)
         is_mm, _n_crisis = monitoring_mode(results_i, monitoring_min_crisis_weeks)
-        use_trend_pill = sub in MONITORING_MODE and is_mm
+        use_trend_pill = is_mm
 
         sub_df_i = feature_df[feature_df["subreddit"] == sub].copy()
         sub_df_i = sub_df_i.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
@@ -549,12 +543,15 @@ for i, sub in enumerate(visible_subs):
             status_html = _state_badge_html(state_line, state_color)
         st.markdown(status_html, unsafe_allow_html=True)
 
-        d_score = float(distress_i.iloc[wi_local]) if n_wi else 0.0
+        _safe_wi = min(wi_local, len(distress_i) - 1) if n_wi else 0
+        _raw_d = float(distress_i.iloc[_safe_wi]) if n_wi else float("nan")
+        d_score = _raw_d if np.isfinite(_raw_d) else float("nan")
+        d_line = f"{d_score:+.3f}" if np.isfinite(d_score) else "—"
         p_hi = float(probs[wi_local]) if len(probs) > wi_local and np.isfinite(probs[wi_local]) else float("nan")
         p_line = f"{(p_hi * 100):.1f}%" if not np.isnan(p_hi) else "—"
         st.markdown(
             f"<div class='community-meta-note' style='margin-bottom:2px'>Label distress</div>"
-            f"<div style='font-size:1.35rem;font-weight:600;color:{accent}'>{d_score:+.3f}</div>"
+            f"<div style='font-size:1.35rem;font-weight:600;color:{accent}'>{d_line}</div>"
             f"<div class='community-meta-note'>p(distress) {p_line}</div>",
             unsafe_allow_html=True,
         )
@@ -565,7 +562,7 @@ for i, sub in enumerate(visible_subs):
             if len(spark) > 0:
                 spark_color = "#334155" if sel else "#64748b"
                 sp_fig = build_sparkline(spark, spark_color, height=72)
-                st.plotly_chart(sp_fig, width="stretch", config={"displayModeBar": False})
+                st.plotly_chart(sp_fig, use_container_width=True, config={"displayModeBar": False})
 
         help_txt = (
             "Insufficient crisis frequency for reliable prediction (<10 crisis weeks)."
@@ -651,15 +648,19 @@ with main_l:
     accent_sel = SUBREDDIT_ACCENT.get(subreddit, "#378ADD")
     _w_slice = weeks[: week_idx_plot + 1]
     if "week_start" in sub_df.columns:
-        x_hist = pd.to_datetime(_w_slice, errors="coerce")
-        # Drop NaT entries that would break the x-axis
-        valid_x = ~pd.isnull(x_hist)
-        if not valid_x.all():
-            st.caption(f"⚠️ {(~valid_x).sum()} week_start values could not be parsed and will appear as gaps.")
+        x_hist_raw = pd.to_datetime(_w_slice, errors="coerce")
+        valid_x = ~pd.isnull(x_hist_raw)
+        _n_nat = int((~valid_x).sum())
+        if _n_nat:
+            st.caption(f"⚠️ {_n_nat} week_start value(s) could not be parsed and are excluded from the chart.")
+        # Only pass valid (non-NaT) entries to Plotly — NaT breaks datetime axes
+        x_hist = x_hist_raw[valid_x]
     else:
-        x_hist = np.asarray(_w_slice, dtype=float)
-        valid_x = np.ones(len(x_hist), dtype=bool)
-    y_hist = distress_scores.values[: week_idx_plot + 1]
+        x_hist_raw = np.asarray(_w_slice, dtype=float)
+        valid_x = np.ones(len(x_hist_raw), dtype=bool)
+        x_hist = x_hist_raw
+    y_hist_raw = distress_scores.values[: week_idx_plot + 1]
+    y_hist = y_hist_raw[valid_x]
 
     fig = go.Figure()
     fig.add_trace(
@@ -672,9 +673,9 @@ with main_l:
         )
     )
 
+    _preds_slice = predictions_all[: week_idx_plot + 1][valid_x]
     marker_colors_list = []
-    for i in range(week_idx_plot + 1):
-        p = predictions_all[i]
+    for p in _preds_slice:
         if not np.isnan(p):
             marker_colors_list.append(STATE_COLORS.get(int(p), "#95a5a6"))
         else:
@@ -691,7 +692,7 @@ with main_l:
         )
     )
 
-    probs_up_to = probabilities_all[: week_idx_plot + 1]
+    probs_up_to = probabilities_all[: week_idx_plot + 1][valid_x]
     valid_prob = ~np.isnan(probs_up_to)
     if valid_prob.any():
         fig.add_trace(
@@ -742,7 +743,7 @@ with main_l:
         legend=dict(orientation="h", yanchor="bottom", y=1.02),
     )
     try:
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     except Exception as e:
         st.warning(f"Could not render distress timeline: {e}")
 
@@ -772,7 +773,7 @@ with main_r:
 st.markdown("---")
 
 # ── Bottom tabs ───────────────────────────────────────────────────────
-tab_drift, tab_shap, tab_dq, tab_alloc = st.tabs(["Drift alerts", "Feature importance", "Data quality", "Recommended Actions"])
+tab_drift, tab_shap, tab_dq, tab_alloc, tab_alerts = st.tabs(["Drift alerts", "Feature importance", "Data quality", "Recommended Actions", "Alert feed"])
 
 with tab_drift:
     st.markdown("##### Drift alerts (up to current week)")
@@ -800,9 +801,10 @@ with tab_shap:
     shap_df = load_shap(subreddit)
     if shap_df is not None:
         try:
-            top15 = shap_df.head(15).sort_values("mean_abs_shap", ascending=True)
+            _shap_sort_col = "mean_abs_shap" if "mean_abs_shap" in shap_df.columns else shap_df.columns[-1]
+            top15 = shap_df.head(15).sort_values(_shap_sort_col, ascending=True)
             fig_shap = build_shap_bar(top15)
-            st.plotly_chart(fig_shap, width="stretch")
+            st.plotly_chart(fig_shap, use_container_width=True)
         except Exception as e:
             st.warning(f"Could not render SHAP chart: {e}")
             st.dataframe(shap_df.head(15))
@@ -835,7 +837,8 @@ with tab_dq:
                     x=dq_weekly["week_start"],
                     y=dq_weekly["completeness_score"],
                     marker_color=[
-                        "#e74c3c" if bool(v) else "#2ecc71" for v in dq_weekly["is_gap"].tolist()
+                        "#e74c3c" if bool(v) else "#2ecc71"
+                        for v in (dq_weekly["is_gap"].tolist() if "is_gap" in dq_weekly.columns else [False] * len(dq_weekly))
                     ],
                     name="Completeness score",
                 )
@@ -847,7 +850,7 @@ with tab_dq:
                 template="plotly_white",
                 height=280,
             )
-            st.plotly_chart(fig_c, width="stretch")
+            st.plotly_chart(fig_c, use_container_width=True)
         except Exception as e:
             st.warning(f"Could not render completeness chart: {e}")
 
@@ -875,12 +878,12 @@ with tab_dq:
                     )
             else:
                 flat_rows.append(entry)
-        st.dataframe(pd.DataFrame(flat_rows), width="stretch", height=220)
+        st.dataframe(pd.DataFrame(flat_rows), use_container_width=True, height=220)
 
     fold_diag = results.get("fold_diagnostics", [])
     if fold_diag:
         st.markdown("**Fold diagnostics**")
-        st.dataframe(pd.DataFrame(fold_diag), width="stretch", height=180)
+        st.dataframe(pd.DataFrame(fold_diag), use_container_width=True, height=180)
 
     with st.expander("Full model metrics & decision usefulness", expanded=False):
         render_model_metrics(results, STATE_NAMES, DECISION_USEFULNESS_COPY)
@@ -897,7 +900,7 @@ with tab_dq:
                 template="plotly_white",
                 height=260,
             )
-            st.plotly_chart(fig_l, width="stretch")
+            st.plotly_chart(fig_l, use_container_width=True)
             st.caption(
                 f"p50={lead.get('p50', 0):.2f}, p75={lead.get('p75', 0):.2f}, p90={lead.get('p90', 0):.2f}"
             )
@@ -962,7 +965,12 @@ with tab_alloc:
             try:
                 first_val = next(iter(sensitivity.values()), {})
                 subs_in_sens = list(first_val.keys()) if isinstance(first_val, dict) else []
-                budgets = sorted(sensitivity.keys(), key=lambda b: int(b))
+                def _budget_key(b):
+                    try:
+                        return int(b)
+                    except (ValueError, TypeError):
+                        return 0
+                budgets = sorted(sensitivity.keys(), key=_budget_key)
                 sens_rows = []
                 for b in budgets:
                     row = {"Budget (hrs)": int(b)}
@@ -1014,3 +1022,52 @@ where $p_i$ = latest predicted crisis probability, $e_i$ = intervention effectiv
 
 Solved via `scipy.optimize.linprog` (HiGHS backend). Effectiveness coefficients are configurable per subreddit in `config/default.yaml` under `prescriptive.effectiveness`.
             """)
+
+with tab_alerts:
+    st.markdown("##### Recent state transitions (alert feed)")
+    st.caption("Latest 30 transitions recorded in `data/alerts.db`. Updates each pipeline run.")
+    try:
+        transitions = load_transitions(n=30)
+        if transitions:
+            trans_df = pd.DataFrame(transitions)
+            # Friendly column order
+            _col_order = ["timestamp", "subreddit", "week_start", "from_state", "to_state", "distress_score", "dominant_signal"]
+            trans_df = trans_df[[c for c in _col_order if c in trans_df.columns]]
+            # Colour-code rows by to_state severity
+            _state_level = {"Stable": 0, "Elevated": 1, "High": 2, "Severe": 3}
+            def _row_color(to_state: str) -> str:
+                lvl = _state_level.get(str(to_state), 0)
+                return ["#f0fdf4", "#fefce8", "#fff7ed", "#fff1f2"][lvl]
+            st.dataframe(trans_df, use_container_width=True, hide_index=True)
+            # Quick bar: transition counts by subreddit
+            if "subreddit" in trans_df.columns and "to_state" in trans_df.columns:
+                counts = trans_df.groupby(["subreddit", "to_state"]).size().reset_index(name="count")
+                fig_tr = go.Figure()
+                for ts in counts["to_state"].unique():
+                    sub_cnt = counts[counts["to_state"] == ts]
+                    fig_tr.add_trace(go.Bar(
+                        x=sub_cnt["subreddit"],
+                        y=sub_cnt["count"],
+                        name=ts,
+                        marker_color=STATE_COLORS.get(
+                            next((k for k, v in {0: "Stable", 1: "Elevated", 2: "High", 3: "Severe"}.items() if v == ts), 0),
+                            "#64748b",
+                        ),
+                    ))
+                fig_tr.update_layout(
+                    barmode="stack",
+                    title="Transition counts by subreddit (last 30)",
+                    xaxis_title="Subreddit",
+                    yaxis_title="Transitions",
+                    template="plotly_white",
+                    height=280,
+                    legend=dict(orientation="h", y=-0.3),
+                )
+                st.plotly_chart(fig_tr, use_container_width=True)
+        else:
+            st.info(
+                "No transitions recorded yet. Run the pipeline end-to-end to populate `data/alerts.db`.\n\n"
+                "`~/.pyenv/versions/3.12.11/bin/python -m src.pipeline.run_all --config config/default.yaml`"
+            )
+    except Exception as e:
+        st.warning(f"Could not load alert feed: {e}")
