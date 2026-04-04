@@ -1,0 +1,63 @@
+{
+  "subreddit": "depression",
+  "source": "zenodo_covid",
+  "total_weeks_observed": 133,
+  "gap_weeks_below_50pct": 9,
+  "missing_week_count": 24,
+  "missing_weeks": [
+    "2018-04-23",
+    "2018-11-12",
+    "2018-12-03",
+    "2018-12-17",
+    "2018-12-24",
+    "2019-05-06",
+    "2019-05-20",
+    "2019-06-03",
+    "2019-06-17",
+    "2019-07-01",
+    "2019-08-12",
+    "2019-09-02",
+    "2019-09-09",
+    "2019-09-23",
+    "2019-09-30",
+    "2019-10-28",
+    "2019-11-04",
+    "2019-11-11",
+    "2019-11-18",
+    "2019-11-25",
+    "2019-12-02",
+    "2019-12-09",
+    "2019-12-16",
+    "2019-12-23"
+  ],
+<<<<<<< HEAD
+  "avg_completeness_score": 0.9996142392514645,
+=======
+  "avg_completeness_score": 1.0012392083965582,
+>>>>>>> 2907167d09780bd3b6d347c8f58a8506bd814720
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "depression",
+    "sources_present": [
+      "arctic_shift",
+      "zenodo_covid"
+    ],
+<<<<<<< HEAD
+    "total_weeks": 342,
+=======
+    "total_weeks": 133,
+>>>>>>> 2907167d09780bd3b6d347c8f58a8506bd814720
+    "weeks_with_multiple_sources": 1,
+    "discrepancies": [
+      {
+        "week": "2018-10-29",
+        "sources": {
+          "arctic_shift": 659,
+          "zenodo_covid": 300
+        },
+        "ratio": 2.2
+      }
+    ],
+    "n_discrepancies": 1
+  }
+}

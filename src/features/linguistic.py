@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import textstat
 
+from src.features.progress_util import iter_weeks
+
 _FIRST_PERSON_SINGULAR = {"i", "me", "my", "myself", "mine"}
 _FIRST_PERSON_PLURAL = {"we", "us", "our", "ourselves", "ours"}
 
@@ -42,7 +44,7 @@ def _compute_post_metrics(text: str) -> dict:
 
 def extract_linguistic_features(weekly_df: pd.DataFrame) -> pd.DataFrame:
     rows = []
-    for idx, row in weekly_df.iterrows():
+    for idx, row in iter_weeks(weekly_df, desc="  Linguistic"):
         texts = row["texts"]
         if not texts:
             rows.append({

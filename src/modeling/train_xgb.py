@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import xgboost as xgb
-from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV, TimeSeriesSplit
 
 
 class XGBCrisisModel:
@@ -20,12 +20,12 @@ class XGBCrisisModel:
         self.model: xgb.XGBClassifier | None = None
         self.best_params: dict = {}
 
-    def _compute_scale_pos_weight(self, y: pd.Series) -> float:
+    def _compute_scale_pos_weight(self, y: pd.Series, max_weight: float = 8.0) -> float:
         n_pos = (y == 1).sum()
         n_neg = (y == 0).sum()
         if n_pos == 0:
             return 1.0
-        return n_neg / n_pos
+        return min(n_neg / n_pos, max_weight)
 
     def train(self, X_train: pd.DataFrame, y_train: pd.Series,
               do_search: bool = True) -> None:
@@ -42,12 +42,13 @@ class XGBCrisisModel:
         )
 
         if do_search and len(X_train) > 30:
+            tscv = TimeSeriesSplit(n_splits=3)
             search = RandomizedSearchCV(
                 base_model,
                 self.param_grid,
                 n_iter=min(self.n_search_iter, 20),
                 scoring="recall",
-                cv=3,
+                cv=tscv,
                 random_state=self.seed,
                 n_jobs=-1,
             )

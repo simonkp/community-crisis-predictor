@@ -20,3 +20,15 @@ def test_distress_score_higher_for_negative():
     scores = compute_distress_score(df)
     # Later rows (more distressed) should have higher scores
     assert scores.iloc[2] > scores.iloc[0]
+
+
+def test_compute_distress_score_without_normalization():
+    df = pd.DataFrame(
+        {
+            "avg_negative": [0.1, 0.5],
+            "hopelessness_density": [0.01, 0.09],
+            "help_seeking_density": [0.02, 0.07],
+        }
+    )
+    scores = compute_distress_score(df, normalize=False)
+    assert scores.iloc[1] > scores.iloc[0]

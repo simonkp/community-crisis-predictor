@@ -1,5 +1,6 @@
 import pandas as pd
 
+from src.features.progress_util import iter_groupby_subreddit
 from src.features.linguistic import extract_linguistic_features
 from src.features.sentiment import extract_sentiment_features
 from src.features.distress import DistressScorer
@@ -12,7 +13,9 @@ class FeaturePipeline:
     def __init__(self, config: dict):
         self.config = config
         feat_cfg = config.get("features", {})
-        self.sentiment_bins = feat_cfg.get("sentiment", {}).get("bins")
+        sent_cfg = feat_cfg.get("sentiment", {})
+        self.sentiment_bins = sent_cfg.get("bins")
+        self.sentiment_parallel_workers = sent_cfg.get("parallel_workers", 0)
         self.rolling_windows = feat_cfg.get("temporal", {}).get("rolling_windows", [2, 4])
 
         topic_cfg = feat_cfg.get("topics", {})
@@ -31,7 +34,11 @@ class FeaturePipeline:
         linguistic = extract_linguistic_features(weekly_df)
 
         print("  Extracting sentiment features...")
-        sentiment = extract_sentiment_features(weekly_df, bins=self.sentiment_bins)
+        sentiment = extract_sentiment_features(
+            weekly_df,
+            bins=self.sentiment_bins,
+            parallel_workers=self.sentiment_parallel_workers,
+        )
 
         print("  Extracting distress features...")
         distress = self.distress_scorer.extract_distress_features(weekly_df)
@@ -64,15 +71,31 @@ class FeaturePipeline:
 
         # Group by subreddit for proper temporal computation
         parts = []
-        for sub, group in feature_df.groupby("subreddit"):
+        for sub, group in iter_groupby_subreddit(feature_df, "subreddit", "  Temporal"):
             group = group.sort_values(["iso_year", "iso_week"]).reset_index(drop=True)
             group = add_temporal_features(group, self.rolling_windows)
             parts.append(group)
 
         feature_df = pd.concat(parts, ignore_index=True)
 
-        # Fill NaN from deltas and rolling (first rows)
-        feature_df = feature_df.fillna(0.0)
+        # Fill NaN only in delta columns (first row per subreddit series after .diff()).
+        # Rolling columns use min_periods=1 and week_sin/cos are derived from non-null iso_week,
+        # so they never produce NaN. Blanket fillna would silently mask upstream data bugs.
+        delta_cols = [c for c in feature_df.columns if c.endswith("_delta")]
+        if delta_cols:
+            feature_df[delta_cols] = feature_df[delta_cols].fillna(0.0)
+
+        # Assert that all non-meta, non-temporal columns are non-null. Any null here
+        # indicates a bug in an upstream extractor, not expected boundary NaN.
+        _meta = {"subreddit", "iso_year", "iso_week", "week_start"}
+        _temporal = set(delta_cols) | {c for c in feature_df.columns if "_roll" in c} | {"week_sin", "week_cos"}
+        core_cols = [c for c in feature_df.columns if c not in _meta and c not in _temporal]
+        null_counts = feature_df[core_cols].isnull().sum()
+        null_cols = null_counts[null_counts > 0]
+        if not null_cols.empty:
+            raise ValueError(
+                f"Unexpected nulls in core feature columns — check upstream extractors:\n{null_cols.to_dict()}"
+            )
 
         print(f"  Feature matrix: {feature_df.shape[0]} weeks x {feature_df.shape[1]} columns")
         return feature_df

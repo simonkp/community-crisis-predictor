@@ -1,14 +1,46 @@
+# Raw and intermediate data — large files, never commit
 data/raw/
 data/processed/
-data/features/
-data/models/
+data/staging/
+data/external/
+data/ingestion_manifest.json
+data/alerts.db
+data/quality.db
+
+# Pipeline outputs below are intentionally tracked for cloud deployment:
+#   data/features/    <- features.parquet (Streamlit Cloud reads this)
+#   data/models/      <- eval_results.json + serialized model artifacts
+#   data/reports/     <- shap, drift, weekly briefs, quality reports
+# Serving runtime logs — reset on Render cold start, no repo value
+serving/models/
+serving/logs/*.jsonl
+
 __pycache__/
 *.pyc
 .env
+.streamlit/secrets.toml
 *.egg-info/
 dist/
+dist_wheel_test/
 build/
 .venv/
 venv/
-*.parquet
 .ipynb_checkpoints/
+temp/
+.rules/
+reports/.~lock.*
+reports/*.tmp
+
+/logs/
+/logs/*.jsonl
+
+project_overview.md
+
+.DS_Store
+.idea/
+.vscode/
+
+
+
+
+

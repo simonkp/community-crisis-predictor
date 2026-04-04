@@ -15,7 +15,7 @@ def test_aggregate_groups_by_week(sample_raw_posts):
     assert "post_count" in result.columns
     assert "unique_authors" in result.columns
     assert "new_author_ratio" in result.columns
-    assert all(result["post_count"] > 0)
+    assert all(result["post_count"] >= 0)
 
 
 def test_aggregate_tracks_new_authors():
@@ -39,3 +39,37 @@ def test_aggregate_tracks_new_authors():
     # Week 2 should have d as new (a, b are returning)
     if len(result) > 1:
         assert result.iloc[1]["new_author_ratio"] < 1.0
+
+
+def test_aggregate_fills_missing_created_utc_dt_from_created_utc():
+    df = pd.DataFrame(
+        {
+            "subreddit": ["mix", "mix"],
+            "created_utc": [1704067200, 1704672000],  # both valid unix seconds
+            "created_utc_dt": [pd.Timestamp("2024-01-01T00:00:00Z"), pd.NaT],  # second row missing dt
+            "author_hash": ["a", "b"],
+            "clean_text": ["x", "y"],
+            "score": [1, 1],
+            "num_comments": [0, 0],
+        }
+    )
+    out = WeeklyAggregator().aggregate(df)
+    assert len(out) == 2
+    assert int(out["post_count"].sum()) == 2
+
+
+def test_aggregate_includes_missing_weeks():
+    df = pd.DataFrame(
+        {
+            "subreddit": ["test", "test"],
+            "created_utc": [1704067200, 1705276800],  # 2024-01-01, 2024-01-15 (week gap)
+            "author_hash": ["a", "b"],
+            "clean_text": ["first", "second"],
+            "score": [1, 1],
+            "num_comments": [0, 0],
+        }
+    )
+    out = WeeklyAggregator().aggregate(df)
+    assert len(out) == 3
+    assert "is_missing_week" in out.columns
+    assert int(out["is_missing_week"].sum()) == 1

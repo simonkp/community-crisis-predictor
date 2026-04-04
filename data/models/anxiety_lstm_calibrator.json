@@ -1,0 +1,10 @@
+{
+<<<<<<< HEAD
+  "type": "platt",
+  "coef": 0.746083646714948,
+  "intercept": 1.2113481412230247
+=======
+  "type": "identity",
+  "reason": "insufficient_class_support"
+>>>>>>> 2907167d09780bd3b6d347c8f58a8506bd814720
+}

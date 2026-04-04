@@ -1,0 +1,1220 @@
+{
+  "subreddit": "suicidewatch",
+  "n_weeks": 366,
+  "feature_label_correlations": [
+    {
+      "feature": "suicidality_total",
+      "spearman_rho": 0.6242,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.6242
+    },
+    {
+      "feature": "economic_stress_total",
+      "spearman_rho": 0.6121,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.6121
+    },
+    {
+      "feature": "unique_posters",
+      "spearman_rho": 0.5866,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5866
+    },
+    {
+      "feature": "isolation_total",
+      "spearman_rho": 0.5829,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5829
+    },
+    {
+      "feature": "post_volume",
+      "spearman_rho": 0.5615,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5615
+    },
+    {
+      "feature": "domestic_stress_total",
+      "spearman_rho": 0.5349,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5349
+    },
+    {
+      "feature": "avg_flesch_kincaid",
+      "spearman_rho": 0.354,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.354
+    },
+    {
+      "feature": "avg_neutral",
+      "spearman_rho": 0.3207,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3207
+    },
+    {
+      "feature": "posting_time_entropy",
+      "spearman_rho": 0.2788,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.2788
+    },
+    {
+      "feature": "avg_positive",
+      "spearman_rho": -0.2489,
+      "p_value": 1e-06,
+      "significant": true,
+      "abs_rho": 0.2489
+    },
+    {
+      "feature": "distress_density",
+      "spearman_rho": -0.2444,
+      "p_value": 2e-06,
+      "significant": true,
+      "abs_rho": 0.2444
+    },
+    {
+      "feature": "first_person_singular_ratio",
+      "spearman_rho": 0.2278,
+      "p_value": 1.1e-05,
+      "significant": true,
+      "abs_rho": 0.2278
+    },
+    {
+      "feature": "avg_negative",
+      "spearman_rho": -0.1823,
+      "p_value": 0.000455,
+      "significant": true,
+      "abs_rho": 0.1823
+    },
+    {
+      "feature": "pct_neutral",
+      "spearman_rho": 0.1799,
+      "p_value": 0.000544,
+      "significant": true,
+      "abs_rho": 0.1799
+    },
+    {
+      "feature": "pct_negative",
+      "spearman_rho": 0.1419,
+      "p_value": 0.006539,
+      "significant": true,
+      "abs_rho": 0.1419
+    },
+    {
+      "feature": "new_poster_ratio",
+      "spearman_rho": -0.1238,
+      "p_value": 0.017852,
+      "significant": true,
+      "abs_rho": 0.1238
+    },
+    {
+      "feature": "hopelessness_density",
+      "spearman_rho": -0.1223,
+      "p_value": 0.019219,
+      "significant": true,
+      "abs_rho": 0.1223
+    },
+    {
+      "feature": "std_word_count",
+      "spearman_rho": -0.1202,
+      "p_value": 0.021431,
+      "significant": true,
+      "abs_rho": 0.1202
+    },
+    {
+      "feature": "post_volume_delta",
+      "spearman_rho": 0.1047,
+      "p_value": 0.045259,
+      "significant": true,
+      "abs_rho": 0.1047
+    },
+    {
+      "feature": "pct_very_negative",
+      "spearman_rho": -0.1023,
+      "p_value": 0.050488,
+      "significant": false,
+      "abs_rho": 0.1023
+    },
+    {
+      "feature": "isolation_total_delta",
+      "spearman_rho": 0.0962,
+      "p_value": 0.066009,
+      "significant": false,
+      "abs_rho": 0.0962
+    },
+    {
+      "feature": "unique_posters_delta",
+      "spearman_rho": 0.0869,
+      "p_value": 0.097075,
+      "significant": false,
+      "abs_rho": 0.0869
+    },
+    {
+      "feature": "suicidality_total_delta",
+      "spearman_rho": 0.0861,
+      "p_value": 0.100097,
+      "significant": false,
+      "abs_rho": 0.0861
+    },
+    {
+      "feature": "avg_type_token_ratio",
+      "spearman_rho": 0.077,
+      "p_value": 0.141452,
+      "significant": false,
+      "abs_rho": 0.077
+    },
+    {
+      "feature": "help_seeking_density",
+      "spearman_rho": -0.0636,
+      "p_value": 0.224706,
+      "significant": false,
+      "abs_rho": 0.0636
+    },
+    {
+      "feature": "first_person_plural_ratio",
+      "spearman_rho": -0.0616,
+      "p_value": 0.239618,
+      "significant": false,
+      "abs_rho": 0.0616
+    },
+    {
+      "feature": "avg_word_count_roll2w",
+      "spearman_rho": -0.0614,
+      "p_value": 0.241101,
+      "significant": false,
+      "abs_rho": 0.0614
+    },
+    {
+      "feature": "avg_char_count",
+      "spearman_rho": -0.0602,
+      "p_value": 0.250614,
+      "significant": false,
+      "abs_rho": 0.0602
+    },
+    {
+      "feature": "economic_stress_total_delta",
+      "spearman_rho": 0.0552,
+      "p_value": 0.292077,
+      "significant": false,
+      "abs_rho": 0.0552
+    },
+    {
+      "feature": "avg_word_count",
+      "spearman_rho": -0.0531,
+      "p_value": 0.310824,
+      "significant": false,
+      "abs_rho": 0.0531
+    },
+    {
+      "feature": "pct_positive",
+      "spearman_rho": 0.0524,
+      "p_value": 0.317328,
+      "significant": false,
+      "abs_rho": 0.0524
+    },
+    {
+      "feature": "avg_compound",
+      "spearman_rho": 0.0497,
+      "p_value": 0.342976,
+      "significant": false,
+      "abs_rho": 0.0497
+    },
+    {
+      "feature": "avg_comments",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "dominant_topic",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_entropy",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "pct_neutral_delta",
+      "spearman_rho": -0.0514,
+      "p_value": 0.326343,
+      "significant": false,
+      "abs_rho": 0.0514
+    },
+    {
+      "feature": "posting_time_entropy_delta",
+      "spearman_rho": 0.0453,
+      "p_value": 0.388036,
+      "significant": false,
+      "abs_rho": 0.0453
+    },
+    {
+      "feature": "avg_flesch_kincaid_delta",
+      "spearman_rho": -0.0401,
+      "p_value": 0.444209,
+      "significant": false,
+      "abs_rho": 0.0401
+    },
+    {
+      "feature": "help_seeking_density_delta",
+      "spearman_rho": -0.0386,
+      "p_value": 0.461969,
+      "significant": false,
+      "abs_rho": 0.0386
+    },
+    {
+      "feature": "hopelessness_density_delta",
+      "spearman_rho": -0.0379,
+      "p_value": 0.469484,
+      "significant": false,
+      "abs_rho": 0.0379
+    },
+    {
+      "feature": "pct_positive_delta",
+      "spearman_rho": 0.0297,
+      "p_value": 0.570525,
+      "significant": false,
+      "abs_rho": 0.0297
+    },
+    {
+      "feature": "pct_negative_delta",
+      "spearman_rho": 0.0267,
+      "p_value": 0.610369,
+      "significant": false,
+      "abs_rho": 0.0267
+    },
+    {
+      "feature": "avg_word_count_delta",
+      "spearman_rho": 0.0265,
+      "p_value": 0.612953,
+      "significant": false,
+      "abs_rho": 0.0265
+    },
+    {
+      "feature": "domestic_stress_total_delta",
+      "spearman_rho": 0.0242,
+      "p_value": 0.644825,
+      "significant": false,
+      "abs_rho": 0.0242
+    },
+    {
+      "feature": "avg_char_count_delta",
+      "spearman_rho": 0.0232,
+      "p_value": 0.657603,
+      "significant": false,
+      "abs_rho": 0.0232
+    },
+    {
+      "feature": "std_word_count_delta",
+      "spearman_rho": 0.0175,
+      "p_value": 0.738429,
+      "significant": false,
+      "abs_rho": 0.0175
+    },
+    {
+      "feature": "pct_very_negative_delta",
+      "spearman_rho": -0.0135,
+      "p_value": 0.796555,
+      "significant": false,
+      "abs_rho": 0.0135
+    },
+    {
+      "feature": "first_person_plural_ratio_delta",
+      "spearman_rho": 0.0129,
+      "p_value": 0.805095,
+      "significant": false,
+      "abs_rho": 0.0129
+    },
+    {
+      "feature": "avg_negative_delta",
+      "spearman_rho": -0.0106,
+      "p_value": 0.840438,
+      "significant": false,
+      "abs_rho": 0.0106
+    },
+    {
+      "feature": "avg_type_token_ratio_delta",
+      "spearman_rho": -0.0095,
+      "p_value": 0.85679,
+      "significant": false,
+      "abs_rho": 0.0095
+    },
+    {
+      "feature": "avg_neutral_delta",
+      "spearman_rho": 0.0083,
+      "p_value": 0.87417,
+      "significant": false,
+      "abs_rho": 0.0083
+    },
+    {
+      "feature": "avg_compound_delta",
+      "spearman_rho": 0.0075,
+      "p_value": 0.885791,
+      "significant": false,
+      "abs_rho": 0.0075
+    },
+    {
+      "feature": "new_poster_ratio_delta",
+      "spearman_rho": -0.0066,
+      "p_value": 0.899368,
+      "significant": false,
+      "abs_rho": 0.0066
+    },
+    {
+      "feature": "first_person_singular_ratio_delta",
+      "spearman_rho": -0.005,
+      "p_value": 0.924691,
+      "significant": false,
+      "abs_rho": 0.005
+    },
+    {
+      "feature": "avg_positive_delta",
+      "spearman_rho": -0.0026,
+      "p_value": 0.960836,
+      "significant": false,
+      "abs_rho": 0.0026
+    },
+    {
+      "feature": "distress_density_delta",
+      "spearman_rho": -0.0003,
+      "p_value": 0.996082,
+      "significant": false,
+      "abs_rho": 0.0003
+    },
+    {
+      "feature": "avg_comments_delta",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_entropy_delta",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd_delta",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "suicidality_total_roll2w",
+      "spearman_rho": 0.6002,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.6002
+    },
+    {
+      "feature": "economic_stress_total_roll2w",
+      "spearman_rho": 0.5845,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5845
+    },
+    {
+      "feature": "economic_stress_total_roll4w",
+      "spearman_rho": 0.5842,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5842
+    },
+    {
+      "feature": "suicidality_total_roll4w",
+      "spearman_rho": 0.5817,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5817
+    },
+    {
+      "feature": "unique_posters_roll2w",
+      "spearman_rho": 0.5745,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5745
+    },
+    {
+      "feature": "isolation_total_roll2w",
+      "spearman_rho": 0.5606,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5606
+    },
+    {
+      "feature": "unique_posters_roll4w",
+      "spearman_rho": 0.5568,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5568
+    },
+    {
+      "feature": "isolation_total_roll4w",
+      "spearman_rho": 0.5528,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5528
+    },
+    {
+      "feature": "post_volume_roll2w",
+      "spearman_rho": 0.5405,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5405
+    },
+    {
+      "feature": "domestic_stress_total_roll4w",
+      "spearman_rho": 0.54,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.54
+    },
+    {
+      "feature": "domestic_stress_total_roll2w",
+      "spearman_rho": 0.5378,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5378
+    },
+    {
+      "feature": "post_volume_roll4w",
+      "spearman_rho": 0.5251,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.5251
+    },
+    {
+      "feature": "avg_flesch_kincaid_roll4w",
+      "spearman_rho": 0.4293,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.4293
+    },
+    {
+      "feature": "avg_flesch_kincaid_roll2w",
+      "spearman_rho": 0.4107,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.4107
+    },
+    {
+      "feature": "distress_density_roll4w",
+      "spearman_rho": -0.3561,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3561
+    },
+    {
+      "feature": "avg_neutral_roll2w",
+      "spearman_rho": 0.3519,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3519
+    },
+    {
+      "feature": "avg_neutral_roll4w",
+      "spearman_rho": 0.3509,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3509
+    },
+    {
+      "feature": "posting_time_entropy_roll4w",
+      "spearman_rho": 0.3474,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3474
+    },
+    {
+      "feature": "avg_positive_roll4w",
+      "spearman_rho": -0.3245,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3245
+    },
+    {
+      "feature": "posting_time_entropy_roll2w",
+      "spearman_rho": 0.3105,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.3105
+    },
+    {
+      "feature": "avg_positive_roll2w",
+      "spearman_rho": -0.2966,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.2966
+    },
+    {
+      "feature": "distress_density_roll2w",
+      "spearman_rho": -0.2765,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.2765
+    },
+    {
+      "feature": "first_person_singular_ratio_roll4w",
+      "spearman_rho": 0.267,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.267
+    },
+    {
+      "feature": "pct_neutral_roll4w",
+      "spearman_rho": 0.2658,
+      "p_value": 0.0,
+      "significant": true,
+      "abs_rho": 0.2658
+    },
+    {
+      "feature": "first_person_singular_ratio_roll2w",
+      "spearman_rho": 0.2589,
+      "p_value": 1e-06,
+      "significant": true,
+      "abs_rho": 0.2589
+    },
+    {
+      "feature": "pct_neutral_roll2w",
+      "spearman_rho": 0.227,
+      "p_value": 1.2e-05,
+      "significant": true,
+      "abs_rho": 0.227
+    },
+    {
+      "feature": "avg_negative_roll4w",
+      "spearman_rho": -0.2194,
+      "p_value": 2.3e-05,
+      "significant": true,
+      "abs_rho": 0.2194
+    },
+    {
+      "feature": "avg_negative_roll2w",
+      "spearman_rho": -0.2037,
+      "p_value": 8.7e-05,
+      "significant": true,
+      "abs_rho": 0.2037
+    },
+    {
+      "feature": "hopelessness_density_roll4w",
+      "spearman_rho": -0.1879,
+      "p_value": 0.0003,
+      "significant": true,
+      "abs_rho": 0.1879
+    },
+    {
+      "feature": "std_word_count_roll2w",
+      "spearman_rho": -0.1495,
+      "p_value": 0.004149,
+      "significant": true,
+      "abs_rho": 0.1495
+    },
+    {
+      "feature": "std_word_count_roll4w",
+      "spearman_rho": -0.1431,
+      "p_value": 0.00611,
+      "significant": true,
+      "abs_rho": 0.1431
+    },
+    {
+      "feature": "pct_negative_roll2w",
+      "spearman_rho": 0.142,
+      "p_value": 0.006515,
+      "significant": true,
+      "abs_rho": 0.142
+    },
+    {
+      "feature": "new_poster_ratio_roll4w",
+      "spearman_rho": -0.142,
+      "p_value": 0.006489,
+      "significant": true,
+      "abs_rho": 0.142
+    },
+    {
+      "feature": "hopelessness_density_roll2w",
+      "spearman_rho": -0.125,
+      "p_value": 0.016749,
+      "significant": true,
+      "abs_rho": 0.125
+    },
+    {
+      "feature": "new_poster_ratio_roll2w",
+      "spearman_rho": -0.1211,
+      "p_value": 0.02053,
+      "significant": true,
+      "abs_rho": 0.1211
+    },
+    {
+      "feature": "pct_very_negative_roll2w",
+      "spearman_rho": -0.1174,
+      "p_value": 0.024724,
+      "significant": true,
+      "abs_rho": 0.1174
+    },
+    {
+      "feature": "pct_very_negative_roll4w",
+      "spearman_rho": -0.1146,
+      "p_value": 0.028354,
+      "significant": true,
+      "abs_rho": 0.1146
+    },
+    {
+      "feature": "pct_positive_roll4w",
+      "spearman_rho": 0.1016,
+      "p_value": 0.052115,
+      "significant": false,
+      "abs_rho": 0.1016
+    },
+    {
+      "feature": "first_person_plural_ratio_roll4w",
+      "spearman_rho": -0.0973,
+      "p_value": 0.062982,
+      "significant": false,
+      "abs_rho": 0.0973
+    },
+    {
+      "feature": "pct_negative_roll4w",
+      "spearman_rho": 0.0925,
+      "p_value": 0.077085,
+      "significant": false,
+      "abs_rho": 0.0925
+    },
+    {
+      "feature": "avg_compound_roll4w",
+      "spearman_rho": 0.0849,
+      "p_value": 0.104774,
+      "significant": false,
+      "abs_rho": 0.0849
+    },
+    {
+      "feature": "pct_positive_roll2w",
+      "spearman_rho": 0.0822,
+      "p_value": 0.116343,
+      "significant": false,
+      "abs_rho": 0.0822
+    },
+    {
+      "feature": "help_seeking_density_roll4w",
+      "spearman_rho": -0.0791,
+      "p_value": 0.130765,
+      "significant": false,
+      "abs_rho": 0.0791
+    },
+    {
+      "feature": "avg_type_token_ratio_roll2w",
+      "spearman_rho": 0.076,
+      "p_value": 0.146529,
+      "significant": false,
+      "abs_rho": 0.076
+    },
+    {
+      "feature": "help_seeking_density_roll2w",
+      "spearman_rho": -0.0756,
+      "p_value": 0.148944,
+      "significant": false,
+      "abs_rho": 0.0756
+    },
+    {
+      "feature": "avg_compound_roll2w",
+      "spearman_rho": 0.0716,
+      "p_value": 0.171673,
+      "significant": false,
+      "abs_rho": 0.0716
+    },
+    {
+      "feature": "avg_char_count_roll2w",
+      "spearman_rho": -0.0683,
+      "p_value": 0.19265,
+      "significant": false,
+      "abs_rho": 0.0683
+    },
+    {
+      "feature": "first_person_plural_ratio_roll2w",
+      "spearman_rho": -0.0673,
+      "p_value": 0.199037,
+      "significant": false,
+      "abs_rho": 0.0673
+    },
+    {
+      "feature": "avg_comments_roll2w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_entropy_roll2w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd_roll2w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "avg_type_token_ratio_roll4w",
+      "spearman_rho": 0.0549,
+      "p_value": 0.295236,
+      "significant": false,
+      "abs_rho": 0.0549
+    },
+    {
+      "feature": "avg_char_count_roll4w",
+      "spearman_rho": -0.031,
+      "p_value": 0.553954,
+      "significant": false,
+      "abs_rho": 0.031
+    },
+    {
+      "feature": "avg_word_count_roll4w",
+      "spearman_rho": -0.0247,
+      "p_value": 0.637305,
+      "significant": false,
+      "abs_rho": 0.0247
+    },
+    {
+      "feature": "avg_comments_roll4w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_entropy_roll4w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "topic_shift_jsd_roll4w",
+      "spearman_rho": NaN,
+      "p_value": NaN,
+      "significant": false,
+      "abs_rho": NaN
+    },
+    {
+      "feature": "week_sin",
+      "spearman_rho": 0.0257,
+      "p_value": 0.624531,
+      "significant": false,
+      "abs_rho": 0.0257
+    },
+    {
+      "feature": "week_cos",
+      "spearman_rho": 0.0208,
+      "p_value": 0.691607,
+      "significant": false,
+      "abs_rho": 0.0208
+    }
+  ],
+  "top_10_features": [
+    "suicidality_total",
+    "economic_stress_total",
+    "unique_posters",
+    "isolation_total",
+    "post_volume",
+    "domestic_stress_total",
+    "avg_flesch_kincaid",
+    "avg_neutral",
+    "posting_time_entropy",
+    "avg_positive"
+  ],
+  "class_balance": {
+    "n_total_labeled": 365,
+    "counts_4class": {
+      "0": 244,
+      "1": 47,
+      "2": 65,
+      "3": 9
+    },
+    "crisis_weeks": 74,
+    "stable_weeks": 291,
+    "crisis_rate": 0.2027,
+    "imbalance_ratio": 3.93
+  },
+  "multicollinear_pairs": [
+    {
+      "feature_a": "avg_word_count_roll4w",
+      "feature_b": "avg_char_count_roll4w",
+      "spearman_rho": 0.9994
+    },
+    {
+      "feature_a": "avg_word_count_roll2w",
+      "feature_b": "avg_char_count_roll2w",
+      "spearman_rho": 0.9993
+    },
+    {
+      "feature_a": "avg_word_count",
+      "feature_b": "avg_char_count",
+      "spearman_rho": 0.9989
+    },
+    {
+      "feature_a": "avg_word_count_delta",
+      "feature_b": "avg_char_count_delta",
+      "spearman_rho": 0.9955
+    },
+    {
+      "feature_a": "unique_posters",
+      "feature_b": "unique_posters_roll2w",
+      "spearman_rho": 0.9856
+    },
+    {
+      "feature_a": "post_volume_roll4w",
+      "feature_b": "unique_posters_roll4w",
+      "spearman_rho": 0.9855
+    },
+    {
+      "feature_a": "post_volume_roll2w",
+      "feature_b": "post_volume_roll4w",
+      "spearman_rho": 0.9852
+    },
+    {
+      "feature_a": "post_volume",
+      "feature_b": "post_volume_roll2w",
+      "spearman_rho": 0.9845
+    },
+    {
+      "feature_a": "unique_posters_roll2w",
+      "feature_b": "unique_posters_roll4w",
+      "spearman_rho": 0.9838
+    },
+    {
+      "feature_a": "post_volume_roll2w",
+      "feature_b": "unique_posters_roll2w",
+      "spearman_rho": 0.9826
+    },
+    {
+      "feature_a": "post_volume",
+      "feature_b": "unique_posters",
+      "spearman_rho": 0.9812
+    },
+    {
+      "feature_a": "isolation_total_roll4w",
+      "feature_b": "post_volume_roll4w",
+      "spearman_rho": 0.9786
+    },
+    {
+      "feature_a": "isolation_total_roll4w",
+      "feature_b": "unique_posters_roll4w",
+      "spearman_rho": 0.9775
+    },
+    {
+      "feature_a": "suicidality_total",
+      "feature_b": "suicidality_total_roll2w",
+      "spearman_rho": 0.9771
+    },
+    {
+      "feature_a": "isolation_total_roll2w",
+      "feature_b": "post_volume_roll2w",
+      "spearman_rho": 0.9746
+    },
+    {
+      "feature_a": "isolation_total_roll2w",
+      "feature_b": "isolation_total_roll4w",
+      "spearman_rho": 0.9724
+    },
+    {
+      "feature_a": "unique_posters_roll2w",
+      "feature_b": "post_volume_roll4w",
+      "spearman_rho": 0.9717
+    },
+    {
+      "feature_a": "isolation_total_roll2w",
+      "feature_b": "unique_posters_roll2w",
+      "spearman_rho": 0.9712
+    },
+    {
+      "feature_a": "isolation_total",
+      "feature_b": "post_volume",
+      "spearman_rho": 0.9694
+    },
+    {
+      "feature_a": "isolation_total",
+      "feature_b": "isolation_total_roll2w",
+      "spearman_rho": 0.9692
+    }
+  ],
+  "distribution_by_state": {
+    "suicidality_total": {
+      "0": {
+        "n": 244,
+        "mean": 816.7377,
+        "std": 339.3006,
+        "median": 899.0
+      },
+      "1": {
+        "n": 47,
+        "mean": 1225.5532,
+        "std": 311.3455,
+        "median": 1234.0
+      },
+      "2": {
+        "n": 65,
+        "mean": 1588.9077,
+        "std": 267.2685,
+        "median": 1664.0
+      },
+      "3": {
+        "n": 9,
+        "mean": 1771.2222,
+        "std": 278.5461,
+        "median": 1747.0
+      }
+    },
+    "economic_stress_total": {
+      "0": {
+        "n": 244,
+        "mean": 115.2582,
+        "std": 48.4173,
+        "median": 121.5
+      },
+      "1": {
+        "n": 47,
+        "mean": 191.0213,
+        "std": 70.3836,
+        "median": 184.0
+      },
+      "2": {
+        "n": 65,
+        "mean": 274.7231,
+        "std": 70.838,
+        "median": 291.0
+      },
+      "3": {
+        "n": 9,
+        "mean": 329.2222,
+        "std": 83.3693,
+        "median": 335.0
+      }
+    },
+    "unique_posters": {
+      "0": {
+        "n": 244,
+        "mean": 957.4057,
+        "std": 420.082,
+        "median": 1053.5
+      },
+      "1": {
+        "n": 47,
+        "mean": 1558.7447,
+        "std": 496.0894,
+        "median": 1501.0
+      },
+      "2": {
+        "n": 65,
+        "mean": 2075.3385,
+        "std": 492.466,
+        "median": 2256.0
+      },
+      "3": {
+        "n": 9,
+        "mean": 2390.4444,
+        "std": 334.0034,
+        "median": 2490.0
+      }
+    },
+    "isolation_total": {
+      "0": {
+        "n": 244,
+        "mean": 367.6352,
+        "std": 160.2582,
+        "median": 405.5
+      },
+      "1": {
+        "n": 47,
+        "mean": 591.3191,
+        "std": 202.7982,
+        "median": 546.0
+      },
+      "2": {
+        "n": 65,
+        "mean": 801.0462,
+        "std": 195.8886,
+        "median": 866.0
+      },
+      "3": {
+        "n": 9,
+        "mean": 914.4444,
+        "std": 147.5535,
+        "median": 939.0
+      }
+    },
+    "post_volume": {
+      "0": {
+        "n": 244,
+        "mean": 1128.7459,
+        "std": 527.1717,
+        "median": 1296.0
+      },
+      "1": {
+        "n": 47,
+        "mean": 1825.6809,
+        "std": 601.9173,
+        "median": 1759.0
+      },
+      "2": {
+        "n": 65,
+        "mean": 2442.7077,
+        "std": 619.0582,
+        "median": 2645.0
+      },
+      "3": {
+        "n": 9,
+        "mean": 2855.1111,
+        "std": 390.8783,
+        "median": 2920.0
+      }
+    }
+  },
+  "missing_pct": {
+    "avg_word_count": 0.0,
+    "std_word_count": 0.0,
+    "avg_char_count": 0.0,
+    "avg_type_token_ratio": 0.0,
+    "avg_flesch_kincaid": 0.0,
+    "first_person_singular_ratio": 0.0,
+    "first_person_plural_ratio": 0.0,
+    "avg_compound": 0.0,
+    "avg_positive": 0.0,
+    "avg_negative": 0.0,
+    "avg_neutral": 0.0,
+    "pct_very_negative": 0.0,
+    "pct_negative": 0.0,
+    "pct_neutral": 0.0,
+    "pct_positive": 0.0,
+    "hopelessness_density": 0.0,
+    "help_seeking_density": 0.0,
+    "distress_density": 0.0,
+    "suicidality_total": 0.0,
+    "isolation_total": 0.0,
+    "economic_stress_total": 0.0,
+    "domestic_stress_total": 0.0,
+    "post_volume": 0.0,
+    "avg_comments": 0.0,
+    "unique_posters": 0.0,
+    "new_poster_ratio": 0.0,
+    "posting_time_entropy": 0.0,
+    "dominant_topic": 0.0,
+    "topic_entropy": 0.0,
+    "topic_shift_jsd": 0.0,
+    "avg_word_count_delta": 0.0,
+    "std_word_count_delta": 0.0,
+    "avg_char_count_delta": 0.0,
+    "avg_type_token_ratio_delta": 0.0,
+    "avg_flesch_kincaid_delta": 0.0,
+    "first_person_singular_ratio_delta": 0.0,
+    "first_person_plural_ratio_delta": 0.0,
+    "avg_compound_delta": 0.0,
+    "avg_positive_delta": 0.0,
+    "avg_negative_delta": 0.0,
+    "avg_neutral_delta": 0.0,
+    "pct_very_negative_delta": 0.0,
+    "pct_negative_delta": 0.0,
+    "pct_neutral_delta": 0.0,
+    "pct_positive_delta": 0.0,
+    "hopelessness_density_delta": 0.0,
+    "help_seeking_density_delta": 0.0,
+    "distress_density_delta": 0.0,
+    "suicidality_total_delta": 0.0,
+    "isolation_total_delta": 0.0,
+    "economic_stress_total_delta": 0.0,
+    "domestic_stress_total_delta": 0.0,
+    "post_volume_delta": 0.0,
+    "avg_comments_delta": 0.0,
+    "unique_posters_delta": 0.0,
+    "new_poster_ratio_delta": 0.0,
+    "posting_time_entropy_delta": 0.0,
+    "topic_entropy_delta": 0.0,
+    "topic_shift_jsd_delta": 0.0,
+    "avg_word_count_roll2w": 0.0,
+    "std_word_count_roll2w": 0.0,
+    "avg_char_count_roll2w": 0.0,
+    "avg_type_token_ratio_roll2w": 0.0,
+    "avg_flesch_kincaid_roll2w": 0.0,
+    "first_person_singular_ratio_roll2w": 0.0,
+    "first_person_plural_ratio_roll2w": 0.0,
+    "avg_compound_roll2w": 0.0,
+    "avg_positive_roll2w": 0.0,
+    "avg_negative_roll2w": 0.0,
+    "avg_neutral_roll2w": 0.0,
+    "pct_very_negative_roll2w": 0.0,
+    "pct_negative_roll2w": 0.0,
+    "pct_neutral_roll2w": 0.0,
+    "pct_positive_roll2w": 0.0,
+    "hopelessness_density_roll2w": 0.0,
+    "help_seeking_density_roll2w": 0.0,
+    "distress_density_roll2w": 0.0,
+    "suicidality_total_roll2w": 0.0,
+    "isolation_total_roll2w": 0.0,
+    "economic_stress_total_roll2w": 0.0,
+    "domestic_stress_total_roll2w": 0.0,
+    "post_volume_roll2w": 0.0,
+    "avg_comments_roll2w": 0.0,
+    "unique_posters_roll2w": 0.0,
+    "new_poster_ratio_roll2w": 0.0,
+    "posting_time_entropy_roll2w": 0.0,
+    "topic_entropy_roll2w": 0.0,
+    "topic_shift_jsd_roll2w": 0.0,
+    "avg_word_count_roll4w": 0.0,
+    "std_word_count_roll4w": 0.0,
+    "avg_char_count_roll4w": 0.0,
+    "avg_type_token_ratio_roll4w": 0.0,
+    "avg_flesch_kincaid_roll4w": 0.0,
+    "first_person_singular_ratio_roll4w": 0.0,
+    "first_person_plural_ratio_roll4w": 0.0,
+    "avg_compound_roll4w": 0.0,
+    "avg_positive_roll4w": 0.0,
+    "avg_negative_roll4w": 0.0,
+    "avg_neutral_roll4w": 0.0,
+    "pct_very_negative_roll4w": 0.0,
+    "pct_negative_roll4w": 0.0,
+    "pct_neutral_roll4w": 0.0,
+    "pct_positive_roll4w": 0.0,
+    "hopelessness_density_roll4w": 0.0,
+    "help_seeking_density_roll4w": 0.0,
+    "distress_density_roll4w": 0.0,
+    "suicidality_total_roll4w": 0.0,
+    "isolation_total_roll4w": 0.0,
+    "economic_stress_total_roll4w": 0.0,
+    "domestic_stress_total_roll4w": 0.0,
+    "post_volume_roll4w": 0.0,
+    "avg_comments_roll4w": 0.0,
+    "unique_posters_roll4w": 0.0,
+    "new_poster_ratio_roll4w": 0.0,
+    "posting_time_entropy_roll4w": 0.0,
+    "topic_entropy_roll4w": 0.0,
+    "topic_shift_jsd_roll4w": 0.0,
+    "week_sin": 0.0,
+    "week_cos": 0.0
+  },
+  "n_high_missing_features": 0
+}

@@ -1,0 +1,268 @@
+[
+  {
+    "stage": "collect_total",
+    "elapsed_seconds": 22.104,
+    "subreddit_runs": [
+      {
+        "stage": "collect",
+        "subreddit": "depression",
+        "elapsed_seconds": 4.66,
+        "rows_processed": 624224,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "anxiety",
+        "elapsed_seconds": 4.325,
+        "rows_processed": 387370,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "mentalhealth",
+        "elapsed_seconds": 4.371,
+        "rows_processed": 398576,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "SuicideWatch",
+        "elapsed_seconds": 5.037,
+        "rows_processed": 550267,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "lonely",
+        "elapsed_seconds": 3.643,
+        "rows_processed": 261448,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      }
+    ]
+  },
+  {
+    "stage": "features",
+    "elapsed_seconds": 6016.129,
+    "rows_processed": 2207696,
+<<<<<<< HEAD
+    "weeks_generated": 1830,
+    "feature_rows": 1830,
+    "feature_cols": 123
+=======
+    "weeks_generated": 1769,
+    "feature_rows": 1769,
+    "feature_cols": 107
+  },
+  {
+    "stage": "collect_total",
+    "elapsed_seconds": 195.841,
+    "subreddit_runs": [
+      {
+        "stage": "collect",
+        "subreddit": "depression",
+        "elapsed_seconds": 35.959,
+        "rows_processed": 244002,
+        "throughput_rows_per_sec": 6785.633,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "anxiety",
+        "elapsed_seconds": 17.369,
+        "rows_processed": 114612,
+        "throughput_rows_per_sec": 6598.788,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "mentalhealth",
+        "elapsed_seconds": 15.988,
+        "rows_processed": 92011,
+        "throughput_rows_per_sec": 5755.07,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "SuicideWatch",
+        "elapsed_seconds": 27.608,
+        "rows_processed": 136650,
+        "throughput_rows_per_sec": 4949.633,
+        "source": "zenodo_covid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "lonely",
+        "elapsed_seconds": 8.635,
+        "rows_processed": 42840,
+        "throughput_rows_per_sec": 4961.48,
+        "source": "zenodo_covid"
+      }
+    ]
+  },
+  {
+    "stage": "collect_total",
+    "elapsed_seconds": 3.869,
+    "subreddit_runs": [
+      {
+        "stage": "collect",
+        "subreddit": "depression",
+        "elapsed_seconds": 1.475,
+        "rows_processed": 244002,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "anxiety",
+        "elapsed_seconds": 0.734,
+        "rows_processed": 114612,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "mentalhealth",
+        "elapsed_seconds": 0.582,
+        "rows_processed": 92011,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "SuicideWatch",
+        "elapsed_seconds": 0.669,
+        "rows_processed": 136650,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "lonely",
+        "elapsed_seconds": 0.336,
+        "rows_processed": 42840,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      }
+    ]
+  },
+  {
+    "stage": "features",
+    "elapsed_seconds": 4242.168,
+    "rows_processed": 627777,
+    "weeks_generated": 785,
+    "feature_rows": 785,
+    "feature_cols": 127
+  },
+  {
+    "stage": "collect_total",
+    "elapsed_seconds": 3.963,
+    "subreddit_runs": [
+      {
+        "stage": "collect",
+        "subreddit": "depression",
+        "elapsed_seconds": 1.613,
+        "rows_processed": 244002,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "anxiety",
+        "elapsed_seconds": 0.74,
+        "rows_processed": 114612,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "mentalhealth",
+        "elapsed_seconds": 0.576,
+        "rows_processed": 92011,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "SuicideWatch",
+        "elapsed_seconds": 0.611,
+        "rows_processed": 136650,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      },
+      {
+        "stage": "collect",
+        "subreddit": "lonely",
+        "elapsed_seconds": 0.342,
+        "rows_processed": 42840,
+        "throughput_rows_per_sec": 0.0,
+        "source": "zenodo_covid",
+        "status": "skipped_manifest_valid"
+      }
+    ]
+  },
+  {
+    "stage": "features",
+    "elapsed_seconds": 3589.057,
+    "rows_processed": 627777,
+    "weeks_generated": 785,
+    "feature_rows": 785,
+    "feature_cols": 127
+>>>>>>> 2907167d09780bd3b6d347c8f58a8506bd814720
+  },
+  {
+    "stage": "run_all",
+    "steps": [
+      {
+        "stage": "collect",
+<<<<<<< HEAD
+        "elapsed_seconds": 22.371
+      },
+      {
+        "stage": "features",
+        "elapsed_seconds": 6018.283
+      },
+      {
+        "stage": "train",
+        "elapsed_seconds": 3324.269
+      },
+      {
+        "stage": "evaluate",
+        "elapsed_seconds": 150.069
+=======
+        "elapsed_seconds": 4.455
+      },
+      {
+        "stage": "features",
+        "elapsed_seconds": 3591.75
+      },
+      {
+        "stage": "train",
+        "elapsed_seconds": 81.08
+      },
+      {
+        "stage": "evaluate",
+        "elapsed_seconds": 13.638
+>>>>>>> 2907167d09780bd3b6d347c8f58a8506bd814720
+      }
+    ]
+  }
+]
