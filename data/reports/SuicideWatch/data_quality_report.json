@@ -1,8 +1,8 @@
 {
   "subreddit": "SuicideWatch",
   "source": "zenodo_covid",
-  "total_weeks_observed": 356,
-  "gap_weeks_below_50pct": 9,
+  "total_weeks_observed": 147,
+  "gap_weeks_below_50pct": 8,
   "missing_week_count": 10,
   "missing_weeks": [
     "2018-04-23",
@@ -16,5 +16,16 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 1.0046270280130678
+  "avg_completeness_score": 1.0071954048709184,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "SuicideWatch",
+    "sources_present": [
+      "zenodo_covid"
+    ],
+    "total_weeks": 85,
+    "weeks_with_multiple_sources": 0,
+    "discrepancies": [],
+    "n_discrepancies": 0
+  }
 }

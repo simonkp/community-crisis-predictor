@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fingerprint": "85cf331c74e9e3cb22326bf2c659c5a42ca2ea4662beb6ef4db4cc50c620a8bc",
+  "fingerprint": "48d8caa2cbdf7729e256dbffa1d002dd65e39241f5b1af02d1c7f93d3b563d43",
   "base": {
     "subreddits": [
       "depression",
@@ -9,32 +9,37 @@
       "SuicideWatch",
       "lonely"
     ],
-    "skip_topics": true,
+    "skip_topics": false,
     "raw_files": [
       {
-        "path": "data\\raw\\depression\\posts.parquet",
-        "size": 370160798,
-        "mtime_ns": 1775044817486604400
+        "path": "data/raw/depression/posts.parquet",
+        "size": 145965677,
+        "mtime_ns": 1775200248634125220,
+        "sha256": "d3e8ec25d3b2eff1c81f02511e88810487d838726b13b9570ba1052a77b24d8d"
       },
       {
-        "path": "data\\raw\\anxiety\\posts.parquet",
-        "size": 209614918,
-        "mtime_ns": 1775044897040816600
+        "path": "data/raw/anxiety/posts.parquet",
+        "size": 65003336,
+        "mtime_ns": 1775200266147820327,
+        "sha256": "8203194f63a508dc151e04af2a3353ea4fcb60e4e1c7ccade9e3b966e62a8d10"
       },
       {
-        "path": "data\\raw\\mentalhealth\\posts.parquet",
-        "size": 277730967,
-        "mtime_ns": 1775044995997247500
+        "path": "data/raw/mentalhealth/posts.parquet",
+        "size": 66802944,
+        "mtime_ns": 1775200282150281533,
+        "sha256": "7ed9bc80c7229369a5f0e3784c1dd401b85e900045cccbd028558dbc45111927"
       },
       {
-        "path": "data\\raw\\SuicideWatch\\posts.parquet",
-        "size": 293414458,
-        "mtime_ns": 1775045219648382200
+        "path": "data/raw/SuicideWatch/posts.parquet",
+        "size": 78433293,
+        "mtime_ns": 1775200309763508444,
+        "sha256": "4eebab253548c959281fb170fd1a76583c2e2602dce73046d1bf0aba6f8b86ce"
       },
       {
-        "path": "data\\raw\\lonely\\posts.parquet",
-        "size": 108941732,
-        "mtime_ns": 1775045334199750000
+        "path": "data/raw/lonely/posts.parquet",
+        "size": 19450851,
+        "mtime_ns": 1775200318472299880,
+        "sha256": "cb1a3933b1eb10b07a31b7a65516bc56621fb82f4fda9c5f66d685f3016e7b2e"
       }
     ],
     "config_sig": "2892cb7a488c8020ee7ee48515a2174c09df7de90d02afd73be302ff3bc9a696"

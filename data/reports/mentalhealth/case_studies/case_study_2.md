@@ -1,49 +1,49 @@
-# Case Study: High-Distress Signal Week 2025-W04
-**Week starting:** 2025-01-20
-**Distress score:** -1.034
+# Case Study: High-Distress Signal Week 2018-W47
+**Week starting:** 2018-11-19
+**Distress score:** 0.983
 
 ## What Happened
-The community distress score spiked to -1.034, 
+The community distress score spiked to 0.983, 
 exceeding the severe community distress threshold.
 
 ## Early Warning Signals
 
-### 2025-W01 (FLAGGED, probability: 0.45)
-- **avg_word_count**: 51.1955 (8.5% above average)
-- **avg_flesch_kincaid_roll2w**: 4.4097 (5.8% below average)
-- **first_person_singular_ratio**: 0.0824 (10.7% above average)
-- **pct_negative_roll4w**: 0.0813 (21.8% above average)
-- **hopelessness_density_delta**: 0.0041 (36780.6% above average)
+### 2018-W44 (FLAGGED, probability: 0.29)
+- **first_person_plural_ratio**: 0.0029 (32.9% above average)
+- **topic_shift_jsd_4w_roll2w**: 0.1441 (23.1% above average)
+- **distress_density_roll2w**: 0.0105 (7.0% above average)
+- **pct_very_negative**: 0.5477 (12.0% above average)
+- **first_person_plural_ratio_roll4w**: 0.0028 (27.2% above average)
 
-### 2025-W02 (FLAGGED, probability: 0.43)
-- **avg_word_count**: 46.9876 (0.4% below average)
-- **avg_flesch_kincaid_roll2w**: 4.4469 (5.0% below average)
-- **first_person_singular_ratio**: 0.0694 (6.8% below average)
-- **pct_negative_roll4w**: 0.0838 (25.6% above average)
-- **hopelessness_density_delta**: -0.0124 (111089.7% below average)
+### 2018-W45 (FLAGGED, probability: 0.29)
+- **first_person_plural_ratio**: 0.0021 (2.0% below average)
+- **topic_shift_jsd_4w_roll2w**: 0.1182 (1.0% above average)
+- **distress_density_roll2w**: 0.0111 (13.5% above average)
+- **pct_very_negative**: 0.5869 (20.1% above average)
+- **first_person_plural_ratio_roll4w**: 0.0026 (19.0% above average)
 
-### 2025-W03 (FLAGGED, probability: 0.45)
-- **avg_word_count**: 46.5658 (1.3% below average)
-- **avg_flesch_kincaid_roll2w**: 4.6519 (0.6% below average)
-- **first_person_singular_ratio**: 0.0705 (5.3% below average)
-- **pct_negative_roll4w**: 0.0764 (14.5% above average)
-- **hopelessness_density_delta**: -0.0016 (13806.0% below average)
+### 2018-W46 (not flagged, probability: 0.20)
+- **first_person_plural_ratio**: 0.0013 (39.2% below average)
+- **topic_shift_jsd_4w_roll2w**: 0.0744 (36.4% below average)
+- **distress_density_roll2w**: 0.0109 (12.0% above average)
+- **pct_very_negative**: 0.5422 (10.9% above average)
+- **first_person_plural_ratio_roll4w**: 0.0021 (2.1% below average)
 
 ## Top Contributing Features (SHAP)
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | avg_word_count | 1.2818 |
-| 2 | avg_flesch_kincaid_roll2w | 1.0886 |
-| 3 | first_person_singular_ratio | 0.9594 |
-| 4 | pct_negative_roll4w | 0.6057 |
-| 5 | hopelessness_density_delta | 0.5454 |
-| 6 | post_volume_delta | 0.4138 |
-| 7 | posting_time_entropy | 0.2801 |
-| 8 | posting_time_entropy_roll4w | 0.2252 |
-| 9 | pct_neutral_roll2w | 0.2043 |
-| 10 | posting_time_entropy_delta | 0.2031 |
+| 1 | first_person_plural_ratio | 1.2667 |
+| 2 | topic_shift_jsd_4w_roll2w | 1.1160 |
+| 3 | distress_density_roll2w | 1.0782 |
+| 4 | pct_very_negative | 0.9450 |
+| 5 | first_person_plural_ratio_roll4w | 0.4199 |
+| 6 | topic_shift_jsd_4w | 0.2789 |
+| 7 | first_person_plural_ratio_delta | 0.2655 |
+| 8 | avg_type_token_ratio_delta | 0.2574 |
+| 9 | pct_very_negative_delta | 0.2314 |
+| 10 | pct_negative_roll2w | 0.2039 |
 
 ## Summary
 
-The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in avg_word_count, avg_flesch_kincaid_roll2w, first_person_singular_ratio.
+The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w.

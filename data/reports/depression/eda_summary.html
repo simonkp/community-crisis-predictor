@@ -12,7 +12,7 @@
   td { padding: 6px 8px; border: 1px solid #ddd; }
   tr:nth-child(even) { background: #f9f9f9; }
   .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; color: white;
-            font-weight: bold; background: #d9534f; }
+            font-weight: bold; background: #5bc0de; }
   .flag-list { background: #fff8e1; border-left: 4px solid #f0ad4e; padding: 0.8em 1em; }
   .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; margin-bottom: 1.5em; }
   .stat-card { background: #f4f6f8; border-radius: 8px; padding: 1em; text-align: center; }
@@ -25,31 +25,31 @@
 
 <div class="summary-grid">
   <div class="stat-card">
-    <div class="stat-num">342</div>
+    <div class="stat-num">157</div>
     <div class="stat-label">Total Weeks Analyzed</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">14.4%</div>
+    <div class="stat-num">0.0%</div>
     <div class="stat-label">Overall Crisis Rate (State 2+3)</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num"><span class="badge">rising</span></div>
+    <div class="stat-num"><span class="badge">stable</span></div>
     <div class="stat-label">Distress Trend Direction</div>
   </div>
 </div>
 
 <h2>Trend Analysis</h2>
-<p><strong>Interpretation:</strong> r/depression distress is rising (+0.82σ over 342 weeks)</p>
-<p>Slope per week: 0.001476 | Change over period: 0.816&sigma; (342 weeks)</p>
+<p><strong>Interpretation:</strong> r/depression distress is stable (+0.04σ over 157 weeks)</p>
+<p>Slope per week: 0.000266 | Change over period: 0.042&sigma; (157 weeks)</p>
 
 <h2>Crisis Rate by Year</h2>
 <table>
   <tr><th>Year</th><th>Crisis Rate (% of weeks in State 2 or 3)</th></tr>
-  <tr><td>2018</td><td>2.1%</td></tr><tr><td>2019</td><td>24.2%</td></tr><tr><td>2020</td><td>18.9%</td></tr><tr><td>2021</td><td>13.5%</td></tr><tr><td>2022</td><td>17.3%</td></tr><tr><td>2023</td><td>26.9%</td></tr><tr><td>2024</td><td>0.0%</td></tr>
+  <tr><td>2018</td><td>0.0%</td></tr><tr><td>2019</td><td>0.0%</td></tr><tr><td>2020</td><td>0.0%</td></tr>
 </table>
 
 <h2>Data Quality Flags</h2>
-<div class="flag-list"><ul><li>Most outlier-prone features: posting_time_entropy_roll4w (77 weeks), posting_time_entropy_roll2w (73 weeks), posting_time_entropy (72 weeks)</li></ul></div>
+<div class="flag-list"><ul><li>Most outlier-prone features: post_volume_delta (38 weeks), avg_compound_roll2w (38 weeks), avg_word_count_roll2w (37 weeks)</li><li>Very low crisis rate (0.0%) — class imbalance may limit model performance</li></ul></div>
 
 <h2>Feature Distribution Summary</h2>
 <p>IQR-based outlier threshold: values outside [Q1 - 1.5*IQR, Q3 + 1.5*IQR] are flagged.
@@ -58,145 +58,165 @@ Missing % color: <span style="color:#5cb85c">green</span> &lt;5%,
 <span style="color:#d9534f">red</span> &gt;20%.</p>
 <table>
   <tr><th>Feature</th><th>Mean</th><th>Std</th><th>Q1</th><th>Median</th><th>Q3</th><th>Skew</th><th>Missing</th></tr>
-  <tr><td>avg_char_count</td><td>944.6280</td><td>48.9919</td><td>912.7449</td><td>939.8603</td><td>978.6243</td><td>0.197</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_char_count_delta</td><td>0.0952</td><td>46.5871</td><td>-30.5710</td><td>0.3223</td><td>29.6508</td><td>-0.079</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_char_count_roll2w</td><td>944.5804</td><td>43.1034</td><td>916.8198</td><td>941.9955</td><td>974.8739</td><td>0.235</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_char_count_roll4w</td><td>944.4445</td><td>39.5369</td><td>919.1683</td><td>939.1107</td><td>971.6393</td><td>0.320</td><td style='color:#5cb85c'>0.0%</td></tr>
+  <tr><td>avg_char_count</td><td>807.5387</td><td>347.8394</td><td>896.0617</td><td>938.5868</td><td>983.1005</td><td>-1.859</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_char_count_delta</td><td>0.3181</td><td>373.9268</td><td>-33.0332</td><td>0.0000</td><td>38.8088</td><td>0.004</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_char_count_roll2w</td><td>807.3796</td><td>293.2426</td><td>856.8229</td><td>934.3013</td><td>978.2174</td><td>-1.651</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_char_count_roll4w</td><td>807.5498</td><td>266.9924</td><td>699.2202</td><td>929.0780</td><td>976.6805</td><td>-1.566</td><td style='color:#5cb85c'>0.0%</td></tr>
 <tr><td>avg_comments</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
 <tr><td>avg_comments_delta</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
 <tr><td>avg_comments_roll2w</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
 <tr><td>avg_comments_roll4w</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_compound</td><td>-0.2842</td><td>0.0258</td><td>-0.2997</td><td>-0.2842</td><td>-0.2648</td><td>0.177</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_compound_delta</td><td>-0.0002</td><td>0.0285</td><td>-0.0176</td><td>0.0008</td><td>0.0183</td><td>0.093</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_compound_roll2w</td><td>-0.2840</td><td>0.0214</td><td>-0.2999</td><td>-0.2836</td><td>-0.2698</td><td>0.151</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_compound_roll4w</td><td>-0.2839</td><td>0.0189</td><td>-0.2985</td><td>-0.2839</td><td>-0.2715</td><td>0.159</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_flesch_kincaid</td><td>8.2700</td><td>0.6636</td><td>7.8682</td><td>8.1925</td><td>8.5907</td><td>2.077</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_flesch_kincaid_delta</td><td>0.0044</td><td>0.7550</td><td>-0.2065</td><td>0.0202</td><td>0.2430</td><td>-0.125</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_flesch_kincaid_roll2w</td><td>8.2677</td><td>0.5465</td><td>7.9309</td><td>8.2437</td><td>8.6054</td><td>0.602</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_flesch_kincaid_roll4w</td><td>8.2636</td><td>0.4792</td><td>7.9885</td><td>8.2791</td><td>8.5669</td><td>-0.029</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_negative</td><td>0.1571</td><td>0.0027</td><td>0.1554</td><td>0.1572</td><td>0.1589</td><td>-0.339</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_negative_delta</td><td>0.0000</td><td>0.0030</td><td>-0.0021</td><td>-0.0000</td><td>0.0018</td><td>0.102</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_negative_roll2w</td><td>0.1571</td><td>0.0022</td><td>0.1558</td><td>0.1573</td><td>0.1585</td><td>-0.464</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_negative_roll4w</td><td>0.1571</td><td>0.0019</td><td>0.1560</td><td>0.1575</td><td>0.1583</td><td>-0.678</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_neutral</td><td>0.7265</td><td>0.0032</td><td>0.7245</td><td>0.7264</td><td>0.7286</td><td>-0.124</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_neutral_delta</td><td>0.0000</td><td>0.0036</td><td>-0.0020</td><td>-0.0001</td><td>0.0023</td><td>-0.094</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_neutral_roll2w</td><td>0.7265</td><td>0.0027</td><td>0.7247</td><td>0.7266</td><td>0.7284</td><td>-0.190</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_neutral_roll4w</td><td>0.7265</td><td>0.0024</td><td>0.7250</td><td>0.7265</td><td>0.7282</td><td>-0.225</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_positive</td><td>0.1164</td><td>0.0025</td><td>0.1145</td><td>0.1162</td><td>0.1183</td><td>0.127</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_positive_delta</td><td>-0.0000</td><td>0.0026</td><td>-0.0017</td><td>-0.0000</td><td>0.0016</td><td>-0.047</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_positive_roll2w</td><td>0.1164</td><td>0.0021</td><td>0.1148</td><td>0.1162</td><td>0.1178</td><td>0.252</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_positive_roll4w</td><td>0.1164</td><td>0.0019</td><td>0.1150</td><td>0.1163</td><td>0.1178</td><td>0.245</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_type_token_ratio</td><td>0.6928</td><td>0.0089</td><td>0.6870</td><td>0.6937</td><td>0.6995</td><td>-0.420</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_type_token_ratio_delta</td><td>0.0000</td><td>0.0065</td><td>-0.0039</td><td>0.0001</td><td>0.0035</td><td>0.415</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_type_token_ratio_roll2w</td><td>0.6928</td><td>0.0083</td><td>0.6874</td><td>0.6933</td><td>0.6996</td><td>-0.489</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_type_token_ratio_roll4w</td><td>0.6928</td><td>0.0078</td><td>0.6874</td><td>0.6932</td><td>0.6993</td><td>-0.517</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_word_count</td><td>183.2404</td><td>9.3890</td><td>177.1991</td><td>182.3497</td><td>189.3725</td><td>0.149</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_word_count_delta</td><td>0.0183</td><td>9.0213</td><td>-5.8395</td><td>0.0647</td><td>5.7190</td><td>-0.075</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_word_count_roll2w</td><td>183.2313</td><td>8.2366</td><td>177.9758</td><td>182.7939</td><td>188.9700</td><td>0.173</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>avg_word_count_roll4w</td><td>183.2026</td><td>7.5386</td><td>178.3169</td><td>182.4355</td><td>188.3118</td><td>0.252</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>distress_density</td><td>0.0116</td><td>0.0065</td><td>0.0107</td><td>0.0111</td><td>0.0116</td><td>18.068</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>distress_density_delta</td><td>-0.0000</td><td>0.0091</td><td>-0.0004</td><td>-0.0000</td><td>0.0004</td><td>0.010</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>distress_density_roll2w</td><td>0.0116</td><td>0.0046</td><td>0.0108</td><td>0.0111</td><td>0.0116</td><td>12.523</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>distress_density_roll4w</td><td>0.0116</td><td>0.0032</td><td>0.0108</td><td>0.0110</td><td>0.0115</td><td>8.511</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_compound</td><td>-0.2284</td><td>0.1000</td><td>-0.2808</td><td>-0.2623</td><td>-0.2468</td><td>1.734</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_compound_delta</td><td>-0.0002</td><td>0.1154</td><td>-0.0165</td><td>0.0000</td><td>0.0168</td><td>0.066</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_compound_roll2w</td><td>-0.2283</td><td>0.0816</td><td>-0.2750</td><td>-0.2618</td><td>-0.2357</td><td>1.674</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_compound_roll4w</td><td>-0.2283</td><td>0.0725</td><td>-0.2740</td><td>-0.2610</td><td>-0.1956</td><td>1.623</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_flesch_kincaid</td><td>6.6451</td><td>2.8756</td><td>7.3656</td><td>7.6840</td><td>7.9825</td><td>-1.803</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_flesch_kincaid_delta</td><td>0.0042</td><td>3.3975</td><td>-0.1829</td><td>0.0000</td><td>0.2022</td><td>0.051</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_flesch_kincaid_roll2w</td><td>6.6430</td><td>2.3193</td><td>7.3000</td><td>7.6015</td><td>7.9742</td><td>-1.811</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_flesch_kincaid_roll4w</td><td>6.6400</td><td>2.0623</td><td>5.8901</td><td>7.5153</td><td>7.9720</td><td>-1.742</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_negative</td><td>0.1323</td><td>0.0565</td><td>0.1527</td><td>0.1556</td><td>0.1577</td><td>-1.937</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_negative_delta</td><td>0.0000</td><td>0.0641</td><td>-0.0021</td><td>0.0000</td><td>0.0014</td><td>-0.003</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_negative_roll2w</td><td>0.1323</td><td>0.0465</td><td>0.1516</td><td>0.1549</td><td>0.1573</td><td>-1.804</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_negative_roll4w</td><td>0.1323</td><td>0.0415</td><td>0.1161</td><td>0.1542</td><td>0.1571</td><td>-1.758</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_neutral</td><td>0.6147</td><td>0.2620</td><td>0.7216</td><td>0.7248</td><td>0.7277</td><td>-1.947</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_neutral_delta</td><td>0.0000</td><td>0.2963</td><td>-0.0022</td><td>0.0000</td><td>0.0023</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_neutral_roll2w</td><td>0.6146</td><td>0.2160</td><td>0.7195</td><td>0.7240</td><td>0.7272</td><td>-1.806</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_neutral_roll4w</td><td>0.6146</td><td>0.1934</td><td>0.5448</td><td>0.7236</td><td>0.7265</td><td>-1.762</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_positive</td><td>0.1001</td><td>0.0427</td><td>0.1155</td><td>0.1180</td><td>0.1194</td><td>-1.939</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_positive_delta</td><td>-0.0000</td><td>0.0480</td><td>-0.0019</td><td>0.0000</td><td>0.0019</td><td>0.007</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_positive_roll2w</td><td>0.1002</td><td>0.0353</td><td>0.1153</td><td>0.1176</td><td>0.1191</td><td>-1.791</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_positive_roll4w</td><td>0.1002</td><td>0.0317</td><td>0.0887</td><td>0.1177</td><td>0.1187</td><td>-1.748</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_type_token_ratio</td><td>0.5851</td><td>0.2495</td><td>0.6755</td><td>0.6884</td><td>0.6988</td><td>-1.941</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_type_token_ratio_delta</td><td>-0.0000</td><td>0.2817</td><td>-0.0047</td><td>0.0000</td><td>0.0046</td><td>0.015</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_type_token_ratio_roll2w</td><td>0.5851</td><td>0.2060</td><td>0.6714</td><td>0.6852</td><td>0.6987</td><td>-1.796</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_type_token_ratio_roll4w</td><td>0.5850</td><td>0.1844</td><td>0.5181</td><td>0.6817</td><td>0.6987</td><td>-1.748</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_word_count</td><td>156.3298</td><td>67.3110</td><td>173.9546</td><td>181.8192</td><td>189.8914</td><td>-1.863</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_word_count_delta</td><td>0.0703</td><td>72.4657</td><td>-6.2481</td><td>0.0000</td><td>7.2696</td><td>-0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_word_count_roll2w</td><td>156.2947</td><td>56.7099</td><td>166.3395</td><td>181.2273</td><td>189.3355</td><td>-1.657</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>avg_word_count_roll4w</td><td>156.3222</td><td>51.6240</td><td>135.0878</td><td>179.9805</td><td>188.6868</td><td>-1.571</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>distress_density</td><td>0.0096</td><td>0.0042</td><td>0.0102</td><td>0.0108</td><td>0.0120</td><td>-1.762</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>distress_density_delta</td><td>-0.0000</td><td>0.0049</td><td>-0.0004</td><td>0.0000</td><td>0.0004</td><td>-0.021</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>distress_density_roll2w</td><td>0.0096</td><td>0.0034</td><td>0.0099</td><td>0.0106</td><td>0.0120</td><td>-1.654</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>distress_density_roll4w</td><td>0.0096</td><td>0.0030</td><td>0.0089</td><td>0.0104</td><td>0.0119</td><td>-1.653</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>domestic_stress_total</td><td>14.7197</td><td>9.7552</td><td>7.0000</td><td>16.0000</td><td>22.0000</td><td>0.015</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>domestic_stress_total_delta</td><td>-0.0127</td><td>8.7676</td><td>-6.0000</td><td>0.0000</td><td>6.0000</td><td>0.224</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>domestic_stress_total_roll2w</td><td>14.7261</td><td>8.7127</td><td>6.5000</td><td>16.5000</td><td>21.5000</td><td>-0.202</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>domestic_stress_total_roll4w</td><td>14.6959</td><td>7.9718</td><td>6.5000</td><td>16.5000</td><td>21.0000</td><td>-0.333</td><td style='color:#5cb85c'>0.0%</td></tr>
 <tr><td>dominant_topic</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_plural_ratio</td><td>0.0018</td><td>0.0002</td><td>0.0017</td><td>0.0018</td><td>0.0019</td><td>0.475</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_plural_ratio_delta</td><td>0.0000</td><td>0.0003</td><td>-0.0002</td><td>0.0000</td><td>0.0002</td><td>0.150</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_plural_ratio_roll2w</td><td>0.0018</td><td>0.0002</td><td>0.0017</td><td>0.0018</td><td>0.0019</td><td>0.540</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_plural_ratio_roll4w</td><td>0.0018</td><td>0.0001</td><td>0.0017</td><td>0.0018</td><td>0.0019</td><td>0.371</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_singular_ratio</td><td>0.0967</td><td>0.0023</td><td>0.0950</td><td>0.0969</td><td>0.0985</td><td>-0.416</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_singular_ratio_delta</td><td>0.0000</td><td>0.0015</td><td>-0.0012</td><td>0.0002</td><td>0.0012</td><td>-0.161</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_singular_ratio_roll2w</td><td>0.0967</td><td>0.0022</td><td>0.0954</td><td>0.0970</td><td>0.0985</td><td>-0.479</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>first_person_singular_ratio_roll4w</td><td>0.0967</td><td>0.0021</td><td>0.0954</td><td>0.0969</td><td>0.0984</td><td>-0.512</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>help_seeking_density</td><td>0.0040</td><td>0.0004</td><td>0.0037</td><td>0.0039</td><td>0.0042</td><td>1.025</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>help_seeking_density_delta</td><td>-0.0000</td><td>0.0004</td><td>-0.0002</td><td>0.0000</td><td>0.0002</td><td>-0.274</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>help_seeking_density_roll2w</td><td>0.0040</td><td>0.0004</td><td>0.0037</td><td>0.0039</td><td>0.0042</td><td>1.162</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>help_seeking_density_roll4w</td><td>0.0040</td><td>0.0004</td><td>0.0037</td><td>0.0039</td><td>0.0041</td><td>1.167</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>hopelessness_density</td><td>0.0022</td><td>0.0002</td><td>0.0021</td><td>0.0022</td><td>0.0024</td><td>0.593</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>hopelessness_density_delta</td><td>0.0000</td><td>0.0003</td><td>-0.0002</td><td>0.0000</td><td>0.0002</td><td>-0.178</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>hopelessness_density_roll2w</td><td>0.0022</td><td>0.0002</td><td>0.0021</td><td>0.0022</td><td>0.0023</td><td>0.242</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>hopelessness_density_roll4w</td><td>0.0022</td><td>0.0001</td><td>0.0022</td><td>0.0023</td><td>0.0023</td><td>-0.222</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>new_poster_ratio</td><td>0.6963</td><td>0.1058</td><td>0.6306</td><td>0.6565</td><td>0.6956</td><td>1.627</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>new_poster_ratio_delta</td><td>-0.0012</td><td>0.0315</td><td>-0.0113</td><td>0.0000</td><td>0.0128</td><td>-4.322</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>new_poster_ratio_roll2w</td><td>0.6969</td><td>0.1052</td><td>0.6310</td><td>0.6563</td><td>0.6922</td><td>1.621</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>new_poster_ratio_roll4w</td><td>0.6979</td><td>0.1051</td><td>0.6315</td><td>0.6552</td><td>0.6916</td><td>1.599</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_negative</td><td>0.0919</td><td>0.0087</td><td>0.0859</td><td>0.0918</td><td>0.0977</td><td>0.060</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_negative_delta</td><td>0.0001</td><td>0.0108</td><td>-0.0075</td><td>-0.0003</td><td>0.0069</td><td>0.231</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_negative_roll2w</td><td>0.0919</td><td>0.0067</td><td>0.0872</td><td>0.0923</td><td>0.0964</td><td>-0.108</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_negative_roll4w</td><td>0.0918</td><td>0.0055</td><td>0.0879</td><td>0.0923</td><td>0.0963</td><td>-0.196</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_neutral</td><td>0.0235</td><td>0.0055</td><td>0.0202</td><td>0.0245</td><td>0.0272</td><td>-0.605</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_neutral_delta</td><td>0.0001</td><td>0.0054</td><td>-0.0031</td><td>0.0000</td><td>0.0031</td><td>0.067</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_neutral_roll2w</td><td>0.0234</td><td>0.0048</td><td>0.0213</td><td>0.0245</td><td>0.0269</td><td>-0.813</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_neutral_roll4w</td><td>0.0234</td><td>0.0044</td><td>0.0221</td><td>0.0249</td><td>0.0265</td><td>-0.973</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_positive</td><td>0.3276</td><td>0.0159</td><td>0.3165</td><td>0.3272</td><td>0.3379</td><td>0.424</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_positive_delta</td><td>-0.0002</td><td>0.0173</td><td>-0.0115</td><td>0.0007</td><td>0.0094</td><td>0.212</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_positive_roll2w</td><td>0.3277</td><td>0.0132</td><td>0.3177</td><td>0.3265</td><td>0.3374</td><td>0.401</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_positive_roll4w</td><td>0.3278</td><td>0.0118</td><td>0.3188</td><td>0.3269</td><td>0.3365</td><td>0.315</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_very_negative</td><td>0.5570</td><td>0.0169</td><td>0.5454</td><td>0.5577</td><td>0.5689</td><td>-0.002</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_very_negative_delta</td><td>0.0001</td><td>0.0193</td><td>-0.0112</td><td>0.0004</td><td>0.0116</td><td>-0.150</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_very_negative_roll2w</td><td>0.5570</td><td>0.0139</td><td>0.5473</td><td>0.5572</td><td>0.5662</td><td>0.057</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>pct_very_negative_roll4w</td><td>0.5570</td><td>0.0122</td><td>0.5488</td><td>0.5580</td><td>0.5657</td><td>-0.040</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>post_volume</td><td>1820.8187</td><td>486.7197</td><td>1585.5000</td><td>1917.5000</td><td>2131.0000</td><td>-0.854</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>post_volume_delta</td><td>-5.1316</td><td>332.5600</td><td>-99.7500</td><td>-2.0000</td><td>71.7500</td><td>0.732</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>post_volume_roll2w</td><td>1823.3845</td><td>453.8440</td><td>1567.6250</td><td>1904.2500</td><td>2124.0000</td><td>-0.701</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>post_volume_roll4w</td><td>1824.1533</td><td>421.1193</td><td>1564.3125</td><td>1890.7500</td><td>2126.5625</td><td>-0.698</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>posting_time_entropy</td><td>2.5012</td><td>1.2710</td><td>3.1338</td><td>3.1456</td><td>3.1501</td><td>-1.469</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>posting_time_entropy_delta</td><td>0.0091</td><td>0.2804</td><td>-0.0036</td><td>0.0000</td><td>0.0042</td><td>5.604</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>posting_time_entropy_roll2w</td><td>2.4967</td><td>1.2667</td><td>3.1361</td><td>3.1455</td><td>3.1501</td><td>-1.456</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>posting_time_entropy_roll4w</td><td>2.4875</td><td>1.2609</td><td>3.1371</td><td>3.1455</td><td>3.1495</td><td>-1.433</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>std_word_count</td><td>206.6700</td><td>26.1100</td><td>189.7672</td><td>203.3543</td><td>222.2440</td><td>0.729</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>std_word_count_delta</td><td>0.0933</td><td>33.0712</td><td>-20.5903</td><td>-1.3199</td><td>18.3225</td><td>0.251</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>std_word_count_roll2w</td><td>206.6234</td><td>20.2346</td><td>193.3961</td><td>205.4264</td><td>220.1261</td><td>0.200</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>std_word_count_roll4w</td><td>206.5143</td><td>16.5923</td><td>196.0068</td><td>204.8250</td><td>216.1559</td><td>0.201</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_entropy</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_entropy_delta</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_entropy_roll2w</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_entropy_roll4w</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_shift_jsd</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_shift_jsd_delta</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_shift_jsd_roll2w</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>topic_shift_jsd_roll4w</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.000</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>unique_posters</td><td>1623.6199</td><td>436.5756</td><td>1393.5000</td><td>1677.5000</td><td>1878.5000</td><td>-0.500</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>unique_posters_delta</td><td>-5.1871</td><td>302.0556</td><td>-81.2500</td><td>0.5000</td><td>64.7500</td><td>1.125</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>unique_posters_roll2w</td><td>1626.2135</td><td>406.7642</td><td>1384.1250</td><td>1669.2500</td><td>1862.8750</td><td>-0.244</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>unique_posters_roll4w</td><td>1627.4924</td><td>378.6225</td><td>1396.1250</td><td>1677.8750</td><td>1866.1875</td><td>-0.183</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>week_cos</td><td>-0.0096</td><td>0.7042</td><td>-0.7485</td><td>-0.0000</td><td>0.6631</td><td>0.015</td><td style='color:#5cb85c'>0.0%</td></tr>
-<tr><td>week_sin</td><td>0.0218</td><td>0.7116</td><td>-0.6631</td><td>0.1205</td><td>0.7485</td><td>-0.054</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>economic_stress_total</td><td>146.8981</td><td>85.6997</td><td>77.0000</td><td>176.0000</td><td>201.0000</td><td>-0.542</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>economic_stress_total_delta</td><td>-0.5541</td><td>56.1761</td><td>-29.0000</td><td>0.0000</td><td>26.0000</td><td>0.644</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>economic_stress_total_roll2w</td><td>147.1752</td><td>80.9120</td><td>72.5000</td><td>176.5000</td><td>199.5000</td><td>-0.528</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>economic_stress_total_roll4w</td><td>147.3254</td><td>75.2340</td><td>80.2500</td><td>175.0000</td><td>196.2500</td><td>-0.587</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_plural_ratio</td><td>0.0016</td><td>0.0007</td><td>0.0016</td><td>0.0018</td><td>0.0020</td><td>-1.545</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_plural_ratio_delta</td><td>0.0000</td><td>0.0008</td><td>-0.0002</td><td>0.0000</td><td>0.0002</td><td>0.012</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_plural_ratio_roll2w</td><td>0.0016</td><td>0.0006</td><td>0.0015</td><td>0.0018</td><td>0.0020</td><td>-1.454</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_plural_ratio_roll4w</td><td>0.0016</td><td>0.0005</td><td>0.0014</td><td>0.0018</td><td>0.0020</td><td>-1.413</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_singular_ratio</td><td>0.0801</td><td>0.0342</td><td>0.0924</td><td>0.0941</td><td>0.0958</td><td>-1.938</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_singular_ratio_delta</td><td>0.0000</td><td>0.0387</td><td>-0.0013</td><td>0.0001</td><td>0.0013</td><td>-0.024</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_singular_ratio_roll2w</td><td>0.0801</td><td>0.0282</td><td>0.0919</td><td>0.0937</td><td>0.0956</td><td>-1.798</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>first_person_singular_ratio_roll4w</td><td>0.0800</td><td>0.0252</td><td>0.0708</td><td>0.0933</td><td>0.0955</td><td>-1.754</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>help_seeking_density</td><td>0.0033</td><td>0.0015</td><td>0.0034</td><td>0.0037</td><td>0.0044</td><td>-1.511</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>help_seeking_density_delta</td><td>-0.0000</td><td>0.0018</td><td>-0.0003</td><td>0.0000</td><td>0.0003</td><td>-0.203</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>help_seeking_density_roll2w</td><td>0.0034</td><td>0.0012</td><td>0.0032</td><td>0.0036</td><td>0.0042</td><td>-1.450</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>help_seeking_density_roll4w</td><td>0.0034</td><td>0.0011</td><td>0.0032</td><td>0.0036</td><td>0.0040</td><td>-1.456</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>hopelessness_density</td><td>0.0016</td><td>0.0007</td><td>0.0017</td><td>0.0019</td><td>0.0020</td><td>-1.642</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>hopelessness_density_delta</td><td>0.0000</td><td>0.0008</td><td>-0.0002</td><td>0.0000</td><td>0.0002</td><td>-0.160</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>hopelessness_density_roll2w</td><td>0.0016</td><td>0.0006</td><td>0.0017</td><td>0.0019</td><td>0.0020</td><td>-1.585</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>hopelessness_density_roll4w</td><td>0.0016</td><td>0.0005</td><td>0.0014</td><td>0.0018</td><td>0.0020</td><td>-1.581</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>isolation_total</td><td>607.9554</td><td>348.9502</td><td>315.0000</td><td>726.0000</td><td>821.0000</td><td>-0.608</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>isolation_total_delta</td><td>-3.6815</td><td>223.5259</td><td>-95.0000</td><td>0.0000</td><td>71.0000</td><td>1.118</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>isolation_total_roll2w</td><td>609.7962</td><td>330.9222</td><td>306.5000</td><td>723.5000</td><td>810.0000</td><td>-0.573</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>isolation_total_roll4w</td><td>610.7410</td><td>310.9598</td><td>337.7500</td><td>738.7500</td><td>798.0000</td><td>-0.591</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>new_poster_ratio</td><td>0.6514</td><td>0.3047</td><td>0.6264</td><td>0.6687</td><td>0.8692</td><td>-1.247</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>new_poster_ratio_delta</td><td>-0.0026</td><td>0.3386</td><td>-0.0132</td><td>0.0000</td><td>0.0128</td><td>-0.036</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>new_poster_ratio_roll2w</td><td>0.6527</td><td>0.2541</td><td>0.6148</td><td>0.6433</td><td>0.8557</td><td>-0.931</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>new_poster_ratio_roll4w</td><td>0.6552</td><td>0.2289</td><td>0.6143</td><td>0.6383</td><td>0.8482</td><td>-0.766</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_negative</td><td>0.0762</td><td>0.0336</td><td>0.0788</td><td>0.0877</td><td>0.0949</td><td>-1.678</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_negative_delta</td><td>0.0000</td><td>0.0370</td><td>-0.0082</td><td>0.0000</td><td>0.0074</td><td>0.143</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_negative_roll2w</td><td>0.0761</td><td>0.0280</td><td>0.0767</td><td>0.0868</td><td>0.0939</td><td>-1.557</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_negative_roll4w</td><td>0.0760</td><td>0.0248</td><td>0.0639</td><td>0.0861</td><td>0.0929</td><td>-1.546</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_neutral</td><td>0.0172</td><td>0.0094</td><td>0.0133</td><td>0.0176</td><td>0.0251</td><td>-0.536</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_neutral_delta</td><td>0.0001</td><td>0.0087</td><td>-0.0039</td><td>0.0000</td><td>0.0041</td><td>0.163</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_neutral_roll2w</td><td>0.0172</td><td>0.0083</td><td>0.0130</td><td>0.0166</td><td>0.0245</td><td>-0.394</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_neutral_roll4w</td><td>0.0171</td><td>0.0077</td><td>0.0132</td><td>0.0159</td><td>0.0252</td><td>-0.276</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_positive</td><td>0.2863</td><td>0.1228</td><td>0.3219</td><td>0.3367</td><td>0.3448</td><td>-1.896</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_positive_delta</td><td>-0.0002</td><td>0.1394</td><td>-0.0119</td><td>0.0000</td><td>0.0097</td><td>0.061</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_positive_roll2w</td><td>0.2865</td><td>0.1011</td><td>0.3142</td><td>0.3347</td><td>0.3432</td><td>-1.776</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_positive_roll4w</td><td>0.2865</td><td>0.0905</td><td>0.2567</td><td>0.3327</td><td>0.3414</td><td>-1.754</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_very_negative</td><td>0.4674</td><td>0.1999</td><td>0.5323</td><td>0.5485</td><td>0.5602</td><td>-1.917</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_very_negative_delta</td><td>0.0001</td><td>0.2286</td><td>-0.0105</td><td>0.0000</td><td>0.0122</td><td>-0.053</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_very_negative_roll2w</td><td>0.4674</td><td>0.1640</td><td>0.5218</td><td>0.5448</td><td>0.5576</td><td>-1.799</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>pct_very_negative_roll4w</td><td>0.4674</td><td>0.1466</td><td>0.4117</td><td>0.5434</td><td>0.5576</td><td>-1.752</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>post_volume</td><td>1550.6561</td><td>888.4553</td><td>879.0000</td><td>1934.0000</td><td>2124.0000</td><td>-0.640</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>post_volume_delta</td><td>-7.4904</td><td>566.1517</td><td>-144.0000</td><td>-4.0000</td><td>76.0000</td><td>0.982</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>post_volume_roll2w</td><td>1554.4013</td><td>841.8061</td><td>822.0000</td><td>1904.0000</td><td>2123.5000</td><td>-0.594</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>post_volume_roll4w</td><td>1554.8179</td><td>787.2196</td><td>811.7500</td><td>1904.2500</td><td>2092.0000</td><td>-0.612</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>posting_time_entropy</td><td>1.2584</td><td>1.5426</td><td>0.0000</td><td>0.0000</td><td>3.1419</td><td>0.409</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>posting_time_entropy_delta</td><td>0.0201</td><td>0.4142</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>3.748</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>posting_time_entropy_roll2w</td><td>1.2483</td><td>1.5264</td><td>0.0000</td><td>0.0000</td><td>3.1416</td><td>0.424</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>posting_time_entropy_roll4w</td><td>1.2283</td><td>1.4991</td><td>0.0000</td><td>0.0000</td><td>3.1420</td><td>0.452</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>std_word_count</td><td>175.5219</td><td>80.5587</td><td>169.4786</td><td>195.1093</td><td>222.7275</td><td>-1.360</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>std_word_count_delta</td><td>0.2373</td><td>84.1691</td><td>-21.5138</td><td>0.0000</td><td>19.3755</td><td>-0.041</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>std_word_count_roll2w</td><td>175.4033</td><td>68.6542</td><td>161.6994</td><td>196.9512</td><td>222.2437</td><td>-1.265</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>std_word_count_roll4w</td><td>175.1941</td><td>62.8115</td><td>136.1020</td><td>194.9570</td><td>222.6146</td><td>-1.171</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>suicidality_total</td><td>510.5669</td><td>305.1891</td><td>276.0000</td><td>591.0000</td><td>674.0000</td><td>-0.260</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>suicidality_total_delta</td><td>-2.7898</td><td>266.3650</td><td>-103.0000</td><td>0.0000</td><td>60.0000</td><td>0.307</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>suicidality_total_roll2w</td><td>511.9618</td><td>274.4834</td><td>291.0000</td><td>598.0000</td><td>666.0000</td><td>-0.471</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>suicidality_total_roll4w</td><td>512.4894</td><td>249.1249</td><td>355.2500</td><td>587.0000</td><td>652.5000</td><td>-0.472</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_entropy</td><td>0.3564</td><td>0.2261</td><td>0.2193</td><td>0.3951</td><td>0.5083</td><td>0.028</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_entropy_delta</td><td>-0.0015</td><td>0.2848</td><td>-0.1847</td><td>0.0000</td><td>0.1987</td><td>-0.211</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_entropy_roll2w</td><td>0.3571</td><td>0.1758</td><td>0.2385</td><td>0.3755</td><td>0.4794</td><td>-0.166</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_entropy_roll4w</td><td>0.3582</td><td>0.1479</td><td>0.2705</td><td>0.3721</td><td>0.4655</td><td>-0.490</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd</td><td>0.1023</td><td>0.0603</td><td>0.0630</td><td>0.1128</td><td>0.1456</td><td>-0.298</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_4w</td><td>0.1032</td><td>0.0590</td><td>0.0719</td><td>0.1097</td><td>0.1501</td><td>-0.479</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_4w_delta</td><td>-0.0001</td><td>0.0677</td><td>-0.0395</td><td>0.0000</td><td>0.0376</td><td>-0.061</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_4w_roll2w</td><td>0.1032</td><td>0.0483</td><td>0.0741</td><td>0.1084</td><td>0.1391</td><td>-0.568</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_4w_roll4w</td><td>0.1033</td><td>0.0410</td><td>0.0825</td><td>0.1091</td><td>0.1339</td><td>-0.674</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_delta</td><td>0.0001</td><td>0.0666</td><td>-0.0347</td><td>0.0000</td><td>0.0374</td><td>-0.137</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_roll2w</td><td>0.1022</td><td>0.0503</td><td>0.0720</td><td>0.0999</td><td>0.1399</td><td>-0.235</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>topic_shift_jsd_roll4w</td><td>0.1018</td><td>0.0421</td><td>0.0758</td><td>0.1028</td><td>0.1303</td><td>-0.283</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>unique_posters</td><td>1405.5924</td><td>799.1340</td><td>787.0000</td><td>1667.0000</td><td>1832.0000</td><td>-0.573</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>unique_posters_delta</td><td>-8.2229</td><td>530.7916</td><td>-136.0000</td><td>-6.0000</td><td>65.0000</td><td>1.166</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>unique_posters_roll2w</td><td>1409.7038</td><td>753.8311</td><td>795.5000</td><td>1677.5000</td><td>1818.5000</td><td>-0.487</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>unique_posters_roll4w</td><td>1411.9406</td><td>703.7156</td><td>796.2500</td><td>1671.0000</td><td>1796.7500</td><td>-0.476</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>week_cos</td><td>0.0063</td><td>0.7115</td><td>-0.6631</td><td>-0.0000</td><td>0.7485</td><td>-0.009</td><td style='color:#5cb85c'>0.0%</td></tr>
+<tr><td>week_sin</td><td>0.0008</td><td>0.7072</td><td>-0.6631</td><td>0.0000</td><td>0.6631</td><td>-0.003</td><td style='color:#5cb85c'>0.0%</td></tr>
 
 </table>
 
 <h2>Outlier Weeks (IQR Rule, top 30 shown)</h2>
 <table>
   <tr><th>Week</th><th>Feature</th><th>Direction</th><th>Value</th><th>Normal Range</th></tr>
-  <tr><td>2018-W01</td><td>distress_density</td><td>high</td><td>0.0134</td><td>[0.009, 0.013]</td></tr>
-<tr><td>2018-W01</td><td>new_poster_ratio</td><td>high</td><td>1.0000</td><td>[0.533, 0.793]</td></tr>
-<tr><td>2018-W01</td><td>posting_time_entropy</td><td>low</td><td>0.0000</td><td>[3.109, 3.175]</td></tr>
-<tr><td>2018-W01</td><td>avg_positive_roll2w</td><td>high</td><td>0.1226</td><td>[0.110, 0.122]</td></tr>
-<tr><td>2018-W01</td><td>avg_neutral_roll2w</td><td>low</td><td>0.7189</td><td>[0.719, 0.734]</td></tr>
-<tr><td>2018-W01</td><td>distress_density_roll2w</td><td>high</td><td>0.0134</td><td>[0.009, 0.013]</td></tr>
-<tr><td>2018-W01</td><td>new_poster_ratio_roll2w</td><td>high</td><td>1.0000</td><td>[0.539, 0.784]</td></tr>
-<tr><td>2018-W01</td><td>posting_time_entropy_roll2w</td><td>low</td><td>0.0000</td><td>[3.115, 3.171]</td></tr>
-<tr><td>2018-W01</td><td>avg_positive_roll4w</td><td>high</td><td>0.1226</td><td>[0.111, 0.122]</td></tr>
-<tr><td>2018-W01</td><td>avg_neutral_roll4w</td><td>low</td><td>0.7189</td><td>[0.720, 0.733]</td></tr>
-<tr><td>2018-W01</td><td>pct_neutral_roll4w</td><td>low</td><td>0.0140</td><td>[0.016, 0.033]</td></tr>
-<tr><td>2018-W01</td><td>distress_density_roll4w</td><td>high</td><td>0.0134</td><td>[0.010, 0.013]</td></tr>
-<tr><td>2018-W01</td><td>new_poster_ratio_roll4w</td><td>high</td><td>1.0000</td><td>[0.541, 0.782]</td></tr>
-<tr><td>2018-W01</td><td>posting_time_entropy_roll4w</td><td>low</td><td>0.0000</td><td>[3.119, 3.168]</td></tr>
-<tr><td>2018-W02</td><td>new_poster_ratio</td><td>high</td><td>1.0000</td><td>[0.533, 0.793]</td></tr>
-<tr><td>2018-W02</td><td>posting_time_entropy</td><td>low</td><td>0.0000</td><td>[3.109, 3.175]</td></tr>
-<tr><td>2018-W02</td><td>avg_positive_delta</td><td>low</td><td>-0.0068</td><td>[-0.007, 0.007]</td></tr>
-<tr><td>2018-W02</td><td>post_volume_delta</td><td>low</td><td>-401.0000</td><td>[-357.000, 329.000]</td></tr>
-<tr><td>2018-W02</td><td>unique_posters_delta</td><td>low</td><td>-401.0000</td><td>[-300.250, 283.750]</td></tr>
-<tr><td>2018-W02</td><td>distress_density_roll2w</td><td>high</td><td>0.0130</td><td>[0.009, 0.013]</td></tr>
-<tr><td>2018-W02</td><td>new_poster_ratio_roll2w</td><td>high</td><td>1.0000</td><td>[0.539, 0.784]</td></tr>
-<tr><td>2018-W02</td><td>posting_time_entropy_roll2w</td><td>low</td><td>0.0000</td><td>[3.115, 3.171]</td></tr>
-<tr><td>2018-W02</td><td>pct_neutral_roll4w</td><td>low</td><td>0.0133</td><td>[0.016, 0.033]</td></tr>
-<tr><td>2018-W02</td><td>distress_density_roll4w</td><td>high</td><td>0.0130</td><td>[0.010, 0.013]</td></tr>
-<tr><td>2018-W02</td><td>new_poster_ratio_roll4w</td><td>high</td><td>1.0000</td><td>[0.541, 0.782]</td></tr>
-<tr><td>2018-W02</td><td>posting_time_entropy_roll4w</td><td>low</td><td>0.0000</td><td>[3.119, 3.168]</td></tr>
-<tr><td>2018-W03</td><td>distress_density</td><td>high</td><td>0.0133</td><td>[0.009, 0.013]</td></tr>
-<tr><td>2018-W03</td><td>new_poster_ratio</td><td>high</td><td>1.0000</td><td>[0.533, 0.793]</td></tr>
-<tr><td>2018-W03</td><td>posting_time_entropy</td><td>low</td><td>0.0000</td><td>[3.109, 3.175]</td></tr>
-<tr><td>2018-W03</td><td>distress_density_roll2w</td><td>high</td><td>0.0129</td><td>[0.009, 0.013]</td></tr>
+  <tr><td>2018-W08</td><td>distress_density_delta</td><td>high</td><td>0.0019</td><td>[-0.002, 0.002]</td></tr>
+<tr><td>2018-W17</td><td>avg_word_count</td><td>low</td><td>0.0000</td><td>[150.049, 213.797]</td></tr>
+<tr><td>2018-W17</td><td>std_word_count</td><td>low</td><td>0.0000</td><td>[89.605, 302.601]</td></tr>
+<tr><td>2018-W17</td><td>avg_char_count</td><td>low</td><td>0.0000</td><td>[765.503, 1113.659]</td></tr>
+<tr><td>2018-W17</td><td>avg_type_token_ratio</td><td>low</td><td>0.0000</td><td>[0.640, 0.734]</td></tr>
+<tr><td>2018-W17</td><td>avg_flesch_kincaid</td><td>low</td><td>0.0000</td><td>[6.440, 8.908]</td></tr>
+<tr><td>2018-W17</td><td>first_person_singular_ratio</td><td>low</td><td>0.0000</td><td>[0.087, 0.101]</td></tr>
+<tr><td>2018-W17</td><td>first_person_plural_ratio</td><td>low</td><td>0.0000</td><td>[0.001, 0.003]</td></tr>
+<tr><td>2018-W17</td><td>avg_compound</td><td>high</td><td>0.0000</td><td>[-0.332, -0.196]</td></tr>
+<tr><td>2018-W17</td><td>avg_positive</td><td>low</td><td>0.0000</td><td>[0.110, 0.125]</td></tr>
+<tr><td>2018-W17</td><td>avg_negative</td><td>low</td><td>0.0000</td><td>[0.145, 0.165]</td></tr>
+<tr><td>2018-W17</td><td>avg_neutral</td><td>low</td><td>0.0000</td><td>[0.712, 0.737]</td></tr>
+<tr><td>2018-W17</td><td>pct_very_negative</td><td>low</td><td>0.0000</td><td>[0.491, 0.602]</td></tr>
+<tr><td>2018-W17</td><td>pct_negative</td><td>low</td><td>0.0000</td><td>[0.055, 0.119]</td></tr>
+<tr><td>2018-W17</td><td>pct_positive</td><td>low</td><td>0.0000</td><td>[0.287, 0.379]</td></tr>
+<tr><td>2018-W17</td><td>hopelessness_density</td><td>low</td><td>0.0000</td><td>[0.001, 0.002]</td></tr>
+<tr><td>2018-W17</td><td>help_seeking_density</td><td>low</td><td>0.0000</td><td>[0.002, 0.006]</td></tr>
+<tr><td>2018-W17</td><td>distress_density</td><td>low</td><td>0.0000</td><td>[0.007, 0.015]</td></tr>
+<tr><td>2018-W17</td><td>new_poster_ratio</td><td>low</td><td>0.0000</td><td>[0.262, 1.233]</td></tr>
+<tr><td>2018-W17</td><td>avg_word_count_delta</td><td>low</td><td>-199.6358</td><td>[-26.525, 27.546]</td></tr>
+<tr><td>2018-W17</td><td>std_word_count_delta</td><td>low</td><td>-233.4949</td><td>[-82.848, 80.709]</td></tr>
+<tr><td>2018-W17</td><td>avg_char_count_delta</td><td>low</td><td>-1033.1968</td><td>[-140.796, 146.572]</td></tr>
+<tr><td>2018-W17</td><td>avg_type_token_ratio_delta</td><td>low</td><td>-0.6765</td><td>[-0.019, 0.019]</td></tr>
+<tr><td>2018-W17</td><td>avg_flesch_kincaid_delta</td><td>low</td><td>-7.5630</td><td>[-0.760, 0.780]</td></tr>
+<tr><td>2018-W17</td><td>first_person_singular_ratio_delta</td><td>low</td><td>-0.0938</td><td>[-0.005, 0.005]</td></tr>
+<tr><td>2018-W17</td><td>first_person_plural_ratio_delta</td><td>low</td><td>-0.0020</td><td>[-0.001, 0.001]</td></tr>
+<tr><td>2018-W17</td><td>avg_compound_delta</td><td>high</td><td>0.2605</td><td>[-0.067, 0.067]</td></tr>
+<tr><td>2018-W17</td><td>avg_positive_delta</td><td>low</td><td>-0.1174</td><td>[-0.008, 0.008]</td></tr>
+<tr><td>2018-W17</td><td>avg_negative_delta</td><td>low</td><td>-0.1524</td><td>[-0.007, 0.006]</td></tr>
+<tr><td>2018-W17</td><td>avg_neutral_delta</td><td>low</td><td>-0.7303</td><td>[-0.009, 0.009]</td></tr>
 
 </table>
 

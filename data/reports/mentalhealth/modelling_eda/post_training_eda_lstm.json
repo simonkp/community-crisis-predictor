@@ -1,124 +1,83 @@
 {
   "subreddit": "mentalhealth",
   "model": "lstm",
-  "n_valid": 69,
+  "n_valid": 121,
   "calibration": {
     "bins": [
       {
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "n": 62,
+        "mean_predicted": 0.0498,
+        "mean_actual": 0.0,
+        "calibration_gap": 0.0498
+      },
+      {
         "bin_low": 0.1,
         "bin_high": 0.2,
-        "n": 15,
-        "mean_predicted": 0.1902,
-        "mean_actual": 0.0667,
-        "calibration_gap": 0.1236
+        "n": 26,
+        "mean_predicted": 0.1561,
+        "mean_actual": 0.0,
+        "calibration_gap": 0.1561
       },
       {
         "bin_low": 0.2,
         "bin_high": 0.3,
-        "n": 21,
-        "mean_predicted": 0.2552,
+        "n": 24,
+        "mean_predicted": 0.2513,
         "mean_actual": 0.0,
-        "calibration_gap": 0.2552
+        "calibration_gap": 0.2513
       },
       {
         "bin_low": 0.3,
         "bin_high": 0.4,
-        "n": 4,
-        "mean_predicted": 0.3667,
-        "mean_actual": 1.0,
-        "calibration_gap": -0.6333
-      },
-      {
-        "bin_low": 0.4,
-        "bin_high": 0.5,
-        "n": 29,
-        "mean_predicted": 0.4286,
-        "mean_actual": 0.1724,
-        "calibration_gap": 0.2562
+        "n": 9,
+        "mean_predicted": 0.3339,
+        "mean_actual": 0.0,
+        "calibration_gap": 0.3339
       }
     ],
-    "overall_mean_predicted": 0.3204,
-    "overall_mean_actual": 0.1449,
-    "overall_calibration_gap": 0.1755,
+    "overall_mean_predicted": 0.1337,
+    "overall_mean_actual": 0.0,
+    "overall_calibration_gap": 0.1337,
     "verdict": "over-confident"
   },
   "confusion_breakdown": {
     "tp": 0,
     "fp": 0,
-    "fn": 10,
-    "tn": 59,
+    "fn": 0,
+    "tn": 121,
     "false_alarm_rate": 0.0,
-    "miss_rate": 1.0,
+    "miss_rate": 0.0,
     "precision": 0.0,
     "recall": 0.0,
     "f1": 0.0,
-    "summary": "0 true alerts, 0 false alarms, 10 missed crises, 59 correct non-alerts out of 69 predicted weeks."
+    "summary": "0 true alerts, 0 false alarms, 0 missed crises, 121 correct non-alerts out of 121 predicted weeks."
   },
-  "error_timeline": [
-    {
-      "week_index": 51,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 52,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 61,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 62,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 63,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 64,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 99,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 100,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 101,
-      "error_type": "false_negative"
-    },
-    {
-      "week_index": 102,
-      "error_type": "false_negative"
-    }
-  ],
+  "error_timeline": [],
   "n_false_positives": 0,
-  "n_false_negatives": 10,
+  "n_false_negatives": 0,
   "threshold_sweep": [
     {
       "threshold": 0.2,
-      "precision": 0.1667,
-      "recall": 0.9,
-      "f1": 0.2812,
-      "n_alerts": 54
-    },
-    {
-      "threshold": 0.3,
-      "precision": 0.2727,
-      "recall": 0.9,
-      "f1": 0.4186,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
       "n_alerts": 33
     },
     {
+      "threshold": 0.3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_alerts": 9
+    },
+    {
       "threshold": 0.4,
-      "precision": 0.1724,
-      "recall": 0.5,
-      "f1": 0.2564,
-      "n_alerts": 29
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_alerts": 0
     },
     {
       "threshold": 0.5,

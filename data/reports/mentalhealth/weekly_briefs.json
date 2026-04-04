@@ -1,563 +1,608 @@
 {
-  "2018-W37": {
-    "text": "r/mentalhealth (2018-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.5328; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+  "2018-W36": {
+    "text": "r/mentalhealth (2018-W36) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1368; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.794873+00:00"
+    "generated_at": "2026-04-03T10:55:32.055551+00:00"
+  },
+  "2018-W37": {
+    "text": "r/mentalhealth (2018-W37) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4303; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.058566+00:00"
   },
   "2018-W38": {
-    "text": "r/mentalhealth (2018-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7646; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W38) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0499; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.801369+00:00"
+    "generated_at": "2026-04-03T10:55:32.061047+00:00"
   },
   "2018-W39": {
-    "text": "r/mentalhealth (2018-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.0373; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W39) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3688; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.807132+00:00"
+    "generated_at": "2026-04-03T10:55:32.063654+00:00"
   },
   "2018-W40": {
-    "text": "r/mentalhealth (2018-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0308; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W40) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0629; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.812929+00:00"
+    "generated_at": "2026-04-03T10:55:32.066045+00:00"
   },
   "2018-W41": {
-    "text": "r/mentalhealth (2018-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.0466; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W41) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3971; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.819166+00:00"
+    "generated_at": "2026-04-03T10:55:32.068427+00:00"
   },
   "2018-W42": {
-    "text": "r/mentalhealth (2018-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4315; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W42) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2564; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.824651+00:00"
+    "generated_at": "2026-04-03T10:55:32.070831+00:00"
   },
   "2018-W43": {
-    "text": "r/mentalhealth (2018-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2613; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W43) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0880; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.830061+00:00"
+    "generated_at": "2026-04-03T10:55:32.073212+00:00"
   },
   "2018-W44": {
-    "text": "r/mentalhealth (2018-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.8365; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W44) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2207; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.836212+00:00"
+    "generated_at": "2026-04-03T10:55:32.075593+00:00"
   },
   "2018-W45": {
-    "text": "r/mentalhealth (2018-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3072; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W45) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1314; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.842209+00:00"
+    "generated_at": "2026-04-03T10:55:32.077967+00:00"
   },
   "2018-W46": {
-    "text": "r/mentalhealth (2018-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2755; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3034; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.848433+00:00"
+    "generated_at": "2026-04-03T10:55:32.080334+00:00"
   },
   "2018-W47": {
-    "text": "r/mentalhealth (2018-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3255; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2018-W47) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4718; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.854548+00:00"
+    "generated_at": "2026-04-03T10:55:32.082711+00:00"
   },
   "2018-W48": {
-    "text": "r/mentalhealth (2018-W48) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3280; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2018-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.7813; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.860413+00:00"
+    "generated_at": "2026-04-03T10:55:32.085601+00:00"
   },
   "2018-W49": {
-    "text": "r/mentalhealth (2018-W49) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6306; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2018-W49) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1713; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.866403+00:00"
+    "generated_at": "2026-04-03T10:55:32.087996+00:00"
   },
   "2018-W50": {
-    "text": "r/mentalhealth (2018-W50) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1531; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2018-W50) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3634; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.872254+00:00"
+    "generated_at": "2026-04-03T10:55:32.090397+00:00"
   },
   "2018-W51": {
-    "text": "r/mentalhealth (2018-W51) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4584; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2018-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1276; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.878104+00:00"
+    "generated_at": "2026-04-03T10:55:32.092789+00:00"
   },
   "2018-W52": {
-    "text": "r/mentalhealth (2018-W52) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0796; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2018-W52) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0020; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.884174+00:00"
+    "generated_at": "2026-04-03T10:55:32.095177+00:00"
   },
   "2019-W01": {
-    "text": "r/mentalhealth (2019-W01) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0078; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W01) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2636; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.888797+00:00"
+    "generated_at": "2026-04-03T10:55:32.097566+00:00"
   },
   "2019-W02": {
-    "text": "r/mentalhealth (2019-W02) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4918; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W02) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0498; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.893288+00:00"
+    "generated_at": "2026-04-03T10:55:32.099959+00:00"
   },
   "2019-W03": {
-    "text": "r/mentalhealth (2019-W03) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5258; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W03) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4414; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.897837+00:00"
+    "generated_at": "2026-04-03T10:55:32.102342+00:00"
   },
   "2019-W04": {
-    "text": "r/mentalhealth (2019-W04) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2826; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W04) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3854; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.902273+00:00"
+    "generated_at": "2026-04-03T10:55:32.104716+00:00"
   },
   "2019-W05": {
-    "text": "r/mentalhealth (2019-W05) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4507; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W05) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1515; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.906681+00:00"
+    "generated_at": "2026-04-03T10:55:32.107547+00:00"
   },
   "2019-W06": {
-    "text": "r/mentalhealth (2019-W06) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3230; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W06) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0847; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.911241+00:00"
+    "generated_at": "2026-04-03T10:55:32.109952+00:00"
   },
   "2019-W07": {
-    "text": "r/mentalhealth (2019-W07) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6382; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2019-W07) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1683; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.916577+00:00"
+    "generated_at": "2026-04-03T10:55:32.112325+00:00"
   },
   "2019-W08": {
-    "text": "r/mentalhealth (2019-W08) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2748; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W08) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0875; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.921067+00:00"
+    "generated_at": "2026-04-03T10:55:32.114702+00:00"
   },
   "2019-W09": {
-    "text": "r/mentalhealth (2019-W09) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0920; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W09) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3062; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.925433+00:00"
+    "generated_at": "2026-04-03T10:55:32.117080+00:00"
   },
   "2019-W10": {
-    "text": "r/mentalhealth (2019-W10) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5848; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W10) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2159; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.930882+00:00"
+    "generated_at": "2026-04-03T10:55:32.119518+00:00"
   },
   "2019-W11": {
-    "text": "r/mentalhealth (2019-W11) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.1312; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W11) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5320; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.935732+00:00"
+    "generated_at": "2026-04-03T10:55:32.121895+00:00"
   },
   "2019-W12": {
-    "text": "r/mentalhealth (2019-W12) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6687; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W12) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5353; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.940081+00:00"
+    "generated_at": "2026-04-03T10:55:32.124274+00:00"
   },
   "2019-W13": {
-    "text": "r/mentalhealth (2019-W13) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5068; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W13) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1476; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.945617+00:00"
+    "generated_at": "2026-04-03T10:55:32.126638+00:00"
   },
   "2019-W14": {
-    "text": "r/mentalhealth (2019-W14) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.2635; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W14) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5921; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.950296+00:00"
+    "generated_at": "2026-04-03T10:55:32.129073+00:00"
   },
   "2019-W15": {
-    "text": "r/mentalhealth (2019-W15) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.7693; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W15) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.9209; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.955055+00:00"
+    "generated_at": "2026-04-03T10:55:32.131810+00:00"
   },
   "2019-W16": {
-    "text": "r/mentalhealth (2019-W16) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.0905; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W16) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2547; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.960056+00:00"
+    "generated_at": "2026-04-03T10:55:32.134180+00:00"
   },
   "2019-W17": {
-    "text": "r/mentalhealth (2019-W17) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0347; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W17) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6493; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.965662+00:00"
+    "generated_at": "2026-04-03T10:55:32.136550+00:00"
   },
   "2019-W18": {
-    "text": "r/mentalhealth (2019-W18) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.1651; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W18) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.0185; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.970006+00:00"
+    "generated_at": "2026-04-03T10:55:32.138925+00:00"
   },
   "2019-W19": {
-    "text": "r/mentalhealth (2019-W19) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5797; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W19) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2567; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.975774+00:00"
+    "generated_at": "2026-04-03T10:55:32.141315+00:00"
   },
   "2019-W20": {
-    "text": "r/mentalhealth (2019-W20) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7590; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W20) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6196; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.980136+00:00"
+    "generated_at": "2026-04-03T10:55:32.143689+00:00"
   },
   "2019-W21": {
-    "text": "r/mentalhealth (2019-W21) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4355; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W21) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4531; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.984411+00:00"
+    "generated_at": "2026-04-03T10:55:32.146095+00:00"
   },
   "2019-W22": {
-    "text": "r/mentalhealth (2019-W22) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0479; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0975; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.988596+00:00"
+    "generated_at": "2026-04-03T10:55:32.148481+00:00"
   },
   "2019-W23": {
-    "text": "r/mentalhealth (2019-W23) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0068; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W23) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1820; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.993658+00:00"
+    "generated_at": "2026-04-03T10:55:32.150874+00:00"
   },
   "2019-W24": {
-    "text": "r/mentalhealth (2019-W24) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6128; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W24) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1322; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:19.998394+00:00"
+    "generated_at": "2026-04-03T10:55:32.153332+00:00"
   },
   "2019-W25": {
-    "text": "r/mentalhealth (2019-W25) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5950; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W25) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0480; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.002697+00:00"
+    "generated_at": "2026-04-03T10:55:32.155735+00:00"
   },
   "2019-W26": {
-    "text": "r/mentalhealth (2019-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0714; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2019-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3120; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.007570+00:00"
+    "generated_at": "2026-04-03T10:55:32.158102+00:00"
   },
   "2019-W27": {
-    "text": "r/mentalhealth (2019-W27) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5254; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1132; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.012042+00:00"
+    "generated_at": "2026-04-03T10:55:32.160459+00:00"
   },
   "2019-W28": {
-    "text": "r/mentalhealth (2019-W28) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.8614; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W28) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4241; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.016246+00:00"
+    "generated_at": "2026-04-03T10:55:32.162835+00:00"
   },
   "2019-W29": {
-    "text": "r/mentalhealth (2019-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.2795; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2019-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.8938; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.020457+00:00"
+    "generated_at": "2026-04-03T10:55:32.165190+00:00"
   },
   "2019-W30": {
-    "text": "r/mentalhealth (2019-W30) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3207; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W30) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1253; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.026200+00:00"
+    "generated_at": "2026-04-03T10:55:32.167554+00:00"
   },
   "2019-W31": {
-    "text": "r/mentalhealth (2019-W31) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1291; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W31) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0363; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.040275+00:00"
+    "generated_at": "2026-04-03T10:55:32.169935+00:00"
   },
   "2019-W32": {
-    "text": "r/mentalhealth (2019-W32) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0218; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W32) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0100; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.049916+00:00"
+    "generated_at": "2026-04-03T10:55:32.172322+00:00"
   },
   "2019-W33": {
-    "text": "r/mentalhealth (2019-W33) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.9352; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W33) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5599; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.058699+00:00"
+    "generated_at": "2026-04-03T10:55:32.174950+00:00"
   },
   "2019-W34": {
-    "text": "r/mentalhealth (2019-W34) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6636; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W34) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3415; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.070224+00:00"
+    "generated_at": "2026-04-03T10:55:32.177403+00:00"
   },
   "2019-W35": {
-    "text": "r/mentalhealth (2019-W35) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.0596; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W35) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6401; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.078456+00:00"
+    "generated_at": "2026-04-03T10:55:32.180178+00:00"
   },
   "2019-W36": {
-    "text": "r/mentalhealth (2019-W36) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.0835; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5367; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.086045+00:00"
+    "generated_at": "2026-04-03T10:55:32.182658+00:00"
   },
   "2019-W37": {
-    "text": "r/mentalhealth (2019-W37) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3656; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/mentalhealth (2019-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0112; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.092172+00:00"
+    "generated_at": "2026-04-03T10:55:32.185381+00:00"
   },
   "2019-W38": {
-    "text": "r/mentalhealth (2019-W38) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3727; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1007; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.102288+00:00"
+    "generated_at": "2026-04-03T10:55:32.188083+00:00"
   },
   "2019-W39": {
-    "text": "r/mentalhealth (2019-W39) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1207; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1202; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.111025+00:00"
+    "generated_at": "2026-04-03T10:55:32.191194+00:00"
   },
   "2019-W40": {
-    "text": "r/mentalhealth (2019-W40) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6227; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4525; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.120159+00:00"
+    "generated_at": "2026-04-03T10:55:32.194195+00:00"
   },
   "2019-W41": {
-    "text": "r/mentalhealth (2019-W41) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1608; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2019-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2036; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.128012+00:00"
+    "generated_at": "2026-04-03T10:55:32.196833+00:00"
   },
   "2019-W42": {
-    "text": "r/mentalhealth (2019-W42) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2952; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1877; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.137213+00:00"
+    "generated_at": "2026-04-03T10:55:32.199547+00:00"
   },
   "2019-W43": {
-    "text": "r/mentalhealth (2019-W43) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.2476; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.9035; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.145789+00:00"
+    "generated_at": "2026-04-03T10:55:32.202107+00:00"
   },
   "2019-W44": {
-    "text": "r/mentalhealth (2019-W44) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.9174; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2019-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3955; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.153945+00:00"
+    "generated_at": "2026-04-03T10:55:32.204657+00:00"
+  },
+  "2019-W45": {
+    "text": "r/mentalhealth (2019-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -3.7557; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.207045+00:00"
+  },
+  "2019-W46": {
+    "text": "r/mentalhealth (2019-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.209698+00:00"
+  },
+  "2019-W47": {
+    "text": "r/mentalhealth (2019-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.212134+00:00"
+  },
+  "2019-W48": {
+    "text": "r/mentalhealth (2019-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.214535+00:00"
+  },
+  "2019-W49": {
+    "text": "r/mentalhealth (2019-W49) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.216991+00:00"
+  },
+  "2019-W50": {
+    "text": "r/mentalhealth (2019-W50) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.219389+00:00"
+  },
+  "2019-W51": {
+    "text": "r/mentalhealth (2019-W51) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.221864+00:00"
+  },
+  "2019-W52": {
+    "text": "r/mentalhealth (2019-W52) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:32.224288+00:00"
   },
   "2020-W01": {
-    "text": "r/mentalhealth (2020-W01) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0552; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W01) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +3.7953; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.158842+00:00"
+    "generated_at": "2026-04-03T10:55:32.226843+00:00"
   },
   "2020-W02": {
-    "text": "r/mentalhealth (2020-W02) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4486; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W02) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0557; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.163985+00:00"
+    "generated_at": "2026-04-03T10:55:32.229286+00:00"
   },
   "2020-W03": {
-    "text": "r/mentalhealth (2020-W03) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1931; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2020-W03) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0512; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.169373+00:00"
+    "generated_at": "2026-04-03T10:55:32.232267+00:00"
   },
   "2020-W04": {
-    "text": "r/mentalhealth (2020-W04) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3104; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W04) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1977; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.176751+00:00"
+    "generated_at": "2026-04-03T10:55:32.234717+00:00"
   },
   "2020-W05": {
-    "text": "r/mentalhealth (2020-W05) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1236; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W05) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2321; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.186446+00:00"
+    "generated_at": "2026-04-03T10:55:32.237485+00:00"
   },
   "2020-W06": {
-    "text": "r/mentalhealth (2020-W06) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0647; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W06) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1999; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.193294+00:00"
+    "generated_at": "2026-04-03T10:55:32.239939+00:00"
   },
   "2020-W07": {
-    "text": "r/mentalhealth (2020-W07) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0325; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2020-W07) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0517; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.201655+00:00"
+    "generated_at": "2026-04-03T10:55:32.242452+00:00"
   },
   "2020-W08": {
-    "text": "r/mentalhealth (2020-W08) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1926; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/mentalhealth (2020-W08) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2158; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.209425+00:00"
+    "generated_at": "2026-04-03T10:55:32.244907+00:00"
   },
   "2020-W09": {
-    "text": "r/mentalhealth (2020-W09) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1242; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W09) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1239; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.214709+00:00"
+    "generated_at": "2026-04-03T10:55:32.247384+00:00"
   },
   "2020-W10": {
-    "text": "r/mentalhealth (2020-W10) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0568; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W10) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0321; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.219288+00:00"
+    "generated_at": "2026-04-03T10:55:32.249836+00:00"
   },
   "2020-W11": {
-    "text": "r/mentalhealth (2020-W11) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0704; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W11) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0471; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.223748+00:00"
+    "generated_at": "2026-04-03T10:55:32.252349+00:00"
   },
   "2020-W12": {
-    "text": "r/mentalhealth (2020-W12) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2891; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W12) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1165; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.228412+00:00"
+    "generated_at": "2026-04-03T10:55:32.254791+00:00"
   },
   "2020-W13": {
-    "text": "r/mentalhealth (2020-W13) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7305; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W13) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2157; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.233401+00:00"
+    "generated_at": "2026-04-03T10:55:32.257261+00:00"
   },
   "2020-W14": {
-    "text": "r/mentalhealth (2020-W14) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2120; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W14) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0736; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.238077+00:00"
+    "generated_at": "2026-04-03T10:55:32.259667+00:00"
   },
   "2020-W15": {
-    "text": "r/mentalhealth (2020-W15) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4046; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W15) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1266; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.242549+00:00"
+    "generated_at": "2026-04-03T10:55:32.262109+00:00"
   },
   "2020-W16": {
-    "text": "r/mentalhealth (2020-W16) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0266; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W16) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0961; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.249432+00:00"
+    "generated_at": "2026-04-03T10:55:32.264540+00:00"
   },
   "2020-W17": {
-    "text": "r/mentalhealth (2020-W17) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5148; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/mentalhealth (2020-W17) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5589; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.256440+00:00"
+    "generated_at": "2026-04-03T10:55:32.267603+00:00"
   },
   "2020-W18": {
-    "text": "r/mentalhealth (2020-W18) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -2.1882; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W18) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.2585; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.261784+00:00"
+    "generated_at": "2026-04-03T10:55:32.270042+00:00"
   },
   "2020-W19": {
-    "text": "r/mentalhealth (2020-W19) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.0169; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W19) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5537; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.268898+00:00"
+    "generated_at": "2026-04-03T10:55:32.272841+00:00"
   },
   "2020-W20": {
-    "text": "r/mentalhealth (2020-W20) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6858; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W20) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1824; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.277662+00:00"
+    "generated_at": "2026-04-03T10:55:32.275299+00:00"
   },
   "2020-W21": {
-    "text": "r/mentalhealth (2020-W21) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.7073; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W21) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2048; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.284809+00:00"
+    "generated_at": "2026-04-03T10:55:32.277697+00:00"
   },
   "2020-W22": {
-    "text": "r/mentalhealth (2020-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6504; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0828; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.292631+00:00"
+    "generated_at": "2026-04-03T10:55:32.280176+00:00"
   },
   "2020-W23": {
-    "text": "r/mentalhealth (2020-W23) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2031; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W23) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3891; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.299293+00:00"
+    "generated_at": "2026-04-03T10:55:32.282615+00:00"
   },
   "2020-W24": {
-    "text": "r/mentalhealth (2020-W24) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.8241; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W24) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4871; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.304239+00:00"
+    "generated_at": "2026-04-03T10:55:32.285043+00:00"
   },
   "2020-W25": {
-    "text": "r/mentalhealth (2020-W25) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6086; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W25) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1333; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.309317+00:00"
+    "generated_at": "2026-04-03T10:55:32.287640+00:00"
   },
   "2020-W26": {
-    "text": "r/mentalhealth (2020-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1942; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1534; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.316045+00:00"
+    "generated_at": "2026-04-03T10:55:32.290067+00:00"
   },
   "2020-W27": {
-    "text": "r/mentalhealth (2020-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.1792; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4948; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.322923+00:00"
+    "generated_at": "2026-04-03T10:55:32.292505+00:00"
   },
   "2020-W28": {
-    "text": "r/mentalhealth (2020-W28) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0792; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W28) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0248; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.328411+00:00"
+    "generated_at": "2026-04-03T10:55:32.295006+00:00"
   },
   "2020-W29": {
-    "text": "r/mentalhealth (2020-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3468; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3044; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.334439+00:00"
+    "generated_at": "2026-04-03T10:55:32.297425+00:00"
   },
   "2020-W30": {
-    "text": "r/mentalhealth (2020-W30) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6741; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W30) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4577; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.341082+00:00"
+    "generated_at": "2026-04-03T10:55:32.299886+00:00"
   },
   "2020-W31": {
-    "text": "r/mentalhealth (2020-W31) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1323; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W31) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3723; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.348264+00:00"
+    "generated_at": "2026-04-03T10:55:32.302728+00:00"
   },
   "2020-W32": {
-    "text": "r/mentalhealth (2020-W32) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2512; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W32) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0978; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.353975+00:00"
+    "generated_at": "2026-04-03T10:55:32.305236+00:00"
   },
   "2020-W33": {
-    "text": "r/mentalhealth (2020-W33) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1126; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W33) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1113; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.358599+00:00"
+    "generated_at": "2026-04-03T10:55:32.307637+00:00"
   },
   "2020-W34": {
-    "text": "r/mentalhealth (2020-W34) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3574; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W34) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0436; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.363413+00:00"
+    "generated_at": "2026-04-03T10:55:32.310093+00:00"
   },
   "2020-W35": {
-    "text": "r/mentalhealth (2020-W35) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4653; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W35) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0066; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.368469+00:00"
+    "generated_at": "2026-04-03T10:55:32.312533+00:00"
   },
   "2020-W36": {
-    "text": "r/mentalhealth (2020-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0937; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2627; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.373296+00:00"
+    "generated_at": "2026-04-03T10:55:32.314952+00:00"
   },
   "2020-W37": {
-    "text": "r/mentalhealth (2020-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.9507; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3814; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.379039+00:00"
+    "generated_at": "2026-04-03T10:55:32.317413+00:00"
   },
   "2020-W38": {
-    "text": "r/mentalhealth (2020-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.1491; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3483; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.386929+00:00"
+    "generated_at": "2026-04-03T10:55:32.319810+00:00"
   },
   "2020-W39": {
-    "text": "r/mentalhealth (2020-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3508; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1150; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.395309+00:00"
+    "generated_at": "2026-04-03T10:55:32.322227+00:00"
   },
   "2020-W40": {
-    "text": "r/mentalhealth (2020-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0179; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0874; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.401489+00:00"
+    "generated_at": "2026-04-03T10:55:32.324660+00:00"
   },
   "2020-W41": {
-    "text": "r/mentalhealth (2020-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3479; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1741; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.406372+00:00"
+    "generated_at": "2026-04-03T10:55:32.327087+00:00"
   },
   "2020-W42": {
-    "text": "r/mentalhealth (2020-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0892; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0812; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.410965+00:00"
+    "generated_at": "2026-04-03T10:55:32.329535+00:00"
   },
   "2020-W43": {
-    "text": "r/mentalhealth (2020-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2225; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1013; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.415592+00:00"
+    "generated_at": "2026-04-03T10:55:32.331954+00:00"
   },
   "2020-W44": {
-    "text": "r/mentalhealth (2020-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0924; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1243; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.420112+00:00"
+    "generated_at": "2026-04-03T10:55:32.334847+00:00"
   },
   "2020-W45": {
-    "text": "r/mentalhealth (2020-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6741; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1458; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.425130+00:00"
+    "generated_at": "2026-04-03T10:55:32.337343+00:00"
   },
   "2020-W46": {
-    "text": "r/mentalhealth (2020-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4445; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0307; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.430262+00:00"
+    "generated_at": "2026-04-03T10:55:32.339767+00:00"
   },
   "2020-W47": {
-    "text": "r/mentalhealth (2020-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4115; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1303; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.434578+00:00"
+    "generated_at": "2026-04-03T10:55:32.342223+00:00"
   },
   "2020-W48": {
-    "text": "r/mentalhealth (2020-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2998; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0452; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.439047+00:00"
+    "generated_at": "2026-04-03T10:55:32.344956+00:00"
   },
   "2020-W49": {
-    "text": "r/mentalhealth (2020-W49) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0845; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W49) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2207; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.443792+00:00"
+    "generated_at": "2026-04-03T10:55:32.347438+00:00"
   },
   "2020-W50": {
-    "text": "r/mentalhealth (2020-W50) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0945; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W50) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1150; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.448744+00:00"
+    "generated_at": "2026-04-03T10:55:32.350015+00:00"
   },
   "2020-W51": {
-    "text": "r/mentalhealth (2020-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0399; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2528; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.455220+00:00"
+    "generated_at": "2026-04-03T10:55:32.352538+00:00"
   },
   "2020-W52": {
-    "text": "r/mentalhealth (2020-W52) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5489; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/mentalhealth (2020-W52) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0644; globally important features include first_person_plural_ratio, topic_shift_jsd_4w_roll2w, distress_density_roll2w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:20.460748+00:00"
+    "generated_at": "2026-04-03T10:55:32.355416+00:00"
   },
   "2020-W53": {
     "text": "r/mentalhealth (2020-W53) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0867; globally important features include posting_time_entropy, new_poster_ratio_roll4w, hopelessness_density (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",

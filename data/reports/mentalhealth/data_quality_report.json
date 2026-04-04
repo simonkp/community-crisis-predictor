@@ -1,8 +1,8 @@
 {
   "subreddit": "mentalhealth",
   "source": "zenodo_covid",
-  "total_weeks_observed": 357,
-  "gap_weeks_below_50pct": 8,
+  "total_weeks_observed": 148,
+  "gap_weeks_below_50pct": 5,
   "missing_week_count": 9,
   "missing_weeks": [
     "2018-04-23",
@@ -15,5 +15,17 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 1.0130754732421314
+  "avg_completeness_score": 1.0198445833931726,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "mentalhealth",
+    "sources_present": [
+      "arctic_shift",
+      "zenodo_covid"
+    ],
+    "total_weeks": 148,
+    "weeks_with_multiple_sources": 1,
+    "discrepancies": [],
+    "n_discrepancies": 0
+  }
 }

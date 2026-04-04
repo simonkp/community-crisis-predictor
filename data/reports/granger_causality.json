@@ -1,0 +1,452 @@
+{
+  "anxiety": {
+    "depression": [
+      {
+        "lag": 1,
+        "f_stat": 7.6444,
+        "p_value": 0.0064
+      },
+      {
+        "lag": 2,
+        "f_stat": 1.2236,
+        "p_value": 0.2971
+      },
+      {
+        "lag": 3,
+        "f_stat": 0.7988,
+        "p_value": 0.4964
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.5748,
+        "p_value": 0.1842
+      }
+    ],
+    "lonely": [
+      {
+        "lag": 1,
+        "f_stat": 16.3988,
+        "p_value": 0.0001
+      },
+      {
+        "lag": 2,
+        "f_stat": 5.087,
+        "p_value": 0.0073
+      },
+      {
+        "lag": 3,
+        "f_stat": 3.7228,
+        "p_value": 0.0129
+      },
+      {
+        "lag": 4,
+        "f_stat": 2.9565,
+        "p_value": 0.022
+      }
+    ],
+    "mentalhealth": [
+      {
+        "lag": 1,
+        "f_stat": 4.0592,
+        "p_value": 0.0457
+      },
+      {
+        "lag": 2,
+        "f_stat": 1.1767,
+        "p_value": 0.3111
+      },
+      {
+        "lag": 3,
+        "f_stat": 1.1594,
+        "p_value": 0.3274
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.045,
+        "p_value": 0.3862
+      }
+    ],
+    "suicidewatch": [
+      {
+        "lag": 1,
+        "f_stat": 6.1116,
+        "p_value": 0.0145
+      },
+      {
+        "lag": 2,
+        "f_stat": 1.9818,
+        "p_value": 0.1414
+      },
+      {
+        "lag": 3,
+        "f_stat": 1.5104,
+        "p_value": 0.2143
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.8059,
+        "p_value": 0.1309
+      }
+    ]
+  },
+  "depression": {
+    "anxiety": [
+      {
+        "lag": 1,
+        "f_stat": 1.031,
+        "p_value": 0.3115
+      },
+      {
+        "lag": 2,
+        "f_stat": 0.6407,
+        "p_value": 0.5284
+      },
+      {
+        "lag": 3,
+        "f_stat": 0.4147,
+        "p_value": 0.7427
+      },
+      {
+        "lag": 4,
+        "f_stat": 0.9095,
+        "p_value": 0.4602
+      }
+    ],
+    "lonely": [
+      {
+        "lag": 1,
+        "f_stat": 2.6667,
+        "p_value": 0.1045
+      },
+      {
+        "lag": 2,
+        "f_stat": 1.864,
+        "p_value": 0.1586
+      },
+      {
+        "lag": 3,
+        "f_stat": 2.4274,
+        "p_value": 0.0678
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.7636,
+        "p_value": 0.1394
+      }
+    ],
+    "mentalhealth": [
+      {
+        "lag": 1,
+        "f_stat": 1.6128,
+        "p_value": 0.206
+      },
+      {
+        "lag": 2,
+        "f_stat": 0.4913,
+        "p_value": 0.6128
+      },
+      {
+        "lag": 3,
+        "f_stat": 0.4074,
+        "p_value": 0.7479
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.348,
+        "p_value": 0.2551
+      }
+    ],
+    "suicidewatch": [
+      {
+        "lag": 1,
+        "f_stat": 12.133,
+        "p_value": 0.0006
+      },
+      {
+        "lag": 2,
+        "f_stat": 4.951,
+        "p_value": 0.0083
+      },
+      {
+        "lag": 3,
+        "f_stat": 3.5543,
+        "p_value": 0.016
+      },
+      {
+        "lag": 4,
+        "f_stat": 3.1541,
+        "p_value": 0.0161
+      }
+    ]
+  },
+  "lonely": {
+    "anxiety": [
+      {
+        "lag": 1,
+        "f_stat": 2.6556,
+        "p_value": 0.1052
+      },
+      {
+        "lag": 2,
+        "f_stat": 1.2836,
+        "p_value": 0.2801
+      },
+      {
+        "lag": 3,
+        "f_stat": 0.8339,
+        "p_value": 0.4773
+      },
+      {
+        "lag": 4,
+        "f_stat": 0.5314,
+        "p_value": 0.7128
+      }
+    ],
+    "depression": [
+      {
+        "lag": 1,
+        "f_stat": 9.2038,
+        "p_value": 0.0028
+      },
+      {
+        "lag": 2,
+        "f_stat": 2.3093,
+        "p_value": 0.1029
+      },
+      {
+        "lag": 3,
+        "f_stat": 2.6491,
+        "p_value": 0.0511
+      },
+      {
+        "lag": 4,
+        "f_stat": 2.4208,
+        "p_value": 0.0511
+      }
+    ],
+    "mentalhealth": [
+      {
+        "lag": 1,
+        "f_stat": 8.7225,
+        "p_value": 0.0036
+      },
+      {
+        "lag": 2,
+        "f_stat": 3.4601,
+        "p_value": 0.034
+      },
+      {
+        "lag": 3,
+        "f_stat": 2.6335,
+        "p_value": 0.0521
+      },
+      {
+        "lag": 4,
+        "f_stat": 2.0019,
+        "p_value": 0.0974
+      }
+    ],
+    "suicidewatch": [
+      {
+        "lag": 1,
+        "f_stat": 5.9294,
+        "p_value": 0.016
+      },
+      {
+        "lag": 2,
+        "f_stat": 2.786,
+        "p_value": 0.0649
+      },
+      {
+        "lag": 3,
+        "f_stat": 2.0803,
+        "p_value": 0.1053
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.5982,
+        "p_value": 0.178
+      }
+    ]
+  },
+  "mentalhealth": {
+    "anxiety": [
+      {
+        "lag": 1,
+        "f_stat": 0.7578,
+        "p_value": 0.3854
+      },
+      {
+        "lag": 2,
+        "f_stat": 0.8957,
+        "p_value": 0.4105
+      },
+      {
+        "lag": 3,
+        "f_stat": 0.9864,
+        "p_value": 0.401
+      },
+      {
+        "lag": 4,
+        "f_stat": 0.8248,
+        "p_value": 0.5114
+      }
+    ],
+    "depression": [
+      {
+        "lag": 1,
+        "f_stat": 14.8306,
+        "p_value": 0.0002
+      },
+      {
+        "lag": 2,
+        "f_stat": 4.994,
+        "p_value": 0.0079
+      },
+      {
+        "lag": 3,
+        "f_stat": 3.8777,
+        "p_value": 0.0105
+      },
+      {
+        "lag": 4,
+        "f_stat": 4.1072,
+        "p_value": 0.0035
+      }
+    ],
+    "lonely": [
+      {
+        "lag": 1,
+        "f_stat": 16.8038,
+        "p_value": 0.0001
+      },
+      {
+        "lag": 2,
+        "f_stat": 5.1482,
+        "p_value": 0.0069
+      },
+      {
+        "lag": 3,
+        "f_stat": 3.4613,
+        "p_value": 0.018
+      },
+      {
+        "lag": 4,
+        "f_stat": 2.631,
+        "p_value": 0.0368
+      }
+    ],
+    "suicidewatch": [
+      {
+        "lag": 1,
+        "f_stat": 8.6186,
+        "p_value": 0.0038
+      },
+      {
+        "lag": 2,
+        "f_stat": 3.7955,
+        "p_value": 0.0247
+      },
+      {
+        "lag": 3,
+        "f_stat": 3.4044,
+        "p_value": 0.0194
+      },
+      {
+        "lag": 4,
+        "f_stat": 3.0406,
+        "p_value": 0.0193
+      }
+    ]
+  },
+  "suicidewatch": {
+    "anxiety": [
+      {
+        "lag": 1,
+        "f_stat": 0.35,
+        "p_value": 0.555
+      },
+      {
+        "lag": 2,
+        "f_stat": 0.717,
+        "p_value": 0.4899
+      },
+      {
+        "lag": 3,
+        "f_stat": 1.0695,
+        "p_value": 0.364
+      },
+      {
+        "lag": 4,
+        "f_stat": 0.7783,
+        "p_value": 0.541
+      }
+    ],
+    "depression": [
+      {
+        "lag": 1,
+        "f_stat": 22.1206,
+        "p_value": 0.0
+      },
+      {
+        "lag": 2,
+        "f_stat": 4.8535,
+        "p_value": 0.0091
+      },
+      {
+        "lag": 3,
+        "f_stat": 3.3347,
+        "p_value": 0.0212
+      },
+      {
+        "lag": 4,
+        "f_stat": 3.4218,
+        "p_value": 0.0105
+      }
+    ],
+    "lonely": [
+      {
+        "lag": 1,
+        "f_stat": 7.9944,
+        "p_value": 0.0053
+      },
+      {
+        "lag": 2,
+        "f_stat": 2.3984,
+        "p_value": 0.0943
+      },
+      {
+        "lag": 3,
+        "f_stat": 1.661,
+        "p_value": 0.178
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.5398,
+        "p_value": 0.1938
+      }
+    ],
+    "mentalhealth": [
+      {
+        "lag": 1,
+        "f_stat": 2.4174,
+        "p_value": 0.1221
+      },
+      {
+        "lag": 2,
+        "f_stat": 2.9399,
+        "p_value": 0.0559
+      },
+      {
+        "lag": 3,
+        "f_stat": 2.0525,
+        "p_value": 0.1091
+      },
+      {
+        "lag": 4,
+        "f_stat": 1.4212,
+        "p_value": 0.2299
+      }
+    ]
+  }
+}

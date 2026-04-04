@@ -1,563 +1,608 @@
 {
-  "2018-W37": {
-    "text": "r/anxiety (2018-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2870; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+  "2018-W36": {
+    "text": "r/anxiety (2018-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1936; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.591324+00:00"
+    "generated_at": "2026-04-03T10:55:30.266308+00:00"
+  },
+  "2018-W37": {
+    "text": "r/anxiety (2018-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0926; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.269481+00:00"
   },
   "2018-W38": {
-    "text": "r/anxiety (2018-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0216; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2846; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.598248+00:00"
+    "generated_at": "2026-04-03T10:55:30.272274+00:00"
   },
   "2018-W39": {
-    "text": "r/anxiety (2018-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0501; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1018; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.605115+00:00"
+    "generated_at": "2026-04-03T10:55:30.274716+00:00"
   },
   "2018-W40": {
-    "text": "r/anxiety (2018-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0209; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2008; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.610661+00:00"
+    "generated_at": "2026-04-03T10:55:30.277433+00:00"
   },
   "2018-W41": {
-    "text": "r/anxiety (2018-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6123; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4247; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.615962+00:00"
+    "generated_at": "2026-04-03T10:55:30.279807+00:00"
   },
   "2018-W42": {
-    "text": "r/anxiety (2018-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2095; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7850; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.622222+00:00"
+    "generated_at": "2026-04-03T10:55:30.282161+00:00"
   },
   "2018-W43": {
-    "text": "r/anxiety (2018-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5641; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.9420; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.628214+00:00"
+    "generated_at": "2026-04-03T10:55:30.284530+00:00"
   },
   "2018-W44": {
-    "text": "r/anxiety (2018-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4839; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2671; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.634222+00:00"
+    "generated_at": "2026-04-03T10:55:30.286869+00:00"
   },
   "2018-W45": {
-    "text": "r/anxiety (2018-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +2.2468; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3603; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.640443+00:00"
+    "generated_at": "2026-04-03T10:55:30.289218+00:00"
   },
   "2018-W46": {
-    "text": "r/anxiety (2018-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.7990; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1347; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.646400+00:00"
+    "generated_at": "2026-04-03T10:55:30.291614+00:00"
   },
   "2018-W47": {
-    "text": "r/anxiety (2018-W47) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.8344; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2018-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0758; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.652203+00:00"
+    "generated_at": "2026-04-03T10:55:30.293954+00:00"
   },
   "2018-W48": {
-    "text": "r/anxiety (2018-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.8980; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2018-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4460; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.658057+00:00"
+    "generated_at": "2026-04-03T10:55:30.296438+00:00"
   },
   "2018-W49": {
-    "text": "r/anxiety (2018-W49) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.0153; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2018-W49) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5366; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.663904+00:00"
+    "generated_at": "2026-04-03T10:55:30.299089+00:00"
   },
   "2018-W50": {
-    "text": "r/anxiety (2018-W50) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1321; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2018-W50) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2726; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.669793+00:00"
+    "generated_at": "2026-04-03T10:55:30.301436+00:00"
   },
   "2018-W51": {
-    "text": "r/anxiety (2018-W51) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3226; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2018-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5351; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.675597+00:00"
+    "generated_at": "2026-04-03T10:55:30.303809+00:00"
   },
   "2018-W52": {
-    "text": "r/anxiety (2018-W52) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1483; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2018-W52) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3922; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.681515+00:00"
+    "generated_at": "2026-04-03T10:55:30.306150+00:00"
   },
   "2019-W01": {
-    "text": "r/anxiety (2019-W01) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1644; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W01) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1044; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.688207+00:00"
+    "generated_at": "2026-04-03T10:55:30.308485+00:00"
   },
   "2019-W02": {
-    "text": "r/anxiety (2019-W02) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2301; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W02) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2295; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.694749+00:00"
+    "generated_at": "2026-04-03T10:55:30.310844+00:00"
   },
   "2019-W03": {
-    "text": "r/anxiety (2019-W03) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0622; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W03) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1587; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.699329+00:00"
+    "generated_at": "2026-04-03T10:55:30.313166+00:00"
   },
   "2019-W04": {
-    "text": "r/anxiety (2019-W04) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2910; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W04) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6089; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.703699+00:00"
+    "generated_at": "2026-04-03T10:55:30.315513+00:00"
   },
   "2019-W05": {
-    "text": "r/anxiety (2019-W05) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3730; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W05) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3717; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.708091+00:00"
+    "generated_at": "2026-04-03T10:55:30.317852+00:00"
   },
   "2019-W06": {
-    "text": "r/anxiety (2019-W06) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5067; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W06) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2732; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.712410+00:00"
+    "generated_at": "2026-04-03T10:55:30.320242+00:00"
   },
   "2019-W07": {
-    "text": "r/anxiety (2019-W07) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.8773; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W07) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1591; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.716803+00:00"
+    "generated_at": "2026-04-03T10:55:30.322574+00:00"
   },
   "2019-W08": {
-    "text": "r/anxiety (2019-W08) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7161; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W08) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2301; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.721869+00:00"
+    "generated_at": "2026-04-03T10:55:30.324909+00:00"
   },
   "2019-W09": {
-    "text": "r/anxiety (2019-W09) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4232; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W09) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1755; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.726722+00:00"
+    "generated_at": "2026-04-03T10:55:30.327251+00:00"
   },
   "2019-W10": {
-    "text": "r/anxiety (2019-W10) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1878; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W10) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1071; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.731212+00:00"
+    "generated_at": "2026-04-03T10:55:30.329635+00:00"
   },
   "2019-W11": {
-    "text": "r/anxiety (2019-W11) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0918; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W11) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2239; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.736204+00:00"
+    "generated_at": "2026-04-03T10:55:30.331998+00:00"
   },
   "2019-W12": {
-    "text": "r/anxiety (2019-W12) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6601; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W12) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6910; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.741052+00:00"
+    "generated_at": "2026-04-03T10:55:30.334324+00:00"
   },
   "2019-W13": {
-    "text": "r/anxiety (2019-W13) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.4841; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W13) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.0117; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.747921+00:00"
+    "generated_at": "2026-04-03T10:55:30.336643+00:00"
   },
   "2019-W14": {
-    "text": "r/anxiety (2019-W14) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.1136; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W14) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7205; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.755353+00:00"
+    "generated_at": "2026-04-03T10:55:30.338988+00:00"
   },
   "2019-W15": {
-    "text": "r/anxiety (2019-W15) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2103; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W15) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2626; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.760605+00:00"
+    "generated_at": "2026-04-03T10:55:30.341356+00:00"
   },
   "2019-W16": {
-    "text": "r/anxiety (2019-W16) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.9861; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W16) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4268; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.765106+00:00"
+    "generated_at": "2026-04-03T10:55:30.343699+00:00"
   },
   "2019-W17": {
-    "text": "r/anxiety (2019-W17) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.5418; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W17) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3651; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.769406+00:00"
+    "generated_at": "2026-04-03T10:55:30.346033+00:00"
   },
   "2019-W18": {
-    "text": "r/anxiety (2019-W18) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3161; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/anxiety (2019-W18) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3912; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.773889+00:00"
+    "generated_at": "2026-04-03T10:55:30.348370+00:00"
   },
   "2019-W19": {
-    "text": "r/anxiety (2019-W19) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2024; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W19) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4893; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.778193+00:00"
+    "generated_at": "2026-04-03T10:55:30.350712+00:00"
   },
   "2019-W20": {
-    "text": "r/anxiety (2019-W20) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -2.0152; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W20) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3876; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.782654+00:00"
+    "generated_at": "2026-04-03T10:55:30.353053+00:00"
   },
   "2019-W21": {
-    "text": "r/anxiety (2019-W21) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +2.7770; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/anxiety (2019-W21) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.3439; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.787381+00:00"
+    "generated_at": "2026-04-03T10:55:30.355393+00:00"
   },
   "2019-W22": {
-    "text": "r/anxiety (2019-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -2.0668; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.1710; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.793466+00:00"
+    "generated_at": "2026-04-03T10:55:30.357702+00:00"
   },
   "2019-W23": {
-    "text": "r/anxiety (2019-W23) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1310; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W23) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0473; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.801245+00:00"
+    "generated_at": "2026-04-03T10:55:30.360022+00:00"
   },
   "2019-W24": {
-    "text": "r/anxiety (2019-W24) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.7567; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W24) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3142; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.808905+00:00"
+    "generated_at": "2026-04-03T10:55:30.362399+00:00"
   },
   "2019-W25": {
-    "text": "r/anxiety (2019-W25) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.8358; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W25) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5732; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.815486+00:00"
+    "generated_at": "2026-04-03T10:55:30.364835+00:00"
   },
   "2019-W26": {
-    "text": "r/anxiety (2019-W26) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.5323; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5139; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.822793+00:00"
+    "generated_at": "2026-04-03T10:55:30.367811+00:00"
   },
   "2019-W27": {
-    "text": "r/anxiety (2019-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6217; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2019-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4545; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.829930+00:00"
+    "generated_at": "2026-04-03T10:55:30.370396+00:00"
   },
   "2019-W28": {
-    "text": "r/anxiety (2019-W28) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4657; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W28) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2806; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.838317+00:00"
+    "generated_at": "2026-04-03T10:55:30.372849+00:00"
   },
   "2019-W29": {
-    "text": "r/anxiety (2019-W29) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4166; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1477; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.846872+00:00"
+    "generated_at": "2026-04-03T10:55:30.375249+00:00"
   },
   "2019-W30": {
-    "text": "r/anxiety (2019-W30) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2341; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W30) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1894; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.854484+00:00"
+    "generated_at": "2026-04-03T10:55:30.377618+00:00"
   },
   "2019-W31": {
-    "text": "r/anxiety (2019-W31) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5959; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W31) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0492; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.861644+00:00"
+    "generated_at": "2026-04-03T10:55:30.379997+00:00"
   },
   "2019-W32": {
-    "text": "r/anxiety (2019-W32) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2287; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W32) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0381; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.867193+00:00"
+    "generated_at": "2026-04-03T10:55:30.382363+00:00"
   },
   "2019-W33": {
-    "text": "r/anxiety (2019-W33) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5586; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W33) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3238; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.871581+00:00"
+    "generated_at": "2026-04-03T10:55:30.384728+00:00"
   },
   "2019-W34": {
-    "text": "r/anxiety (2019-W34) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.7399; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W34) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2437; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.876038+00:00"
+    "generated_at": "2026-04-03T10:55:30.387078+00:00"
   },
   "2019-W35": {
-    "text": "r/anxiety (2019-W35) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0164; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W35) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1811; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.880883+00:00"
+    "generated_at": "2026-04-03T10:55:30.389801+00:00"
   },
   "2019-W36": {
-    "text": "r/anxiety (2019-W36) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2802; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3358; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.886591+00:00"
+    "generated_at": "2026-04-03T10:55:30.392169+00:00"
   },
   "2019-W37": {
-    "text": "r/anxiety (2019-W37) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.2783; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1387; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.893411+00:00"
+    "generated_at": "2026-04-03T10:55:30.394522+00:00"
   },
   "2019-W38": {
-    "text": "r/anxiety (2019-W38) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4808; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3665; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.900073+00:00"
+    "generated_at": "2026-04-03T10:55:30.396871+00:00"
   },
   "2019-W39": {
-    "text": "r/anxiety (2019-W39) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4499; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2019-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4732; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.906518+00:00"
+    "generated_at": "2026-04-03T10:55:30.399307+00:00"
   },
   "2019-W40": {
-    "text": "r/anxiety (2019-W40) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.8314; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1933; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.913710+00:00"
+    "generated_at": "2026-04-03T10:55:30.401685+00:00"
   },
   "2019-W41": {
-    "text": "r/anxiety (2019-W41) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7289; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3560; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.920762+00:00"
+    "generated_at": "2026-04-03T10:55:30.404051+00:00"
   },
   "2019-W42": {
-    "text": "r/anxiety (2019-W42) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2808; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2933; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.928402+00:00"
+    "generated_at": "2026-04-03T10:55:30.406397+00:00"
   },
   "2019-W43": {
-    "text": "r/anxiety (2019-W43) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.6153; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6695; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.935859+00:00"
+    "generated_at": "2026-04-03T10:55:30.408735+00:00"
   },
   "2019-W44": {
-    "text": "r/anxiety (2019-W44) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.7371; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2019-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6551; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.943482+00:00"
+    "generated_at": "2026-04-03T10:55:30.411097+00:00"
+  },
+  "2019-W45": {
+    "text": "r/anxiety (2019-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -3.7749; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.413445+00:00"
+  },
+  "2019-W46": {
+    "text": "r/anxiety (2019-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.415824+00:00"
+  },
+  "2019-W47": {
+    "text": "r/anxiety (2019-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.418534+00:00"
+  },
+  "2019-W48": {
+    "text": "r/anxiety (2019-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.420901+00:00"
+  },
+  "2019-W49": {
+    "text": "r/anxiety (2019-W49) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.423294+00:00"
+  },
+  "2019-W50": {
+    "text": "r/anxiety (2019-W50) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.425699+00:00"
+  },
+  "2019-W51": {
+    "text": "r/anxiety (2019-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.428090+00:00"
+  },
+  "2019-W52": {
+    "text": "r/anxiety (2019-W52) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0000; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "source": "template",
+    "generated_at": "2026-04-03T10:55:30.430467+00:00"
   },
   "2020-W01": {
-    "text": "r/anxiety (2020-W01) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0795; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/anxiety (2020-W01) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +4.0714; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.951008+00:00"
+    "generated_at": "2026-04-03T10:55:30.432941+00:00"
   },
   "2020-W02": {
-    "text": "r/anxiety (2020-W02) is labeled Severe Community Distress Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4622; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Escalate to senior moderators for community-level response; prominently post official subreddit rules and static mental health resource links; consider temporary community announcements (aggregate signal only).",
+    "text": "r/anxiety (2020-W02) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0240; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.975606+00:00"
+    "generated_at": "2026-04-03T10:55:30.435335+00:00"
   },
   "2020-W03": {
-    "text": "r/anxiety (2020-W03) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5218; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2020-W03) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2099; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.983415+00:00"
+    "generated_at": "2026-04-03T10:55:30.437753+00:00"
   },
   "2020-W04": {
-    "text": "r/anxiety (2020-W04) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3513; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2020-W04) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2051; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.991357+00:00"
+    "generated_at": "2026-04-03T10:55:30.440168+00:00"
   },
   "2020-W05": {
-    "text": "r/anxiety (2020-W05) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1909; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2020-W05) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0553; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:05.999158+00:00"
+    "generated_at": "2026-04-03T10:55:30.442569+00:00"
   },
   "2020-W06": {
-    "text": "r/anxiety (2020-W06) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.9400; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2020-W06) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0711; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.007232+00:00"
+    "generated_at": "2026-04-03T10:55:30.445067+00:00"
   },
   "2020-W07": {
-    "text": "r/anxiety (2020-W07) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3578; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2020-W07) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3784; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.015443+00:00"
+    "generated_at": "2026-04-03T10:55:30.447486+00:00"
   },
   "2020-W08": {
-    "text": "r/anxiety (2020-W08) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2777; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W08) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5965; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.022100+00:00"
+    "generated_at": "2026-04-03T10:55:30.449909+00:00"
   },
   "2020-W09": {
-    "text": "r/anxiety (2020-W09) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.7134; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W09) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1132; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.028735+00:00"
+    "generated_at": "2026-04-03T10:55:30.452322+00:00"
   },
   "2020-W10": {
-    "text": "r/anxiety (2020-W10) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2953; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2020-W10) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0305; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.033551+00:00"
+    "generated_at": "2026-04-03T10:55:30.454720+00:00"
   },
   "2020-W11": {
-    "text": "r/anxiety (2020-W11) is labeled Elevated Distress this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.8715; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Consider a pinned thread for community resources and peer support; brief moderator awareness of elevated aggregate activity (no individual outreach based solely on this signal).",
+    "text": "r/anxiety (2020-W11) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4366; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.040084+00:00"
+    "generated_at": "2026-04-03T10:55:30.457063+00:00"
   },
   "2020-W12": {
-    "text": "r/anxiety (2020-W12) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.9878; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W12) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2771; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.047511+00:00"
+    "generated_at": "2026-04-03T10:55:30.459489+00:00"
   },
   "2020-W13": {
-    "text": "r/anxiety (2020-W13) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6763; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W13) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3839; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.055970+00:00"
+    "generated_at": "2026-04-03T10:55:30.461873+00:00"
   },
   "2020-W14": {
-    "text": "r/anxiety (2020-W14) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7958; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W14) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3539; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.064421+00:00"
+    "generated_at": "2026-04-03T10:55:30.464255+00:00"
   },
   "2020-W15": {
-    "text": "r/anxiety (2020-W15) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1771; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W15) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1595; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.073275+00:00"
+    "generated_at": "2026-04-03T10:55:30.467182+00:00"
   },
   "2020-W16": {
-    "text": "r/anxiety (2020-W16) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1025; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2020-W16) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1232; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.081877+00:00"
+    "generated_at": "2026-04-03T10:55:30.469589+00:00"
   },
   "2020-W17": {
-    "text": "r/anxiety (2020-W17) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.8959; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2020-W17) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0413; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.090441+00:00"
+    "generated_at": "2026-04-03T10:55:30.472003+00:00"
   },
   "2020-W18": {
-    "text": "r/anxiety (2020-W18) is labeled Early Vulnerability Signal this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4928; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Increase routine visibility of pinned resources and community guidelines; monitor aggregate posting patterns without targeting individuals.",
+    "text": "r/anxiety (2020-W18) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4462; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.097600+00:00"
+    "generated_at": "2026-04-03T10:55:30.474384+00:00"
   },
   "2020-W19": {
-    "text": "r/anxiety (2020-W19) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0377; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W19) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1871; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.115626+00:00"
+    "generated_at": "2026-04-03T10:55:30.476769+00:00"
   },
   "2020-W20": {
-    "text": "r/anxiety (2020-W20) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7648; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W20) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2668; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.124952+00:00"
+    "generated_at": "2026-04-03T10:55:30.479148+00:00"
   },
   "2020-W21": {
-    "text": "r/anxiety (2020-W21) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2315; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W21) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0904; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.134519+00:00"
+    "generated_at": "2026-04-03T10:55:30.481547+00:00"
   },
   "2020-W22": {
-    "text": "r/anxiety (2020-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3578; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W22) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0218; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.143970+00:00"
+    "generated_at": "2026-04-03T10:55:30.483931+00:00"
   },
   "2020-W23": {
-    "text": "r/anxiety (2020-W23) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3761; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W23) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1189; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.154141+00:00"
+    "generated_at": "2026-04-03T10:55:30.486329+00:00"
   },
   "2020-W24": {
-    "text": "r/anxiety (2020-W24) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4091; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W24) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2356; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.163941+00:00"
+    "generated_at": "2026-04-03T10:55:30.488707+00:00"
   },
   "2020-W25": {
-    "text": "r/anxiety (2020-W25) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2417; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W25) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2198; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.171106+00:00"
+    "generated_at": "2026-04-03T10:55:30.491610+00:00"
   },
   "2020-W26": {
-    "text": "r/anxiety (2020-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0887; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W26) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1450; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.175817+00:00"
+    "generated_at": "2026-04-03T10:55:30.493996+00:00"
   },
   "2020-W27": {
-    "text": "r/anxiety (2020-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3117; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W27) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2206; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.180935+00:00"
+    "generated_at": "2026-04-03T10:55:30.496385+00:00"
   },
   "2020-W28": {
-    "text": "r/anxiety (2020-W28) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4887; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W28) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2611; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.185570+00:00"
+    "generated_at": "2026-04-03T10:55:30.498785+00:00"
   },
   "2020-W29": {
-    "text": "r/anxiety (2020-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4535; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W29) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3326; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.190167+00:00"
+    "generated_at": "2026-04-03T10:55:30.501220+00:00"
   },
   "2020-W30": {
-    "text": "r/anxiety (2020-W30) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1715; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W30) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2425; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.194747+00:00"
+    "generated_at": "2026-04-03T10:55:30.503615+00:00"
   },
   "2020-W31": {
-    "text": "r/anxiety (2020-W31) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6241; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W31) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2587; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.200117+00:00"
+    "generated_at": "2026-04-03T10:55:30.505993+00:00"
   },
   "2020-W32": {
-    "text": "r/anxiety (2020-W32) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7167; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W32) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0912; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.204427+00:00"
+    "generated_at": "2026-04-03T10:55:30.508379+00:00"
   },
   "2020-W33": {
-    "text": "r/anxiety (2020-W33) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4437; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W33) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0076; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.209419+00:00"
+    "generated_at": "2026-04-03T10:55:30.510751+00:00"
   },
   "2020-W34": {
-    "text": "r/anxiety (2020-W34) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.6509; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W34) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2818; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.214525+00:00"
+    "generated_at": "2026-04-03T10:55:30.513190+00:00"
   },
   "2020-W35": {
-    "text": "r/anxiety (2020-W35) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3254; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W35) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0938; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.235118+00:00"
+    "generated_at": "2026-04-03T10:55:30.515571+00:00"
   },
   "2020-W36": {
-    "text": "r/anxiety (2020-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.1011; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W36) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5397; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.239911+00:00"
+    "generated_at": "2026-04-03T10:55:30.517955+00:00"
   },
   "2020-W37": {
-    "text": "r/anxiety (2020-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.8066; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W37) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4650; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.244223+00:00"
+    "generated_at": "2026-04-03T10:55:30.520371+00:00"
   },
   "2020-W38": {
-    "text": "r/anxiety (2020-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.5666; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W38) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2887; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.248377+00:00"
+    "generated_at": "2026-04-03T10:55:30.522749+00:00"
   },
   "2020-W39": {
-    "text": "r/anxiety (2020-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6617; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W39) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.3209; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.252697+00:00"
+    "generated_at": "2026-04-03T10:55:30.525110+00:00"
   },
   "2020-W40": {
-    "text": "r/anxiety (2020-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.4443; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W40) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2708; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.257068+00:00"
+    "generated_at": "2026-04-03T10:55:30.527477+00:00"
   },
   "2020-W41": {
-    "text": "r/anxiety (2020-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.2497; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W41) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1828; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.261239+00:00"
+    "generated_at": "2026-04-03T10:55:30.529875+00:00"
   },
   "2020-W42": {
-    "text": "r/anxiety (2020-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5512; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W42) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1383; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.265506+00:00"
+    "generated_at": "2026-04-03T10:55:30.532240+00:00"
   },
   "2020-W43": {
-    "text": "r/anxiety (2020-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3953; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W43) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1695; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.270275+00:00"
+    "generated_at": "2026-04-03T10:55:30.534820+00:00"
   },
   "2020-W44": {
-    "text": "r/anxiety (2020-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5345; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W44) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0936; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.274910+00:00"
+    "generated_at": "2026-04-03T10:55:30.537504+00:00"
   },
   "2020-W45": {
-    "text": "r/anxiety (2020-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +1.1310; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W45) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3639; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.279122+00:00"
+    "generated_at": "2026-04-03T10:55:30.539895+00:00"
   },
   "2020-W46": {
-    "text": "r/anxiety (2020-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -1.4798; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W46) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6997; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.285557+00:00"
+    "generated_at": "2026-04-03T10:55:30.542275+00:00"
   },
   "2020-W47": {
-    "text": "r/anxiety (2020-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.7557; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W47) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.3119; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.292978+00:00"
+    "generated_at": "2026-04-03T10:55:30.544641+00:00"
   },
   "2020-W48": {
-    "text": "r/anxiety (2020-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.1192; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W48) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1830; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.298770+00:00"
+    "generated_at": "2026-04-03T10:55:30.547020+00:00"
   },
   "2020-W49": {
-    "text": "r/anxiety (2020-W49) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.4640; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W49) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0006; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.303415+00:00"
+    "generated_at": "2026-04-03T10:55:30.549385+00:00"
   },
   "2020-W50": {
-    "text": "r/anxiety (2020-W50) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.9386; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W50) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.2005; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.308271+00:00"
+    "generated_at": "2026-04-03T10:55:30.551759+00:00"
   },
   "2020-W51": {
-    "text": "r/anxiety (2020-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.6088; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W51) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.0744; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.312612+00:00"
+    "generated_at": "2026-04-03T10:55:30.554134+00:00"
   },
   "2020-W52": {
-    "text": "r/anxiety (2020-W52) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.1536; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
+    "text": "r/anxiety (2020-W52) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is +0.0094; globally important features include avg_word_count_delta, topic_shift_jsd_delta, pct_positive_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",
     "source": "template",
-    "generated_at": "2026-04-01T03:52:06.317632+00:00"
+    "generated_at": "2026-04-03T10:55:30.556514+00:00"
   },
   "2020-W53": {
     "text": "r/anxiety (2020-W53) is labeled Stable this week based on model outputs (aggregate community-level indicator, not individual assessment). Distress score change vs the prior week is -0.5345; globally important features include new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w (SHAP-ranked; per-week direction in JSON). Recommended action: Continue routine moderation and keep general community resources visible in the sidebar or wiki.",

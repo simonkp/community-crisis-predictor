@@ -1,7 +1,7 @@
 {
   "subreddit": "depression",
   "source": "zenodo_covid",
-  "total_weeks_observed": 342,
+  "total_weeks_observed": 133,
   "gap_weeks_below_50pct": 9,
   "missing_week_count": 24,
   "missing_weeks": [
@@ -30,5 +30,26 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 0.9996142392514645
+  "avg_completeness_score": 1.0012392083965582,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "depression",
+    "sources_present": [
+      "arctic_shift",
+      "zenodo_covid"
+    ],
+    "total_weeks": 133,
+    "weeks_with_multiple_sources": 1,
+    "discrepancies": [
+      {
+        "week": "2018-10-29",
+        "sources": {
+          "arctic_shift": 659,
+          "zenodo_covid": 300
+        },
+        "ratio": 2.2
+      }
+    ],
+    "n_discrepancies": 1
+  }
 }

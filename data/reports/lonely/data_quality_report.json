@@ -1,7 +1,7 @@
 {
   "subreddit": "lonely",
   "source": "zenodo_covid",
-  "total_weeks_observed": 357,
+  "total_weeks_observed": 148,
   "gap_weeks_below_50pct": 2,
   "missing_week_count": 9,
   "missing_weeks": [
@@ -15,5 +15,26 @@
     "2019-12-16",
     "2019-12-23"
   ],
-  "avg_completeness_score": 1.0115560903129166
+  "avg_completeness_score": 1.0158057751151361,
+  "cross_source_validation": {
+    "status": "ok",
+    "subreddit": "lonely",
+    "sources_present": [
+      "arctic_shift",
+      "zenodo_covid"
+    ],
+    "total_weeks": 148,
+    "weeks_with_multiple_sources": 1,
+    "discrepancies": [
+      {
+        "week": "2018-10-29",
+        "sources": {
+          "arctic_shift": 18,
+          "zenodo_covid": 45
+        },
+        "ratio": 2.5
+      }
+    ],
+    "n_discrepancies": 1
+  }
 }

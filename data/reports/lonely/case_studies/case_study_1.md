@@ -1,49 +1,49 @@
-# Case Study: High-Distress Signal Week 2025-W35
-**Week starting:** 2025-08-25
-**Distress score:** -0.292
+# Case Study: High-Distress Signal Week 2019-W37
+**Week starting:** 2019-09-09
+**Distress score:** 0.004
 
 ## What Happened
-The community distress score spiked to -0.292, 
+The community distress score spiked to 0.004, 
 exceeding the severe community distress threshold.
 
 ## Early Warning Signals
 
-### 2025-W32 (not flagged, probability: 0.33)
-- **avg_negative**: 0.1218 (5.3% below average)
-- **pct_positive_roll2w**: 0.5802 (16.9% above average)
-- **avg_compound**: 0.0812 (366.1% above average)
-- **new_poster_ratio**: 0.0000 (100.0% below average)
-- **avg_type_token_ratio_delta**: 0.0007 (45.2% above average)
+### 2019-W34 (not flagged, probability: 0.18)
+- **topic_shift_jsd_roll4w**: 0.0457 (56.9% below average)
+- **first_person_singular_ratio_delta**: 0.0025 (5483.8% above average)
+- **avg_type_token_ratio_roll2w**: 0.7275 (5.6% above average)
+- **avg_negative_delta**: -0.0074 (10441.7% below average)
+- **new_poster_ratio_delta**: 0.0194 (831.6% above average)
 
-### 2025-W33 (not flagged, probability: 0.43)
-- **avg_negative**: 0.1495 (16.2% above average)
-- **pct_positive_roll2w**: 0.4965 (0.0% above average)
-- **avg_compound**: -0.1737 (468.9% below average)
-- **new_poster_ratio**: 0.0000 (100.0% below average)
-- **avg_type_token_ratio_delta**: -0.0159 (3506.3% below average)
+### 2019-W35 (FLAGGED, probability: 0.17)
+- **topic_shift_jsd_roll4w**: 0.0541 (48.9% below average)
+- **first_person_singular_ratio_delta**: -0.0012 (2840.4% below average)
+- **avg_type_token_ratio_roll2w**: 0.7256 (5.4% above average)
+- **avg_negative_delta**: 0.0011 (1668.5% above average)
+- **new_poster_ratio_delta**: 0.0058 (318.3% above average)
 
-### 2025-W34 (not flagged, probability: 0.51)
-- **avg_negative**: 0.1666 (29.5% above average)
-- **pct_positive_roll2w**: 0.3417 (31.1% below average)
-- **avg_compound**: -0.3404 (1014.8% below average)
-- **new_poster_ratio**: 0.0000 (100.0% below average)
-- **avg_type_token_ratio_delta**: -0.0231 (5051.4% below average)
+### 2019-W36 (FLAGGED, probability: 0.17)
+- **topic_shift_jsd_roll4w**: 0.0672 (36.5% below average)
+- **first_person_singular_ratio_delta**: 0.0012 (2632.3% above average)
+- **avg_type_token_ratio_roll2w**: 0.7180 (4.3% above average)
+- **avg_negative_delta**: -0.0017 (2293.3% below average)
+- **new_poster_ratio_delta**: -0.0602 (2167.1% below average)
 
 ## Top Contributing Features (SHAP)
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | avg_negative | 1.9528 |
-| 2 | pct_positive_roll2w | 0.6741 |
-| 3 | avg_compound | 0.6310 |
-| 4 | new_poster_ratio | 0.3908 |
-| 5 | avg_type_token_ratio_delta | 0.3697 |
-| 6 | post_volume_roll2w | 0.3221 |
-| 7 | std_word_count_roll2w | 0.3093 |
-| 8 | avg_flesch_kincaid_delta | 0.2599 |
-| 9 | posting_time_entropy_roll2w | 0.2531 |
-| 10 | avg_flesch_kincaid_roll2w | 0.2528 |
+| 1 | topic_shift_jsd_roll4w | 1.3655 |
+| 2 | first_person_singular_ratio_delta | 1.1921 |
+| 3 | avg_type_token_ratio_roll2w | 0.7126 |
+| 4 | avg_negative_delta | 0.6652 |
+| 5 | new_poster_ratio_delta | 0.3385 |
+| 6 | pct_very_negative_delta | 0.2952 |
+| 7 | avg_flesch_kincaid_roll2w | 0.2937 |
+| 8 | std_word_count | 0.2326 |
+| 9 | first_person_plural_ratio_delta | 0.2102 |
+| 10 | pct_very_negative | 0.2013 |
 
 ## Summary
 
-The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in avg_negative, pct_positive_roll2w, avg_compound.
+The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in topic_shift_jsd_roll4w, first_person_singular_ratio_delta, avg_type_token_ratio_roll2w.
