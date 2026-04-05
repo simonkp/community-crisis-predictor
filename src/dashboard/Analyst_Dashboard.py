@@ -34,13 +34,19 @@ import streamlit as st
 
 import requests as _requests
 
-from src.core.ui_config import (
-    DASHBOARD_COPY,
-    DECISION_USEFULNESS_COPY,
-    END_USER_COPY,
-    STATE_COLORS,
-    STATE_NAMES,
-)
+import src.core.ui_config as _ui_config
+
+DASHBOARD_COPY = _ui_config.DASHBOARD_COPY
+DECISION_USEFULNESS_COPY = _ui_config.DECISION_USEFULNESS_COPY
+STATE_COLORS = _ui_config.STATE_COLORS
+STATE_NAMES = _ui_config.STATE_NAMES
+_END_USER_FALLBACK = {
+    "sidebar_hint": (
+        "Moderators: open **Community Copilot** in the app navigation for the triage view. "
+        "The **app** entry is the full analyst dashboard (charts, tabs, model picker)."
+    ),
+}
+END_USER_COPY = getattr(_ui_config, "END_USER_COPY", _END_USER_FALLBACK)
 from src.dashboard.briefs import _render_weekly_brief
 from src.dashboard.charts import build_shap_bar, build_sparkline
 from src.dashboard.components import (
