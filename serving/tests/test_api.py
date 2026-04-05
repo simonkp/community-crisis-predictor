@@ -364,3 +364,57 @@ class TestLogsSummary:
             assert abs(body["overall_drift_rate"] - 1 / 3) < 0.01
         finally:
             log_path.unlink(missing_ok=True)
+
+
+# ---------------------------------------------------------------------------
+# /brief
+# ---------------------------------------------------------------------------
+
+
+class TestBrief:
+    SAMPLE_BRIEF = {
+        "subreddit": "depression",
+        "week": "2020-W12",
+        "predicted_state": "Elevated Distress",
+        "previous_state": "Early Vulnerability Signal",
+        "p_high_distress": 0.72,
+        "distress_score_z": 1.4,
+        "distress_score_delta": 0.3,
+        "shap_top3": ["hopelessness_density", "avg_negative_roll4w", "help_seeking_density"],
+    }
+
+    def test_returns_200(self):
+        r = client.post("/brief", json=self.SAMPLE_BRIEF)
+        assert r.status_code == 200
+
+    def test_response_has_required_fields(self):
+        r = client.post("/brief", json=self.SAMPLE_BRIEF)
+        body = r.json()
+        assert "text" in body
+        assert "source" in body
+        assert "fallback" in body
+        assert "latency_ms" in body
+        assert isinstance(body["text"], str)
+        assert len(body["text"]) > 20
+
+    def test_fallback_when_no_api_keys(self):
+        """With no API keys set, endpoint must fall back to template gracefully."""
+        env_patch = {k: "" for k in ("ANTHROPIC_API_KEY", "OPENAI_API_KEY")}
+        with patch.dict(os.environ, env_patch):
+            r = client.post("/brief", json=self.SAMPLE_BRIEF)
+        body = r.json()
+        assert r.status_code == 200
+        assert body["fallback"] is True
+        assert body["source"] == "template"
+        assert len(body["text"]) > 10
+
+    def test_minimal_payload_works(self):
+        r = client.post(
+            "/brief",
+            json={"subreddit": "anxiety", "week": "2020-W08", "predicted_state": "Stable"},
+        )
+        assert r.status_code == 200
+
+    def test_latency_non_negative(self):
+        r = client.post("/brief", json=self.SAMPLE_BRIEF)
+        assert r.json()["latency_ms"] >= 0

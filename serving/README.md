@@ -11,7 +11,7 @@ for each monitored subreddit, with drift detection and inference logging.
 |---------|-----|
 | API root / health | https://community-crisis-predictor.onrender.com/health |
 | Swagger UI (interactive docs) | https://community-crisis-predictor.onrender.com/docs |
-| Streamlit dashboard | https://community-crisis-predictor.streamlit.app |
+| Streamlit dashboard | https://community-crisis-predictor-mozt6amaceenfxso6pegb8.streamlit.app/ (see repo **README** if the team uses a different app URL) |
 
 > **Cold-start warning (free Render tier):** the service sleeps after 15 min of
 > inactivity. The first request after sleep takes **30–60 seconds** to respond while
@@ -60,7 +60,7 @@ git add . && git commit -m "Refresh deployment artifacts" && git push
    - `https://<your-render-app>.onrender.com/health`
    - `https://<your-render-app>.onrender.com/docs`
 
-> No mandatory env vars for basic deployment because model/report artifacts are read from `../data`.
+> **Inference only:** no env vars required — models/reports load from `../data`. For **Community Copilot** (`POST /brief`), add **`ANTHROPIC_API_KEY`** (or **`OPENAI_API_KEY`**) under **Environment** (see § Deployment on Render.com below).
 
 ### First-time dashboard deployment (Streamlit Cloud)
 
@@ -76,6 +76,8 @@ API_URL = "https://<your-render-app>.onrender.com"
 ```
 
 5. Deploy and verify the sidebar shows API status.
+
+The dashboard is a **multipage Streamlit app**. The sidebar lists **`app`** for the root script (`src/dashboard/app.py`) — the full **analyst dashboard** (charts, tabs, model picker). **Community Copilot** (`src/dashboard/pages/2_End_User_Summary.py`) is the moderator **triage** view: ranked communities with aligned columns and **AI Copilot** (calls `POST /brief` on this API; LLM keys stay on the server). The Streamlit Cloud entrypoint stays **`src/dashboard/app.py`** — do not rename unless you intentionally change Cloud settings.
 
 ---
 
@@ -173,7 +175,7 @@ git add . && git commit -m "Update model artifacts" && git push
 ## Endpoints
 
 ### `GET /health`
-Returns service status and list of loaded subreddits.
+Returns service status, loaded subreddits, **`llm_keys`** / **`dotenv_file`** / **`llm_setup_hint`** (use these to confirm `/brief` can reach an LLM on the host).
 
 ### `POST /predict`
 Runs inference on a weekly feature vector.
@@ -205,6 +207,9 @@ Runs inference on a weekly feature vector.
 }
 ```
 
+### `POST /brief`
+**AI Copilot** for the Streamlit **Community Copilot** page. Accepts structured context (subreddit, week key, predicted state, probabilities, optional SHAP feature names). Runs an LLM on the server (`ANTHROPIC_API_KEY` / `OPENAI_API_KEY`) or falls back to a template. Streamlit never holds provider keys.
+
 ### `GET /model-info`
 Walk-forward metrics (recall, precision, F1, PR-AUC) and top-5 SHAP features per subreddit.
 
@@ -221,7 +226,7 @@ Aggregate statistics from `logs/predictions.jsonl`.
 4. Build command: `pip install -r requirements.txt`
 5. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 6. Instance type: **Free**
-7. No environment variables required (artifacts are committed to repo)
+7. **AI Copilot (`POST /brief`):** in Render → **Environment**, add **`ANTHROPIC_API_KEY`** (or **`OPENAI_API_KEY`**). `.env` is **not** deployed (gitignored), so the live API will report `llm_keys.anthropic: false` and use the template until you set this. Verify with **`GET /health`** (`dotenv_file` is usually `not_found` on Render; that is OK if env vars are set).
 
 ---
 
@@ -229,6 +234,9 @@ Aggregate statistics from `logs/predictions.jsonl`.
 
 | Variable | Default | Description |
 |---|---|---|
+| `ANTHROPIC_API_KEY` | — | Enables real LLM output for **`POST /brief`** (set on Render / production host) |
+| `OPENAI_API_KEY` | — | Fallback LLM for **`POST /brief`** if Anthropic is unset or fails |
+| `ANTHROPIC_MODEL` | `claude-haiku-4-5-20251001` | Override Anthropic model id for `/brief` |
 | `MODEL_DIR` | `../data/models` | Path to model artifact directory |
 | `SHAP_DIR` | `../data/reports` | Path to subreddit report folders containing `shap.csv` |
 | `MOCK_MODELS` | `false` | Set to `true` to start without real model files (CI/testing) |

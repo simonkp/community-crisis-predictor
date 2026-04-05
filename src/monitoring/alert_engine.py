@@ -1,3 +1,4 @@
+import json
 import sqlite3
 from datetime import datetime
 from pathlib import Path
@@ -8,8 +9,9 @@ from src.core.ui_config import ALERT_ENGINE_COPY
 
 
 class AlertEngine:
-    def __init__(self, db_path: str = "data/alerts.db"):
+    def __init__(self, db_path: str = "data/alerts.db", json_path: str = "data/alerts.json"):
         self.db_path = Path(db_path)
+        self.json_path = Path(json_path)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._init_db()
 
@@ -112,6 +114,15 @@ class AlertEngine:
                 ),
             )
             conn.commit()
+        self._export_json()
+
+    def _export_json(self) -> None:
+        """Export all transitions to JSON so the dashboard can read them without SQLite."""
+        try:
+            rows = self.get_recent_transitions(n=1000)
+            self.json_path.write_text(json.dumps(rows, indent=2))
+        except Exception:
+            pass
 
     def get_recent_transitions(self, n: int = 20) -> list[dict]:
         with sqlite3.connect(self.db_path) as conn:

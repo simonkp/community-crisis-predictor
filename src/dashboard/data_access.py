@@ -199,20 +199,31 @@ def load_allocation_report() -> dict | None:
 def load_transitions(n: int = 30) -> list[dict]:
     cfg = load_app_config()
     db = Path(cfg.get("paths", {}).get("alerts_db", "data/alerts.db"))
-    if not db.exists():
-        return []
-    try:
-        with sqlite3.connect(db) as conn:
-            cursor = conn.execute(
-                """
-                SELECT timestamp, subreddit, week_start, from_state, to_state,
-                       distress_score, dominant_signal
-                FROM transitions ORDER BY timestamp DESC LIMIT ?
-                """,
-                (n,),
-            )
-            cols = [d[0] for d in cursor.description]
-            return [dict(zip(cols, row)) for row in cursor.fetchall()]
-    except Exception as e:
-        st.warning(f"Could not load alert transitions: {e}")
-        return []
+    json_path = Path("data/alerts.json")
+
+    # Try SQLite first (local runs); fall back to committed JSON (cloud deploy)
+    if db.exists():
+        try:
+            with sqlite3.connect(db) as conn:
+                cursor = conn.execute(
+                    """
+                    SELECT timestamp, subreddit, week_start, from_state, to_state,
+                           distress_score, dominant_signal
+                    FROM transitions ORDER BY timestamp DESC LIMIT ?
+                    """,
+                    (n,),
+                )
+                cols = [d[0] for d in cursor.description]
+                return [dict(zip(cols, row)) for row in cursor.fetchall()]
+        except Exception as e:
+            st.warning(f"Could not load alert transitions: {e}")
+
+    if json_path.exists():
+        try:
+            import json as _json
+            rows = _json.loads(json_path.read_text())
+            return rows[:n]
+        except Exception:
+            pass
+
+    return []

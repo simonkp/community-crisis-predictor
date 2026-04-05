@@ -1,0 +1,3107 @@
+[
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "99",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4784,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "98",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4824,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "98",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4068,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "97",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.474,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "97",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4819,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "97",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4726,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "96",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4916,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "96",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4904,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "95",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4933,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "95",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4897,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "95",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.7,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "95",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4902,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "94",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4767,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "94",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.6501,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "94",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4669,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "93",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.482,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "92",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4729,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "92",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4674,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "89",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4698,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "89",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4621,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "88",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4726,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "87",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4719,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "87",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4606,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "87",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4605,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "86",
+    "from_state": 3,
+    "to_state": 1,
+    "distress_score": 0.4667,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "86",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4684,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "86",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.55,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "86",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.15,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "86",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4623,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "85",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.7849,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "85",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.114,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "84",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.3094,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "84",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.2107,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "84",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.1218,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "83",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.2157,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "81",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.1758,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "81",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.4029,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "79",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.2493,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "79",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.5023,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "79",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4499,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "78",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.3338,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "78",
+    "from_state": 3,
+    "to_state": 1,
+    "distress_score": 0.4996,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "76",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.6498,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "75",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.6043,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "75",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.7545,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "75",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.6659,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "75",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.7317,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "74",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.509,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "74",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.7662,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "66",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.5499,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "65",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.4836,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "64",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.6001,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "63",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4536,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "62",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4332,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "62",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.5299,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "62",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4999,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "61",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4483,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "61",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.5,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "59",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.3983,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "58",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4476,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "57",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.3995,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "56",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.3499,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "56",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4476,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "55",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.3,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "55",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.2521,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "53",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4439,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "53",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.2064,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "52",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.5005,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "51",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4018,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "51",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4497,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "50",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.3999,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "49",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4431,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "49",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4632,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "48",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.4546,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "48",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.65,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "48",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.1501,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "47",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "47",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.45,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "47",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.65,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "47",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.15,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "46",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.65,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "44",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.65,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "43",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.45,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "43",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.1499,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "42",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.1999,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "41",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.5001,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "40",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.1999,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "39",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.45,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "38",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.1999,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "37",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.4512,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "361",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4621,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "36",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4506,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "354",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.838,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "354",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5001,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "354",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.9437,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "353",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.8293,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "353",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.8008,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "353",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.9286,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "352",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.8422,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "352",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.3857,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "352",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.9143,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "350",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.8001,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "350",
+    "from_state": 1,
+    "to_state": 3,
+    "distress_score": 0.7939,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "350",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.8857,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "349",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7872,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "348",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3917,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "348",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.7405,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "348",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.8841,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "347",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.7682,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "347",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.7428,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "346",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7536,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "346",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.8551,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "342",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.3181,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "342",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.8089,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "341",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3128,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "341",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.7884,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "341",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.7942,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "340",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.706,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "340",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7795,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "338",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6867,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "338",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.7234,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "338",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.7612,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "337",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.6717,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "337",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.2687,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "337",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.7532,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "333",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.697,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "332",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.6792,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "331",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.2576,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "330",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.2424,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "328",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.6155,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "328",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.2308,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "328",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.6671,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "327",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.2154,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "326",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.5846,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "325",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.1999,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "323",
+    "from_state": 3,
+    "to_state": 1,
+    "distress_score": 0.1718,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "322",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.1562,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "321",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.1562,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "317",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.1111,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "317",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.5272,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "316",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.5719,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "315",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.4863,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "314",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.485,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "313",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.4355,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "313",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.4645,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "312",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4487,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "312",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.5275,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "311",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4517,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "305",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.42,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "302",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5286,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "302",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.7527,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "302",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.3485,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "301",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.7302,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "300",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.5119,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "298",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.339,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "297",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.3221,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "297",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5268,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "296",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.5097,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "296",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.2892,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "295",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.7967,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "295",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.2835,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "293",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5218,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "293",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.8452,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "292",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.5059,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "291",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.512,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "291",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.7063,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "290",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.513,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "290",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.2436,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "289",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6079,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "289",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.2413,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "287",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.2456,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "287",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.9474,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "287",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.2632,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "286",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.2456,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "286",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.2632,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "285",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.9475,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "283",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5153,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "283",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.3036,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "282",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.4829,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "281",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.485,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "281",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.3393,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "280",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.2857,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "280",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.5141,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "280",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.3393,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "279",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.2857,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "278",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.2909,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "278",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.3454,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "277",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.3092,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "277",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5213,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "277",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.3455,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "276",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.4626,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "275",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4947,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "275",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4616,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "273",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.5365,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "272",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4413,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "271",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6302,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "271",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.8519,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "271",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3519,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "270",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4827,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "269",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.6502,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "269",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.3519,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "268",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.3397,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "268",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.8298,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "268",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.8868,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "267",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.3397,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "267",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4772,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "266",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.3208,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "266",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6902,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "266",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.8868,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "265",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.3208,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "265",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5115,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "265",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3586,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "262",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.2885,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "262",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4918,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "262",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.9039,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "262",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.3654,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "261",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.3077,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "261",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.5085,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "261",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.8847,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "261",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3462,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "260",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.2885,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "260",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.5027,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "260",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.3654,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "258",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.8628,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "258",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.353,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "257",
+    "from_state": 2,
+    "to_state": 3,
+    "distress_score": 0.8639,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "256",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5227,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "256",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.8635,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "256",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.353,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "255",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.2745,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "255",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.353,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "254",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4912,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "253",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.4993,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "252",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.26,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "252",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.36,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "248",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7347,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "248",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.3877,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "247",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.7143,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "246",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.7143,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "246",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.347,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "243",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3333,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "242",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.3334,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "240",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.3334,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "236",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.6595,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "235",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.6382,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "235",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.2766,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "233",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.6304,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "230",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.5652,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "228",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.1111,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "227",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.1111,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "210",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.2857,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "206",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.3171,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "205",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.3415,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "205",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.7561,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "204",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7561,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "202",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.0749,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "200",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.1,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "187",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.7838,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "186",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.1351,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "185",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.1351,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "185",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7838,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "185",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4821,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "183",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.4917,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "181",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.7499,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "181",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4934,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "180",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.1107,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "180",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7222,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "180",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.4915,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "175",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.4719,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "173",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.5076,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "162",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.0937,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "161",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.125,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "159",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.0937,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "158",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.0968,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "156",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.0968,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "155",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.0968,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "152",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.1,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "151",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.6,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "148",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.6208,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "147",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.6208,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "146",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6208,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "143",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.6072,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "143",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.8929,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "142",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.6786,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "142",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6072,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "142",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.8572,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "141",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.6072,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "141",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.8215,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "140",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.8929,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "140",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.8215,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "139",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.6429,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "137",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.6297,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "137",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.8889,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "136",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.7407,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "133",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.6588,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "133",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.7308,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "133",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.8847,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "132",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.8699,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "131",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.6539,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "131",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.8847,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "131",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.8847,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "130",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.4859,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "130",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.8847,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "128",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.8,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "128",
+    "from_state": 1,
+    "to_state": 3,
+    "distress_score": 0.88,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "128",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.84,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "127",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.5201,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "127",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.8,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "126",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.76,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "126",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.7599,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "125",
+    "from_state": 3,
+    "to_state": 1,
+    "distress_score": 0.44,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "125",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.72,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "125",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.76,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "125",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.671,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "124",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.72,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "123",
+    "from_state": 1,
+    "to_state": 3,
+    "distress_score": 0.4167,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "123",
+    "from_state": 0,
+    "to_state": 2,
+    "distress_score": 0.7084,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "122",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.6667,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "121",
+    "from_state": 3,
+    "to_state": 1,
+    "distress_score": 0.6668,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "117",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.5653,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "117",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.5654,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "116",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4782,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "116",
+    "from_state": 2,
+    "to_state": 0,
+    "distress_score": 0.5218,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "116",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.5218,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "115",
+    "from_state": 3,
+    "to_state": 1,
+    "distress_score": 0.3913,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "115",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.4349,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "115",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.6087,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "115",
+    "from_state": 3,
+    "to_state": 2,
+    "distress_score": 0.5219,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "115",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4783,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "113",
+    "from_state": 1,
+    "to_state": 3,
+    "distress_score": 0.3182,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "113",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.4092,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "112",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3637,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "112",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.591,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "mentalhealth",
+    "week_start": "112",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.409,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "112",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.3636,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "111",
+    "from_state": 3,
+    "to_state": 0,
+    "distress_score": 0.5911,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "110",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.2272,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "110",
+    "from_state": 2,
+    "to_state": 1,
+    "distress_score": 0.3182,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "lonely",
+    "week_start": "110",
+    "from_state": 0,
+    "to_state": 3,
+    "distress_score": 0.591,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "110",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.2727,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "109",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.237,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "108",
+    "from_state": 1,
+    "to_state": 0,
+    "distress_score": 0.1428,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "depression",
+    "week_start": "108",
+    "from_state": 1,
+    "to_state": 2,
+    "distress_score": 0.238,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "anxiety",
+    "week_start": "105",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4797,
+    "dominant_signal": ""
+  },
+  {
+    "timestamp": "2026-04-05T04:41:42.812450+00:00",
+    "subreddit": "suicidewatch",
+    "week_start": "105",
+    "from_state": 0,
+    "to_state": 1,
+    "distress_score": 0.4798,
+    "dominant_signal": ""
+  }
+]

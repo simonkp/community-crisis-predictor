@@ -187,7 +187,7 @@ def template_fallback(context: dict[str, Any], playbook: str) -> str:
     return f"{s1} {s2} {s3}"
 
 
-def _call_anthropic(user_prompt: str) -> tuple[str | None, str | None]:
+def _call_anthropic(user_prompt: str, *, system: str | None = None) -> tuple[str | None, str | None]:
     try:
         import anthropic
     except ImportError:
@@ -195,12 +195,13 @@ def _call_anthropic(user_prompt: str) -> tuple[str | None, str | None]:
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
         return None, "ANTHROPIC_API_KEY missing"
+    sys_prompt = system if system is not None else SYSTEM_PROMPT
     try:
         client = anthropic.Anthropic(api_key=key)
         msg = client.messages.create(
             model=ANTHROPIC_MODEL,
             max_tokens=500,
-            system=SYSTEM_PROMPT,
+            system=sys_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         )
         block = msg.content[0]
@@ -211,7 +212,7 @@ def _call_anthropic(user_prompt: str) -> tuple[str | None, str | None]:
         return None, f"anthropic error: {e.__class__.__name__}: {e}"
 
 
-def _call_openai(user_prompt: str) -> tuple[str | None, str | None]:
+def _call_openai(user_prompt: str, *, system: str | None = None) -> tuple[str | None, str | None]:
     try:
         from openai import OpenAI
     except ImportError:
@@ -219,12 +220,13 @@ def _call_openai(user_prompt: str) -> tuple[str | None, str | None]:
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key:
         return None, "OPENAI_API_KEY missing"
+    sys_prompt = system if system is not None else SYSTEM_PROMPT
     try:
         client = OpenAI(api_key=key)
         comp = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": sys_prompt},
                 {"role": "user", "content": user_prompt},
             ],
             max_tokens=500,
@@ -312,6 +314,48 @@ def generate_narrative_from_context(
 ) -> str:
     narrative, _, _ = _generate_narrative_with_meta(context, playbook)
     return narrative
+
+
+END_USER_LLM_SYSTEM = (
+    "You explain community-level mental health early-warning dashboard outputs to non-technical stakeholders. "
+    "Use only facts from the JSON. No individual diagnoses. No medical treatment advice. "
+    "Do not name specific ML architectures (e.g. LSTM, XGBoost). Plain English only."
+)
+
+
+def generate_end_user_dashboard_narrative(
+    context: dict[str, Any],
+    playbook: str,
+) -> tuple[str, str, str]:
+    """Return (text, source, note) for the Streamlit end-user page. source: anthropic|openai|template."""
+    playbook_excerpt = (playbook or "")[:2500]
+    user_msg = (
+        "Use ONLY the JSON facts below. Write exactly 2 short paragraphs.\n"
+        "Paragraph 1: What this week's community-level signal means in everyday language.\n"
+        "Paragraph 2: Practical next steps for moderation or community operations "
+        "(no clinical care advice for individuals).\n\n"
+        f"JSON:\n{json.dumps(context, indent=2)}\n\n"
+        "--- Playbook (paraphrase suggested actions only; do not invent new guidance) ---\n"
+        f"{playbook_excerpt}"
+    )
+    mode, mode_note = _resolve_narrative_mode()
+    if mode == "template":
+        return template_fallback(context, playbook or ""), "template", mode_note
+
+    if mode == "anthropic":
+        text, anth_note = _call_anthropic(user_msg, system=END_USER_LLM_SYSTEM)
+        if text:
+            return text.strip(), "anthropic", "ok"
+        text, openai_note = _call_openai(user_msg, system=END_USER_LLM_SYSTEM)
+        if text:
+            return text.strip(), "openai", f"anthropic_unavailable: {anth_note}"
+        notes = [n for n in (anth_note, openai_note) if n]
+        return template_fallback(context, playbook or ""), "template", " | ".join(notes) if notes else mode_note
+
+    text, openai_note = _call_openai(user_msg, system=END_USER_LLM_SYSTEM)
+    if text:
+        return text.strip(), "openai", "ok"
+    return template_fallback(context, playbook or ""), "template", (openai_note or mode_note)
 
 
 def _normalize_sentences(text: str) -> str:
