@@ -90,6 +90,9 @@ st.markdown("""
 
 /* Section intro */
 .sec-intro{font-size:.85rem;opacity:.65;margin:-4px 0 12px;}
+
+/* Stop narrow column buttons from stacking one letter per line */
+section.main button p{white-space:nowrap !important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -215,9 +218,8 @@ st.markdown("## 🤝 Community Copilot")
 st.markdown(
     "**Who is this for?** Community managers, moderators, and platform safety staff who need "
     "to monitor mental-health signals across multiple subreddits — without needing a data science background.\n\n"
-    "**How to use it:** The left panel shows all monitored communities ranked by forecast severity "
-    "for the selected week, so you can spot the most at-risk community at a glance. "
-    "Click any community to open its full breakdown on the right: signal strength, trend direction, "
+    "**How to use it:** The table below lists all monitored communities ranked by forecast severity "
+    "for the selected week. Tap **Show** on a row, then scroll down for the full breakdown: signal strength, trend direction, "
     "the pre-written weekly brief, and — when the live API is connected — an **AI Copilot explanation** "
     "that turns model outputs into plain-language situation summaries and concrete moderation suggestions "
     "grounded in your playbook. Use the week slider in the sidebar to review any past week."
@@ -226,17 +228,16 @@ st.markdown(
 # ── Red divider: intro (full width) vs main workspace ──────────────────────
 st.markdown('<hr class="eu-red-rule" />', unsafe_allow_html=True)
 
-# ── TWO equal columns: triage list | detail ────────────────────────────────
-col_list, col_detail = st.columns(2, gap="medium")
+# ── Stacked full-width sections (laptop + Streamlit sidebar: avoids cramped 50/50 split) ──
+_triage_col = st.columns(1)[0]
 
-# ── LEFT: aligned community table + Open buttons ───────────────────────────
-with col_list:
+with _triage_col:
     st.markdown(f"#### Communities · {week_display}",
                 help="Ranked worst-first by the model's forecast for the following week.")
-    st.caption("Use **Open** to show a community in the panel on the right.")
+    st.caption("Use **Show** on a row, then scroll down for charts and Copilot.")
 
-    # Column weights: narrow rank & p(hi), room for full signal labels, compact trend + action
-    _cg = [0.42, 1.05, 2.35, 0.58, 0.92, 0.55]
+    # Wider last column so the action button never letter-stacks on narrow viewports
+    _cg = [0.45, 1.0, 2.25, 0.58, 0.85, 1.2]
     h = st.columns(_cg)
     h[0].markdown("**#**")
     h[1].markdown("**Community**")
@@ -263,17 +264,20 @@ with col_list:
             st.markdown(f"{snap['trend_icon']} {snap['trend_str']}")
         with r[5]:
             if st.button(
-                "✓" if is_sel else "Open",
+                "✓" if is_sel else "Show",
                 key=f"sel_{sub}",
                 use_container_width=True,
                 type="primary" if is_sel else "secondary",
-                help=f"Show r/{sub} in the right panel",
+                help=f"Load r/{sub} in the section below",
             ):
                 st.session_state.selected_sub = sub
                 st.rerun()
 
-# ── RIGHT: COMMUNITY DETAIL ─────────────────────────────────────────────────
-with col_detail:
+st.divider()
+_detail_col = st.columns(1)[0]
+
+# ── Selected community (full width below table) ────────────────────────────
+with _detail_col:
     subreddit = st.session_state.selected_sub
     model_choice = _best_model(subreddit)
     snap = next(s for s in snapshots if s["sub"] == subreddit)
@@ -446,16 +450,13 @@ with col_detail:
         ]
         with st.expander("📊 Signal breakdown", expanded=True):
             st.markdown(
-                '<p class="sec-intro">Three plain-language cards summarising the observation, '
-                "forecast and confidence. Community-level signals only.</p>",
+                '<p class="sec-intro">Observation, forecast and confidence — full width for easier reading on small screens.</p>',
                 unsafe_allow_html=True,
             )
-            c1, c2, c3 = st.columns(3)
-            for col, (icon, title, body) in zip([c1, c2, c3], insight_cards):
-                with col:
-                    with st.container(border=True):
-                        st.markdown(f"**{icon} {title}**")
-                        st.markdown(body)
+            for icon, title, body in insight_cards:
+                with st.container(border=True):
+                    st.markdown(f"**{icon} {title}**")
+                    st.markdown(body)
 
         brief = get_brief_text(subreddit, week_key)
         with st.expander("📋 Weekly Brief", expanded=False):
@@ -478,7 +479,7 @@ with col_detail:
                 for i, feat in enumerate(shap_top3, 1):
                     st.markdown(f"**{i}.** `{feat}`")
 
-# ── Full-width footer (below the two-column workspace) ─────────────────────
+# ── Full-width footer ────────────────────────────────────────────────────────
 st.markdown('<hr class="eu-red-rule" />', unsafe_allow_html=True)
 with st.expander("⚠️ Responsible use (all communities)", expanded=False):
     st.markdown("""
