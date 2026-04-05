@@ -173,7 +173,7 @@ The app is **multipage** (Streamlit `pages/`). Entry point remains `src/dashboar
 | Page | Purpose |
 |------|---------|
 | **app** (sidebar label) | Full **analyst dashboard**: all-community cards, week replay, tabs (drift, SHAP, quality, metrics, allocation), model dropdown. |
-| **Community Copilot** (`pages/2_End_User_Summary.py`) | **Moderator triage**: 50/50 two-column layout — ranked community table (rank, community, signal, p(hi), trend, **Open**) and live detail + **AI Copilot** on the right (`POST /brief` on the API; keys on the server only). Full-width “Responsible use” below. Sidebar links back to **app** (analyst home). |
+| **Community Copilot** (`pages/2_End_User_Summary.py`) | **Moderator triage**: full-width **stacked** layout (community table, then detail + **AI Copilot** below) so laptop + Streamlit sidebar stay readable. Table columns: rank, community, signal, p(hi), trend, **Show**. Copilot uses `POST /brief` (keys on server). Full-width “Responsible use” footer. Sidebar links back to **app**. |
 
 **Analyst dashboard (`app`)** highlights:
 
