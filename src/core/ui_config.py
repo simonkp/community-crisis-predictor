@@ -63,6 +63,48 @@ PIPELINE_COPY = {
     "recall_metric_label": "Recall (high-distress)",
 }
 
+END_USER_COPY = {
+    "page_title": "Community Copilot",
+    "title": "Weekly summary",
+    "subtitle": "Plain-language view for stakeholders. Numbers come from your pipeline outputs; this is not medical advice.",
+    "hero_week_prefix": "Week of",
+    "community_label": "Community",
+    "model_note_expander": "Technical note (optional)",
+    "model_note_body": (
+        "The headline uses the model’s **predicted state for the following week** and **high-distress probability**. "
+        "You can change the model on the **app** (analyst) page; this page stays in sync via the same session settings."
+    ),
+    "bullet_what_we_see": "What we see in the data",
+    "bullet_model_flag": "What the forecast suggests (next week)",
+    "bullet_confidence": "How strong that signal is",
+    "brief_header": "Weekly brief",
+    "brief_missing": "No pre-generated brief for this week. Run evaluation to populate weekly briefs, or use the button below.",
+    "llm_button": "Generate plain-language explanation (LLM)",
+    "llm_help": "Uses only structured metrics and brief excerpt—no raw posts. Requires API keys in environment or Streamlit secrets.",
+    "llm_based_on": "Based on (structured facts)",
+    "llm_result_header": "Explanation",
+    "llm_footer_note": "Generated text may still contain errors; verify against the facts above.",
+    "limitations_expander": "Limitations and responsible use",
+    "limitations_body": (
+        "- **Population-level only** — describes patterns in a subreddit for a week, not any person.\n"
+        "- **Weekly lag** — based on aggregated weekly features, not real-time chat.\n"
+        "- **Not clinical** — not a diagnosis or treatment recommendation.\n"
+        "- **Data and model limits** — trained on historical Reddit-era data; live behavior can differ.\n"
+        "- **Moderation support** — intended to prioritize attention, not replace human judgment."
+    ),
+    "sidebar_hint": (
+        "Moderators: open **Community Copilot** in the app navigation for the triage view. "
+        "The **app** entry is the full analyst dashboard (charts, tabs, model picker)."
+    ),
+    "confidence_low": "Lower — treat as background noise unless sustained.",
+    "confidence_moderate": "Moderate — worth monitoring alongside other signals.",
+    "confidence_elevated": "Elevated — review internal playbooks and recent context.",
+    "distress_vs_prior_up": "Language-based distress signal is **higher** than the prior week.",
+    "distress_vs_prior_down": "Language-based distress signal is **lower** than the prior week.",
+    "distress_vs_prior_flat": "Language-based distress signal is **similar** to the prior week.",
+    "nav_caption": "Week and community (synced with Home)",
+}
+
 DECISION_USEFULNESS_COPY = {
     "title": "### Decision usefulness (top-K alert recall)",
     "intro": (
@@ -85,6 +127,7 @@ __all__ = [
     "TIMELINE_STATE_MARKER_COLORS",
     "TIMELINE_THRESHOLD_COLORS",
     "DASHBOARD_COPY",
+    "END_USER_COPY",
     "TIMELINE_COPY",
     "CASE_STUDY_COPY",
     "ALERT_ENGINE_COPY",

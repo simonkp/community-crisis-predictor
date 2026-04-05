@@ -13,6 +13,10 @@ Run locally
     cd serving
     uvicorn main:app --reload --port 8000
 
+`main.py` loads **`../.env`** (repo root) via `python-dotenv` so `ANTHROPIC_API_KEY` /
+`OPENAI_API_KEY` are set for `POST /brief` without exporting them in the shell.
+Render/production should set env vars in the host UI (`.env` is not deployed).
+
 Then visit http://localhost:8000/docs for the interactive Swagger UI.
 """
 
@@ -25,6 +29,62 @@ from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
+
+# Load .env for local dev. Cloud hosts (Render, etc.) do not ship .env — set keys in the provider UI.
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_SERVING_DIR = Path(__file__).resolve().parent
+_DOTENV_LOADED: str | None = None
+
+
+def _apply_env_file_without_dotenv(path: Path) -> None:
+    """Minimal .env parser if python-dotenv is not installed (same venv as uvicorn)."""
+    try:
+        raw = path.read_text(encoding="utf-8-sig")
+    except OSError:
+        return
+    for line in raw.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[7:].strip()
+        if "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key = key.strip()
+        val = val.strip()
+        if len(val) >= 2 and val[0] == val[-1] and val[0] in "\"'":
+            val = val[1:-1]
+        if key:
+            os.environ[key] = val
+
+
+def _load_dotenv_files() -> None:
+    """First existing file wins. Values override empty shell vars (same as load_dotenv override=True)."""
+    global _DOTENV_LOADED
+    candidates = [
+        _REPO_ROOT / ".env",
+        _SERVING_DIR / ".env",
+        Path.cwd() / ".env",
+    ]
+    for p in candidates:
+        if not p.is_file():
+            continue
+        resolved = str(p.resolve())
+        try:
+            from dotenv import load_dotenv
+
+            load_dotenv(p, override=True)
+            _DOTENV_LOADED = resolved
+            return
+        except ImportError:
+            _apply_env_file_without_dotenv(p)
+            _DOTENV_LOADED = f"{resolved} (no python-dotenv; used built-in parser)"
+            return
+    _DOTENV_LOADED = "not_found"
+
+
+_load_dotenv_files()
 
 import numpy as np
 import pandas as pd
@@ -302,12 +362,124 @@ def _log_prediction(entry: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# LLM brief helpers (keys stay on the server; Streamlit never sees them)
+# ---------------------------------------------------------------------------
+
+_PLAYBOOK_PATH = Path(os.environ.get("PLAYBOOK_PATH", "../config/intervention_playbook.md"))
+_BRIEF_ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
+_BRIEF_OPENAI_MODEL = "gpt-4o"
+_BRIEF_MAX_TOKENS = 600
+_BRIEF_SYSTEM = (
+    "You generate community-level situation summaries and moderation suggestions for "
+    "non-technical subreddit staff. Use ONLY the facts in the JSON. Never give individual "
+    "medical or clinical advice. Do not name ML architectures (LSTM, XGBoost, etc). Plain English."
+)
+_BRIEF_USER_TEMPLATE = """\
+Structured weekly dashboard data (JSON — sole factual source):
+{ctx_json}
+
+--- Moderation playbook (use for suggested actions only; do not invent guidance) ---
+{playbook}
+
+Write exactly two short paragraphs:
+Paragraph 1: What this week's aggregate community signal means in everyday language (2–4 sentences).
+Paragraph 2: 3 to 5 concrete, community-level suggestions for moderation staff based ONLY on the playbook (no individual advice).
+
+Output ONLY the two paragraphs. No headings, no lists, no extra commentary.
+"""
+
+
+def _load_playbook() -> str:
+    if _PLAYBOOK_PATH.exists():
+        return _PLAYBOOK_PATH.read_text(encoding="utf-8").strip()[:3000]
+    return ""
+
+
+def _playbook_action_for_state(playbook: str, state_label: str) -> str:
+    """First bullet from the playbook section matching state_label."""
+    for line in playbook.splitlines():
+        if line.startswith("## ") and state_label in line:
+            for body_line in playbook.splitlines()[playbook.splitlines().index(line) + 1:]:
+                if body_line.startswith("## "):
+                    break
+                stripped = body_line.strip()
+                if stripped.startswith("- "):
+                    return stripped[2:].strip()
+    return "Review the moderation playbook for this signal level."
+
+
+def _brief_template_fallback(ctx: dict, playbook: str) -> str:
+    state = ctx.get("predicted_state", "—")
+    sub = ctx.get("subreddit", "this community")
+    week = ctx.get("week", "this week")
+    delta = ctx.get("distress_score_delta", 0.0)
+    features = ", ".join(f["feature"] for f in (ctx.get("shap_top5") or [])[:3]) or "key signals"
+    delta_dir = "rose" if delta > 0 else ("fell" if delta < 0 else "held steady")
+    action = _playbook_action_for_state(playbook, state)
+    para1 = (
+        f"{sub} ({week}) shows a community-level signal of {state}. "
+        f"The composite distress indicator {delta_dir} compared with the prior week. "
+        f"The most influential signals this week include {features}."
+    )
+    para2 = f"Suggested action: {action}"
+    return f"{para1}\n\n{para2}"
+
+
+def _call_llm_brief(user_prompt: str) -> tuple[str | None, str]:
+    """Try Anthropic then OpenAI; return (text, source). text is None on full failure."""
+    anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    openai_key = os.environ.get("OPENAI_API_KEY", "").strip()
+
+    if anthropic_key:
+        try:
+            import anthropic  # lazy import; not in core serving hot path
+            client = anthropic.Anthropic(api_key=anthropic_key)
+            msg = client.messages.create(
+                model=_BRIEF_ANTHROPIC_MODEL,
+                max_tokens=_BRIEF_MAX_TOKENS,
+                system=_BRIEF_SYSTEM,
+                messages=[{"role": "user", "content": user_prompt}],
+            )
+            block = msg.content[0]
+            if block.type == "text":
+                return block.text.strip(), "anthropic"
+        except Exception as exc:
+            logging.warning("Anthropic brief call failed: %s", exc)
+
+    if openai_key:
+        try:
+            from openai import OpenAI  # lazy import
+            client = OpenAI(api_key=openai_key)
+            comp = client.chat.completions.create(
+                model=_BRIEF_OPENAI_MODEL,
+                max_tokens=_BRIEF_MAX_TOKENS,
+                messages=[
+                    {"role": "system", "content": _BRIEF_SYSTEM},
+                    {"role": "user", "content": user_prompt},
+                ],
+            )
+            text = (comp.choices[0].message or {}).content or ""
+            if text:
+                return text.strip(), "openai"
+        except Exception as exc:
+            logging.warning("OpenAI brief call failed: %s", exc)
+
+    return None, "none"
+
+
+# ---------------------------------------------------------------------------
 # FastAPI app
 # ---------------------------------------------------------------------------
 
 @asynccontextmanager
 async def _lifespan(application: "FastAPI"):  # noqa: F821
     logging.basicConfig(level=logging.INFO)
+    logging.info(
+        "Env: dotenv=%s anthropic_key=%s openai_key=%s",
+        _DOTENV_LOADED,
+        bool(os.environ.get("ANTHROPIC_API_KEY", "").strip()),
+        bool(os.environ.get("OPENAI_API_KEY", "").strip()),
+    )
     _load_models()
     yield
 
@@ -406,11 +578,79 @@ class PredictResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 
+class BriefRequest(BaseModel):
+    subreddit: str = Field(..., description="Subreddit short name (e.g. 'depression')")
+    week: str = Field(..., description="ISO week label, e.g. '2020-W12'")
+    predicted_state: str = Field(..., description="State label from STATE_NAMES")
+    previous_state: str = Field("n/a", description="Previous week's state label or 'n/a'")
+    p_high_distress: Optional[float] = Field(None, description="High-distress probability [0-1]")
+    distress_score_z: Optional[float] = Field(None, description="Composite distress z-score for this week")
+    distress_score_delta: Optional[float] = Field(None, description="Change vs prior week")
+    shap_top3: Optional[list[str]] = Field(None, description="Top 3 feature names by SHAP importance")
+
+
+class BriefResponse(BaseModel):
+    text: str
+    source: str
+    fallback: bool
+    latency_ms: float
+
+
+@app.post("/brief", response_model=BriefResponse, summary="Generate plain-language copilot explanation (LLM on server)")
+def generate_brief(req: BriefRequest) -> BriefResponse:
+    """Accept structured signal context; call LLM on the server (keys never leave).
+    Falls back to a template when no API keys are present."""
+    t_start = time.perf_counter()
+    playbook = _load_playbook()
+
+    ctx: dict = {
+        "subreddit": f"r/{req.subreddit}",
+        "week": req.week,
+        "predicted_state": req.predicted_state,
+        "previous_state": req.previous_state,
+    }
+    if req.p_high_distress is not None:
+        ctx["p_high_distress_following_week"] = round(float(req.p_high_distress), 4)
+    if req.distress_score_z is not None:
+        ctx["composite_distress_score_z"] = round(float(req.distress_score_z), 4)
+    if req.distress_score_delta is not None:
+        ctx["distress_score_delta"] = round(float(req.distress_score_delta), 4)
+    if req.shap_top3:
+        ctx["top_signals"] = req.shap_top3[:3]
+
+    user_prompt = _BRIEF_USER_TEMPLATE.format(
+        ctx_json=json.dumps(ctx, indent=2),
+        playbook=playbook,
+    )
+
+    text, source = _call_llm_brief(user_prompt)
+    fallback = text is None
+    if fallback:
+        text = _brief_template_fallback(ctx, playbook)
+        source = "template"
+
+    return BriefResponse(
+        text=text,
+        source=source,
+        fallback=fallback,
+        latency_ms=round((time.perf_counter() - t_start) * 1000, 1),
+    )
+
+
 @app.get("/health", summary="Service health and loaded model inventory")
 def health() -> dict:
     models_loaded = sorted(
         sub for sub in FULL_MODEL_SUBS if sub in _xgb_models or sub in _lstm_models
     )
+    has_anth = bool(os.environ.get("ANTHROPIC_API_KEY", "").strip())
+    has_oai = bool(os.environ.get("OPENAI_API_KEY", "").strip())
+    hint = None
+    if not has_anth and not has_oai:
+        hint = (
+            "No LLM API keys in this process. For Render/Railway/etc. add ANTHROPIC_API_KEY "
+            "(or OPENAI_API_KEY) in the service Environment settings — .env is gitignored and not deployed. "
+            "Locally, ensure repo-root .env exists or export the variable in the shell before uvicorn."
+        )
     return {
         "status": "healthy",
         "models_loaded": models_loaded,
@@ -418,6 +658,13 @@ def health() -> dict:
         "feature_columns_loaded": len(_feature_columns),
         "mock_mode": MOCK_MODELS,
         "version": VERSION,
+        "dotenv_file": _DOTENV_LOADED,
+        "llm_keys": {
+            "anthropic": has_anth,
+            "openai": has_oai,
+        },
+        "anthropic_model": _BRIEF_ANTHROPIC_MODEL,
+        "llm_setup_hint": hint,
     }
 
 

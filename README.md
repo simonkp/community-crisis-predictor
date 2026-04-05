@@ -168,6 +168,15 @@ Walk-forward evaluation: each fold trains on all past data, predicts the next we
 
 ### 6. Dashboard — Streamlit
 
+The app is **multipage** (Streamlit `pages/`). Entry point remains `src/dashboard/app.py` for Streamlit Cloud.
+
+| Page | Purpose |
+|------|---------|
+| **app** (sidebar label) | Full **analyst dashboard**: all-community cards, week replay, tabs (drift, SHAP, quality, metrics, allocation), model dropdown. |
+| **Community Copilot** (`pages/2_End_User_Summary.py`) | **Moderator triage**: 50/50 two-column layout — ranked community table (rank, community, signal, p(hi), trend, **Open**) and live detail + **AI Copilot** on the right (`POST /brief` on the API; keys on the server only). Full-width “Responsible use” below. Sidebar links back to **app** (analyst home). |
+
+**Analyst dashboard (`app`)** highlights:
+
 - **All-community card row**: state badge, distress score, p(distress), 15-week sparkline
 - **Week slider**: replay any week from 2018 to 2024, all communities in sync
 - **Timeline**: distress score + walk-forward predictions + threshold bands + COVID marker
@@ -276,7 +285,8 @@ src/
 │   ├── feature_importance.py    SHAP bar chart
 │   └── dashboard.py            Combined HTML report
 ├── dashboard/
-│   ├── app.py                   Streamlit entrypoint
+│   ├── app.py                   Streamlit entrypoint (sidebar nav shows as **app**)
+│   ├── pages/                   Multipage: Community Copilot (`2_End_User_Summary.py`)
 │   ├── data_access.py           Cached loaders (features / eval / reports)
 │   ├── state.py                 Ensemble merge · model picker · monitoring mode
 │   ├── components.py            Drift table · metrics panel · alert feed
@@ -292,7 +302,8 @@ src/
     └── run_all.py               Chains all stages; --synthetic, --skip-topics, --force flags
 
 serving/                         FastAPI inference service (Render.com)
-├── main.py                      /health /predict /model-info /logs/summary
+├── main.py                      /health /predict /brief /model-info /logs/summary
+├── requirements.txt             Includes python-dotenv; `pip install -r` before local uvicorn
 config/
 ├── default.yaml                 All pipeline settings
 ├── lexicons/                    7 distress lexicon files (hopelessness, suicidality, etc.)
@@ -381,13 +392,16 @@ prescriptive:
 | Service | Platform | URL |
 |---------|----------|-----|
 | Streamlit dashboard | Streamlit Cloud | https://community-crisis-predictor-mozt6amaceenfxso6pegb8.streamlit.app/ |
+| FastAPI inference API | Render.com | https://community-crisis-predictor.onrender.com |
+
+Set **`ANTHROPIC_API_KEY`** (or **`OPENAI_API_KEY`**) in the Render service **Environment** so **`POST /brief`** (Community Copilot) uses a real LLM; `.env` is not deployed. Verify with **`GET /health`** → `llm_keys`. See **`serving/README.md`** for full API setup.
 
 ```bash
 # Local dashboard
 streamlit run src/dashboard/app.py
 
-# Local API
-cd serving && uvicorn main:app --reload
+# Local API (loads repo-root or serving/.env for /brief — see serving/README.md)
+cd serving && uvicorn main:app --reload --port 8000
 
 # Full clean pipeline run (what the cluster uses)
 python -m src.pipeline.run_all \
@@ -399,8 +413,9 @@ python -m src.pipeline.run_all \
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/health` | GET | Service status, loaded models |
+| `/health` | GET | Service status, loaded models, `llm_keys` / `dotenv_file` for Copilot debugging |
 | `/predict` | POST | XGB + LSTM inference, drift warnings |
+| `/brief` | POST | AI Copilot plain-language brief (LLM on server; template if no API key) |
 | `/model-info` | GET | Walk-forward metrics + top SHAP features |
 | `/logs/summary` | GET | Aggregate prediction log statistics |
 | `/docs` | GET | Swagger UI |
@@ -410,7 +425,8 @@ python -m src.pipeline.run_all \
 ## Tests
 
 ```bash
-python -m pytest tests/ -v        # 85 tests — collectors, features, labeling, modeling, dashboard, monitoring
+python -m pytest tests/ -v              # 87 tests — pipeline, dashboard helpers, narration, etc.
+python -m pytest serving/tests/ -v     # 35 tests — FastAPI (/health, /predict, /brief, …)
 ```
 
 Tests cover: Arctic Shift loader, Zenodo loader, manifest idempotency, privacy/PII stripping, sentiment extraction, distress lexicon scoring, walk-forward splits (no overlap, gap, min-train), calibration, decision usefulness, lead time, drift detector (all alert levels + de-escalation), narrative generation, dashboard ensemble state helpers, text cleaning, and weekly aggregation.
