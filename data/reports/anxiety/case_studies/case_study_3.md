@@ -1,49 +1,49 @@
-# Case Study: High-Distress Signal Week 2019-W34
-**Week starting:** 2019-08-19
-**Distress score:** 0.348
+# Case Study: High-Distress Signal Week 2023-W01
+**Week starting:** 2023-01-02
+**Distress score:** 0.099
 
 ## What Happened
-The community distress score spiked to 0.348, 
+The community distress score spiked to 0.099, 
 exceeding the severe community distress threshold.
 
 ## Early Warning Signals
 
-### 2019-W31 (FLAGGED, probability: 0.08)
-- **new_poster_ratio_roll4w**: 0.8821 (11.3% above average)
-- **unique_posters_delta**: 181.0000 (11033.9% above average)
-- **first_person_plural_ratio_roll4w**: 0.0016 (8.6% below average)
-- **pct_negative_delta**: -0.0166 (25829.4% below average)
-- **std_word_count_delta**: -32.4852 (7969.5% below average)
+### 2022-W50 (not flagged, probability: 0.29)
+- **isolation_total_roll2w**: 120.0000 (24.1% below average)
+- **post_volume**: 936.0000 (11.4% below average)
+- **suicidality_total**: 25.0000 (33.9% below average)
+- **new_poster_ratio_delta**: -0.0395 (3258.0% below average)
+- **avg_negative_delta**: 0.0049 (67186.6% above average)
 
-### 2019-W32 (not flagged, probability: 0.75)
-- **new_poster_ratio_roll4w**: 0.8907 (12.4% above average)
-- **unique_posters_delta**: -35.0000 (2014.3% below average)
-- **first_person_plural_ratio_roll4w**: 0.0017 (2.6% below average)
-- **pct_negative_delta**: 0.0128 (20146.2% above average)
-- **std_word_count_delta**: 11.0631 (2580.0% above average)
+### 2022-W51 (not flagged, probability: 0.29)
+- **isolation_total_roll2w**: 129.5000 (18.1% below average)
+- **post_volume**: 944.0000 (10.6% below average)
+- **suicidality_total**: 23.0000 (39.1% below average)
+- **new_poster_ratio_delta**: 0.0337 (2962.8% above average)
+- **avg_negative_delta**: 0.0022 (29959.6% above average)
 
-### 2019-W33 (not flagged, probability: 0.66)
-- **new_poster_ratio_roll4w**: 0.8989 (13.4% above average)
-- **unique_posters_delta**: 94.0000 (5778.4% above average)
-- **first_person_plural_ratio_roll4w**: 0.0018 (3.0% above average)
-- **pct_negative_delta**: 0.0103 (16222.2% above average)
-- **std_word_count_delta**: 15.6403 (3688.8% above average)
+### 2022-W52 (not flagged, probability: 0.29)
+- **isolation_total_roll2w**: 152.0000 (3.9% below average)
+- **post_volume**: 1032.0000 (2.3% below average)
+- **suicidality_total**: 31.0000 (18.0% below average)
+- **new_poster_ratio_delta**: -0.0088 (650.9% below average)
+- **avg_negative_delta**: 0.0056 (77427.1% above average)
 
 ## Top Contributing Features (SHAP)
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | new_poster_ratio_roll4w | 1.3090 |
-| 2 | unique_posters_delta | 0.6189 |
-| 3 | first_person_plural_ratio_roll4w | 0.6015 |
-| 4 | pct_negative_delta | 0.5829 |
-| 5 | std_word_count_delta | 0.4728 |
-| 6 | avg_word_count_roll2w | 0.3977 |
-| 7 | posting_time_entropy | 0.3633 |
-| 8 | distress_density_roll2w | 0.2968 |
-| 9 | avg_positive | 0.2821 |
-| 10 | help_seeking_density_roll4w | 0.2151 |
+| 1 | isolation_total_roll2w | 0.6558 |
+| 2 | post_volume | 0.5988 |
+| 3 | suicidality_total | 0.4467 |
+| 4 | new_poster_ratio_delta | 0.3521 |
+| 5 | avg_negative_delta | 0.3135 |
+| 6 | isolation_total_roll4w | 0.2956 |
+| 7 | suicidality_total_roll2w | 0.2764 |
+| 8 | pct_neutral_roll4w | 0.2686 |
+| 9 | hopelessness_density | 0.2620 |
+| 10 | std_word_count_roll4w | 0.2539 |
 
 ## Summary
 
-The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in new_poster_ratio_roll4w, unique_posters_delta, first_person_plural_ratio_roll4w.
+The early warning system detected precursor signals 3 weeks before this high-distress event. Key indicators included changes in isolation_total_roll2w, post_volume, suicidality_total.

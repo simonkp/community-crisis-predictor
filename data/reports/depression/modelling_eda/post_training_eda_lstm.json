@@ -1,60 +1,96 @@
 {
   "subreddit": "depression",
   "model": "lstm",
-  "n_valid": 69,
+  "n_valid": 332,
   "calibration": {
     "bins": [
       {
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "n": 36,
+        "mean_predicted": 0.0878,
+        "mean_actual": 0.2222,
+        "calibration_gap": -0.1344
+      },
+      {
         "bin_low": 0.1,
         "bin_high": 0.2,
-        "n": 12,
-        "mean_predicted": 0.1833,
-        "mean_actual": 0.3333,
-        "calibration_gap": -0.1501
+        "n": 46,
+        "mean_predicted": 0.1374,
+        "mean_actual": 0.2609,
+        "calibration_gap": -0.1235
       },
       {
         "bin_low": 0.2,
         "bin_high": 0.3,
-        "n": 17,
-        "mean_predicted": 0.25,
-        "mean_actual": 0.3529,
-        "calibration_gap": -0.1029
+        "n": 40,
+        "mean_predicted": 0.2543,
+        "mean_actual": 0.175,
+        "calibration_gap": 0.0793
       },
       {
         "bin_low": 0.3,
         "bin_high": 0.4,
-        "n": 35,
-        "mean_predicted": 0.3472,
-        "mean_actual": 0.2571,
-        "calibration_gap": 0.09
+        "n": 58,
+        "mean_predicted": 0.3438,
+        "mean_actual": 0.3276,
+        "calibration_gap": 0.0163
       },
       {
         "bin_low": 0.4,
         "bin_high": 0.5,
-        "n": 5,
-        "mean_predicted": 0.43,
-        "mean_actual": 0.2,
-        "calibration_gap": 0.23
+        "n": 72,
+        "mean_predicted": 0.4564,
+        "mean_actual": 0.3889,
+        "calibration_gap": 0.0676
+      },
+      {
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "n": 71,
+        "mean_predicted": 0.5193,
+        "mean_actual": 0.1549,
+        "calibration_gap": 0.3644
+      },
+      {
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "n": 8,
+        "mean_predicted": 0.652,
+        "mean_actual": 0.125,
+        "calibration_gap": 0.527
+      },
+      {
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "n": 1,
+        "mean_predicted": 0.7,
+        "mean_actual": 0.0,
+        "calibration_gap": 0.7
       }
     ],
-    "overall_mean_predicted": 0.3007,
-    "overall_mean_actual": 0.2899,
-    "overall_calibration_gap": 0.0109,
-    "verdict": "well-calibrated"
+    "overall_mean_predicted": 0.3471,
+    "overall_mean_actual": 0.259,
+    "overall_calibration_gap": 0.0881,
+    "verdict": "over-confident"
   },
   "confusion_breakdown": {
-    "tp": 1,
-    "fp": 2,
-    "fn": 19,
-    "tn": 47,
-    "false_alarm_rate": 0.0408,
-    "miss_rate": 0.95,
-    "precision": 0.3333,
-    "recall": 0.05,
-    "f1": 0.087,
-    "summary": "1 true alerts, 2 false alarms, 19 missed crises, 47 correct non-alerts out of 69 predicted weeks."
+    "tp": 27,
+    "fp": 61,
+    "fn": 59,
+    "tn": 185,
+    "false_alarm_rate": 0.248,
+    "miss_rate": 0.686,
+    "precision": 0.3068,
+    "recall": 0.314,
+    "f1": 0.3103,
+    "summary": "27 true alerts, 61 false alarms, 59 missed crises, 185 correct non-alerts out of 332 predicted weeks."
   },
   "error_timeline": [
+    {
+      "week_index": 33,
+      "error_type": "false_negative"
+    },
     {
       "week_index": 36,
       "error_type": "false_negative"
@@ -65,7 +101,15 @@
     },
     {
       "week_index": 38,
-      "error_type": "false_positive"
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 39,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 40,
+      "error_type": "false_negative"
     },
     {
       "week_index": 41,
@@ -73,7 +117,19 @@
     },
     {
       "week_index": 51,
-      "error_type": "false_positive"
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 52,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 53,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 54,
+      "error_type": "false_negative"
     },
     {
       "week_index": 55,
@@ -84,99 +140,471 @@
       "error_type": "false_negative"
     },
     {
+      "week_index": 57,
+      "error_type": "false_negative"
+    },
+    {
       "week_index": 58,
       "error_type": "false_negative"
     },
     {
-      "week_index": 67,
+      "week_index": 59,
       "error_type": "false_negative"
     },
     {
-      "week_index": 68,
+      "week_index": 60,
       "error_type": "false_negative"
     },
     {
-      "week_index": 72,
+      "week_index": 61,
       "error_type": "false_negative"
+    },
+    {
+      "week_index": 62,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 63,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 64,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 65,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 66,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 75,
+      "error_type": "false_positive"
     },
     {
       "week_index": 76,
-      "error_type": "false_negative"
+      "error_type": "false_positive"
     },
     {
       "week_index": 77,
-      "error_type": "false_negative"
+      "error_type": "false_positive"
     },
     {
       "week_index": 78,
-      "error_type": "false_negative"
+      "error_type": "false_positive"
     },
     {
       "week_index": 79,
-      "error_type": "false_negative"
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 80,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 81,
+      "error_type": "false_positive"
     },
     {
       "week_index": 82,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 84,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 88,
       "error_type": "false_negative"
     },
     {
-      "week_index": 83,
+      "week_index": 103,
       "error_type": "false_negative"
     },
     {
-      "week_index": 90,
+      "week_index": 104,
       "error_type": "false_negative"
     },
     {
-      "week_index": 98,
+      "week_index": 105,
       "error_type": "false_negative"
     },
     {
-      "week_index": 99,
+      "week_index": 106,
       "error_type": "false_negative"
     },
     {
-      "week_index": 100,
+      "week_index": 107,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 110,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 111,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 116,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 121,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 127,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 129,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 130,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 133,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 152,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 155,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 160,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 161,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 164,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 177,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 178,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 227,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 253,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 256,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 257,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 258,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 259,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 260,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 261,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 265,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 266,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 267,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 268,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 269,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 270,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 271,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 272,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 273,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 274,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 277,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 278,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 279,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 283,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 284,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 285,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 287,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 288,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 289,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 291,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 293,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 294,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 295,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 297,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 298,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 299,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 302,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 303,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 304,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 306,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 307,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 308,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 309,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 310,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 317,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 319,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 320,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 324,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 327,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 328,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 329,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 330,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 331,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 332,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 334,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 335,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 342,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 343,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 344,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 345,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 346,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 347,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 353,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 356,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 359,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 360,
+      "error_type": "false_positive"
+    },
+    {
+      "week_index": 361,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 362,
+      "error_type": "false_negative"
+    },
+    {
+      "week_index": 363,
       "error_type": "false_negative"
     }
   ],
-  "n_false_positives": 2,
-  "n_false_negatives": 19,
+  "n_false_positives": 61,
+  "n_false_negatives": 59,
   "threshold_sweep": [
     {
       "threshold": 0.2,
-      "precision": 0.2807,
-      "recall": 0.8,
-      "f1": 0.4156,
-      "n_alerts": 57
+      "precision": 0.264,
+      "recall": 0.7674,
+      "f1": 0.3929,
+      "n_alerts": 250
     },
     {
       "threshold": 0.3,
-      "precision": 0.25,
-      "recall": 0.5,
-      "f1": 0.3333,
-      "n_alerts": 40
+      "precision": 0.281,
+      "recall": 0.686,
+      "f1": 0.3986,
+      "n_alerts": 210
     },
     {
       "threshold": 0.4,
-      "precision": 0.2,
-      "recall": 0.05,
-      "f1": 0.08,
-      "n_alerts": 5
+      "precision": 0.2632,
+      "recall": 0.4651,
+      "f1": 0.3361,
+      "n_alerts": 152
     },
     {
       "threshold": 0.5,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "n_alerts": 0
+      "precision": 0.15,
+      "recall": 0.1395,
+      "f1": 0.1446,
+      "n_alerts": 80
     },
     {
       "threshold": 0.6,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "n_alerts": 0
+      "precision": 0.1111,
+      "recall": 0.0116,
+      "f1": 0.0211,
+      "n_alerts": 9
     }
   ]
 }

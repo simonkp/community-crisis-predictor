@@ -496,7 +496,9 @@ def _load_arctic_shift_for_subreddit(
 ) -> tuple[pd.DataFrame, list[dict]]:
     frames: list[pd.DataFrame] = []
     stats_out: list[dict] = []
-    for path in sorted(stage_dir.glob("arctic_shift_*_*.jsonl")):
+    # Search recursively so newer gap-fill drops extracted into nested folders
+    # (e.g. arctic_shift_fill_v2/) are merged without manual file copies.
+    for path in sorted(stage_dir.rglob("arctic_shift_*_*.jsonl")):
         sub_from_name = parse_arctic_shift_filename(path)
         if sub_from_name is None:
             continue

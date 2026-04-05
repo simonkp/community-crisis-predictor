@@ -77,11 +77,15 @@ features:
 
 labeling:
   distress_weights:
-    neg_sentiment: 0.4
-    hopelessness: 0.35
-    help_seeking: 0.25
-  crisis_threshold_std: 1.5
-  crisis_thresholds_std: [0.5, 1.0, 2.0]
+    neg_sentiment: 0.25
+    hopelessness: 0.20
+    help_seeking: 0.15
+    suicidality: 0.20
+    isolation: 0.10
+    economic_stress: 0.05
+    domestic_stress: 0.05
+  crisis_threshold_std: 1.0
+  crisis_thresholds_std: [0.3, 0.6, 1.0]
 
 modeling:
   xgboost:
@@ -94,27 +98,28 @@ modeling:
       subsample: [0.6, 0.8, 1.0]
     n_search_iter: 30
   feature_selection:
-    enabled: true
+    enabled: false
     shap_min_ratio_to_top: 0.01
     min_features: 20
     max_features: 80
   lstm:
-    sequence_length: 8
-    hidden_size: 16
-    num_layers: 1
+    sequence_length: 6
+    hidden_size: 32
+    num_layers: 2
     dropout: 0.2
     epochs: 50
-    walk_forward_epochs: 20
+    walk_forward_epochs: 30
     val_split: 0.2
     early_stopping_patience: 5
     min_val_sequences: 12
     learning_rate: 0.001
     batch_size: 16
     search:
-      enabled: true
-      max_trials: 8
+      enabled: false
+      max_trials: 16
       grid:
-        hidden_size: [16, 32, 64]
+        hidden_size: [32, 64, 128]
+        num_layers: [1, 2]
         learning_rate: [0.001, 0.0005]
         dropout: [0.1, 0.2, 0.3]
         batch_size: [16, 32]
@@ -124,7 +129,7 @@ modeling:
 
 evaluation:
   primary_metric: "recall"
-  probability_threshold: 0.5
+  probability_threshold: 0.3
   monitoring_min_crisis_weeks: 10
   holdout_weeks: 12
   label_audit_provider: "anthropic"  # anthropic | openai

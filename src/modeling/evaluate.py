@@ -248,7 +248,8 @@ def _tune_lstm_hyperparams(
     if not bool(search_cfg.get("enabled", False)):
         return {}, {}
     grid = search_cfg.get("grid", {})
-    hidden_sizes = grid.get("hidden_size", [int(lstm_cfg.get("hidden_size", 16))])
+    hidden_sizes = grid.get("hidden_size", [int(lstm_cfg.get("hidden_size", 32))])
+    num_layers_list = grid.get("num_layers", [int(lstm_cfg.get("num_layers", 2))])
     learning_rates = grid.get("learning_rate", [float(lstm_cfg.get("learning_rate", 0.001))])
     dropouts = grid.get("dropout", [float(lstm_cfg.get("dropout", 0.2))])
     batch_sizes = grid.get("batch_size", [int(lstm_cfg.get("batch_size", 16))])
@@ -272,14 +273,15 @@ def _tune_lstm_hyperparams(
 
     X_dev = feature_df.iloc[:dev_n][feature_columns].reset_index(drop=True)
     val_labels = labels_dev.iloc[val_start:dev_n].reset_index(drop=True)
-    candidates = list(itertools.product(hidden_sizes, learning_rates, dropouts, batch_sizes))[:max_trials]
+    candidates = list(itertools.product(hidden_sizes, num_layers_list, learning_rates, dropouts, batch_sizes))[:max_trials]
     if not candidates:
         return {}, {"reason": "empty_search_space"}
 
     best: dict | None = None
-    for hid, lr, drp, bsz in candidates:
+    for hid, n_layers, lr, drp, bsz in candidates:
         params = {
             "hidden_size": int(hid),
+            "num_layers": int(n_layers),
             "learning_rate": float(lr),
             "dropout": float(drp),
             "batch_size": int(bsz),
@@ -309,6 +311,7 @@ def _tune_lstm_hyperparams(
         return {}, {"reason": "all_trials_failed"}
     selected = {
         "hidden_size": int(best["hidden_size"]),
+        "num_layers": int(best["num_layers"]),
         "learning_rate": float(best["learning_rate"]),
         "dropout": float(best["dropout"]),
         "batch_size": int(best["batch_size"]),

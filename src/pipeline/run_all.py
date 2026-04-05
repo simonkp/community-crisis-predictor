@@ -5,6 +5,7 @@ import time
 from pathlib import Path
 
 from src.config import load_config
+from src.core.logging_config import configure_logging
 from src.core.ui_config import PIPELINE_COPY
 
 # Presentation artifact legend:
@@ -30,6 +31,7 @@ def main():
         help="Force full feature extraction even when cache says unchanged",
     )
     args = parser.parse_args()
+    configure_logging()
 
     print("=" * 60)
     print(PIPELINE_COPY["run_all_banner"])

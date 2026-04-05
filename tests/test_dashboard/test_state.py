@@ -45,7 +45,7 @@ def test_pick_model_results_ensemble():
     }
     out = pick_model_results(sub, "Ensemble")
     assert "per_week" in out
-    assert out["per_week"]["predictions"][0] == 2.0
+    assert out["per_week"]["predictions"][0] == 3.0  # ensemble uses max (safety-first), not mean
 
 
 def test_pick_model_results_fallback():

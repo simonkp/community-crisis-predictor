@@ -1,0 +1,120 @@
+{
+  "subreddits": {
+    "anxiety": {
+      "hours": 0.5,
+      "probability": 0.838,
+      "state": 2,
+      "state_label": "Elevated Distress",
+      "effectiveness": 0.65
+    },
+    "depression": {
+      "hours": 0.5,
+      "probability": 0.4187,
+      "state": 1,
+      "state_label": "Early Vulnerability",
+      "effectiveness": 0.75
+    },
+    "lonely": {
+      "hours": 0.5,
+      "probability": 0.9578,
+      "state": 0,
+      "state_label": "Stable",
+      "effectiveness": 0.6
+    },
+    "mentalhealth": {
+      "hours": 0.5,
+      "probability": 0.8179,
+      "state": 2,
+      "state_label": "Elevated Distress",
+      "effectiveness": 0.6
+    },
+    "suicidewatch": {
+      "hours": 8.0,
+      "probability": 0.9437,
+      "state": 2,
+      "state_label": "Elevated Distress",
+      "effectiveness": 0.9
+    }
+  },
+  "total_hours": 10.0,
+  "objective": 7.7567,
+  "sensitivity": {
+    "5": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 3.0
+    },
+    "6": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 4.0
+    },
+    "7": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 5.0
+    },
+    "8": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 6.0
+    },
+    "9": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 7.0
+    },
+    "10": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 8.0
+    },
+    "12": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 10.0
+    },
+    "14": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 12.0
+    },
+    "16": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 14.0
+    },
+    "18": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 16.0
+    },
+    "20": {
+      "anxiety": 0.5,
+      "depression": 0.5,
+      "lonely": 0.5,
+      "mentalhealth": 0.5,
+      "suicidewatch": 18.0
+    }
+  }
+}

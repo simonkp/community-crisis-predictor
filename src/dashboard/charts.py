@@ -10,7 +10,7 @@ def build_sparkline(spark, line_color: str, *, height: int = 90) -> go.Figure:
             line=dict(color=line_color, width=2.5),
             fill="tozeroy",
             fillcolor="rgba(55,65,81,0.08)",
-            hovertemplate="t-%{x}: %{y:.3f}<extra></extra>",
+            hovertemplate="%{y:.3f}<extra></extra>",
             showlegend=False,
         )
     )

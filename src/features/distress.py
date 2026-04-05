@@ -55,13 +55,13 @@ class DistressScorer:
             texts = row["texts"]
             if not texts:
                 rows.append({
-                    "hopelessness_density": 0,
-                    "help_seeking_density": 0,
-                    "distress_density": 0,
-                    "suicidality_total": 0,
-                    "isolation_total": 0,
-                    "economic_stress_total": 0,
-                    "domestic_stress_total": 0,
+                    "hopelessness_density": 0.0,
+                    "help_seeking_density": 0.0,
+                    "distress_density": 0.0,
+                    "suicidality_density": 0.0,
+                    "isolation_density": 0.0,
+                    "economic_stress_density": 0.0,
+                    "domestic_stress_density": 0.0,
                 })
                 continue
 
@@ -73,14 +73,17 @@ class DistressScorer:
             econ_totals = [self._count_matches(t, self._economic_stress_re) for t in texts]
             dome_totals = [self._count_matches(t, self._domestic_stress_re) for t in texts]
 
+            n_posts = len(texts)
             rows.append({
                 "hopelessness_density": np.mean(hope_densities),
                 "help_seeking_density": np.mean(help_densities),
                 "distress_density": np.mean(dist_densities),
-                "suicidality_total": int(sum(suic_totals)),
-                "isolation_total": int(sum(isol_totals)),
-                "economic_stress_total": int(sum(econ_totals)),
-                "domestic_stress_total": int(sum(dome_totals)),
+                # Normalise by post count so these are rates (matches/post), not raw counts.
+                # Raw sums inflate with volume — a busy week always looks more distressed.
+                "suicidality_density": sum(suic_totals) / n_posts,
+                "isolation_density": sum(isol_totals) / n_posts,
+                "economic_stress_density": sum(econ_totals) / n_posts,
+                "domestic_stress_density": sum(dome_totals) / n_posts,
             })
 
         return pd.DataFrame(rows, index=weekly_df.index)

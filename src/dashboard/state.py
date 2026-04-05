@@ -36,7 +36,10 @@ def merge_ensemble_per_week(lstm_pw: dict, xgb_pw: dict) -> dict:
     for i in range(n):
         pl, px = pred_l[i], pred_x[i]
         if np.isfinite(pl) and np.isfinite(px):
-            merged_p[i] = int(np.clip(np.round((pl + px) / 2.0), 0, 3))
+            # Use max (conservative/safety-first): if either model flags elevated risk, surface it.
+            # Arithmetic mean of ordinal class codes is semantically wrong
+            # (e.g. Stable=0 + Severe=3 → 1.5 → Elevated, which is misleading).
+            merged_p[i] = int(np.clip(max(pl, px), 0, 3))
         elif np.isfinite(pl):
             merged_p[i] = pl
         elif np.isfinite(px):
